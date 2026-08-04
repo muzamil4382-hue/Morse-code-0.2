@@ -1,11 +1,12 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://www.morsecodetranslater.com/sitemap.xml
+
+Host: www.morsecodetranslater.com
 
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
