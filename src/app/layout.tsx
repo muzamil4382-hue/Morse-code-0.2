@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 import { BASE_URL } from "@/lib/seo";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -107,10 +108,24 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </ThemeProvider>
+  <Header />
+  <main className="min-h-screen">{children}</main>
+  <Footer />
+</ThemeProvider>
+<Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-TEH9XJH798"
+  strategy="afterInteractive"
+/>
+
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TEH9XJH798');
+  `}
+</Script>
+
       </body>
     </html>
   );
