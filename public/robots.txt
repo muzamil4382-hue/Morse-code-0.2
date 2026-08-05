@@ -1,12 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://www.morsecodetranslater.com/sitemap.xml
-
-Host: www.morsecodetranslater.com
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
