@@ -68,8 +68,8 @@ const howToSteps = [
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Translator - Convert Text to Morse Code Free Online",
-  "Morse Code Translator to convert text to Morse code and Morse code to text instantly. Free online tool with audio playback, WAV download, fast conversion, and no sign-up required.",
+  "Morse Code Translator | Free Text to Morse & Morse to Text",
+  "Translate text to Morse code and Morse code to text instantly with our free Morse Code Translator. Enjoy audio playback, WAV download, fast conversion, and no sign-up required.",
   "/",
   ["morse code translator", "text to morse code", "morse code to text", "morse code decoder", "morse code generator", "morse code audio", "morse code alphabet", "morse code converter online", "morse code online"]
 );
