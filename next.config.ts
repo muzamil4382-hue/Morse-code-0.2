@@ -12,6 +12,16 @@ const nextConfig: NextConfig = {
     "space-z.ai",
   ],
 
+  async redirects() {
+    return [
+      {
+        source: "/morse-code-letters",
+        destination: "/morse-code-alphabet",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {
