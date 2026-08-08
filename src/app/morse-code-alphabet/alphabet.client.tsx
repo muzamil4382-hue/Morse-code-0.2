@@ -108,7 +108,7 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
         </div>
 
         <p className="text-sm text-slate-500">
-          Last updated: August 2026 &middot; Reviewed by the MorseCode.World team
+          Updated regularly to match the ITU-R M.1677 standard.
         </p>
       </section>
 
@@ -207,13 +207,24 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
 
           {/* Callout box */}
           <div className="mt-8 p-5 bg-green-50 border border-green-200 rounded-xl">
-            <p className="text-green-800 font-medium mb-1">Pro Tip</p>
+            <p className="text-green-800 font-medium mb-1">Learning Tip</p>
             <p className="text-green-700 text-sm">
-              Letters E, T, A, I, N, O, S, and H account for approximately 65% of
-              all letters used in English. Start by mastering these eight letters
-              first — they will give you the best return on your learning effort
-              and let you recognize many common words almost immediately.
-            </p>
+  Letters E, T, A, I, N, O, S, and H account for approximately 65% of
+  all letters used in English. Start by mastering these eight letters
+  first — they will give you the best return on your learning effort
+  and let you recognize many common words almost immediately.
+</p>
+
+<p className="mt-3 text-sm text-green-700">
+  Looking for digits too? Continue with our{" "}
+  <Link
+    href="/morse-code-numbers"
+    className="font-medium underline"
+  >
+    Morse Code Numbers Guide
+  </Link>{" "}
+  to learn numbers 0–9.
+</p>
           </div>
         </div>
       </section>
@@ -228,7 +239,14 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
             Reading the Morse Code Alphabet requires understanding just a few
             fundamental timing rules. Once you grasp these basics, every letter
             becomes a recognizable rhythmic pattern rather than a sequence of
-            individual dots and dashes to be counted.
+            individual dots and dashes to be counted.{" "}
+For a complete explanation of spacing rules and transmission speed, see our{" "}
+<Link
+  href="/morse-code-timing"
+  className="text-green-600 font-medium underline"
+>
+  Morse Code Timing Guide
+</Link>.
           </p>
 
           <div className="space-y-5">
@@ -483,6 +501,15 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
                 throughout the day. Many operators report that the physical act of
                 writing the codes by hand significantly improves retention compared
                 to digital-only study.
+                {" "}
+If you have already memorized the letters, continue with our{" "}
+<Link
+  href="/morse-code-numbers"
+  className="text-green-600 font-medium underline"
+>
+  Morse Code Numbers Guide
+</Link>{" "}
+to learn the complete International Morse Code character set.
               </p>
             </div>
 
@@ -707,7 +734,20 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
                 ensures that operators from any country can communicate with each
                 other seamlessly. The International Morse Code Alphabet is the
                 version presented on this page and is the universal standard for
-                all modern Morse code communication.
+                all modern Morse code communication.{" "}
+After learning the alphabet, you can practice decoding real messages with our{" "}
+<Link
+  href="/morse-code-decoder"
+  className="text-green-600 font-medium underline"
+>
+  Morse Code Decoder
+</Link>. If you want to study each character in more detail, explore our{" "}
+<Link
+  href="/morse-code-letter/a"
+  className="text-green-600 font-medium underline"
+>
+  individual Morse Code Letter Guides
+</Link>.
               </p>
             </div>
           </div>
@@ -776,7 +816,14 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
                 any method, including flashlight, whistle, tapping, or visual
                 signals, making it invaluable in survival situations where no
                 other communication equipment is available. Military, maritime,
-                and wilderness survival training all include basic Morse signaling.
+                and wilderness survival training all include basic Morse signaling.{" "}
+You can also learn how to decode emergency signals using our{" "}
+<Link
+  href="/morse-code-decoder"
+  className="text-green-600 font-medium underline"
+>
+  Morse Code Decoder
+</Link>.
               </p>
             </div>
 
@@ -1040,31 +1087,31 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
             >
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
-                  Morse Code Practice
+                  Morse Code Quiz
                 </h3>
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
               </div>
               <p className="text-sm text-slate-500">
-                Test your Morse code knowledge with interactive quizzes and
-                timed practice sessions.
+                Test your Morse code knowledge with interactive quizzes, timed challenges, and instant feedback.
               </p>
             </Link>
 
             <Link
-              href="/blog"
-              className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
-                  Morse Code Blog
-                </h3>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
-              </div>
-              <p className="text-sm text-slate-500">
-                Read in-depth articles, tutorials, and guides about Morse code
-                history, techniques, and applications.
-              </p>
-            </Link>
+  href="/learn-morse-code"
+  className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
+>
+  <div className="flex items-center justify-between mb-2">
+    <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
+      Learn Morse Code
+    </h3>
+    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
+  </div>
+
+  <p className="text-sm text-slate-500">
+    Learn Morse code step by step with beginner-friendly lessons,
+    memorization techniques, and practical exercises.
+  </p>
+</Link>
           </div>
         </div>
       </section>
@@ -1073,21 +1120,19 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
       <section className="bg-slate-900 py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Practice the Morse Code Alphabet
+            Ready to Master the Morse Code Alphabet?
           </h2>
           <p className="text-slate-300 max-w-2xl mx-auto mb-8">
-            Ready to put your knowledge into action? Use our free Morse Code
-            Translator to convert any word or sentence into Morse code with
-            real-time audio playback. Type any text and hear the Morse Code
-            Alphabet come to life instantly.
+            Ready to put your knowledge into action? Use our free Morse Code Translator to encode, decode, and listen to Morse code with real-time audio playback. Practice what you've learned and improve your speed and accuracy.
           </p>
           <Link
             href="/morse-code-translator"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors text-lg">
-            Open Morse Code Translator
+            Try the Morse Code Translator
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
+      </section>
     </main>
   );
 }
