@@ -196,8 +196,6 @@ export default function MorseCodeNumbersPage() {
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
               <h3 className="font-semibold text-slate-900 mb-1">Visualize the Flip</h3>
               <p className="text-slate-600">Notice that 1 and 9 are mirrors (.---- vs ----.), 2 and 8 are mirrors (..--- vs ---..), and 3 and 7 are mirrors (...-- vs --...). 4 and 6 are mirrors (....- vs -....). And 5 (.....) mirrors 0 (-----).</p>
-            <div className="p-4 bg-green-50 border border-green-200 rounded-xl">
-            </div>
           </div>
           <div className="p-4 bg-green-50 border border-green-200 rounded-xl">
   <h3 className="font-semibold text-green-800 mb-1">
@@ -214,6 +212,7 @@ export default function MorseCodeNumbersPage() {
     </Link>{" "}
     to encode phone numbers, dates, and radio frequencies.
   </p>
+</div>
 </div>
         </section>
 
