@@ -363,7 +363,36 @@ for faster learning.
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Quick Morse Code Reference</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-Browse a quick reference for common Morse code letters and numbers. For the complete alphabet, symbols, pronunciation, examples, and printable charts, visit our{" "}
+Browse a quick reference for common Morse code letters and numbers.
+For the complete alphabet, symbols, pronunciation, examples, and printable charts, visit our{" "}
+<Link
+  href="/morse-code-alphabet"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Alphabet
+</Link>.
+If you want to learn digits from 0–9 in detail, explore our{" "}
+<Link
+  href="/morse-code-numbers"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Numbers
+</Link>.
+You can also practice with our{" "}
+<Link
+  href="/morse-code-decoder"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Decoder
+</Link>{" "}
+or learn the correct{" "}
+<Link
+  href="/morse-code-timing"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Timing
+</Link>{" "}
+rules.
 <Link
   href="/morse-code-alphabet"
   className="text-green-600 hover:underline font-semibold"
