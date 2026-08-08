@@ -25,7 +25,6 @@ const toolLinks: NavChild[] = [
   { label: "Morse Code Decoder", href: "/morse-code-decoder" },
   { label: "Morse Code Alphabet", href: "/morse-code-alphabet" },
   { label: "Morse Code Numbers", href: "/morse-code-numbers" },
-  { label: "Morse Code Letters", href: "/morse-code-letters" },
   { label: "Morse Code Sounds", href: "/morse-code-sounds" },
   { label: "Morse Code Timing", href: "/morse-code-timing" },
   { label: "Binary Code Translator", href: "/binary-code-translator" },
