@@ -157,10 +157,14 @@ export default function LearnMorseCodePage() {
               <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">📋 Alphabet Chart</h3>
               <p className="text-sm text-slate-600">Complete visual reference with all letters, numbers, and punctuation in Morse code.</p>
             </Link>
-            <Link href="/morse-code-letters" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
-              <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">🔠 Letters A-Z Guide</h3>
-              <p className="text-sm text-slate-600">Interactive letter-by-letter reference with pronunciation guides and memory tips.</p>
-            </Link>
+            <Link href="/morse-code-alphabet" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
+  <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">
+    📋 Morse Code Alphabet
+  </h3>
+  <p className="text-sm text-slate-600">
+    Complete A–Z Morse code alphabet chart with letters, numbers, punctuation, and interactive learning resources.
+  </p>
+</Link>
             <Link href="/morse-code-quiz" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
               <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">🎯 Morse Code Quiz</h3>
               <p className="text-sm text-slate-600">Test your knowledge with interactive quizzes and track your progress over time.</p>
