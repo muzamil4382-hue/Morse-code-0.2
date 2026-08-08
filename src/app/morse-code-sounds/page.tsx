@@ -28,7 +28,7 @@ export default function MorseCodeSoundsPage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Morse Code Sounds", url: "//morse-code-sounds" },
+    { name: "Morse Code Sounds", url: "/morse-code-sounds" },
   ]);
 
   return (
@@ -61,6 +61,15 @@ export default function MorseCodeSoundsPage() {
               sine wave oscillator at a specific frequency. The beauty of Morse code lies in its simplicity — with just two types
               of sounds arranged in different patterns, you can communicate any message in any language that uses the Latin alphabet.
             </p>
+            <p className="text-slate-700 leading-relaxed">
+  You can also hear these sounds using our{" "}
+  <Link
+    href="/"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    Morse Code Translator
+  </Link>.
+</p>
             <p>
               When learning to receive Morse code by ear, your brain initially processes each sound individually — counting the
               dots and dashes to figure out which letter they represent. But with practice, something remarkable happens: you
@@ -96,7 +105,7 @@ export default function MorseCodeSoundsPage() {
             </div>
           </div>
           <p className="text-slate-700 leading-relaxed">
-            Our <Link href="/" className="text-green-600 underline">translator</Link> defaults
+            Our <Link href="/" className="text-green-600 underline">Morse Code Translator</Link> defaults
             to 600 Hz, which is an excellent all-around frequency for both learning and practice. You can adjust between
             300-1000 Hz in the settings panel.
           </p>
@@ -201,6 +210,12 @@ export default function MorseCodeSoundsPage() {
             <Link href="/morse-code-numbers" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               🔢 Numbers Guide
             </Link>
+            <Link
+  href="/sos-morse-code"
+  className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+>
+  🆘 SOS Morse Code
+</Link>
           </div>
         </section>
       </div>
