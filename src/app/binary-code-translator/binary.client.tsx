@@ -128,7 +128,29 @@ export default function BinaryClient() {
               </Link>
 
             </div>
+<div className="mt-8 flex flex-wrap gap-3">
 
+  <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-700">
+    ✓ Free Forever
+  </span>
+
+  <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
+    ✓ ASCII Standard
+  </span>
+
+  <span className="rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700">
+    ✓ 8-Bit Encoding
+  </span>
+
+  <span className="rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700">
+    ✓ Instant Conversion
+  </span>
+
+  <span className="rounded-full bg-pink-100 px-4 py-2 text-sm font-medium text-pink-700">
+    ✓ No Registration
+  </span>
+
+</div>
             <div className="mt-10 grid gap-5 md:grid-cols-3">
 
               <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -278,6 +300,40 @@ export default function BinaryClient() {
             </button>
 
           </div>
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+
+  <div className="rounded-xl border border-slate-200 p-4">
+    <p className="text-sm text-slate-500">Characters</p>
+    <p className="mt-1 text-xl font-bold">
+      {mode === "text-to-binary" ? text.length : output.length}
+    </p>
+  </div>
+
+  <div className="rounded-xl border border-slate-200 p-4">
+    <p className="text-sm text-slate-500">Words</p>
+    <p className="mt-1 text-xl font-bold">
+      {(mode === "text-to-binary" ? text : output)
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean).length}
+    </p>
+  </div>
+
+  <div className="rounded-xl border border-slate-200 p-4">
+    <p className="text-sm text-slate-500">Bits</p>
+    <p className="mt-1 text-xl font-bold">
+      {output.replace(/\s/g, "").length}
+    </p>
+  </div>
+
+  <div className="rounded-xl border border-slate-200 p-4">
+    <p className="text-sm text-slate-500">Bytes</p>
+    <p className="mt-1 text-xl font-bold">
+      {Math.ceil(output.replace(/\s/g, "").length / 8)}
+    </p>
+  </div>
+
+</div>
 
         </section>
                 {/* =======================================================
@@ -1520,6 +1576,36 @@ export default function BinaryClient() {
           </p>
 
         </section>
+        <section className="mb-20 rounded-3xl bg-gradient-to-r from-green-600 to-green-700 p-10 text-center text-white">
+
+  <h2 className="text-3xl font-bold">
+    Continue Learning Digital Communication
+  </h2>
+
+  <p className="mx-auto mt-4 max-w-2xl text-green-100">
+    Explore Morse Code, learn character encoding, practice with interactive
+    quizzes, and improve your understanding of digital communication systems.
+  </p>
+
+  <div className="mt-8 flex flex-wrap justify-center gap-4">
+
+    <Link
+      href="/learn-morse-code"
+      className="rounded-xl bg-white px-6 py-3 font-semibold text-green-700 hover:bg-green-50"
+    >
+      Learn Morse Code
+    </Link>
+
+    <Link
+      href="/morse-code-quiz"
+      className="rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white hover:text-green-700"
+    >
+      Take Quiz
+    </Link>
+
+  </div>
+
+</section>
 
       </div>
 
