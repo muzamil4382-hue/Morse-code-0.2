@@ -25,7 +25,7 @@ export default function MorseCodeNumbersPage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Morse Code Numbers", url: "//morse-code-numbers" },
+    { name: "Morse Code Numbers", url: "/morse-code-numbers" },
   ]);
 
   const numbers = "0123456789".split("");
@@ -123,6 +123,23 @@ export default function MorseCodeNumbersPage() {
                 1: .---- &nbsp; 2: ..--- &nbsp; 3: ...-- &nbsp; 4: ....- &nbsp; 5: .....<br />
                 6: -.... &nbsp; 7: --... &nbsp; 8: ---.. &nbsp; 9: ----. &nbsp; 0: -----
               </p>
+              <p className="text-slate-700 leading-relaxed">
+  Once you understand this counting pattern, you can practice converting complete
+  messages with our{" "}
+  <Link
+    href="/"
+    className="text-green-600 font-medium underline hover:text-green-700"
+  >
+    Morse Code Translator
+  </Link>{" "}
+  or decode real Morse transmissions using the{" "}
+  <Link
+    href="/morse-code-decoder"
+    className="text-green-600 font-medium underline hover:text-green-700"
+  >
+    Morse Code Decoder
+  </Link>.
+</p>
             </div>
           </div>
         </section>
@@ -179,8 +196,25 @@ export default function MorseCodeNumbersPage() {
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
               <h3 className="font-semibold text-slate-900 mb-1">Visualize the Flip</h3>
               <p className="text-slate-600">Notice that 1 and 9 are mirrors (.---- vs ----.), 2 and 8 are mirrors (..--- vs ---..), and 3 and 7 are mirrors (...-- vs --...). 4 and 6 are mirrors (....- vs -....). And 5 (.....) mirrors 0 (-----).</p>
+            <div className="p-4 bg-green-50 border border-green-200 rounded-xl">
             </div>
           </div>
+          <div className="p-4 bg-green-50 border border-green-200 rounded-xl">
+  <h3 className="font-semibold text-green-800 mb-1">
+    Practice with Real Messages
+  </h3>
+
+  <p className="text-green-700">
+    After memorizing the number patterns, reinforce your skills by using our{" "}
+    <Link
+      href="/"
+      className="underline font-medium"
+    >
+      Morse Code Translator
+    </Link>{" "}
+    to encode phone numbers, dates, and radio frequencies.
+  </p>
+</div>
         </section>
 
         {/* FAQ */}
