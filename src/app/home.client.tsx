@@ -282,7 +282,30 @@ export default function HomeClient({ faqs }: Props) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">How to Use This Morse Code Translator</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Convert any text to Morse code in three simple steps. Our translator works instantly in your browser with no downloads or sign-ups needed.</p>
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+Convert text to Morse code or decode Morse code to text in three simple steps. If you're new to Morse code, explore our{" "}
+<Link
+  href="/learn-morse-code"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Learn Morse Code Guide
+</Link>
+, view the{" "}
+<Link
+  href="/morse-code-alphabet"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Alphabet
+</Link>
+, or understand{" "}
+<Link
+  href="/morse-code-timing"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Timing
+</Link>
+for faster learning.
+</p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {[
@@ -310,7 +333,7 @@ export default function HomeClient({ faqs }: Props) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { icon: <Zap className="w-5 h-5" />, title: "Real-Time Translation", desc: "Instantly convert text to Morse code and Morse code to text as you type. No waiting, no buttons to press. The translation happens live with every keystroke using the International Morse code standard." },
-              { icon: <Volume2 className="w-5 h-5" />, title: "Audio Playback with Controls", desc: "Listen to your Morse code with adjustable speed (5-35 WPM), frequency (300-1000 Hz), and volume. The audio engine uses the Web Audio API to generate precise tones with proper timing per ITU standards." },
+              { icon: <Volume2 className="w-5 h-5" />, title: "Audio Playback with Controls", desc: "Listen to your Morse code with adjustable speed (5-35 WPM), frequency (300-1000 Hz), and volume. Learn more in our Morse Code Sounds and Morse Code Timing guides." },
               { icon: <Eye className="w-5 h-5" />, title: "Visual Flash Mode", desc: "See Morse code come alive with screen flash visualization. Dots appear as short yellow flashes and dashes as longer green flashes, simulating how Morse code is transmitted using signal lamps and flashlights." },
               { icon: <Download className="w-5 h-5" />, title: "WAV Audio Download", desc: "Download your Morse code translation as a standard WAV audio file. The file is generated in your browser using the Web Audio API with your custom speed, frequency, and volume settings applied." },
               { icon: <ArrowDownUp className="w-5 h-5" />, title: "Bidirectional Translation", desc: "Switch seamlessly between text-to-Morse and Morse-to-text modes. Paste any Morse code using dots and dashes, and the translator decodes it back to readable English text instantly." },
@@ -336,8 +359,31 @@ export default function HomeClient({ faqs }: Props) {
       {/* ─── MORSE CODE ALPHABET CHART ─── */}
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Morse Code Alphabet Chart</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">The complete International Morse code reference for all 26 letters, 10 digits, and common punctuation marks. Click any letter to hear its Morse code sound.</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Quick Morse Code Reference</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+Browse a quick reference for common Morse code letters and numbers. For the complete alphabet, symbols, pronunciation, examples, and printable charts, visit our{" "}
+<Link
+  href="/morse-code-alphabet"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Alphabet
+</Link>
+{" "}page. You can also practice with our{" "}
+<Link
+  href="/morse-code-decoder"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Decoder
+</Link>
+{" "}or learn the correct{" "}
+<Link
+  href="/morse-code-timing"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Timing
+</Link>
+{" "}rules.
+</p>
         </div>
         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2"><Type className="w-5 h-5 text-green-600" /> Letters (A-Z)</h3>
         <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-2.5 mb-8">
@@ -376,7 +422,30 @@ export default function HomeClient({ faqs }: Props) {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">What Is Morse Code?</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Morse code is a method of telecommunication that encodes text characters as standardized sequences of two different signal durations, called dots and dashes. Developed by Samuel Morse and Alfred Vail in 1837, it was the primary method of long-distance electronic communication before the advent of telephone networks.</p>
+            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+Morse code is a method of telecommunication that represents letters, numbers, and symbols using dots and dashes. Developed by Samuel Morse and Alfred Vail in 1837, it later became the international standard for long-distance communication. If you're new to Morse code, start with our{" "}
+<Link
+  href="/learn-morse-code"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Learn Morse Code
+</Link>{" "}
+guide, explore the{" "}
+<Link
+  href="/morse-code-alphabet"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Alphabet
+</Link>{" "}
+or try our{" "}
+<Link
+  href="/morse-code-decoder"
+  className="text-green-600 hover:underline font-semibold"
+>
+  Morse Code Decoder
+</Link>{" "}
+to practice real examples.
+</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 mb-10">
             <div>
@@ -526,6 +595,37 @@ export default function HomeClient({ faqs }: Props) {
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Common Morse Code Words</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">These are the most frequently looked-up words in Morse code. Each one is used thousands of times daily by learners, hobbyists, and emergency communicators around the world.</p>
+            <p className="mt-6 text-slate-700 dark:text-slate-300 leading-8">
+Want to improve your Morse code skills? Start with our{" "}
+<Link
+  href="/learn-morse-code"
+  className="font-semibold text-green-600 hover:underline"
+>
+  Learn Morse Code Guide
+</Link>
+, test yourself using the{" "}
+<Link
+  href="/morse-code-quiz"
+  className="font-semibold text-green-600 hover:underline"
+>
+  Morse Code Quiz
+</Link>
+, decode real messages with the{" "}
+<Link
+  href="/morse-code-decoder"
+  className="font-semibold text-green-600 hover:underline"
+>
+  Morse Code Decoder
+</Link>
+, or understand digital encoding using our{" "}
+<Link
+  href="/binary-code-translator"
+  className="font-semibold text-green-600 hover:underline"
+>
+  Binary Code Translator
+</Link>
+.
+</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {[
