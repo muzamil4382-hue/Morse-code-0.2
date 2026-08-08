@@ -377,7 +377,7 @@ export default function BinaryClient() {
               If you also want to learn human communication systems,
               visit our{" "}
               <Link
-                href="/morse-code-translator"
+                href="/"
                 className="text-green-600 hover:underline"
               >
                 Morse Code Translator
@@ -1367,7 +1367,7 @@ export default function BinaryClient() {
             <li>
               Practice regularly using the{" "}
               <Link
-                href="/morse-code-translator"
+                href="/"
                 className="text-green-600 hover:underline"
               >
                 Morse Code Translator
@@ -1527,7 +1527,7 @@ export default function BinaryClient() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
             {[
-              ["/morse-code-translator","Morse Code Translator"],
+              ["/","Morse Code Translator"],
               ["/morse-code-decoder","Morse Code Decoder"],
               ["/morse-code-alphabet","Morse Code Alphabet"],
               ["/morse-code-numbers","Morse Code Numbers"],

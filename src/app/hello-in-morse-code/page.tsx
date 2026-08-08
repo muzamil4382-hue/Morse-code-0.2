@@ -75,7 +75,7 @@ export default function HelloPage() {
       <h2 className="text-2xl font-bold text-slate-900 mb-4">Practice Tips</h2>
       <p className="text-slate-700 leading-relaxed">
         To master &quot;hello&quot; in Morse code, start by listening to the audio on our{" "}
-        <Link href="/morse-code-translator" className="text-green-600 underline">Morse code translator</Link>.
+        <Link href="/" className="text-green-600 underline">Morse code translator</Link>.
         Type the word, play the audio at a slow speed (5-10 WPM), and focus on the rhythm rather than counting
         individual dots and dashes. Once you can recognize the word by ear, try increasing the speed. Practice
         writing it from memory, then check against the reference above. For more practice with letters, visit

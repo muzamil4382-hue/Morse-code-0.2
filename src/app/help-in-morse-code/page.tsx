@@ -61,7 +61,7 @@ export default function HelpPage() {
         pattern, gives the word a unique &quot;fingerprint&quot; that stands out from other four-letter words.
       </p>
       <p className="text-slate-700 leading-relaxed mb-4">
-        To practice the rhythm, use our <Link href="/morse-code-translator" className="text-green-600 underline">
+        To practice the rhythm, use our <Link href="/" className="text-green-600 underline">
         Morse code translator</Link> with audio playback. Start at a slow speed and focus on getting the timing
         right — especially the P letter, which is the trickiest part of &quot;help.&quot; Once comfortable, increase
         the speed. For emergency preparedness, practice until you can produce the word from memory without any reference.

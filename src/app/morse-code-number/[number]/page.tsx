@@ -455,7 +455,7 @@ export default async function NumberPage({ params }: PageParams) {
                 messages.
               </p>
               <Link
-                href="/morse-code-translator"
+                href="/"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors"
               >
                 Open Morse Code Translator
@@ -485,7 +485,7 @@ export default async function NumberPage({ params }: PageParams) {
               📋 Alphabet Chart
             </Link>
             <Link
-              href="/morse-code-translator"
+              href="/"
               className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
             >
               🔤 Translator

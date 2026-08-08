@@ -64,7 +64,7 @@ export default function HiPage() {
       <h2 className="text-2xl font-bold text-slate-900 mb-4">Using &quot;Hi&quot; in Practice</h2>
       <p className="text-slate-700 leading-relaxed">
         Practice sending &quot;hi&quot; with our{" "}
-        <Link href="/morse-code-translator" className="text-green-600 underline">Morse code translator</Link>.
+        <Link href="/" className="text-green-600 underline">Morse code translator</Link>.
         Start at a slow speed and listen carefully to the rhythm of four dots, pause, two dots. Once you can
         recognize it instantly by ear, try increasing the speed. You can also practice with longer greetings
         like <Link href="/hello-in-morse-code" className="text-green-600 underline">&quot;hello&quot;</Link> which

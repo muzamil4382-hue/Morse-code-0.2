@@ -149,7 +149,7 @@ export default function LearnMorseCodePage() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Additional Resources</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link href="/morse-code-translator" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
+            <Link href="/" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
               <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">🔤 Morse Code Translator</h3>
               <p className="text-sm text-slate-600">Practice translating text to Morse code and back, with audio playback to train your ears.</p>
             </Link>

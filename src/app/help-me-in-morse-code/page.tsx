@@ -73,7 +73,7 @@ export default function HelpMePage() {
       </p>
       <p className="text-slate-700 leading-relaxed">
         We recommend memorizing both signals. Practice with our{" "}
-        <Link href="/morse-code-translator" className="text-green-600 underline">Morse code translator</Link> so
+        <Link href="/" className="text-green-600 underline">Morse code translator</Link> so
         you can produce them from memory. In an emergency, muscle memory is your best ally. Also, learn the
         <Link href="/sos-morse-code" className="text-green-600 underline"> complete SOS guide</Link> and our{" "}
         <Link href="/learn-morse-code" className="text-green-600 underline">Morse code learning guide</Link> for

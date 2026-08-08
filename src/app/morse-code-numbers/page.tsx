@@ -159,7 +159,7 @@ export default function MorseCodeNumbersPage() {
               Today, Morse code numbers are still used in amateur radio communications, particularly in contest
               logging where call signs and serial numbers need to be transmitted quickly. They&apos;re also used in
               aviation navigation beacons (NAVAIDs), where each beacon is identified by a two- or three-letter code
-              transmitted in Morse code. To practice with letters and numbers together, try our <Link href="/morse-code-decoder" className="text-green-600 underline hover:text-green-700">Morse code decoder</Link> or our <Link href="/morse-code-translator" className="text-green-600 underline hover:text-green-700">Morse code translator</Link>, or visit the <Link href="/morse-code-alphabet" className="text-green-600 underline hover:text-green-700">Morse Code Alphabet</Link> for the complete A-Z reference.
+              transmitted in Morse code. To practice with letters and numbers together, try our <Link href="/morse-code-decoder" className="text-green-600 underline hover:text-green-700">Morse code decoder</Link> or our <Link href="/" className="text-green-600 underline hover:text-green-700">Morse code translator</Link>, or visit the <Link href="/morse-code-alphabet" className="text-green-600 underline hover:text-green-700">Morse Code Alphabet</Link> for the complete A-Z reference.
             </p>
           </div>
         </section>
@@ -209,7 +209,7 @@ export default function MorseCodeNumbersPage() {
             <Link href="/morse-code-alphabet" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               📋 Full Alphabet Chart
             </Link>
-            <Link href="/morse-code-translator" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
+            <Link href="/" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               🔤 Morse Code Translator
             </Link>
             <Link href="/learn-morse-code" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">

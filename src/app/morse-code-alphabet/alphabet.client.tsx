@@ -529,7 +529,7 @@ to learn the complete International Morse Code character set.
                 struggling to increase speed later. You can practice the Koch
                 method using our{" "}
                 <Link
-                  href="/morse-code-translator"
+                  href="/"
                   className="underline text-green-800 font-medium"
                 >
   free translator tool
@@ -970,6 +970,15 @@ You can also learn how to decode emergency signals using our{" "}
             <div>
               <h3 className="font-bold text-slate-900 mb-3">Why the Tree Matters for Learning</h3>
               <p className="text-slate-600 leading-relaxed">Understanding the Morse code tree structure is one of the most powerful tools for learning Morse code efficiently. Rather than memorizing each letter as an isolated sequence, you learn the &quot;address&quot; of each letter within the tree. This is essentially how experienced operators decode Morse code — they do not count dots and dashes, they recognize the binary path through the tree. The Koch method of learning leverages this tree structure by teaching letters in pairs that branch from the same node.</p>
+            <div className="mt-8 text-center">
+  <Link
+    href="/morse-code-decoder"
+    className="inline-flex items-center gap-2 text-green-600 font-semibold hover:underline"
+  >
+    Practice decoding with our Morse Code Decoder
+    <ArrowRight className="w-4 h-4" />
+  </Link>
+</div>
             </div>
           </div>
         </div>
@@ -1021,7 +1030,7 @@ You can also learn how to decode emergency signals using our{" "}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link
-              href="/morse-code-translator"
+              href="/"
               className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
             >
               <div className="flex items-center justify-between mb-2">
@@ -1126,7 +1135,7 @@ You can also learn how to decode emergency signals using our{" "}
             Ready to put your knowledge into action? Use our free Morse Code Translator to encode, decode, and listen to Morse code with real-time audio playback. Practice what you've learned and improve your speed and accuracy.
           </p>
           <Link
-            href="/morse-code-translator"
+            href="/"
             className="inline-flex items-center gap-2 px-8 py-3.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors text-lg">
             Try the Morse Code Translator
             <ArrowRight className="w-5 h-5" />

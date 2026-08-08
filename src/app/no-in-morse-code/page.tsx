@@ -73,7 +73,7 @@ export default function NoPage() {
         &quot;Yes&quot; (<span className="font-mono text-green-600">-.-- / . / ...-</span>) and &quot;No&quot;
         (<span className="font-mono text-green-600">-. / ---</span>) make an excellent pair. Their different
         rhythms help train your ear to distinguish between Morse code words. Use our{" "}
-        <Link href="/morse-code-translator" className="text-green-600 underline">Morse code translator</Link> to
+        <Link href="/" className="text-green-600 underline">Morse code translator</Link> to
         practice both words and listen to the audio at different speeds. For a more structured learning
         approach, visit our <Link href="/learn-morse-code" className="text-green-600 underline">learning guide</Link>{" "}
         or test yourself with our <Link href="/morse-code-quiz" className="text-green-600 underline">interactive quiz</Link>.

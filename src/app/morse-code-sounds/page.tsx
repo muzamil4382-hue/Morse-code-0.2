@@ -96,7 +96,7 @@ export default function MorseCodeSoundsPage() {
             </div>
           </div>
           <p className="text-slate-700 leading-relaxed">
-            Our <Link href="/morse-code-translator" className="text-green-600 underline">translator</Link> defaults
+            Our <Link href="/" className="text-green-600 underline">translator</Link> defaults
             to 600 Hz, which is an excellent all-around frequency for both learning and practice. You can adjust between
             300-1000 Hz in the settings panel.
           </p>
@@ -180,7 +180,7 @@ export default function MorseCodeSoundsPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Explore More</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <Link href="/morse-code-translator" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
+            <Link href="/" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               🔤 Translator with Audio
             </Link>
             <Link href="/learn-morse-code" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">

@@ -74,7 +74,7 @@ export default function LovePage() {
         <span className="font-mono text-green-600">-.- / .. / ... / ...</span>), &quot;Hug&quot; ({" "}
         <span className="font-mono text-green-600">.... / ..- / --.</span>), and &quot;Heart&quot; ({" "}
         <span className="font-mono text-green-600">.... / .- .-. -</span>). Use our{" "}
-        <Link href="/morse-code-translator" className="text-green-600 underline">translator</Link> to convert any
+        <Link href="/" className="text-green-600 underline">translator</Link> to convert any
         romantic phrase into Morse code.
       </p>
     </WordPageTemplate>

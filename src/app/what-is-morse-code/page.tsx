@@ -264,7 +264,7 @@ export default function WhatIsMorseCodePage() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Explore More</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <Link href="/morse-code-translator" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
+            <Link href="/" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               🔤 Try the Translator
             </Link>
             <Link href="/learn-morse-code" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">

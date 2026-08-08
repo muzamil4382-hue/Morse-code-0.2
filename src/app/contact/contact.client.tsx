@@ -146,7 +146,7 @@ export default function ContactPage() {
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">Useful Tools</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <Link href="/morse-code-translator" className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
+            <Link href="/" className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               🔤 Morse Translator
             </Link>
             <Link href="/morse-code-alphabet" className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">

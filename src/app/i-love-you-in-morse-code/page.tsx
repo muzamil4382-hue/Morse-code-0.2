@@ -74,7 +74,7 @@ export default function ILoveYouPage() {
         decode — it makes the recipient feel that the message was crafted specifically for them.
       </p>
       <p className="text-slate-700 leading-relaxed">
-        Use our <Link href="/morse-code-translator" className="text-green-600 underline">free Morse code translator</Link> to
+        Use our <Link href="/" className="text-green-600 underline">free Morse code translator</Link> to
         practice saying &quot;I Love You&quot; in Morse code. You can adjust the speed and listen to the audio to get
         the rhythm just right. Try expressing other romantic phrases too — &quot;Love&quot; is{" "}
         <span className="font-mono text-green-600">.-.. / --- / ...- / .</span>, and &quot;Kiss&quot; is{" "}

@@ -102,7 +102,7 @@ export default function SOSPage() {
       </p>
       <p className="text-slate-700 leading-relaxed">
         Practice signaling SOS now so that you can do it instinctively in an emergency. Our{" "}
-        <Link href="/morse-code-translator" className="text-green-600 underline">Morse code translator</Link> can
+        <Link href="/" className="text-green-600 underline">Morse code translator</Link> can
         help you practice the rhythm. Understanding this simple signal could one day save your life or the
         life of someone you love.
       </p>

@@ -66,7 +66,7 @@ export default function BlogPage() {
         <section className="mt-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Explore Our Tools</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <Link href="/morse-code-translator" className="p-4 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
+            <Link href="/" className="p-4 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
               <span className="text-green-600 text-lg">🔤</span>
               <span className="ml-2 text-sm font-medium text-slate-900 group-hover:text-green-600">Morse Translator</span>
             </Link>

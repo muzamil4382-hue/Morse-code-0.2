@@ -63,7 +63,7 @@ export default function YesPage() {
       </p>
       <p className="text-slate-700 leading-relaxed">
         Practice the word &quot;yes&quot; with our{" "}
-        <Link href="/morse-code-translator" className="text-green-600 underline">Morse code translator</Link>.
+        <Link href="/" className="text-green-600 underline">Morse code translator</Link>.
         Also try its opposite — <Link href="/no-in-morse-code" className="text-green-600 underline">&quot;no&quot;</Link> —{" "}
         <span className="font-mono text-green-600">-. / ---</span> — which has a completely different rhythm.
         Learning pairs like yes/no, hello/goodbye, and help/thanks builds a practical vocabulary for Morse code
