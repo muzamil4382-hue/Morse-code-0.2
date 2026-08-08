@@ -55,7 +55,7 @@ export default function HiPage() {
         get the satisfaction of sending an actual message rather than just random letters.
       </p>
       <p className="text-slate-700 leading-relaxed mb-4">
-        For a complete letter reference, visit our <Link href="/morse-code-letters" className="text-green-600 underline">A-Z letters guide</Link>. In the context of amateur radio, &quot;hi&quot; is sometimes used as an abbreviation for laughter. An operator
+        For a complete letter reference, visit our <Link href="/morse-code-alphabet" className="text-green-600 underline">A-Z letters guide</Link>. In the context of amateur radio, &quot;hi&quot; is sometimes used as an abbreviation for laughter. An operator
         might send &quot;hi hi&quot; to indicate they&apos;re joking or amused, similar to typing &quot;LOL&quot; in
         text messaging. This usage dates back to the early days of radio when operators needed quick ways to express
         emotion in their transmissions.
