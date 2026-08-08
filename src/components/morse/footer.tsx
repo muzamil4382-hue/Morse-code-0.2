@@ -40,7 +40,6 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Learn</h3>
             <ul className="space-y-2.5">
               <li><Link href="/morse-code-alphabet" className="text-sm text-slate-400 hover:text-green-400 transition-colors">Morse Code Alphabet</Link></li>
-              <li><Link href="/morse-code-letters" className="text-sm text-slate-400 hover:text-green-400 transition-colors">Morse Code Letters</Link></li>
               <li><Link href="/morse-code-numbers" className="text-sm text-slate-400 hover:text-green-400 transition-colors">Morse Code Numbers</Link></li>
               <li><Link href="/learn-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">How to Learn</Link></li>
               <li><Link href="/what-is-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">What is Morse Code?</Link></li>
