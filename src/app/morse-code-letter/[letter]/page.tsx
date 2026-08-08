@@ -125,7 +125,7 @@ export default async function LetterPage({ params }: PageParams) {
   const faqSchema = generateFAQSchema(faqs);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Morse Code Letters", url: "/morse-code-letters" },
+    { name: "Morse Code Alphabet", url: "/morse-code-alphabet" },
     { name: `Letter ${char}`, url: `/morse-code-letter/${letter}` },
   ]);
 
@@ -152,10 +152,10 @@ export default async function LetterPage({ params }: PageParams) {
             </Link>
             <span className="text-slate-400">/</span>
             <Link
-              href="/morse-code-letters"
+              href="/morse-code-alphabet"
               className="hover:text-green-600 transition-colors"
             >
-              Morse Code Letters
+              morse-code-alphabet
             </Link>
             <span className="text-slate-400">/</span>
             <span className="text-slate-900 font-medium">{char}</span>
