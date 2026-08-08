@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/no-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/morse-code-sounds`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/morse-code-quiz`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE_URL}/binary-code-translator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE_URL}/binary-code-translator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
