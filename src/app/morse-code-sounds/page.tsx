@@ -57,7 +57,7 @@ export default function MorseCodeSoundsPage() {
           <div className="text-slate-700 leading-relaxed space-y-4">
             <p>
               Morse code audio consists of two fundamental sounds: a <strong>short tone</strong> (representing a dot or &quot;dit&quot;)
-              and a <strong>long tone</strong> (representing a dash or &quot;dah&quot;). Each letter has a unique sound pattern you can explore on our <Link href="/morse-code-letters" className="text-green-600 underline hover:text-green-700">letters guide</Link>. These tones are typically produced by a
+              and a <strong>long tone</strong> (representing a dash or &quot;dah&quot;). Each letter has a unique sound pattern you can explore on our <Link href="/morse-code-alphabet" className="text-green-600 underline hover:text-green-700">Morse code alphabet chart</Link>. These tones are typically produced by a
               sine wave oscillator at a specific frequency. The beauty of Morse code lies in its simplicity — with just two types
               of sounds arranged in different patterns, you can communicate any message in any language that uses the Latin alphabet.
             </p>
@@ -194,9 +194,6 @@ export default function MorseCodeSoundsPage() {
             </Link>
             <Link href="/morse-code-alphabet" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               📋 Alphabet Chart
-            </Link>
-            <Link href="/morse-code-letters" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              🔠 Letters Guide
             </Link>
             <Link href="/morse-code-decoder" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               🔓 Morse Decoder

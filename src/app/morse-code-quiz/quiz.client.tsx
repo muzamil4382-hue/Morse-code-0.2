@@ -218,10 +218,6 @@ export default function MorseCodeQuizPage() {
               <span className="text-green-600">📋</span>
               <span className="ml-1.5 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Alphabet</span>
             </Link>
-            <Link href="/morse-code-letters" className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-              <span className="text-green-600">🔠</span>
-              <span className="ml-1.5 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Letters</span>
-            </Link>
             <Link href="/learn-morse-code" className="p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
               <span className="text-green-600">📖</span>
               <span className="ml-1.5 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Learn</span>

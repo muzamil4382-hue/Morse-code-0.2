@@ -143,9 +143,9 @@ export default function TranslatorClient({ faqs }: Props) {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <Link href="/morse-code-decoder" className="flex items-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-medium hover:border-green-400 hover:shadow-sm transition-all">
               🔓 Morse Decoder
-            </Link>
-            <Link href="/morse-code-letters" className="flex items-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-medium hover:border-green-400 hover:shadow-sm transition-all">
-              🔠 Letters Guide
+              </Link>
+            <Link href="/morse-code-alphabet" className="flex items-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-medium hover:border-green-400 hover:shadow-sm transition-all">
+              📋 Alphabet Chart
             </Link>
             <Link href="/morse-code-numbers" className="flex items-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-medium hover:border-green-400 hover:shadow-sm transition-all">
               🔢 Numbers Guide
@@ -161,12 +161,6 @@ export default function TranslatorClient({ faqs }: Props) {
             </Link>
                       <Link href="/learn-morse-code" className="flex items-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-medium hover:border-green-400 hover:shadow-sm transition-all">
               📖 Learn Morse Code
-            </Link>
-            <Link href="/morse-code-sounds" className="flex items-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-medium hover:border-green-400 hover:shadow-sm transition-all">
-              🔊 Morse Sounds
-            </Link>
-            <Link href="/morse-code-timing" className="flex items-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white font-medium hover:border-green-400 hover:shadow-sm transition-all">
-              ⏱️ Morse Timing
             </Link>
           
 </div>

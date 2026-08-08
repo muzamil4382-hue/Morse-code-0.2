@@ -1530,7 +1530,6 @@ export default function BinaryClient() {
               ["/morse-code-translator","Morse Code Translator"],
               ["/morse-code-decoder","Morse Code Decoder"],
               ["/morse-code-alphabet","Morse Code Alphabet"],
-              ["/morse-code-letters","Morse Code Letters"],
               ["/morse-code-numbers","Morse Code Numbers"],
               ["/learn-morse-code","Learn Morse Code"],
               ["/morse-code-quiz","Morse Code Quiz"],

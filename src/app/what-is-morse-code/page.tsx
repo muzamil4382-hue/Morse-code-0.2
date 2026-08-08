@@ -35,7 +35,7 @@ export default function WhatIsMorseCodePage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "What is Morse Code?", url: "//what-is-morse-code" },
+    { name: "What is Morse Code?", url: "/what-is-morse-code" },
   ]);
 
   return (
@@ -258,9 +258,6 @@ export default function WhatIsMorseCodePage() {
             </Link>
             <Link href="/morse-code-alphabet" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               📋 Alphabet Chart
-            </Link>
-            <Link href="/morse-code-letters" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              🔠 Letters Guide
             </Link>
             <Link href="/morse-code-sounds" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
               🔊 Morse Sounds

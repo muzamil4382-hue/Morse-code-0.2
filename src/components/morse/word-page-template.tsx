@@ -219,12 +219,6 @@ export function WordPageTemplate({
                 📋 Alphabet Chart
               </Link>
               <Link
-                href="/morse-code-letters"
-                className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-              >
-                🔠 Letters Guide
-              </Link>
-              <Link
                 href="/morse-code-numbers"
                 className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
               >
