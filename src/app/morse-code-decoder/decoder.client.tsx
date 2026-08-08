@@ -172,12 +172,41 @@ export default function DecoderClient({ faqs }: Props) {
             <div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">The Decoding Process</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">When you paste Morse code into the decoder, it first identifies the separator pattern in your input. In standard format, single spaces separate individual character codes (e.g., &quot;.... . .-.. .-.. ---&quot; for HELLO). Forward slashes (/) indicate word boundaries. The decoder then processes each code by looking it up in a reverse mapping table where Morse code sequences are keys and their corresponding characters are values.</p>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">For example, the code &quot;....&quot; maps to H, &quot;.&quot; maps to E, &quot;.-..&quot; maps to L, and &quot;---&quot; maps to O. The decoder concatenates these characters to produce the final readable text. If a code does not match any known character, it is flagged as unknown in the analysis table, helping you identify and correct errors in your input.</p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+  For example, the code &quot;....&quot; maps to H, &quot;.&quot; maps to E,
+  &quot;.-..&quot; maps to L, and &quot;---&quot; maps to O. The decoder
+  concatenates these characters to produce the final readable text. If a
+  code does not match any known character, it is flagged as unknown in the
+  analysis table, helping you identify and correct errors in your input.
+  If you need to convert plain text into Morse code instead of decoding it,
+  try our{" "}
+  <Link
+    href="/"
+    className="text-green-600 font-medium hover:underline"
+  >
+    Morse Code Translator
+  </Link>.
+</p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Challenges in Morse Code Decoding</h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">The primary challenge in Morse code decoding is ambiguity when separators are missing. Without spaces between letters, the same sequence of dots and dashes can represent multiple valid decodings. For instance, &quot;.-.-.-&quot; could be decoded as AEA (.- .- -.-), EE (.. .. -.- -..-.), or the period symbol (.-.-.-). This is why the International Telecommunication Union established strict spacing standards — precise timing ratios prevent ambiguity in real-time transmission.</p>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">Another common challenge is distinguishing between similar-looking characters when written. The letter H (....) looks very similar to the number 5 (.....) — the difference is a single extra dot. Similarly, S (...) and H (....) differ by one dot. Our decoder&apos;s character analysis table helps you catch these subtle differences by showing the exact match for each input token.</p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+  Another common challenge is distinguishing between similar-looking
+  characters when written. The letter H (....) looks very similar to the
+  number 5 (.....) — the difference is a single extra dot. Similarly,
+  S (...) and H (....) differ by one dot. Our decoder&apos;s character
+  analysis table helps you catch these subtle differences by showing the
+  exact match for each input token. To better understand these patterns,
+  study our{" "}
+  <Link
+    href="/morse-code-alphabet"
+    className="text-green-600 font-medium hover:underline"
+  >
+    Morse Code Alphabet
+  </Link>{" "}
+  before decoding longer messages.
+</p>
             </div>
           </div>
         </div>
@@ -221,11 +250,22 @@ export default function DecoderClient({ faqs }: Props) {
           </div>
         </div>
       </section>
-
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
+  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-center">
+    Once you recognize each character, you can use our{" "}
+    <Link
+      href="/"
+      className="text-green-600 font-medium hover:underline"
+    >
+      Morse Code Translator
+    </Link>{" "}
+    to instantly convert text into Morse code.
+  </p>
+</section>  
       {/* CTA */}
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
         <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors">
-          Try Full Translator <ArrowRight className="w-4 h-4" />
+          Try Morse Code Translator <ArrowRight className="w-4 h-4" />
         </Link>
       </section>
 

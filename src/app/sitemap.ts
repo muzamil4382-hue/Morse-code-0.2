@@ -7,7 +7,6 @@ import { BASE_URL } from "@/lib/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
-    { url: `${BASE_URL}/morse-code-translator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.95 },
     { url: `${BASE_URL}/morse-code-decoder`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.93 },
     { url: `${BASE_URL}/morse-code-timing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/morse-code-alphabet`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
