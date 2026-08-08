@@ -268,9 +268,7 @@ export default function BinaryClient() {
               }
               className="min-h-[180px] w-full rounded-2xl border border-slate-200 p-5 font-mono text-lg outline-none transition focus:border-green-500"
             />
-
           </div>
-
           <div className="mt-8">
 
             <label className="mb-2 block font-medium text-slate-700">
@@ -298,8 +296,12 @@ export default function BinaryClient() {
 
               {copied ? "Copied!" : "Copy Result"}
             </button>
-
           </div>
+          <p className="mt-4 text-sm text-slate-500">
+  Note: This translator currently supports standard ASCII characters. Unicode
+  characters such as emojis and some non-Latin scripts may not convert
+  correctly.
+</p>
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
 
   <div className="rounded-xl border border-slate-200 p-4">
@@ -329,8 +331,10 @@ export default function BinaryClient() {
   <div className="rounded-xl border border-slate-200 p-4">
     <p className="text-sm text-slate-500">Bytes</p>
     <p className="mt-1 text-xl font-bold">
-      {Math.ceil(output.replace(/\s/g, "").length / 8)}
-    </p>
+  {mode === "text-to-binary"
+    ? Math.ceil(output.replace(/\s/g, "").length / 8)
+    : output.length}
+</p>
   </div>
 
 </div>
