@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     question: "How do I learn Morse code effectively?",
-    answer: "The most effective methods for learning Morse code include the Koch method (learning one character at a time at full speed), the Farnsworth method (using longer spacing between characters at slower speeds), and regular practice with audio drills. Start with the most common letters (E, T, A, N, O, I, S) and build up gradually. Our Morse code quiz and alphabet chart are great practice tools.",
+    answer: "The most effective methods for learning Morse code include the Koch method (learning one character at a time at full speed), the Farnsworth method (using longer spacing between characters at slower speeds), and regular practice with audio drills. Start with the most common letters (E, T, A, N, O, I, S) and build up gradually. Our Morse code quiz, timing guide, and interactive practice tools are great for improving your Morse code skills.",
   },
   {
     question: "Where is Morse code still used today?",
@@ -68,10 +68,10 @@ const howToSteps = [
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Translator | Free Text to Morse & Morse to Text",
-  "Translate text to Morse code and Morse code to text instantly with our free Morse Code Translator. Enjoy audio playback, WAV download, fast conversion, and no sign-up required.",
+  "Morse Code Translator - Convert Text to Morse Code & Decode Online",
+  "Free online Morse Code Translator to convert text to Morse code and decode Morse code to text instantly. Includes audio playback, WAV download, adjustable speed controls, quizzes, timing guide, binary converter, and learning resources.",
   "/",
-  ["morse code translator", "text to morse code", "morse code to text", "morse code decoder", "morse code generator", "morse code audio", "morse code alphabet", "morse code converter online", "morse code online"]
+  ["morse code translator", "text to morse code", "morse code to text", "morse code decoder", "morse code converter", "morse code audio", "learn morse code"]
 );
 
 export default function HomePage() {
@@ -82,12 +82,12 @@ export default function HomePage() {
   const howToSchema = generateHowToSchema(howToSteps);
   const softwareSchema = generateSoftwareApplicationSchema({
     name: "Morse Code Translator",
-    description: "Free online Morse code translator with audio, visual flash, and WAV download. Supports bidirectional translation, adjustable speed/frequency/volume, and ITU-R M.1677 standard compliance.",
+    description: "Free online Morse Code Translator for converting text to Morse code and Morse code to text. Includes audio playback, WAV download, visual flash mode, adjustable speed controls, and International Morse Code (ITU) support.",
     url: "/",
   });
   const websiteSchema = generateWebSiteSchema({
     name: "Morse Code Translator",
-    description: "Free online Morse code translator supporting 26 letters, 10 numbers, 15+ punctuation marks, audio playback, visual flash mode, WAV download, and comprehensive learning resources.",
+    description: "Free online Morse Code Translator with text-to-Morse conversion, Morse-to-text decoding, audio playback, learning guides, quizzes, timing reference, binary converter, and educational resources.",
   });
 
   return (
