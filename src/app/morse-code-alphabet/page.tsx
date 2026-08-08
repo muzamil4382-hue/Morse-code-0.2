@@ -60,8 +60,8 @@ const faqs = [
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Alphabet - Complete A-Z Chart with Audio",
-  "Complete interactive Morse code alphabet reference with click-to-hear audio for all 26 letters. Includes ITU-R M.1677 standard compliance, 10 frequently asked questions covering letter frequency, memorization difficulty, and historical context. Printable A-Z chart format.",
+  "Morse Code Alphabet | Complete A–Z Chart, Letters & Audio",
+  "Learn the complete Morse Code Alphabet with an interactive A–Z chart, audio pronunciation, letter examples, and the International Morse Code (ITU) standard. Practice every letter from A to Z for free.",
   "/morse-code-alphabet",
   [
     "morse code alphabet",

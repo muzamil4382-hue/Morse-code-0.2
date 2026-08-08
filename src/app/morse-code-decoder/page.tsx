@@ -62,22 +62,21 @@ const faqs = [
 
 export const metadata: Metadata = generatePageMeta(
   "Morse Code Decoder | Decode Morse Code to Text Online (Free)",
-  "Free online Morse Code Decoder that instantly converts dots and dashes into readable text using the International Morse Code (ITU) standard. Decode Morse code with separator detection, character analysis, educational explanations, and accurate Morse-to-text conversion.",
+  "Free Morse Code Decoder to decode Morse code into readable text instantly. Supports International Morse Code (ITU), separator detection, character analysis, and accurate Morse-to-text conversion. No registration required.",
   "/morse-code-decoder",
   [
-    "morse code decoder",
-    "decode morse code",
-    "morse to text",
-    "morse code reader",
-    "morse code interpreter",
-    "morse decoder",
-    "translate morse code",
-    "decode dots and dashes",
-    "international morse code",
-    "morse decoder online",
-    "text decoder",
-    "international morse decoder",
-  ]
+  "morse code decoder",
+  "decode morse code",
+  "morse to text",
+  "morse decoder",
+  "morse decoder online",
+  "international morse code",
+  "morse code reader",
+  "morse code interpreter",
+  "decode dots and dashes",
+  "morse code to text",
+  "free morse code decoder",
+]
 );
 
 export default function MorseCodeDecoderPage() {

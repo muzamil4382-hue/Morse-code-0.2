@@ -185,7 +185,9 @@ export default function HomeClient({ faqs }: Props) {
               <Radio className="w-4 h-4" /> Free Online Tool — No Registration Required
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">Morse Code Translator</h1>
-            <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-8">Instantly convert text to Morse code and Morse code to text with real-time audio playback, visual flash mode, and WAV download. Trusted by over 500,000 users worldwide for learning, emergency signaling, and fun.</p>
+            <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-8">
+Convert text to Morse code and decode Morse code to text instantly using our free Morse Code Translator. Supports the International Morse Code (ITU) standard with real-time translation, audio playback, adjustable WPM controls, visual flash mode, WAV download, and educational resources for beginners, amateur radio operators, students, and professionals.
+</p>
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-green-200 dark:text-green-300">
               <span className="flex items-center gap-1.5"><Zap className="w-4 h-4" /> Real-Time Translation</span>
               <span className="flex items-center gap-1.5"><Headphones className="w-4 h-4" /> Audio Playback</span>
