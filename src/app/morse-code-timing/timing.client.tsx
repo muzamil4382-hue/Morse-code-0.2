@@ -61,6 +61,23 @@ export default function TimingClient({ faqs }: Props) {
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">ITU-R M.1677 Timing Standard</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">The International Telecommunication Union recommendation ITU-R M.1677 defines the precise timing ratios that govern all Morse code transmission. These ratios have been the international standard since 1865 and ensure that Morse code can be reliably decoded regardless of the operator&apos;s location, language, or equipment.</p>
+          <p className="mt-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+  These timing rules are used by our{" "}
+  <Link
+    href="/"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    Morse Code Translator
+  </Link>{" "}
+  and{" "}
+  <Link
+    href="/morse-code-decoder"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    Morse Code Decoder
+  </Link>{" "}
+  to ensure accurate encoding and decoding using the International standard.
+</p>
           </div>
 
           {/* Visual Diagram */}
@@ -132,6 +149,16 @@ export default function TimingClient({ faqs }: Props) {
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Interactive WPM Timing Calculator</h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Adjust the WPM slider to see the exact millisecond durations for each timing element at any speed. The reference word PARIS (50 dot units) is used to calibrate all WPM measurements.</p>
+        <p className="mt-6 text-center text-slate-600 dark:text-slate-400">
+  Test different speeds using our{" "}
+  <Link
+    href="/"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    Morse Code Translator
+  </Link>{" "}
+  and hear how timing changes as you increase WPM.
+</p>
         </div>
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8">
           <div className="mb-6">
@@ -219,6 +246,16 @@ export default function TimingClient({ faqs }: Props) {
             <h3 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Info className="w-5 h-5 text-green-600" /> How Farnsworth Works</h3>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Farnsworth timing sends each character at a higher speed (e.g., 20 WPM) but inserts extra-long gaps between characters so the overall transmission speed averages much lower (e.g., 5 WPM). The character itself — its dots, dashes, and intra-character gaps — uses standard timing ratios at 20 WPM. Only the inter-character gap is stretched from 180ms to approximately 1400ms.</p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">This approach lets the learner hear each character at its proper rhythmic proportions from day one. As proficiency improves, the extra inter-character gap is gradually reduced until standard timing is reached. The learner never has to unlearn slow-speed character recognition, because they always heard characters at full speed.</p>
+          <p className="mt-5 text-slate-600 dark:text-slate-400">
+  If you are just getting started, follow our{" "}
+  <Link
+    href="/learn-morse-code"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    Learn Morse Code guide
+  </Link>{" "}
+  to practice Farnsworth timing step by step.
+</p>
           </div>
           <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800">
             <h3 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Clock className="w-5 h-5 text-green-600" /> Farnsworth vs. Standard</h3>
@@ -287,6 +324,15 @@ export default function TimingClient({ faqs }: Props) {
             <span className="text-green-600 text-lg">🔢</span>
             <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Numbers</span>
           </Link>
+          <Link
+  href="/sos-morse-code"
+  className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group"
+>
+  <span className="text-green-600 text-lg">🆘</span>
+  <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">
+    SOS Morse Code
+  </span>
+</Link>
 </div>
       </section>
 
