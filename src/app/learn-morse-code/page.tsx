@@ -42,7 +42,7 @@ export default function LearnMorseCodePage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Learn Morse Code", url: "//learn-morse-code" },
+    { name: "Learn Morse Code", url: "/learn-morse-code" },
   ]);
 
   return (
@@ -152,10 +152,6 @@ export default function LearnMorseCodePage() {
             <Link href="/" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
               <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">🔤 Morse Code Translator</h3>
               <p className="text-sm text-slate-600">Practice translating text to Morse code and back, with audio playback to train your ears.</p>
-            </Link>
-            <Link href="/morse-code-alphabet" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
-              <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">📋 Alphabet Chart</h3>
-              <p className="text-sm text-slate-600">Complete visual reference with all letters, numbers, and punctuation in Morse code.</p>
             </Link>
             <Link href="/morse-code-alphabet" className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group">
   <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">

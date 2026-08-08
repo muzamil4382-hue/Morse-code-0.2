@@ -256,7 +256,6 @@ export default function WhatIsMorseCodePage() {
               </div>
             </div>
           </div>
-          
         </section>
 
         {/* FAQ */}

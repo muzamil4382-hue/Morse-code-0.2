@@ -62,7 +62,7 @@ const faqs = [
 
 export const metadata: Metadata = generatePageMeta(
   "Binary Code Translator | Free Text to Binary & Binary to Text Converter",
-  "Free Binary Code Translator to instantly convert text to binary and binary to text using 8-bit ASCII encoding. Learn binary code, ASCII, Unicode, binary alphabet, binary encoding, and use our complete ASCII reference table.",
+  "Free Binary Code Translator to instantly convert text to binary and binary to text using 8-bit ASCII encoding. Learn binary code, ASCII, Unicode, and understand how binary compares with Morse code., binary alphabet, binary encoding, and use our complete ASCII reference table.",
   "/binary-code-translator",
   [
     "binary code translator",

@@ -585,21 +585,29 @@ export default function BinaryClient() {
               </code>
               in binary.
             </p>
+<p>
+  If you want to learn how letters are represented using another
+  encoding system, see our{" "}
+  <Link
+    href="/morse-code-alphabet"
+    className="text-green-600 hover:underline"
+  >
+    Morse Code Alphabet
+  </Link>{" "}
+  guide.
+</p>
 
-            <p>
-              If you want to learn how letters are represented using another
-              encoding system, see our{" "}
-              <Link
-                href="/morse-code-alphabet"
-                className="text-green-600 hover:underline"
-              >
-                Morse Code Alphabet
-              </Link>{" "}
-              guide.
-            </p>
-
+<p>
+  You can also try our{" "}
+  <Link
+    href="/"
+    className="text-green-600 hover:underline"
+  >
+    Morse Code Translator
+  </Link>{" "}
+  to compare ASCII binary encoding with International Morse code.
+</p>
           </div>
-
         </section>
 
         {/* =======================================================
@@ -635,7 +643,6 @@ export default function BinaryClient() {
               and programming languages primarily use UTF-8,
               which is based on Unicode while remaining compatible with ASCII.
             </p>
-
           </div>
 
         </section>
@@ -715,7 +722,16 @@ export default function BinaryClient() {
               thousands of languages while remaining compatible with
               standard ASCII characters.
             </p>
-
+<p>
+  Interested in the history of another communication system? Read our{" "}
+  <Link
+    href="/what-is-morse-code"
+    className="text-green-600 hover:underline"
+  >
+    What is Morse Code
+  </Link>{" "}
+  guide.
+</p>
           </div>
 
         </section>
@@ -1534,6 +1550,7 @@ export default function BinaryClient() {
               ["/learn-morse-code","Learn Morse Code"],
               ["/morse-code-quiz","Morse Code Quiz"],
               ["/morse-code-timing","Morse Timing"],
+              ["/morse-code-sounds","Morse Code Sounds"],
               ["/what-is-morse-code","What is Morse Code"],
               ["/blog","Blog"]
             ].map(([href,title])=>(
@@ -1573,7 +1590,12 @@ export default function BinaryClient() {
             Binary Code Translator provides an easy way to convert text,
             explore binary values and understand how digital systems work.
           </p>
-
+ <p className="mt-6 leading-8 text-slate-700">
+    Want to explore another communication system? Try our{" "}
+    <Link href="/">Morse Code Translator</Link>{" "}
+    or practice with the{" "}
+    <Link href="/morse-code-quiz">Morse Code Quiz</Link>.
+  </p>
         </section>
         <section className="mb-20 rounded-3xl bg-gradient-to-r from-green-600 to-green-700 p-10 text-center text-white">
 
