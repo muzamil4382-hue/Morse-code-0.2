@@ -79,7 +79,7 @@ export default function HelloPage() {
         Type the word, play the audio at a slow speed (5-10 WPM), and focus on the rhythm rather than counting
         individual dots and dashes. Once you can recognize the word by ear, try increasing the speed. Practice
         writing it from memory, then check against the reference above. For more practice with letters, visit
-        our <Link href="/morse-code-letters" className="text-green-600 underline">letters reference page</Link>.
+        our <Link href="/morse-code-alphabet" className="text-green-600 underline">  Morse Code Alphabet</Link>.
       </p>
     </WordPageTemplate>
   );
