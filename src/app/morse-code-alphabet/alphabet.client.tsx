@@ -1005,12 +1005,12 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
             </Link>
 
             <Link
-              href="/morse-code-letters"
+              href="/morse-code-alphabet"
               className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
             >
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
-                  Morse Code Letters
+                  Morse Code Alphabet
                 </h3>
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
               </div>
@@ -1097,7 +1097,7 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Explore More</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <Link href="/morse-code-letters" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
+          <Link href="/morse-code-alphabet" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
             <span className="text-green-600 text-lg">🔠</span>
             <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Letters Guide</span>
           </Link>

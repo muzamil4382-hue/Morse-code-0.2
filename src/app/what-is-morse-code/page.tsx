@@ -74,12 +74,26 @@ export default function WhatIsMorseCodePage() {
               long-distance electrical communication for over a century and remains in active use today.
             </p>
             <p>
-              At its core, Morse code is a <strong>binary system</strong> — every character is represented using just
-              two types of signals: a short one (dot) and a long one (dash). The order and number of dots and dashes
-              determines which character is being transmitted. For example, a single dot represents the letter E, while a
-              single dash represents the letter T. The letter A is dot-dash, the letter B is dash-dot-dot-dot, and so on
-              for all 26 <Link href="/morse-code-letters" className="text-green-600 underline hover:text-green-700">letters</Link>, 10 <Link href="/morse-code-numbers" className="text-green-600 underline hover:text-green-700">numerals</Link>, and various punctuation marks.
-            </p>
+  At its core, Morse code is a <strong>binary system</strong> — every character is represented using just
+  two types of signals: a short one (dot) and a long one (dash). The order and number of dots and dashes
+  determines which character is being transmitted. For example, a single dot represents the letter E, while a
+  single dash represents the letter T. The letter A is dot-dash, the letter B is dash-dot-dot-dot, and so on
+  for all 26{" "}
+  <Link
+    href="/morse-code-alphabet"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    letters of the Morse code alphabet
+  </Link>
+  , 10{" "}
+  <Link
+    href="/morse-code-numbers"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    numerals
+  </Link>
+  , and various punctuation marks.
+</p>
             <p>
               What makes Morse code remarkable is its <strong>efficiency</strong>. Samuel Morse and Alfred Vail
               designed the code so that the most frequently used letters in English have the shortest codes. The letter

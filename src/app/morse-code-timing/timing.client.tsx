@@ -259,10 +259,6 @@ export default function TimingClient({ faqs }: Props) {
             <span className="text-green-600 text-lg">📋</span>
             <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Alphabet Chart</span>
           </Link>
-          <Link href="/morse-code-letters" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔠</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Letters Guide</span>
-          </Link>
           <Link href="/morse-code-sounds" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
             <span className="text-green-600 text-lg">🔊</span>
             <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Morse Code Sounds</span>
