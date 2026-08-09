@@ -659,8 +659,6 @@ Want to improve your Morse code skills? Start with our{" "}
             {[
               { word: "SOS", morse: "··· ─── ···", desc: "International distress signal adopted in 1906 at the Berlin Radiotelegraphic Convention. Three dots, three dashes, three dots — the most universally recognized signal on Earth.", href: "/sos-morse-code" },
               { word: "HELLO", morse: "···· · ·─·· ·─·· ───", desc: "The universal greeting encoded as four letters. Hello in Morse code is one of the first phrases beginners learn because it uses a variety of short and long patterns.", href: "/hello-in-morse-code" },
-              { word: "HELP", morse: "···· · ·─·· ·──·", desc: "A critical word in emergency communication. While SOS is the formal distress signal, HELP is widely taught in survival courses and commonly used in Morse code tools.", href: "/help-in-morse-code" },
-              { word: "LOVE", morse: "·─·· ─── ··· ─·", desc: "One of the most popular Morse code phrases, often engraved on jewelry and used in creative projects. The single most translated phrase online when combined with &quot;I&quot; and &quot;You&quot;.", href: "/love-in-morse-code" },
               { word: "YES", morse: "−· ─·· ···", desc: "Affirmative response in Morse code communication. In radiotelegraphy, YES is commonly abbreviated as a single dash or the letter C when speed is critical.", href: "/yes-in-morse-code" },
               { word: "NO", morse: "−· ───", desc: "Negative response encoded as two letters. The letter N followed by O creates a distinctive rhythm that is easy to recognize even at high transmission speeds.", href: "/no-in-morse-code" },
             ].map((item, i) => (
@@ -779,8 +777,6 @@ Want to improve your Morse code skills? Start with our{" "}
             { word: "HELLO", morse: ".... . .-.. .-.. ---", href: "/hello-in-morse-code" },
             { word: "HI", morse: ".... ..", href: "/hi-in-morse-code" },
             { word: "I LOVE YOU", morse: ".. / .-.. --- ...- . / -.-- --- ..-", href: "/i-love-you-in-morse-code" },
-            { word: "LOVE", morse: ".-.. --- ...- .", href: "/love-in-morse-code" },
-            { word: "HELP", morse: ".... . .-.. .--.", href: "/help-in-morse-code" },
             { word: "YES", morse: "-.-- . ...", href: "/yes-in-morse-code" },
             { word: "NO", morse: "-. ---", href: "/no-in-morse-code" },
           ].map((item, i) => (

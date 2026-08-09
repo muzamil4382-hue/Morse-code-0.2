@@ -53,7 +53,6 @@ export default function Footer() {
               <li><Link href="/sos-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">SOS in Morse Code</Link></li>
               <li><Link href="/hello-in-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">Hello in Morse Code</Link></li>
               <li><Link href="/i-love-you-in-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">I Love You in Morse Code</Link></li>
-              <li><Link href="/help-in-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">Help in Morse Code</Link></li>
               <li><Link href="/yes-in-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">Yes in Morse Code</Link></li>
               <li><Link href="/no-in-morse-code" className="text-sm text-slate-400 hover:text-green-400 transition-colors">No in Morse Code</Link></li>
             </ul>

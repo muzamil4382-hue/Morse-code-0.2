@@ -35,9 +35,7 @@ const wordLinks: NavChild[] = [
   { label: "Hello", href: "/hello-in-morse-code" },
   { label: "Hi", href: "/hi-in-morse-code" },
   { label: "I Love You", href: "/i-love-you-in-morse-code" },
-  { label: "Love", href: "/love-in-morse-code" },
   { label: "Help Me", href: "/help-me-in-morse-code" },
-  { label: "Help", href: "/help-in-morse-code" },
   { label: "Yes", href: "/yes-in-morse-code" },
   { label: "No", href: "/no-in-morse-code" },
 ];

@@ -18,8 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/hello-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/hi-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE_URL}/help-me-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-    { url: `${BASE_URL}/help-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
-    { url: `${BASE_URL}/love-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE_URL}/yes-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/no-in-morse-code`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/morse-code-sounds`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
