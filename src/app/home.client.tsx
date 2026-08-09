@@ -4,10 +4,9 @@ import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   Volume2, Square, Copy, Check, Trash2, Download, ArrowDownUp,
-  Settings, Play, Share2, Zap, BookOpen, Headphones, FileText,
-  Radio, Lightbulb, Eye, Shuffle, ChevronDown, ChevronUp,
-  Clock, Globe, Shield, Cpu, BarChart3, Type, Hash, Star,
-  Plane, Anchor, Users, Accessibility, Wifi
+  Settings, Share2, Zap, BookOpen, Headphones, FileText,
+  Radio, Eye, Shuffle,
+  Clock, Globe, Cpu, BarChart3, Type, Hash, Star,
 } from "lucide-react";
 import { textToMorse, morseToText, playMorseAudio, stopMorseAudio } from "@/lib/morse";
 
@@ -231,7 +230,7 @@ Convert text to Morse code and decode Morse code to text instantly using our fre
           <div className="mb-4">
             <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label>
             <div className="relative">
-              <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => { if (mode === "text-to-morse") setText(e.target.value); else setMorseInput(e.target.value); }} placeholder={mode === "text-to-morse" ? "Type your text here..." : "Enter Morse code (use . and -)..."} className="w-full min-h-[120px] p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-y font-mono text-lg transition-all" dir="ltr" />
+              <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => { if (mode === "text-to-morse") setText(e.target.value); else setMorseInput(e.target.value); }} placeholder={mode === "text-to-morse" ? "Type your text here..." : "Enter Morse code (use . and -)..."} className="w-full min-h-[120px] p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-y font-mono text-lg transition-all" dir="ltr" maxLength={5000}/>
               <button onClick={handleClear} className="absolute top-3 right-3 p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all cursor-pointer"><Trash2 className="w-4 h-4" /></button>
             </div>
             <div className="flex items-center justify-between mt-1.5 text-xs text-slate-400 dark:text-slate-500">
@@ -365,34 +364,6 @@ for faster learning.
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
 Browse a quick reference for common Morse code letters and numbers.
 For the complete alphabet, symbols, pronunciation, examples, and printable charts, visit our{" "}
-<Link
-  href="/morse-code-alphabet"
-  className="text-green-600 hover:underline font-semibold"
->
-  Morse Code Alphabet
-</Link>.
-If you want to learn digits from 0–9 in detail, explore our{" "}
-<Link
-  href="/morse-code-numbers"
-  className="text-green-600 hover:underline font-semibold"
->
-  Morse Code Numbers
-</Link>.
-You can also practice with our{" "}
-<Link
-  href="/morse-code-decoder"
-  className="text-green-600 hover:underline font-semibold"
->
-  Morse Code Decoder
-</Link>{" "}
-or learn the correct{" "}
-<Link
-  href="/morse-code-timing"
-  className="text-green-600 hover:underline font-semibold"
->
-  Morse Code Timing
-</Link>{" "}
-rules.
 <Link
   href="/morse-code-alphabet"
   className="text-green-600 hover:underline font-semibold"
