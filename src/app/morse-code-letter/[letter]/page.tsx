@@ -476,33 +476,50 @@ export default async function LetterPage({ params }: PageParams) {
               </Link>
             </div>
           </section>
+          {/* Internal Learning Resources */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+  <Link
+    href="/"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🔤 Morse Code Translator
+  </Link>
 
-          {/* Internal links */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <Link
-              href="/morse-code-alphabet"
-              className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-            >
-              📋 Alphabet Chart
-            </Link>
-            <Link
-              href="/"
-              className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-            >
-              🔤 Translator
-            </Link>
-            <Link
-              href="/learn-morse-code"
-              className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-            >
-              📖 Learn Morse Code
-            </Link>
-            <Link
-  href="/morse-code-alphabet"
-  className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
->
-  📋 Morse Code Alphabet
-</Link>
+  <Link
+    href="/learn-morse-code"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    📖 Learn Morse Code
+  </Link>
+
+  <Link
+    href="/morse-code-alphabet"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    📋 Morse Code Alphabet
+  </Link>
+
+  <Link
+    href="/morse-code-timing"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    ⏱️ Morse Code Timing
+  </Link>
+
+  <Link
+    href="/morse-code-sounds"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🔊 Morse Code Sounds
+  </Link>
+
+  <Link
+    href="/morse-code-quiz"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🧠 Morse Code Quiz
+  </Link>
+</div>
           </div>
         </div>
       </main>
