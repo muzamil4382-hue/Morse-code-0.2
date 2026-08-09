@@ -20,11 +20,11 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
-    default: "Morse Code Translator - Convert Text to Morse Code Free Online",
+    default: "Free Morse Code Translator | Encode & Decode Instantly",
     template: "%s | Morse Code Translator",
   },
   description:
-    "Free Morse code translator with audio, visual flash, and WAV download. Convert text to Morse code and Morse code to text instantly. Learn the Morse code alphabet, numbers, SOS, and more.",
+    "Convert text to Morse code and decode Morse instantly with our free translator. Includes audio playback, alphabet charts, numbers, SOS, and learning tools.",
   keywords: [
     "morse code translator",
     "text to morse code",
@@ -49,15 +49,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: BASE_URL,
     siteName: "Morse Code Translator",
-    title: "Morse Code Translator - Convert Text to Morse Code Free Online",
+    title: "Free Morse Code Translator | Encode & Decode Instantly",
     description:
-      "Free Morse code translator with audio playback, visual flash mode, and WAV download. Convert text to Morse code and Morse code to text instantly.",
+      "Convert text to Morse code and decode Morse instantly with our free translator. Audio playback, alphabet charts, and learning tools included.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Morse Code Translator - Convert Text to Morse Code Free Online",
+    title: "Free Morse Code Translator | Encode & Decode Instantly",
     description:
-      "Free Morse code translator with audio playback, visual flash mode, and WAV download.",
+      "Free Morse code translator with audio playback, alphabet charts, and learning tools.",
   },
   robots: {
     index: true,
@@ -68,10 +68,15 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-  },
+  icon: [
+    { url: "/favicon.ico" },
+    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+  ],
+  apple: "/apple-touch-icon.png",
+  shortcut: "/favicon.ico",
+},
 };
-
 const jsonLd = [
   {
     "@context": "https://schema.org",
