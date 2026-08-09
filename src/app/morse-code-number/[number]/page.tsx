@@ -44,6 +44,32 @@ function extractCharFromSlug(slug: string): string {
   return slug.charAt(0).toUpperCase();
 }
 
+// Renders Markdown-style internal links inside normal text.
+// Example: [Morse Code Translator](/) becomes a clickable internal link.
+function renderInlineLinks(text: string): React.ReactNode[] {
+  const parts = text.split(/(\[[^\]]+\]\(\/[^)\s]*\))/g);
+
+  return parts.map((part, index) => {
+    const match = part.match(/^\[([^\]]+)\]\((\/[^)\s]*)\)$/);
+
+    if (match) {
+      const [, label, href] = match;
+
+      return (
+        <Link
+          key={index}
+          href={href}
+          className="text-green-600 font-medium underline decoration-green-500 underline-offset-2 hover:text-green-700 hover:decoration-green-700 transition-colors"
+        >
+          {label}
+        </Link>
+      );
+    }
+
+    return <span key={index}>{part}</span>;
+  });
+}
+
 // ─── Static params ────────────────────────────────────────────────────
 export function generateStaticParams() {
   return numberData.map((d) => ({ number: d.char }));
@@ -214,7 +240,7 @@ export default async function NumberPage({ params }: PageParams) {
               What is the Morse Code for {char}?
             </h2>
             <div className="prose-content text-slate-600 leading-relaxed space-y-4">
-              <p>{introduction}</p>
+              <p>{renderInlineLinks(introduction)}</p>
             </div>
           </section>
 
@@ -224,7 +250,7 @@ export default async function NumberPage({ params }: PageParams) {
               Sound and Rhythm of {char}
             </h2>
             <div className="prose-content text-slate-600 leading-relaxed space-y-4">
-              <p>{soundRhythm}</p>
+              <p>{renderInlineLinks(soundRhythm)}</p>
             </div>
           </section>
 
@@ -234,7 +260,7 @@ export default async function NumberPage({ params }: PageParams) {
               How to Write and Send {char}
             </h2>
             <div className="prose-content text-slate-600 leading-relaxed space-y-4">
-              <p>{howToWrite}</p>
+              <p>{renderInlineLinks(howToWrite)}</p>
             </div>
           </section>
 
@@ -244,7 +270,7 @@ export default async function NumberPage({ params }: PageParams) {
               Why the Number {char} is Important in Morse Code
             </h2>
             <div className="prose-content text-slate-600 leading-relaxed space-y-4">
-              <p>{importance}</p>
+              <p>{renderInlineLinks(importance)}</p>
             </div>
           </section>
 
@@ -399,7 +425,7 @@ export default async function NumberPage({ params }: PageParams) {
               Practice Tips for Mastering {char}
             </h2>
             <div className="prose-content text-slate-600 leading-relaxed space-y-4">
-              <p>{practiceTips}</p>
+              <p>{renderInlineLinks(practiceTips)}</p>
             </div>
           </section>
 
@@ -414,7 +440,7 @@ export default async function NumberPage({ params }: PageParams) {
                   key={i}
                   className="bg-green-50 rounded-lg p-4 border border-green-200"
                 >
-                  <p className="text-slate-700 leading-relaxed">{fact}</p>
+                  <p className="text-slate-700 leading-relaxed">{renderInlineLinks(fact)}</p>
                 </div>
               ))}
             </div>
@@ -438,7 +464,7 @@ export default async function NumberPage({ params }: PageParams) {
                     </span>
                   </summary>
                   <p className="mt-3 text-slate-600 leading-relaxed">
-                    {faq.answer}
+                    {renderInlineLinks(faq.answer)}
                   </p>
                 </details>
               ))}
