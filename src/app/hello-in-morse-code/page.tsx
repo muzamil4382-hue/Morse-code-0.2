@@ -33,11 +33,6 @@ const config = {
       morse: ".... ..",
     },
     {
-      word: "Help",
-      slug: "help-in-morse-code",
-      morse: ".... . .-.. .--.",
-    },
-    {
       word: "I Love You",
       slug: "i-love-you-in-morse-code",
       morse: ".. / .-.. / --- / ...- / . / -.-- / --- / ..-",

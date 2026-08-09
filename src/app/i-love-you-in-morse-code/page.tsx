@@ -28,11 +28,6 @@ const config = {
 
   relatedWords: [
     {
-      word: "Love",
-      slug: "love-in-morse-code",
-      morse: ".-.. / --- / ...- / .",
-    },
-    {
       word: "Hello",
       slug: "hello-in-morse-code",
       morse: ".... . / .-.. .-.. / ---",
