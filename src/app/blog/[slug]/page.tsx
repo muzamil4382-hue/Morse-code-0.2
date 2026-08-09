@@ -39,10 +39,13 @@ export async function generateMetadata({
  * Converts Markdown-style links and basic formatting
  * into HTML that can be rendered inside blog content.
  *
- * Example:
+ * Examples:
+ *
  * [Morse Code Alphabet](/morse-code-alphabet)
  *
- * becomes a clickable internal link.
+ * [Morse Code Translator](/)
+ *
+ * become clickable internal links.
  */
 function renderInlineMarkdown(text: string): string {
   return text
@@ -51,18 +54,11 @@ function renderInlineMarkdown(text: string): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
 
-    // Convert quotes BEFORE creating HTML links.
-    // This prevents the quote replacement from corrupting href attributes.
-    .replace(
-      /"(.*?)"/g,
-      "&ldquo;$1&rdquo;"
-    )
+    // Quotes
+    .replace(/"(.*?)"/g, "“$1”")
 
     // Bold
-    .replace(
-      /\*\*(.*?)\*\*/g,
-      "<strong>$1</strong>"
-    )
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
 
     // Inline code
     .replace(
@@ -71,14 +67,19 @@ function renderInlineMarkdown(text: string): string {
     )
 
     // Markdown internal links
-    // Example: [Morse Code Alphabet](/morse-code-alphabet)
-    // IMPORTANT: Keep this replacement LAST so later replacements
-    // cannot modify the href quotes or HTML attributes.
+    //
+    // Supports:
+    // [Morse Code Alphabet](/morse-code-alphabet)
+    // [Morse Code Translator](/)
+    //
+    // The * allows an empty path after the slash,
+    // which is required for the homepage link "/".
     .replace(
-      /\[([^\]]+)\]\((\/[^)\s]+)\)/g,
-      '<a href="$2" class="text-green-600 font-semibold underline decoration-green-500 underline-offset-2 hover:text-green-700 hover:decoration-green-700 transition-colors">$1</a>'
+      /\[([^\]]+)\]\((\/[^)\s]*)\)/g,
+      '<a href="$2" class="text-green-600 font-medium underline hover:text-green-700">$1</a>'
     );
 }
+
 export default async function BlogPostPage({
   params,
 }: {
