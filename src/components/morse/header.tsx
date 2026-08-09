@@ -60,9 +60,18 @@ const learnLinks: NavChild[] = [
 
 const blogLinks: NavChild[] = [
   { label: "All Blog Posts", href: "/blog" },
-  { label: "How Does Morse Code Work?", href: "/blog/how-does-morse-code-work" },
-  { label: "How to Learn Morse Code", href: "/blog/how-to-learn-morse-code" },
-  { label: "When Was Morse Code Invented?", href: "/blog/when-was-morse-code-invented" },
+  {
+    label: "What is Morse Code?",
+    href: "/blog/what-is-morse-code-complete-history-guide",
+  },
+  {
+    label: "How to Learn Morse Code",
+    href: "/blog/how-to-learn-morse-code-7-easy-steps",
+  },
+  {
+    label: "Morse Code Alphabet Chart",
+    href: "/blog/morse-code-alphabet-chart-complete-reference",
+  },
 ];
 
 const navItems: NavItem[] = [
