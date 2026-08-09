@@ -54,10 +54,9 @@ function renderInlineMarkdown(text: string): string {
     // Markdown internal links
     // Example: [Morse Code Alphabet](/morse-code-alphabet)
     .replace(
-      /\[([^\]]+)\]\((\/[^)\s]+)\)/g,
-      '<a href="$2" class="text-green-600 font-medium hover:text-green-700 hover:underline">$1</a>'
-    )
-
+  /\[([^\]]+)\]\((\/[^)]+)\)/g,
+  '<a href="$2" class="text-green-600 font-medium hover:text-green-700 hover:underline">$1</a>'
+)
     // Bold
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
 
