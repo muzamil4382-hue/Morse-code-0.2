@@ -185,6 +185,17 @@ export default function WhatIsMorseCodePage() {
               world dramatically. By the 1860s, the International Morse Code (a refined version of Morse and Vail&apos;s
               original) was standardized and adopted worldwide at the International Telegraph Conference in 1865.
             </p>
+            <p>
+  If you want to go beyond the history and start learning Morse code yourself,
+  follow our{" "}
+  <Link
+    href="/learn-morse-code"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    step-by-step Morse code learning guide
+  </Link>
+  .
+</p>
           </div>
         </section>
 
@@ -232,7 +243,19 @@ export default function WhatIsMorseCodePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">📡 Amateur Radio</h3>
-                <p className="text-sm text-slate-600">Ham radio operators worldwide use Morse code (CW mode) for long-distance communication that can span the globe on very low power. Morse code signals can penetrate noise and interference better than voice signals.</p>
+              <p className="text-sm text-slate-600">
+  Ham radio operators worldwide use Morse code (CW mode) for long-distance
+  communication that can span the globe on very low power. Morse code signals
+  can penetrate noise and interference better than voice signals. If you want
+  to practice character recognition, try our{" "}
+  <Link
+    href="/morse-code-quiz"
+    className="text-green-600 underline hover:text-green-700"
+  >
+    Morse Code Quiz
+  </Link>
+  .
+</p>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">✈️ Aviation</h3>
@@ -252,7 +275,11 @@ export default function WhatIsMorseCodePage() {
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">🎓 Education & Culture</h3>
-                <p className="text-sm text-slate-600">Morse code is taught in military academies, scouting programs, and engineering schools worldwide. It appears in films, music, and literature, and is recognized as intangible cultural heritage in several countries.</p>
+                <p className="text-sm text-slate-600">
+  Morse code is taught in military academies, scouting programs, and
+  engineering schools worldwide. It appears in films, music, and literature,
+  and is recognized as intangible cultural heritage in several countries.
+</p>
               </div>
             </div>
           </div>
