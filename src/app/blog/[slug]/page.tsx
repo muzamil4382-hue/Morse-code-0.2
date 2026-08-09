@@ -36,7 +36,8 @@ export async function generateMetadata({
 }
 
 /**
- * Converts Markdown-style links into safe internal HTML links.
+ * Converts Markdown-style links and basic formatting
+ * into HTML that can be rendered inside blog content.
  *
  * Example:
  * [Morse Code Alphabet](/morse-code-alphabet)
@@ -45,15 +46,15 @@ export async function generateMetadata({
  */
 function renderInlineMarkdown(text: string): string {
   return text
-    // Escape basic HTML characters first
+    // Escape basic HTML characters
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
 
-    // Markdown links
+    // Markdown internal links
     .replace(
       /\[([^\]]+)\]\((\/[^)\s]+)\)/g,
-      '<a href="$2" class="text-green-600 font-medium underline hover:text-green-700">$1</a>'
+      '<a href="$2" class="text-green-600 font-medium underline underline-offset-2 hover:text-green-700">$1</a>'
     )
 
     // Bold text
@@ -85,8 +86,8 @@ export default async function BlogPostPage({
   const posts = getAllPosts();
 
   /*
-   * Keep the current article out of Related Articles.
-   * Prefer posts from the same category first.
+   * Keep current article out of Related Articles.
+   * Prefer same-category articles first.
    */
   const sameCategoryPosts = posts.filter(
     (p) => p.slug !== slug && p.category === post.category
