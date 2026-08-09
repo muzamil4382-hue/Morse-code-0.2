@@ -3,13 +3,39 @@
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
-  Volume2, Square, Copy, Check, Trash2, Download, ArrowDownUp,
-  Settings, Share2, Zap, BookOpen, Headphones, FileText,
-  Radio, Eye, Shuffle,
-  Clock, Globe, Cpu, BarChart3, Type, Hash, Star,
+  Volume2,
+  Square,
+  Copy,
+  Check,
+  Trash2,
+  Download,
+  ArrowDownUp,
+  Settings,
+  Share2,
+  Zap,
+  BookOpen,
+  Headphones,
+  FileText,
+  Radio,
+  Eye,
+  Shuffle,
+  Clock,
+  Globe,
+  Cpu,
+  BarChart3,
+  Type,
+  Hash,
+  Star,
+  Plane,
+  Users,
+  Accessibility,
+  Wifi,
+  Lightbulb,
+  ChevronDown,
+  ChevronUp,
+  Play,
 } from "lucide-react";
 import { textToMorse, morseToText, playMorseAudio, stopMorseAudio } from "@/lib/morse";
-
 const MORSE_CODE: Record<string, string> = {
   A: ".-", B: "-...", C: "-.-.", D: "-..", E: ".", F: "..-.",
   G: "--.", H: "....", I: "..", J: ".---", K: "-.-", L: ".-..",
@@ -658,7 +684,7 @@ Want to improve your Morse code skills? Start with our{" "}
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
-            { icon: <Anchor className="w-6 h-6" />, title: "Maritime Communication", desc: "Despite the 1999 SOLAS convention phase-out, Morse code remains a mandatory skill for deck officers in many countries. Vessels are required to carry equipment capable of Morse code transmission, and the ability to send and receive visual Morse signals via signal lamp is tested during maritime license examinations. The U.S. Coast Guard and many navies worldwide still maintain Morse code proficiency as a core competency for communications officers." },
+            { icon: <Radio className="w-6 h-6" />, title: "Maritime Communication", desc: "Despite the 1999 SOLAS convention phase-out, Morse code remains a mandatory skill for deck officers in many countries. Vessels are required to carry equipment capable of Morse code transmission, and the ability to send and receive visual Morse signals via signal lamp is tested during maritime license examinations. The U.S. Coast Guard and many navies worldwide still maintain Morse code proficiency as a core competency for communications officers." },
             { icon: <Plane className="w-6 h-6" />, title: "Aviation Navigation", desc: "Pilots are trained to recognize Morse code identifiers for navigation beacons known as NDBs (Non-Directional Beacons) and VORs (VHF Omnidirectional Ranges). Each beacon transmits a unique 2-3 letter Morse identifier at approximately 1020 Hz, allowing pilots to confirm they are tuned to the correct frequency. All instrument-rated pilots must demonstrate Morse code recognition proficiency during their FAA examinations." },
             { icon: <Wifi className="w-6 h-6" />, title: "Amateur Radio", desc: "Amateur radio (ham radio) operators represent the largest active community of Morse code users worldwide, with an estimated 2 million licensed operators globally. Morse code, known as CW (Continuous Wave) in ham radio, remains the most efficient mode for long-distance communication under weak signal conditions. The ARRL and IARU organize regular CW contests and offer proficiency certificates at speeds from 5 to 40+ WPM." },
             { icon: <Shield className="w-6 h-6" />, title: "Emergency Signaling", desc: "Morse code SOS remains the universal distress signal recognized under international law. Outdoor enthusiasts, military personnel, and survival instructors teach visual Morse signaling using flashlights, whistles, and mirror reflections. The U.S. Army Field Manual FM 3-05.70 (Survival Evasion Recovery) specifically includes Morse code as a primary signaling method. Unlike electronic devices, Morse code requires no batteries or technology to transmit." },
