@@ -46,19 +46,23 @@ export async function generateMetadata({
  */
 function renderInlineMarkdown(text: string): string {
   return text
-    // Escape HTML characters
+    // Escape HTML characters first
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
 
-    // Markdown internal links
-    // Example: [Morse Code Alphabet](/morse-code-alphabet)
+    // Convert quotes BEFORE creating HTML links.
+    // This prevents the quote replacement from corrupting href attributes.
     .replace(
-  /\[([^\]]+)\]\((\/[^)]+)\)/g,
-  '<a href="$2" class="text-green-600 font-medium hover:text-green-700 hover:underline">$1</a>'
-)
+      /"(.*?)"/g,
+      "&ldquo;$1&rdquo;"
+    )
+
     // Bold
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(
+      /\*\*(.*?)\*\*/g,
+      "<strong>$1</strong>"
+    )
 
     // Inline code
     .replace(
@@ -66,8 +70,14 @@ function renderInlineMarkdown(text: string): string {
       '<code class="font-mono bg-slate-100 px-1 rounded text-sm">$1</code>'
     )
 
-    // Quotes
-    .replace(/"(.*?)"/g, "“$1”");
+    // Markdown internal links
+    // Example: [Morse Code Alphabet](/morse-code-alphabet)
+    // IMPORTANT: Keep this replacement LAST so later replacements
+    // cannot modify the href quotes or HTML attributes.
+    .replace(
+      /\[([^\]]+)\]\((\/[^)\s]+)\)/g,
+      '<a href="$2" class="text-green-600 font-semibold underline decoration-green-500 underline-offset-2 hover:text-green-700 hover:decoration-green-700 transition-colors">$1</a>'
+    );
 }
 export default async function BlogPostPage({
   params,

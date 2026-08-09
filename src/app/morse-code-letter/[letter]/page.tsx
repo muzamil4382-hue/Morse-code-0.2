@@ -317,31 +317,78 @@ export default async function LetterPage({ params }: PageParams) {
           </section>
 
           {/* Examples of [Letter] in Words */}
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              Examples of {char} in Words
-            </h2>
-            <p className="text-slate-600 mb-4">
-              Here are common English words that contain the letter {char}, shown
-              with their complete Morse code translations:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {wordExamples.map((word, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-lg border border-slate-200 p-4 hover:border-green-400 hover:shadow-sm transition-all"
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-semibold text-slate-900">{word}</span>
-                    <span className="text-xs text-slate-400">#{i + 1}</span>
-                  </div>
-                  <p className="font-mono text-green-600 text-sm break-all">
-                    {textToMorse(word)}
-                  </p>
-                </div>
-              ))}
+<section className="mb-10">
+  <h2 className="text-2xl font-bold text-slate-900 mb-4">
+    Examples of {char} in Words
+  </h2>
+
+  <p className="text-slate-600 mb-4">
+    Here are common English words that contain the letter {char}, shown
+    with their complete Morse code translations. When a dedicated guide is
+    available, you can open it to learn more about that word in Morse code.
+  </p>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {wordExamples.map((word, i) => {
+      const wordLinks: Record<string, string> = {
+        HELLO: "/hello-in-morse-code",
+        HI: "/hi-in-morse-code",
+        "I LOVE YOU": "/i-love-you-in-morse-code",
+        SOS: "/sos-morse-code",
+        YES: "/yes-in-morse-code",
+        NO: "/no-in-morse-code",
+        "HELP ME": "/help-me-in-morse-code",
+      };
+
+      const href = wordLinks[word.toUpperCase()];
+
+      if (href) {
+        return (
+          <Link
+            key={i}
+            href={href}
+            className="bg-white rounded-lg border border-slate-200 p-4 hover:border-green-400 hover:shadow-sm transition-all"
+          >
+            <div className="flex items-center justify-between mb-1">
+              <span className="font-semibold text-slate-900 hover:text-green-600 transition-colors">
+                {word}
+              </span>
+
+              <span className="text-xs text-green-600">
+                View guide →
+              </span>
             </div>
-          </section>
+
+            <p className="font-mono text-green-600 text-sm break-all">
+              {textToMorse(word)}
+            </p>
+          </Link>
+        );
+      }
+
+      return (
+        <div
+          key={i}
+          className="bg-white rounded-lg border border-slate-200 p-4 hover:border-green-400 hover:shadow-sm transition-all"
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="font-semibold text-slate-900">
+              {word}
+            </span>
+
+            <span className="text-xs text-slate-400">
+              #{i + 1}
+            </span>
+          </div>
+
+          <p className="font-mono text-green-600 text-sm break-all">
+            {textToMorse(word)}
+          </p>
+        </div>
+      );
+    })}
+  </div>
+</section>
 
           {/* Practice Tips */}
           <section className="mb-10">
