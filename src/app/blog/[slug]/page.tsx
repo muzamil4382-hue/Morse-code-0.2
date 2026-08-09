@@ -46,18 +46,19 @@ export async function generateMetadata({
  */
 function renderInlineMarkdown(text: string): string {
   return text
-    // Escape basic HTML characters
+    // Escape HTML characters
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
 
     // Markdown internal links
+    // Example: [Morse Code Alphabet](/morse-code-alphabet)
     .replace(
       /\[([^\]]+)\]\((\/[^)\s]+)\)/g,
-      '<a href="$2" class="text-green-600 font-medium underline underline-offset-2 hover:text-green-700">$1</a>'
+      '<a href="$2" class="text-green-600 font-medium hover:text-green-700 hover:underline">$1</a>'
     )
 
-    // Bold text
+    // Bold
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
 
     // Inline code
@@ -66,10 +67,9 @@ function renderInlineMarkdown(text: string): string {
       '<code class="font-mono bg-slate-100 px-1 rounded text-sm">$1</code>'
     )
 
-    // Quoted text
-    .replace(/"(.*?)"/g, "&ldquo;$1&rdquo;");
+    // Quotes
+    .replace(/"(.*?)"/g, "“$1”");
 }
-
 export default async function BlogPostPage({
   params,
 }: {
