@@ -316,31 +316,82 @@ export default async function NumberPage({ params }: PageParams) {
           </section>
 
           {/* Practical Examples */}
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              Practical Examples with {char}
-            </h2>
-            <p className="text-slate-600 mb-4">
-              Here are common words and numerical contexts that include the number {char}, shown
-              with their complete Morse code translations:
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {wordExamples.map((word, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-lg border border-slate-200 p-4 hover:border-green-400 hover:shadow-sm transition-all"
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-semibold text-slate-900">{word}</span>
-                    <span className="text-xs text-slate-400">#{i + 1}</span>
-                  </div>
-                  <p className="font-mono text-green-600 text-sm break-all">
-                    {textToMorse(word)}
-                  </p>
-                </div>
-              ))}
+<section className="mb-10">
+  <h2 className="text-2xl font-bold text-slate-900 mb-4">
+    Practical Examples with {char}
+  </h2>
+
+  <p className="text-slate-600 mb-4">
+    Here are common words and numerical contexts that include the number {char},
+    shown with their complete Morse code translations:
+  </p>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {wordExamples.map((word, i) => {
+      const wordLinks: Record<string, string> = {
+        ZERO: "/morse-code-number/0",
+        ONE: "/morse-code-number/1",
+        TWO: "/morse-code-number/2",
+        THREE: "/morse-code-number/3",
+        FOUR: "/morse-code-number/4",
+        FIVE: "/morse-code-number/5",
+        SIX: "/morse-code-number/6",
+        SEVEN: "/morse-code-number/7",
+        EIGHT: "/morse-code-number/8",
+        NINE: "/morse-code-number/9",
+        TEN: "/morse-code-numbers",
+        HUNDRED: "/morse-code-numbers",
+      };
+
+      const href = wordLinks[word.toUpperCase()];
+
+      if (href) {
+        return (
+          <Link
+            key={i}
+            href={href}
+            className="bg-white rounded-lg border border-slate-200 p-4 hover:border-green-400 hover:shadow-sm transition-all"
+          >
+            <div className="flex items-center justify-between mb-1">
+              <span className="font-semibold text-slate-900 hover:text-green-600 transition-colors">
+                {word}
+              </span>
+
+              <span className="text-xs text-green-600">
+                View guide →
+              </span>
             </div>
-          </section>
+
+            <p className="font-mono text-green-600 text-sm break-all">
+              {textToMorse(word)}
+            </p>
+          </Link>
+        );
+      }
+
+      return (
+        <div
+          key={i}
+          className="bg-white rounded-lg border border-slate-200 p-4 hover:border-green-400 hover:shadow-sm transition-all"
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="font-semibold text-slate-900">
+              {word}
+            </span>
+
+            <span className="text-xs text-slate-400">
+              #{i + 1}
+            </span>
+          </div>
+
+          <p className="font-mono text-green-600 text-sm break-all">
+            {textToMorse(word)}
+          </p>
+        </div>
+      );
+    })}
+  </div>
+</section>
 
           {/* Practice Tips */}
           <section className="mb-10">
@@ -476,33 +527,64 @@ export default async function NumberPage({ params }: PageParams) {
             </div>
           </section>
 
-          {/* Internal links */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            <Link
-              href="/morse-code-alphabet"
-              className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-            >
-              📋 Alphabet Chart
-            </Link>
-            <Link
-              href="/"
-              className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-            >
-              🔤 Translator
-            </Link>
-            <Link
-              href="/morse-code-numbers"
-              className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-            >
-              🔢 All Numbers
-            </Link>
-            <Link
-              href="/learn-morse-code"
-              className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
-            >
-              📖 Learn Morse Code
-            </Link>
-          </div>
+          {/* Related Learning Resources */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+  <Link
+    href="/morse-code-alphabet"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    📋 Morse Code Alphabet
+  </Link>
+
+  <Link
+    href="/"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🔤 Morse Code Translator
+  </Link>
+
+  <Link
+    href="/morse-code-numbers"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🔢 All Morse Code Numbers
+  </Link>
+
+  <Link
+    href="/learn-morse-code"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    📖 Learn Morse Code
+  </Link>
+
+  <Link
+    href="/morse-code-timing"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    ⏱️ Morse Code Timing
+  </Link>
+
+  <Link
+    href="/morse-code-sounds"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🔊 Morse Code Sounds
+  </Link>
+
+  <Link
+    href="/morse-code-quiz"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🧠 Morse Code Quiz
+  </Link>
+
+  <Link
+    href="/morse-code-decoder"
+    className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
+  >
+    🔎 Morse Code Decoder
+  </Link>
+</div>
         </div>
       </main>
     </>
