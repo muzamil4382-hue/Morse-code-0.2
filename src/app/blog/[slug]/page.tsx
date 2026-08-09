@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts, getPostBySlug } from "@/lib/blog-data";
-import { generatePageMeta, generateArticleSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import {
+  generatePageMeta,
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/seo";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
+
   if (!post) return {};
 
   return generatePageMeta(
@@ -23,13 +35,68 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   );
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+/**
+ * Converts Markdown-style links into safe internal HTML links.
+ *
+ * Example:
+ * [Morse Code Alphabet](/morse-code-alphabet)
+ *
+ * becomes a clickable internal link.
+ */
+function renderInlineMarkdown(text: string): string {
+  return text
+    // Escape basic HTML characters first
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+
+    // Markdown links
+    .replace(
+      /\[([^\]]+)\]\((\/[^)\s]+)\)/g,
+      '<a href="$2" class="text-green-600 font-medium underline hover:text-green-700">$1</a>'
+    )
+
+    // Bold text
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+
+    // Inline code
+    .replace(
+      /`(.*?)`/g,
+      '<code class="font-mono bg-slate-100 px-1 rounded text-sm">$1</code>'
+    )
+
+    // Quoted text
+    .replace(/"(.*?)"/g, "&ldquo;$1&rdquo;");
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
+
   const post = getPostBySlug(slug);
-  if (!post) notFound();
+
+  if (!post) {
+    notFound();
+  }
 
   const posts = getAllPosts();
-  const relatedPosts = posts.filter((p) => p.slug !== slug).slice(0, 3);
+
+  /*
+   * Keep the current article out of Related Articles.
+   * Prefer posts from the same category first.
+   */
+  const sameCategoryPosts = posts.filter(
+    (p) => p.slug !== slug && p.category === post.category
+  );
+
+  const otherPosts = posts.filter(
+    (p) => p.slug !== slug && p.category !== post.category
+  );
+
+  const relatedPosts = [...sameCategoryPosts, ...otherPosts].slice(0, 3);
 
   const articleSchema = generateArticleSchema(
     post.title,
@@ -45,18 +112,48 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   ]);
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
 
       <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
+        <nav
+          className="flex items-center gap-2 text-sm text-slate-500 mb-6"
+          aria-label="Breadcrumb"
+        >
+          <Link
+            href="/"
+            className="hover:text-green-600 transition-colors"
+          >
+            Home
+          </Link>
+
           <span className="text-slate-400">/</span>
-          <Link href="/blog" className="hover:text-green-600 transition-colors">Blog</Link>
+
+          <Link
+            href="/blog"
+            className="hover:text-green-600 transition-colors"
+          >
+            Blog
+          </Link>
+
           <span className="text-slate-400">/</span>
-          <span className="text-slate-900 font-medium line-clamp-1">{post.title}</span>
+
+          <span className="text-slate-900 font-medium line-clamp-1">
+            {post.title}
+          </span>
         </nav>
 
         {/* Header */}
@@ -65,10 +162,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <span className="text-xs font-medium text-green-600 bg-green-50 px-2.5 py-1 rounded-full">
               {post.category}
             </span>
-            <span className="text-xs text-slate-400">{post.readTime} read</span>
+
+            <span className="text-xs text-slate-400">
+              {post.readTime} read
+            </span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{post.title}</h1>
-          <p className="text-lg text-slate-600 mb-4">{post.description}</p>
+
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            {post.title}
+          </h1>
+
+          <p className="text-lg text-slate-600 mb-4">
+            {post.description}
+          </p>
+
           <div className="flex items-center gap-3 text-sm text-slate-400 border-t border-slate-200 pt-4">
             <span>{post.author}</span>
             <span>·</span>
@@ -79,36 +186,71 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Content */}
         <div className="prose prose-slate max-w-none mb-12">
           {post.content.split("\n\n").map((block, i) => {
+            /* H2 headings */
             if (block.startsWith("## ")) {
-              return <h2 key={i} className="text-2xl font-bold text-slate-900 mt-8 mb-4">{block.replace("## ", "")}</h2>;
+              return (
+                <h2
+                  key={i}
+                  className="text-2xl font-bold text-slate-900 mt-8 mb-4"
+                >
+                  {block.replace("## ", "")}
+                </h2>
+              );
             }
+
+            /* Unordered lists */
             if (block.startsWith("- ")) {
               const items = block.split("\n");
+
               return (
-                <ul key={i} className="list-disc list-inside text-slate-700 space-y-1 mb-4">
+                <ul
+                  key={i}
+                  className="list-disc list-inside text-slate-700 space-y-2 mb-4"
+                >
                   {items.map((item, j) => (
-                    <li key={j} dangerouslySetInnerHTML={{ __html: item.replace(/^- /, "").replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>").replace(/`(.*?)`/g, '<code className="font-mono bg-slate-100 px-1 rounded text-sm">$1</code>') }} />
+                    <li
+                      key={j}
+                      dangerouslySetInnerHTML={{
+                        __html: renderInlineMarkdown(
+                          item.replace(/^- /, "")
+                        ),
+                      }}
+                    />
                   ))}
                 </ul>
               );
             }
+
+            /* Ordered lists */
             if (/^\d+\./.test(block)) {
               const items = block.split("\n");
+
               return (
-                <ol key={i} className="list-decimal list-inside text-slate-700 space-y-1 mb-4">
+                <ol
+                  key={i}
+                  className="list-decimal list-inside text-slate-700 space-y-2 mb-4"
+                >
                   {items.map((item, j) => (
-                    <li key={j}>{item.replace(/^\d+\.\s*/, "")}</li>
+                    <li
+                      key={j}
+                      dangerouslySetInnerHTML={{
+                        __html: renderInlineMarkdown(
+                          item.replace(/^\d+\.\s*/, "")
+                        ),
+                      }}
+                    />
                   ))}
                 </ol>
               );
             }
+
+            /* Normal paragraphs */
             return (
-              <p key={i} className="text-slate-700 leading-relaxed mb-4"
+              <p
+                key={i}
+                className="text-slate-700 leading-relaxed mb-4"
                 dangerouslySetInnerHTML={{
-                  __html: block
-                    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                    .replace(/`(.*?)`/g, '<code className="font-mono bg-slate-100 px-1 rounded text-sm">$1</code>')
-                    .replace(/"(.*?)"/g, "&ldquo;$1&rdquo;"),
+                  __html: renderInlineMarkdown(block),
                 }}
               />
             );
@@ -118,7 +260,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
           <section className="border-t border-slate-200 pt-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">
+              Related Articles
+            </h2>
+
             <div className="space-y-4">
               {relatedPosts.map((rp) => (
                 <Link
@@ -129,12 +274,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full mt-0.5 flex-shrink-0">
                     {rp.category}
                   </span>
+
                   <div>
                     <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
                       {rp.title}
                     </h3>
-                    <p className="text-sm text-slate-600 mt-1 line-clamp-2">{rp.description}</p>
-                    <span className="text-xs text-slate-400 mt-2 block">{rp.date} · {rp.readTime}</span>
+
+                    <p className="text-sm text-slate-600 mt-1 line-clamp-2">
+                      {rp.description}
+                    </p>
+
+                    <span className="text-xs text-slate-400 mt-2 block">
+                      {rp.date} · {rp.readTime}
+                    </span>
                   </div>
                 </Link>
               ))}
@@ -142,7 +294,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </section>
         )}
 
-        {/* Back */}
+        {/* Back to Blog */}
         <div className="mt-8 text-center">
           <Link
             href="/blog"
@@ -152,6 +304,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </Link>
         </div>
       </article>
-    </div>
+    </>
   );
 }
