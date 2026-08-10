@@ -27,7 +27,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return generatePageMeta(
-    `${post.title} | MorseCode.World Blog`,
+  `${post.title} | Morse Code Translator`,
     post.description,
     `/blog/${post.slug}`,
     post.keywords,

@@ -3,17 +3,17 @@ import Link from "next/link";
 import { generatePageMeta, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = generatePageMeta(
-  "Disclaimer | MorseCode.World",
-  "Disclaimer for MorseCode.World. Important information about the limitations and intended use of our Morse code tools and content.",
+  "Disclaimer | Morse Code Translator",
+  "Disclaimer for Morse Code Translator. Important information about the limitations and intended use of our Morse code tools and content.",
   "/disclaimer",
-  ["disclaimer", "morsecode.world disclaimer"]
+  ["disclaimer", "morse code translator disclaimer"]
 );
 
 export default function DisclaimerPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://morsecode.world" },
-    { name: "Disclaimer", url: "https://morsecode.world/disclaimer" },
-  ]);
+  { name: "Home", url: "/" },
+  { name: "Disclaimer", url: "/disclaimer" },
+]);
 
   return (
     <main className="min-h-screen">
@@ -33,7 +33,7 @@ export default function DisclaimerPage() {
 
           <h2 className="text-xl font-bold text-slate-900">General Disclaimer</h2>
           <p>
-            The information and Morse code translations provided on MorseCode.World are for general informational
+            The information and Morse code translations provided on Morse Code Translator are for general informational
             and educational purposes only. While we strive for accuracy and follow the International Morse Code
             standard (ITU-R M.1677), we make no representations or warranties of any kind, express or implied,
             about the completeness, accuracy, reliability, or suitability of the information, tools, or related
@@ -77,7 +77,7 @@ export default function DisclaimerPage() {
 
           <h2 className="text-xl font-bold text-slate-900">No Professional Advice</h2>
           <p>
-            The content on MorseCode.World does not constitute professional advice of any kind. For professional
+            The content on Morse Code Translator does not constitute professional advice of any kind. For professional
             Morse code training, licensing requirements, or regulatory compliance, consult with appropriate
             authorities, certified instructors, or regulatory bodies in your jurisdiction.
           </p>

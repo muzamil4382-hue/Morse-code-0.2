@@ -94,7 +94,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
   const morseCode = MORSE_CODE[char] || "";
   return generatePageMeta(
-    `${char} in Morse Code: Complete Guide | MorseCode.World`,
+    `${char} in Morse Code: Complete Guide | Morse Code Translator`,
     `Learn the Morse code for the number ${char} (${morseCode}). Complete guide with visual representation, audio pattern, timing, and practice tips.`,
     `/morse-code-number/${number}`,
     [`${number} in morse code`, `morse code number ${number}`, `number ${char} morse`]

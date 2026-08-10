@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 
 export const BASE_URL = "https://www.morsecodetranslater.com";
-// NOTE: If your domain is morsecode.world, change the above to:
-// export const BASE_URL = "https://morsecode.world";
 export const DEFAULT_SOCIAL_IMAGE = `${BASE_URL}/og-image.png`;
 
 /**
@@ -23,15 +21,6 @@ export function generatePageMeta(
     keywords,
     alternates: {
       canonical: url,
-    },
-    openGraph: {
-      title,
-      description,
-      url,
-      type: ogType,
-      siteName: "Morse Code Translator",
-      images: [{ url: DEFAULT_SOCIAL_IMAGE, width: 1200, height: 630, alt: title }],
-      ...(ogType === "article" ? { publishedTime: new Date().toISOString() } : {}),
     },
     twitter: {
       card: "summary_large_image",

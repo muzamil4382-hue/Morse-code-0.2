@@ -3,17 +3,17 @@ import Link from "next/link";
 import { generatePageMeta, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = generatePageMeta(
-  "About MorseCode.World - Our Mission & Team",
-  "Learn about MorseCode.World, our mission to make Morse code accessible to everyone, and the team behind the platform.",
+  "About Morse Code Translator - Our Mission & Team",
+  "Learn about Morse Code Translator, our mission to make Morse code accessible to everyone, and the team behind the platform.",
   "/about",
-  ["about morsecode.world", "morse code platform", "morse code tools"]
+  ["about morse code translator", "morse code platform", "morse code tools"]
 );
 
 export default function AboutPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://morsecode.world" },
-    { name: "About", url: "https://morsecode.world/about" },
-  ]);
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" },
+]);
 
   return (
     <main className="min-h-screen">
@@ -27,7 +27,7 @@ export default function AboutPage() {
         </nav>
 
         <div className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">About MorseCode.World</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">About Morse Code Translator</h1>
           <p className="text-lg text-slate-600">
             The free, comprehensive Morse code resource for learners, hobbyists, and professionals.
           </p>
@@ -36,7 +36,7 @@ export default function AboutPage() {
         <div className="prose prose-slate max-w-none space-y-6 text-slate-700 leading-relaxed">
           <h2 className="text-2xl font-bold text-slate-900">Our Mission</h2>
           <p>
-            MorseCode.World exists to make Morse code accessible to everyone. Whether you&apos;re a student
+            Morse Code Translator exists to make Morse code accessible to everyone. Whether you&apos;re a student
             learning about the history of communication, an amateur radio operator preparing for your license
             exam, or simply someone who finds the elegance of dots and dashes fascinating, our platform provides
             the tools and knowledge you need.
@@ -78,7 +78,7 @@ export default function AboutPage() {
 
           <h2 className="text-2xl font-bold text-slate-900">Our Values</h2>
           <p>
-            We built MorseCode.World around three core principles. First, <strong>accessibility</strong>: everything
+            We built Morse Code Translator around three core principles. First, <strong>accessibility</strong>: everything
             we create should be usable by anyone, regardless of their technical skill, age, or ability. Second,{" "}
             <strong>accuracy</strong>: our tools follow the International Morse Code standard (ITU-R M.1677), and
             our educational content is thoroughly researched and regularly updated. Third,{" "}

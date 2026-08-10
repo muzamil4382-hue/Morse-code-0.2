@@ -13,9 +13,9 @@ export const metadata: Metadata = generatePageMeta(
 export default function BlogPage() {
   const posts = getAllPosts();
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://morsecode.world" },
-    { name: "Blog", url: "https://morsecode.world/blog" },
-  ]);
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/blog" },
+]);
 
   return (
     <main className="min-h-screen">

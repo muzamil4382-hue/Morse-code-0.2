@@ -3,17 +3,17 @@ import Link from "next/link";
 import { generatePageMeta, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = generatePageMeta(
-  "Privacy Policy | MorseCode.World",
-  "Privacy policy for MorseCode.World. Learn how we handle your data and protect your privacy.",
+  "Privacy Policy | Morse Code Translator",
+  "Privacy policy for Morse Code Translator. Learn how we handle your data and protect your privacy.",
   "/privacy",
-  ["privacy policy", "morsecode.world privacy"]
+  ["privacy policy", "morse code translator privacy"]
 );
 
 export default function PrivacyPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://morsecode.world" },
-    { name: "Privacy Policy", url: "https://morsecode.world/privacy" },
-  ]);
+  { name: "Home", url: "/" },
+  { name: "Privacy Policy", url: "/privacy" },
+]);
 
   return (
     <main className="min-h-screen">
@@ -33,9 +33,9 @@ export default function PrivacyPage() {
 
           <h2 className="text-xl font-bold text-slate-900">Introduction</h2>
           <p>
-            MorseCode.World (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed
+            Morse Code Translator (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed
             to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your
-            information when you visit our website at morsecode.world (the &quot;Service&quot;).
+            information when you visit our website at www.morsecodetranslater.com (the &quot;Service&quot;).
           </p>
 
           <h2 className="text-xl font-bold text-slate-900">Information We Collect</h2>
