@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "How long does it take to learn the entire Morse Code Alphabet?",
     answer:
-      "Most learners can memorize all 26 letters within one to two weeks of consistent daily practice. However, memorization is different from fluency. Achieving the ability to copy Morse code at 10 words per minute (WPM) typically takes four to eight weeks of regular practice. Reaching 20 WPM or higher, which is the standard for amateur radio licensing in many countries, usually requires three to six months of dedicated study using audio-based methods like the Koch method or Farnsworth timing.",
+      "Most learners can memorize the 26 Morse Code letters within one to two weeks of consistent daily practice. However, memorization is different from listening fluency. Developing the ability to copy Morse code at 10 words per minute (WPM) can take several weeks of regular practice, while reaching 20 WPM or higher generally requires more sustained training. Audio-based methods such as the Koch method and Farnsworth timing can help learners build listening fluency by focusing on recognizing complete Morse characters rather than counting individual dots and dashes.",
   },
   {
     question: "What is the difference between a dot and a dash in the Morse Code Alphabet?",
