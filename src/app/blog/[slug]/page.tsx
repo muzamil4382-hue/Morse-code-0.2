@@ -27,7 +27,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return generatePageMeta(
-  `${post.title} | Morse Code Translator`,
+    `${post.title} | Morse Code Translator`,
     post.description,
     `/blog/${post.slug}`,
     post.keywords,
@@ -36,16 +36,14 @@ export async function generateMetadata({
 }
 
 /**
- * Converts Markdown-style links and basic formatting
+ * Converts Markdown-style inline formatting
  * into HTML that can be rendered inside blog content.
  *
- * Examples:
- *
- * [Morse Code Alphabet](/morse-code-alphabet)
- *
- * [Morse Code Translator](/)
- *
- * become clickable internal links.
+ * Supports:
+ * - Bold
+ * - Inline code
+ * - Internal links
+ * - Basic quotes
  */
 function renderInlineMarkdown(text: string): string {
   return text
@@ -63,21 +61,127 @@ function renderInlineMarkdown(text: string): string {
     // Inline code
     .replace(
       /`(.*?)`/g,
-      '<code class="font-mono bg-slate-100 px-1 rounded text-sm">$1</code>'
+      '<code class="font-mono bg-slate-100 px-1 py-0.5 rounded text-sm">$1</code>'
     )
 
     // Markdown internal links
-    //
-    // Supports:
-    // [Morse Code Alphabet](/morse-code-alphabet)
-    // [Morse Code Translator](/)
-    //
-    // The * allows an empty path after the slash,
-    // which is required for the homepage link "/".
     .replace(
       /\[([^\]]+)\]\((\/[^)\s]*)\)/g,
       '<a href="$2" class="text-green-600 font-medium underline hover:text-green-700">$1</a>'
     );
+}
+
+/**
+ * Detects whether a block is a Markdown table.
+ *
+ * Example:
+ *
+ * | Letter | Morse Code | Pronunciation |
+ * |--------|------------|---------------|
+ * | A      | · —        | dit-dah       |
+ */
+function isMarkdownTable(block: string): boolean {
+  const lines = block.trim().split("\n");
+
+  if (lines.length < 2) return false;
+
+  const header = lines[0].trim();
+  const separator = lines[1].trim();
+
+  return (
+    header.startsWith("|") &&
+    header.endsWith("|") &&
+    /^\|?[\s:-]+(\|[\s:-]+)+\|?$/.test(separator)
+  );
+}
+
+/**
+ * Converts a Markdown table into a responsive,
+ * professional HTML table matching the site theme.
+ */
+function renderMarkdownTable(block: string, key: number) {
+  const lines = block
+    .trim()
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (lines.length < 2) return null;
+
+  const parseRow = (line: string) => {
+    return line
+      .replace(/^\|/, "")
+      .replace(/\|$/, "")
+      .split("|")
+      .map((cell) => cell.trim());
+  };
+
+  const headers = parseRow(lines[0]);
+
+  // Skip Markdown separator row
+  const rows = lines.slice(2).map(parseRow);
+
+  return (
+    <div
+      key={key}
+      className="my-8 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+    >
+      <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-[640px] border-collapse text-sm">
+          <thead>
+            <tr className="bg-slate-900">
+              {headers.map((header, index) => (
+                <th
+                  key={index}
+                  scope="col"
+                  className={`px-5 py-4 text-left text-xs font-bold uppercase tracking-wider text-white ${
+                    index === 0
+                      ? "border-l-4 border-green-500"
+                      : ""
+                  }`}
+                  dangerouslySetInnerHTML={{
+                    __html: renderInlineMarkdown(header),
+                  }}
+                />
+              ))}
+            </tr>
+          </thead>
+
+          <tbody>
+            {rows.map((row, rowIndex) => (
+              <tr
+                key={rowIndex}
+                className="border-b border-slate-100 last:border-b-0 odd:bg-white even:bg-slate-50/70 hover:bg-green-50/60 transition-colors"
+              >
+                {headers.map((_, cellIndex) => (
+                  <td
+                    key={cellIndex}
+                    className={`px-5 py-4 align-middle ${
+                      cellIndex === 0
+                        ? "font-bold text-slate-900"
+                        : cellIndex === 1
+                        ? "font-mono text-base font-semibold tracking-wide text-green-700"
+                        : "text-slate-600"
+                    }`}
+                    dangerouslySetInnerHTML={{
+                      __html: renderInlineMarkdown(
+                        row[cellIndex] ?? ""
+                      ),
+                    }}
+                  />
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile table hint */}
+      <div className="border-t border-slate-100 bg-slate-50 px-4 py-2.5 text-xs text-slate-400 sm:hidden">
+        Swipe horizontally to view the full table
+      </div>
+    </div>
+  );
 }
 
 export default async function BlogPostPage({
@@ -124,6 +228,7 @@ export default async function BlogPostPage({
 
   return (
     <>
+      {/* Article Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -131,6 +236,7 @@ export default async function BlogPostPage({
         }}
       />
 
+      {/* Breadcrumb Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -138,15 +244,15 @@ export default async function BlogPostPage({
         }}
       />
 
-      <article className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <article className="mx-auto max-w-3xl px-4 py-8 sm:px-6 md:py-12 lg:px-8">
         {/* Breadcrumb */}
         <nav
-          className="flex items-center gap-2 text-sm text-slate-500 mb-6"
+          className="mb-6 flex items-center gap-2 text-sm text-slate-500"
           aria-label="Breadcrumb"
         >
           <Link
             href="/"
-            className="hover:text-green-600 transition-colors"
+            className="transition-colors hover:text-green-600"
           >
             Home
           </Link>
@@ -155,22 +261,22 @@ export default async function BlogPostPage({
 
           <Link
             href="/blog"
-            className="hover:text-green-600 transition-colors"
+            className="transition-colors hover:text-green-600"
           >
             Blog
           </Link>
 
           <span className="text-slate-400">/</span>
 
-          <span className="text-slate-900 font-medium line-clamp-1">
+          <span className="line-clamp-1 font-medium text-slate-900">
             {post.title}
           </span>
         </nav>
 
         {/* Header */}
         <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-xs font-medium text-green-600 bg-green-50 px-2.5 py-1 rounded-full">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-600">
               {post.category}
             </span>
 
@@ -179,15 +285,15 @@ export default async function BlogPostPage({
             </span>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h1 className="mb-4 text-3xl font-bold text-slate-900 md:text-4xl">
             {post.title}
           </h1>
 
-          <p className="text-lg text-slate-600 mb-4">
+          <p className="mb-4 text-lg text-slate-600">
             {post.description}
           </p>
 
-          <div className="flex items-center gap-3 text-sm text-slate-400 border-t border-slate-200 pt-4">
+          <div className="flex items-center gap-3 border-t border-slate-200 pt-4 text-sm text-slate-400">
             <span>{post.author}</span>
             <span>·</span>
             <span>{post.date}</span>
@@ -197,33 +303,65 @@ export default async function BlogPostPage({
         {/* Content */}
         <div className="prose prose-slate max-w-none mb-12">
           {post.content.split("\n\n").map((block, i) => {
-            /* H2 headings */
-            if (block.startsWith("## ")) {
+            const trimmedBlock = block.trim();
+
+            /*
+             * Markdown Tables
+             */
+            if (isMarkdownTable(trimmedBlock)) {
+              return renderMarkdownTable(trimmedBlock, i);
+            }
+
+            /*
+             * H3 headings
+             */
+            if (trimmedBlock.startsWith("### ")) {
+              return (
+                <h3
+                  key={i}
+                  className="mt-8 mb-4 text-xl font-bold text-slate-900 md:text-2xl"
+                >
+                  {trimmedBlock.replace(/^### /, "")}
+                </h3>
+              );
+            }
+
+            /*
+             * H2 headings
+             */
+            if (trimmedBlock.startsWith("## ")) {
               return (
                 <h2
                   key={i}
-                  className="text-2xl font-bold text-slate-900 mt-8 mb-4"
+                  className="mt-10 mb-4 text-2xl font-bold text-slate-900 md:text-3xl"
                 >
-                  {block.replace("## ", "")}
+                  {trimmedBlock.replace(/^## /, "")}
                 </h2>
               );
             }
 
-            /* Unordered lists */
-            if (block.startsWith("- ")) {
-              const items = block.split("\n");
+            /*
+             * Unordered lists
+             */
+            if (
+              trimmedBlock.startsWith("- ") ||
+              trimmedBlock.includes("\n- ")
+            ) {
+              const items = trimmedBlock
+                .split("\n")
+                .filter((line) => line.trim().startsWith("- "));
 
               return (
                 <ul
                   key={i}
-                  className="list-disc list-inside text-slate-700 space-y-2 mb-4"
+                  className="mb-5 list-disc list-inside space-y-2 text-slate-700"
                 >
                   {items.map((item, j) => (
                     <li
                       key={j}
                       dangerouslySetInnerHTML={{
                         __html: renderInlineMarkdown(
-                          item.replace(/^- /, "")
+                          item.replace(/^\s*-\s*/, "")
                         ),
                       }}
                     />
@@ -232,21 +370,30 @@ export default async function BlogPostPage({
               );
             }
 
-            /* Ordered lists */
-            if (/^\d+\./.test(block)) {
-              const items = block.split("\n");
+            /*
+             * Ordered lists
+             */
+            if (
+              /^\d+\.\s/.test(trimmedBlock) ||
+              /\n\d+\.\s/.test(trimmedBlock)
+            ) {
+              const items = trimmedBlock
+                .split("\n")
+                .filter((line) =>
+                  /^\d+\.\s/.test(line.trim())
+                );
 
               return (
                 <ol
                   key={i}
-                  className="list-decimal list-inside text-slate-700 space-y-2 mb-4"
+                  className="mb-5 list-decimal list-inside space-y-2 text-slate-700"
                 >
                   {items.map((item, j) => (
                     <li
                       key={j}
                       dangerouslySetInnerHTML={{
                         __html: renderInlineMarkdown(
-                          item.replace(/^\d+\.\s*/, "")
+                          item.replace(/^\s*\d+\.\s*/, "")
                         ),
                       }}
                     />
@@ -255,13 +402,15 @@ export default async function BlogPostPage({
               );
             }
 
-            /* Normal paragraphs */
+            /*
+             * Normal paragraphs
+             */
             return (
               <p
                 key={i}
-                className="text-slate-700 leading-relaxed mb-4"
+                className="mb-5 leading-relaxed text-slate-700"
                 dangerouslySetInnerHTML={{
-                  __html: renderInlineMarkdown(block),
+                  __html: renderInlineMarkdown(trimmedBlock),
                 }}
               />
             );
@@ -271,7 +420,7 @@ export default async function BlogPostPage({
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
           <section className="border-t border-slate-200 pt-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">
+            <h2 className="mb-6 text-2xl font-bold text-slate-900">
               Related Articles
             </h2>
 
@@ -280,22 +429,22 @@ export default async function BlogPostPage({
                 <Link
                   key={rp.slug}
                   href={`/blog/${rp.slug}`}
-                  className="flex items-start gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group"
+                  className="group flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-4 transition-all hover:border-green-400 hover:shadow-sm"
                 >
-                  <span className="text-xs font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full mt-0.5 flex-shrink-0">
+                  <span className="mt-0.5 flex-shrink-0 rounded-full bg-green-50 px-2 py-1 text-xs font-medium text-green-600">
                     {rp.category}
                   </span>
 
                   <div>
-                    <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
+                    <h3 className="font-semibold text-slate-900 transition-colors group-hover:text-green-600">
                       {rp.title}
                     </h3>
 
-                    <p className="text-sm text-slate-600 mt-1 line-clamp-2">
+                    <p className="mt-1 line-clamp-2 text-sm text-slate-600">
                       {rp.description}
                     </p>
 
-                    <span className="text-xs text-slate-400 mt-2 block">
+                    <span className="mt-2 block text-xs text-slate-400">
                       {rp.date} · {rp.readTime}
                     </span>
                   </div>
@@ -309,7 +458,7 @@ export default async function BlogPostPage({
         <div className="mt-8 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-green-600 font-medium hover:text-green-700 transition-colors"
+            className="inline-flex items-center gap-2 font-medium text-green-600 transition-colors hover:text-green-700"
           >
             ← Back to Blog
           </Link>
