@@ -2,3 +2,5 @@ node_modules/
 .next/
 .env
 .env.local
+EMAIL_USER=contact@morsecodetranslater.com
+EMAIL_PASSWORD=Usm@n8087
