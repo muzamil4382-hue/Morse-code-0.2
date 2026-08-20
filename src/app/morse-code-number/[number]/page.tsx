@@ -8,7 +8,6 @@ import {
 } from "@/lib/seo";
 import {
   getCharData,
-  letterData,
 } from "@/lib/morse-characters";
 
 // ─── Utility helpers ────────────────────────────────────────────────────
@@ -78,24 +77,24 @@ function renderInlineLinks(text: string): React.ReactNode[] {
 // ─── Static params ──────────────────────────────────────────────────────
 
 export function generateStaticParams() {
-  return letterData.map((d) => ({
-    letter: d.char.toLowerCase(),
-  }));
+  return Object.keys(MORSE_CODE)
+    .filter((char) => /^\d$/.test(char))
+    .map((number) => ({ number }));
 }
 
 // ─── Metadata ───────────────────────────────────────────────────────────
 
 type PageParams = {
   params: Promise<{
-    letter: string;
+    number: string;
   }>;
 };
 
 export async function generateMetadata({
   params,
 }: PageParams): Promise<Metadata> {
-  const { letter } = await params;
-  const char = letter.toUpperCase();
+  const { number } = await params;
+  const char = number;
 
   const data = getCharData(char);
 
@@ -103,7 +102,7 @@ export async function generateMetadata({
     return generatePageMeta(
       data.metaTitle,
       data.metaDescription,
-      `/morse-code-letter/${letter}`,
+      `/morse-code-number/${number}`,
       data.keywords
     );
   }
@@ -112,24 +111,24 @@ export async function generateMetadata({
 
   return generatePageMeta(
     `${char} in Morse Code: Complete Guide & Translation | Morse Code Translator`,
-    `Learn the Morse code for the letter ${char} (${morseCode}). Complete guide with visual representation, audio pattern, timing, examples, and practice tips.`,
-    `/morse-code-letter/${letter}`,
+    `Learn the Morse code for the number ${char} (${morseCode}). Complete guide with visual representation, audio pattern, timing, examples, and practice tips.`,
+    `/morse-code-number/${number}`,
     [
-      `${letter} in morse code`,
-      `morse code ${letter}`,
-      `letter ${char} morse`,
+      `${number} in morse code`,
+      `morse code ${number}`,
+      `number ${char} morse code`,
     ]
   );
 }
 
 // ─── Page component ─────────────────────────────────────────────────────
 
-export default async function LetterPage({
+export default async function NumberPage({
   params,
 }: PageParams) {
-  const { letter } = await params;
+  const { number } = await params;
 
-  const char = letter.toUpperCase();
+  const char = number;
 
   const data = getCharData(char);
 
@@ -147,27 +146,27 @@ export default async function LetterPage({
 
   const introduction =
     data?.introduction ||
-    `The letter ${char} in Morse code is represented by ${morseCode}. This ${elemCount}-element code consists of ${dotCount} dot${
+    `The number ${char} in Morse code is represented by ${morseCode}. This ${elemCount}-element code consists of ${dotCount} dot${
       dotCount !== 1 ? "s" : ""
     } and ${dashCount} dash${
       dashCount !== 1 ? "es" : ""
-    }. The letter ${char} is an essential character in the English alphabet and Morse code communication.`;
+    }. The number ${char} is part of the International Morse Code number set used to communicate digits clearly.`;
 
   const soundRhythm =
     data?.soundRhythm ||
-    `When transmitted by sound, the letter ${char} produces the rhythm "${ditDah}." Each dit (dot) is a short beep lasting exactly one time unit, while each dah (dash) is a longer beep lasting three time units. Between each element within the letter, there is a silent gap of one time unit. The key to mastering the sound of ${char} is not to think about individual dots and dashes, but rather to hear the entire letter as a single rhythmic unit. Experienced Morse code operators do not mentally decode each dot and dash — they recognize the rhythm of the whole character at once, much like you recognize a spoken word without thinking about individual phonemes.`;
+    `When transmitted by sound, the number ${char} produces the rhythm "${ditDah}." Each dit (dot) is a short beep lasting exactly one time unit, while each dah (dash) is a longer beep lasting three time units. Between each element within the letter, there is a silent gap of one time unit. The key to mastering the sound of ${char} is not to think about individual dots and dashes, but rather to hear the entire number as a single rhythmic unit. Experienced Morse code operators do not mentally decode each dot and dash — they recognize the rhythm of the whole character at once, much like you recognize a spoken word without thinking about individual phonemes.`;
 
   const howToWrite =
     data?.howToWrite ||
-    `To write the letter ${char} in Morse code, write ${morseCode} on paper. Each dot is written as a small round mark and each dash as a longer horizontal line. When using a straight key, press down briefly for dots and press and hold for three times as long for dashes. For flashlight signaling, flash briefly for dots and hold steady for dashes.`;
+    `To write the number ${char} in Morse code, write ${morseCode} on paper. Each dot is written as a small round mark and each dash as a longer horizontal line. When using a straight key, press down briefly for dots and press and hold for three times as long for dashes. For flashlight signaling, flash briefly for dots and hold steady for dashes.`;
 
   const importance =
     data?.importance ||
-    `The letter ${char} is an important part of the English alphabet and Morse code communication. With its ${elemCount}-element code of ${morseCode}, it appears frequently in English text. Mastering ${char} is essential for complete Morse code proficiency and fluent communication.`;
+    `The number ${char} is an important digit in Morse code communication. With its ${elemCount}-element code of ${morseCode}, it is useful when sending dates, frequencies, call signs, measurements, and other numerical information.`;
 
   const practiceTips =
     data?.practiceTips ||
-    `To master the letter ${char}, start by practicing the rhythm "${ditDah}" out loud repeatedly. Use a metronome and practice tapping ${char} in sequence with proper spacing. Create flash cards with ${char} on one side and ${morseCode} on the other. Practice writing common words containing ${char} in Morse code. Pair ${char} with commonly confused letters in drills to sharpen your discrimination skills.`;
+    `To master the number ${char}, start by practicing the rhythm "${ditDah}" out loud repeatedly. Use a metronome and practice tapping ${char} in sequence with proper spacing. Create flash cards with ${char} on one side and ${morseCode} on the other. Practice sending numbers and short sequences containing ${char} in Morse code. Pair ${char} with commonly confused letters in drills to sharpen your discrimination skills.`;
 
   const wordExamples =
     data?.wordExamples || [
@@ -183,7 +182,7 @@ export default async function LetterPage({
 
   const funFacts =
     data?.funFacts || [
-      `The letter ${char} has ${elemCount} element${
+      `The number ${char} has ${elemCount} element${
         elemCount > 1 ? "s" : ""
       } in its Morse code representation (${morseCode}).`,
       `In the International Morse Code standard, ${char}'s code was assigned based on its frequency in English text.`,
@@ -192,20 +191,20 @@ export default async function LetterPage({
   const faqs =
     data?.faq || [
       {
-        question: `What is the Morse code for the letter ${char}?`,
-        answer: `The Morse code for the letter ${char} is "${morseCode}". This consists of ${dotCount} dot${
+        question: `What is the Morse code for the number ${char}?`,
+        answer: `The Morse code for the number ${char} is "${morseCode}". This consists of ${dotCount} dot${
           dotCount !== 1 ? "s" : ""
         } and ${dashCount} dash${
           dashCount !== 1 ? "es" : ""
         }. In audio terms, this would sound like "${ditDah}."`,
       },
       {
-        question: `How do you tap out the letter ${char} in Morse code?`,
-        answer: `To tap the letter ${char}, you would produce the pattern "${ditDah}." Each dit (dot) is a brief tap or signal lasting one time unit, while each dah (dash) is a longer signal lasting three time units. There should be a one-unit gap between each element within the letter.`,
+        question: `How do you tap out the number ${char} in Morse code?`,
+        answer: `To tap the number ${char}, you would produce the pattern "${ditDah}." Each dit (dot) is a brief tap or signal lasting one time unit, while each dah (dash) is a longer signal lasting three time units. There should be a one-unit gap between each element within the letter.`,
       },
       {
-        question: `Is the letter ${char} difficult to learn in Morse code?`,
-        answer: `The letter ${char} uses ${elemCount} element${
+        question: `Is the number ${char} difficult to learn in Morse code?`,
+        answer: `The number ${char} uses ${elemCount} element${
           elemCount > 1 ? "s" : ""
         } (${morseCode}), which makes it ${
           elemCount <= 2
@@ -218,20 +217,10 @@ export default async function LetterPage({
     ];
 
   const relatedSlugs: string[] =
-    data?.relatedChars || [
-      char === "A"
-        ? "b-in-morse-code"
-        : "a-in-morse-code",
-
-      char === "Z"
-        ? "y-in-morse-code"
-        : String.fromCharCode(
-            char.charCodeAt(0) + 1
-          ).toLowerCase() + "-in-morse-code",
-
-      "e-in-morse-code",
-      "t-in-morse-code",
-    ];
+    data?.relatedChars ||
+    Object.keys(MORSE_CODE)
+      .filter((value) => /^\d$/.test(value) && value !== char)
+      .slice(0, 4);
 
   const faqSchema = generateFAQSchema(faqs);
 
@@ -241,12 +230,12 @@ export default async function LetterPage({
       url: "/",
     },
     {
-      name: "Morse Code Alphabet",
-      url: "/morse-code-alphabet",
+      name: "Morse Code Numbers",
+      url: "/morse-code-numbers",
     },
     {
       name: `Letter ${char}`,
-      url: `/morse-code-letter/${letter}`,
+      url: `/morse-code-number/${number}`,
     },
   ]);
 
@@ -285,10 +274,10 @@ export default async function LetterPage({
             <span className="text-slate-400">/</span>
 
             <Link
-              href="/morse-code-alphabet"
+              href="/morse-code-numbers"
               className="hover:text-green-600 transition-colors"
             >
-              morse-code-alphabet
+              morse-code-numbers
             </Link>
 
             <span className="text-slate-400">/</span>
@@ -306,7 +295,7 @@ export default async function LetterPage({
             </h1>
 
             <p className="text-lg text-slate-600">
-              Learn everything about the letter {char} in Morse code,
+              Learn everything about the number {char} in Morse code,
               including its signal pattern, audio rhythm, timing,
               practical examples, and proven practice tips to master it.
             </p>
@@ -529,11 +518,11 @@ export default async function LetterPage({
           <section className="mb-10">
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              Examples of {char} in Words
+              Examples Using {char}
             </h2>
 
             <p className="text-slate-600 mb-4">
-              Here are common English words that contain the letter {char},
+              Here are practical examples that use the number {char},
               shown with their complete Morse code translations. When a
               dedicated guide is available, you can open it to learn more
               about that word in Morse code.
@@ -619,7 +608,7 @@ export default async function LetterPage({
           <section className="mb-10">
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              Practice Tips for Mastering {char}
+              Practice Tips for Mastering Number {char}
             </h2>
 
             <div className="prose-content text-slate-600 leading-relaxed space-y-4">
@@ -635,7 +624,7 @@ export default async function LetterPage({
           <section className="mb-10">
 
             <h2 className="text-2xl font-bold text-slate-900 mb-4">
-              Fun Facts About {char} in Morse Code
+              Fun Facts About Number {char} in Morse Code
             </h2>
 
             <div className="space-y-4">
@@ -697,7 +686,7 @@ export default async function LetterPage({
           <section className="mb-10">
 
             <h2 className="text-2xl font-bold text-slate-900 mb-6">
-              Related Letters
+              Related Numbers
             </h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -719,8 +708,7 @@ export default async function LetterPage({
                 // Automatically select the correct route
                 // for letters or numbers.
 
-                const href =
-                  relatedData?.type === "number"
+                const href = /^\d$/.test(relatedChar)
                     ? `/morse-code-number/${relatedChar}`
                     : `/morse-code-letter/${relatedChar.toLowerCase()}`;
 
@@ -785,9 +773,9 @@ export default async function LetterPage({
             <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
 
               <p className="text-slate-600 mb-4">
-                Ready to practice the letter {char} in Morse code?
+                Ready to practice the number {char} in Morse code?
                 Use our full translator to convert any text to Morse code
-                and back. Try typing words that contain {char} to see how
+                and back. Try typing numbers and messages that contain {char} to see how
                 it flows within complete messages.
               </p>
 

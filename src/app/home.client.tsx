@@ -583,6 +583,54 @@ export default function HomeClient({ faqs }: Props) {
           : ""
       }
     >
+      {/* ─── HERO / H1 SECTION ─── */}
+
+      <section className="relative bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 dark:from-green-800 dark:via-green-900 dark:to-emerald-950 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjxwYXRoIGQ9Ik0zNiAzNHYySDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-12">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-3">
+              <Radio className="w-4 h-4" />
+              Free Online Tool — No Registration Required
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4">
+              Morse Code Translator
+            </h1>
+
+            <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-5">
+              Convert text to Morse code or decode Morse code to text instantly.
+              This free online Morse Code Translator supports International Morse Code,
+              letters A–Z, numbers 0–9, and supported punctuation.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-green-200 dark:text-green-300">
+              <span className="flex items-center gap-1.5">
+                <Zap className="w-4 h-4" />
+                Real-Time Translation
+              </span>
+
+              <span className="flex items-center gap-1.5">
+                <Headphones className="w-4 h-4" />
+                Audio Playback
+              </span>
+
+              <span className="flex items-center gap-1.5">
+                <Eye className="w-4 h-4" />
+                Visual Flash
+              </span>
+
+              <span className="flex items-center gap-1.5">
+                <Download className="w-4 h-4" />
+                WAV Download
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* ─── TRANSLATOR TOOL ─── */}
 
       <section
@@ -959,80 +1007,6 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-      {/* ─── HERO / H1 SECTION ─── */}
-
-      <section className="relative bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 dark:from-green-800 dark:via-green-900 dark:to-emerald-950 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiPjxwYXRoIGQ9Ik0zNiAzNHYySDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
-              <Radio className="w-4 h-4" />
-              Free Online Tool — No Registration Required
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-              Morse Code Translator
-            </h1>
-
-            <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-6">
-              Convert text to Morse
-              code and decode Morse
-              code to text instantly
-              with our free online Morse
-              Code Translator. The tool
-              uses the International
-              Morse Code system,
-              standardized through ITU
-              recommendations, and
-              supports real-time
-              encoding and decoding.
-            </p>
-
-            <p className="text-base sm:text-lg text-green-100/90 dark:text-green-200/90 max-w-3xl mx-auto leading-relaxed mb-8">
-              Enter letters, numbers,
-              punctuation, or complete
-              messages and get an
-              instant translation.
-              Listen with adjustable
-              audio speed in words per
-              minute (WPM), use visual
-              flash mode, copy your
-              result, or save Morse
-              code as TXT or WAV audio.
-              It is designed for
-              beginners, students,
-              amateur radio operators,
-              educators, and anyone
-              learning the Morse Code
-              Alphabet.
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-green-200 dark:text-green-300">
-              <span className="flex items-center gap-1.5">
-                <Zap className="w-4 h-4" />
-                Real-Time Translation
-              </span>
-
-              <span className="flex items-center gap-1.5">
-                <Headphones className="w-4 h-4" />
-                Audio Playback
-              </span>
-
-              <span className="flex items-center gap-1.5">
-                <Eye className="w-4 h-4" />
-                Visual Flash
-              </span>
-
-              <span className="flex items-center gap-1.5">
-                <Download className="w-4 h-4" />
-                WAV Download
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ─── STATISTICS BAR ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
@@ -1053,8 +1027,8 @@ export default function HomeClient({ faqs }: Props) {
               ),
             },
             {
-              stat: "15+",
-              label: "Punctuation Marks",
+              stat: "8",
+              label: "Supported Punctuation",
               icon: (
                 <Star className="w-5 h-5" />
               ),
