@@ -13,12 +13,12 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "what-is-morse-code-complete-history-guide",
-    title: "What is Morse Code? Complete History & Guide (2025)",
+    title: "What Is Morse Code? Complete History, Uses & Guide",
     description:
-      "Discover the fascinating history of Morse code from Samuel Morse's invention in 1836 to modern-day applications in emergency signaling, amateur radio, and assistive technology. A complete guide for 2025.",
+      "Discover the fascinating history of Morse code from Samuel Morse's invention in 1836 to modern-day applications in emergency signaling, amateur radio, and assistive technology. A complete evergreen guide for beginners and enthusiasts.",
     category: "History",
     author: "Morse Code World",
-    date: "2025-01-15",
+    date: "2026-08-20",
     readTime: "12 min",
     keywords: [
       "what is morse code",
@@ -126,7 +126,7 @@ Morse code has left an indelible mark on popular culture. It has appeared in cou
 
 The legacy of Morse code extends beyond communication itself. It demonstrated that complex information could be encoded in a simple binary system — a principle that underlies all modern digital computing. In a very real sense, Samuel Morse and Alfred Vail helped lay the conceptual foundation for the digital age we live in today.
 
-Morse code was officially recognized by UNESCO as part of the intangible cultural heritage of humanity, a testament to its enduring significance. It remains a powerful reminder that the simplest ideas can sometimes have the most profound and lasting impact.
+Morse code remains an important part of communications history and continues to be preserved, studied, and practiced by amateur radio communities and historical organizations. It remains a powerful reminder that the simplest ideas can sometimes have the most profound and lasting impact.
 
 For a chronological look at the major milestones, see our [When Was Morse Code Invented timeline guide](/blog/when-was-morse-code-invented-history-timeline).`,
   },
@@ -137,7 +137,7 @@ For a chronological look at the major milestones, see our [When Was Morse Code I
       "A step-by-step guide to learning Morse code from scratch using proven methods like the Koch method, Farnsworth timing, mnemonics, and daily practice routines.",
     category: "Learning",
     author: "Morse Code World",
-    date: "2025-01-10",
+    date: "2026-08-18",
     readTime: "10 min",
     keywords: [
       "learn morse code",
@@ -146,7 +146,7 @@ For a chronological look at the major milestones, see our [When Was Morse Code I
       "morse code for beginners",
       "how to learn morse code",
     ],
-    content: `Learning Morse code might seem intimidating at first, but with the right approach, anyone can master it. Whether you want to get your amateur radio license, prepare for emergencies, or simply learn a fascinating skill, this step-by-step guide will take you from complete beginner to confident Morse code operator. These seven proven steps have helped thousands of learners build fluency in Morse code. You can practice what you learn with our [Morse Code Translator](/) as you build speed and accuracy.
+    content: `Learning Morse code might seem intimidating at first, but with the right approach, anyone can master it. Whether you want to get your amateur radio license, prepare for emergencies, or simply learn a fascinating skill, this step-by-step guide will take you from complete beginner to confident Morse code operator. These seven practical steps combine established Morse code training approaches with a structured daily practice routine. You can practice what you learn with our [Morse Code Translator](/) as you build speed and accuracy.
 
 ## Step 1: Start with the Most Common Letters
 
@@ -183,7 +183,7 @@ As you practice these words, focus on hearing the rhythm of each character rathe
 
 ## Step 3: Learn the Koch Method
 
-The Koch method, developed by German psychologist Ludwig Koch in the 1930s, is the gold standard for Morse code training. It is used by amateur radio organizations worldwide and has been proven to be significantly more effective than older methods.
+The Koch method, developed by Ludwig Koch in the 1930s, is a widely used Morse code training approach. It focuses on recognizing complete characters by sound instead of counting individual dots and dashes.
 
 ### How the Koch Method Works
 
@@ -201,7 +201,7 @@ The Koch method is simple in concept but powerful in practice:
 
 The Koch method works because it leverages the brain's pattern recognition abilities. When you listen at full speed, your brain learns to hear each character as a single sound pattern, much like you recognize a spoken word without thinking about its individual phonemes. This is fundamentally different from the old approach of learning slowly and counting dots, which builds a counterproductive habit that is very difficult to break.
 
-Most Koch method practitioners can learn the complete alphabet in 2-4 weeks with 15-20 minutes of daily practice. The full character set (including numbers and punctuation) typically takes 6-8 weeks.
+Learning time varies by learner. With consistent daily practice, many beginners can memorize the alphabet within a few weeks, while comfortable listening fluency usually takes longer.
 
 ## Step 4: Use Mnemonic Devices for Tricky Characters
 
@@ -299,7 +299,7 @@ For the history behind the system you are learning, read our [Complete History G
       "Full reference chart of all Morse code characters including letters A-Z, numbers 0-9, punctuation marks, and special characters with memorization tips and learning order recommendations.",
     category: "Reference",
     author: "Morse Code World",
-    date: "2025-01-08",
+    date: "2026-08-16",
     readTime: "8 min",
     keywords: [
       "morse code chart",
@@ -445,7 +445,7 @@ For a detailed step-by-step learning plan, read our [7 Proven Steps for Beginner
       "Complete guide to the SOS distress signal including its history, what SOS means, the Titanic story, how to signal SOS with light and sound, and modern emergency alternatives.",
     category: "Emergency",
     author: "Morse Code World",
-    date: "2025-01-05",
+    date: "2026-08-14",
     readTime: "9 min",
     keywords: [
       "SOS signal",
@@ -562,7 +562,7 @@ For the historical background behind Morse code and SOS, read our [Complete Hist
       "Full breakdown of I LOVE YOU in Morse code with each letter explained, creative uses including bracelets and tattoos, the morse code jewelry trend, and romantic gift ideas.",
     category: "Phrases",
     author: "Morse Code World",
-    date: "2025-01-03",
+    date: "2026-08-12",
     readTime: "7 min",
     keywords: [
       "I love you morse code",
@@ -696,7 +696,7 @@ For more common phrases, see our guide to [Hello in Morse Code and 15 Common Phr
       "Fascinating facts about Morse code from WWII POW communication and NASA to the fastest operators, cultural heritage, binary computing inspiration, and much more.",
     category: "Facts",
     author: "Morse Code World",
-    date: "2024-12-20",
+    date: "2026-08-10",
     readTime: "13 min",
     keywords: [
       "morse code facts",
@@ -760,7 +760,7 @@ Lighthouses and navigation buoys often identify themselves using Morse code ligh
 
 ## Fact 14: Morse Code Is Recognized Cultural Heritage
 
-Morse code has been recognized by UNESCO and national heritage organizations as part of the intangible cultural heritage of humanity. Countries including France and Slovenia have formally listed Morse code in their national heritage registers, acknowledging its historical significance and cultural impact.
+Morse code has strong historical and cultural significance, and its preservation is supported by amateur radio communities, museums, archives, and historical organizations. Specific heritage listings should be verified by country and organization rather than treated as a single worldwide UNESCO designation.
 
 ## Fact 15: Your iPhone Can Flash SOS in Morse Code
 
@@ -784,7 +784,7 @@ During the Vietnam War, American POWs developed a sophisticated tap code system 
 
 ## Fact 20: Pilots Must Learn Morse Code for Navigation
 
-Even in the era of GPS and digital avionics, pilots are required to learn Morse code to identify navigation beacons. VOR (VHF Omnidirectional Range) stations transmit a three-letter identifier in Morse code, and pilots must be able to decode this to confirm they are tuned to the correct frequency. This requirement remains part of pilot training worldwide.
+Even in the era of GPS and digital avionics, pilots may need to recognize Morse code identifiers used by certain navigation aids. VOR (VHF Omnidirectional Range) stations transmit a three-letter identifier in Morse code, and pilots must be able to decode this to confirm they are tuned to the correct frequency. The practical importance of this skill varies by aircraft, navigation system, region, and training program.
 
 ## Fact 21: The Last Commercial Morse Message Was Sent in 2006
 
@@ -815,7 +815,7 @@ The historical milestones are covered in detail throughout this guide.`,
       "Complete guide to Morse code timing rules including the PARIS standard, dot/dash ratios, timing units, WPM calculation, Farnsworth method, and professional speed standards.",
     category: "Technical",
     author: "Morse Code World",
-    date: "2024-12-18",
+    date: "2026-08-08",
     readTime: "8 min",
     keywords: [
       "morse code timing",
@@ -862,9 +862,7 @@ Morse code speed is measured in Words Per Minute (WPM), but this requires a stan
 
 The word "PARIS" was chosen as the standard because it represents exactly 50 timing units:
 
-- **P** (·——·): 2 dots + 1 dash = 2×1 + 1×3 + 3 intra-character gaps = 6 + 2 = 12 units (including element gaps: dit + 1-unit gap + dah-dah + 1-unit gap + dit = 1+1+3+1+3+1+1 = 11 units; more precisely, P has 4 elements and 3 intra-character gaps: 2 dots(2) + 1 dash(3) + 3 gaps(3) = 8, plus the 5 element lengths: actually let me recalculate)
-
-Let me be more precise. The total units for "PARIS" including standard inter-element gaps:
+The total timing for "PARIS," including standard intra-character, inter-character, and trailing word spacing, is calculated as follows:
 
 - P: · (1) + gap (1) + ——— (3) + gap (1) + ——— (3) + gap (1) + · (1) = 11 units
 - A: · (1) + gap (1) + ——— (3) = 5 units
@@ -892,7 +890,7 @@ This is why one WPM in Morse code equals exactly 50 timing units per minute. The
 
 An important distinction in Morse code practice is between **character speed** and **effective speed** (also called overall speed).
 
-- **Character speed** is the speed at which each individual character is sent. A character sent at 20 WPM character speed means each dot is 60 milliseconds long.
+- **Character speed** is the speed at which each individual character is sent. At 20 WPM, using the standard PARIS timing reference, each dot is approximately 60 milliseconds long.
 - **Effective speed** is the overall speed including the gaps between characters and words. If characters are sent at 20 WPM but with extra-long gaps, the effective speed might be only 12 WPM.
 
 This distinction is the basis of the Farnsworth method (see below).
@@ -971,7 +969,7 @@ To start practicing the timing techniques described here, read our [7-Step Learn
       "Complete translation of HELLO in Morse code plus 15 common phrases including OK, HELP, YES, NO, LOVE, GOODBYE, PLEASE, THANK YOU, SORRY, WELCOME, and more with full breakdowns.",
     category: "Phrases",
     author: "Morse Code World",
-    date: "2024-12-15",
+    date: "2026-08-06",
     readTime: "10 min",
     keywords: [
       "hello in morse code",
@@ -1196,12 +1194,12 @@ Use the translator above to practice each phrase.`,
   },
   {
     slug: "when-was-morse-code-invented-history-timeline",
-    title: "When Was Morse Code Invented? Complete Timeline (1832-2025)",
+    title: "When Was Morse Code Invented? Complete History Timeline",
     description:
-      "Detailed chronological timeline of Morse code from Samuel Morse's first concept in 1832 through the telegraph era, Titanic, WWII, and modern-day applications in 2025.",
+      "Detailed chronological timeline of Morse code from Samuel Morse's first concept in 1832 through the telegraph era, Titanic, WWII, and its continuing role in modern communication.",
     category: "History",
     author: "Morse Code World",
-    date: "2024-12-12",
+    date: "2026-08-04",
     readTime: "10 min",
     keywords: [
       "when was morse code invented",
@@ -1209,7 +1207,7 @@ Use the translator above to practice each phrase.`,
       "telegraph history",
       "morse code history dates",
     ],
-    content: `Morse code has a rich and eventful history spanning nearly two centuries. For the big-picture explanation before diving into individual dates, this timeline follows the major milestones in chronological order. From its conceptual origins aboard a transatlantic ship to its current role in amateur radio and emergency signaling, the story of Morse code mirrors the broader story of human communication technology. This complete timeline traces every major milestone from 1832 to 2025. You can connect the history to modern practice with our [Morse Code Translator](/), which lets you encode and decode messages instantly.
+    content: `Morse code has a rich and eventful history spanning nearly two centuries. For the big-picture explanation before diving into individual dates, this timeline follows the major milestones in chronological order. From its conceptual origins aboard a transatlantic ship to its current role in amateur radio and emergency signaling, the story of Morse code mirrors the broader story of human communication technology. This complete timeline traces the major milestones from 1832 to the present day. You can connect the history to modern practice with our [Morse Code Translator](/), which lets you encode and decode messages instantly.
 
 ## 1832: The Spark of an Idea
 
@@ -1325,12 +1323,12 @@ In recent years, Morse code has experienced something of a renaissance:
 
 - **Smartphone integration:** iOS and Android have built-in SOS Morse code features
 - **Accessibility applications:** Morse code is used in assistive technology for people with severe disabilities
-- **Cultural heritage:** UNESCO recognition has raised awareness of Morse code's historical significance
+- **Cultural heritage:** its historical and cultural significance continues to attract new interest
 - **Ham radio popularity:** Amateur radio continues to grow, with Morse code (CW) remaining the most popular mode for long-distance (DX) communication
 - **Creative expression:** Morse code jewelry, tattoos, and art continue to gain popularity
 - **STEM education:** Morse code is used in educational settings to teach binary thinking, communication theory, and history
 
-## 2025: Morse Code in the Digital Age
+## Morse Code in the Digital Age
 
 Today, nearly two centuries after its invention, Morse code remains a living, active communication system. It is used daily by thousands of amateur radio operators, taught in military and aviation training programs, incorporated into emergency signaling systems, and celebrated as a cultural and historical treasure.
 
@@ -1340,21 +1338,20 @@ For a general overview, read our [Complete History Guide](/blog/what-is-morse-co
   },
   {
     slug: "morse-code-in-modern-technology-applications",
-    title: "Morse Code in Modern Technology: Surprising Uses in 2025",
+    title: "Morse Code in Modern Technology: Uses Today",
     description:
       "Discover the surprising ways Morse code is used in modern technology from ham radio CW and accessibility tools to aviation NAVAIDs, maritime communication, iOS SOS, and military applications.",
     category: "Technology",
     author: "Morse Code World",
-    date: "2024-12-10",
+    date: "2026-08-03",
     readTime: "8 min",
     keywords: [
       "morse code modern uses",
       "morse code technology",
       "morse code applications",
-      "morse code 2025",
-      "morse code today",
+            "morse code today",
     ],
-    content: `It would be easy to assume that Morse code is a relic of the past — a system rendered obsolete by the telephone, internet, and satellite communication. But nearly two centuries after its invention, Morse code continues to serve important roles in modern technology and daily life. For the historical background, see our [Complete Morse Code History Guide](/blog/what-is-morse-code-complete-history-guide). From emergency signaling on your smartphone to long-distance amateur radio communication, here are the surprising ways Morse code is used in 2025. You can try these modern applications yourself with our [Morse Code Translator](/).
+    content: `It would be easy to assume that Morse code is a relic of the past — a system rendered obsolete by the telephone, internet, and satellite communication. But nearly two centuries after its invention, Morse code continues to serve important roles in modern technology and daily life. For the historical background, see our [Complete Morse Code History Guide](/blog/what-is-morse-code-complete-history-guide). From emergency signaling on your smartphone to long-distance amateur radio communication, here are the practical ways Morse code is still used today. You can try these modern applications yourself with our [Morse Code Translator](/).
 
 ## Amateur Radio (CW Communication)
 
@@ -1458,7 +1455,7 @@ Morse code is increasingly used as an educational tool in STEM (Science, Technol
 - **Electronics projects:** Building simple telegraph circuits is a popular electronics project that teaches basic circuitry, electromagnetism, and signal processing
 - **Problem-solving:** Decoding and encoding messages develops logical thinking and attention to detail
 
-The enduring relevance of Morse code in 2025 demonstrates that good ideas do not become obsolete — they find new applications. A communication system based on just two signals, developed nearly 200 years ago, continues to serve humanity in ways its inventors could never have imagined.
+The enduring relevance of Morse code today demonstrates that good ideas do not become obsolete — they find new applications. A communication system based on just two signals, developed nearly 200 years ago, continues to serve humanity in ways its inventors could never have imagined.
 
 To learn the basics, see our [7-Step Learning Guide](/blog/how-to-learn-morse-code-7-easy-steps).`,
   },
@@ -1469,7 +1466,7 @@ To learn the basics, see our [7-Step Learning Guide](/blog/how-to-learn-morse-co
       "Complete guide to binary code including how computers use it, the ASCII table, text to binary conversion examples, binary to decimal conversion, and a comparison between binary and Morse code.",
     category: "Reference",
     author: "Morse Code World",
-    date: "2024-12-08",
+    date: "2026-08-02",
     readTime: "8 min",
     keywords: [
       "binary code translator",
@@ -1656,7 +1653,7 @@ To learn Morse code itself, try our [7-Step Guide](/blog/how-to-learn-morse-code
       "50 quiz questions organized by difficulty from beginner to expert, covering letters, numbers, phrases, history, timing, and Morse code trivia with answers provided.",
     category: "Quiz",
     author: "Morse Code World",
-    date: "2024-12-05",
+    date: "2026-08-01",
     readTime: "12 min",
     keywords: [
       "morse code quiz",

@@ -116,7 +116,13 @@ function ThemeToggle() {
       onClick={cycle}
       className="p-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors cursor-pointer"
       aria-label={`Current theme: ${resolvedTheme}. Click to change.`}
-      title={theme === "system" ? `System (${resolvedTheme})` : theme?.charAt(0).toUpperCase() + theme?.slice(1)}
+      title={
+  theme === "system"
+    ? `System (${resolvedTheme})`
+    : theme
+      ? theme.charAt(0).toUpperCase() + theme.slice(1)
+      : "Theme"
+}
     >
       {resolvedTheme === "dark" ? (
         <Moon className="w-4 h-4 text-amber-400" />

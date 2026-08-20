@@ -2,7 +2,13 @@
 
 import { useState, useCallback } from "react";
 import Link from "next/link";
-import { MORSE_CODE, playMorseAudio, getIsPlaying, stopMorseAudio } from "@/lib/morse";
+import {
+  MORSE_CODE,
+  playMorseAudio,
+  getIsPlaying,
+  stopMorseAudio,
+} from "@/lib/morse";
+
 import {
   Volume2,
   VolumeX,
@@ -25,8 +31,12 @@ interface AlphabetClientProps {
   faqs: FAQItem[];
 }
 
-export default function AlphabetClient({ faqs }: AlphabetClientProps) {
-  const [playingLetter, setPlayingLetter] = useState<string | null>(null);
+export default function AlphabetClient({
+  faqs,
+}: AlphabetClientProps) {
+  const [playingLetter, setPlayingLetter] = useState<string | null>(
+    null
+  );
 
   const playLetter = useCallback(
     async (letter: string, code: string) => {
@@ -35,8 +45,15 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
         setPlayingLetter(null);
         return;
       }
+
       setPlayingLetter(letter);
-      await playMorseAudio(code, { speed: 18, frequency: 600, volume: 0.4 });
+
+      await playMorseAudio(code, {
+        speed: 18,
+        frequency: 600,
+        volume: 0.4,
+      });
+
       setPlayingLetter(null);
     },
     []
@@ -46,8 +63,10 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
 
   return (
     <main className="min-h-screen">
-      {/* ─── Breadcrumb + H1 + Introduction ─── */}
+
+      {/* ─── Breadcrumb + Introduction ─── */}
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
         <nav
           className="flex items-center gap-2 text-sm text-slate-500 mb-6"
           aria-label="Breadcrumb"
@@ -58,7 +77,9 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
           >
             Home
           </Link>
+
           <span className="text-slate-400">/</span>
+
           <span className="text-slate-900 font-medium">
             Morse Code Alphabet
           </span>
@@ -66,69 +87,66 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
 
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-50 border border-green-200 rounded-full text-sm text-green-700 mb-6">
           <BookOpen className="w-4 h-4" />
-          Educational Reference Guide &middot; International Morse Code Standard
-          (ITU-R M.1677)
+          International Morse Code Reference · ITU-R M.1677
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-5">
           Morse Code Alphabet
         </h1>
 
-        <div className="text-lg text-slate-600 max-w-3xl space-y-4 mb-4">
-          <p>
-            The Morse Code Alphabet is the foundational communication system that
-            assigns a unique pattern of dots and dashes to each of the 26 letters
-            in the English alphabet. Originally developed in the 1830s by Samuel
-            Morse and Alfred Vail, this encoding system revolutionized
-            long-distance communication and remains relevant today in amateur radio,
-            aviation, emergency signaling, and education. The beauty of the Morse
-            Code Alphabet lies in its simplicity — with just two signal types (dots
-            and dashes), it is possible to encode any message in any language that
-            uses the Latin alphabet.
-          </p>
-          <p>
-            Understanding the Morse Code Alphabet is essential for anyone interested
-            in radio communication, emergency preparedness, or historical signaling
-            methods. Each letter was carefully assigned its dot-dash pattern based on
-            how frequently it appears in English text. The most common letter, E,
-            gets the simplest code (a single dot), while less common letters like Q
-            and J have four-element codes. This frequency-based design makes Morse
-            code efficient to transmit and receive.
-          </p>
-          <p>
-            On this page, you will find the complete International Morse Code
-            Alphabet from A to Z, presented as an interactive chart with audio
-            playback for every letter. Click the play button on any letter card to
-            hear its sound, or click the letter itself to view its detailed guide.
-            You will also learn how to read Morse code symbols correctly, proven
-            techniques for memorizing the entire alphabet, common mistakes that
-            beginners should avoid, a brief history of how the alphabet was
-            developed, and where it is used in the modern world.
-          </p>
-        </div>
+        <div className="text-lg text-slate-600 max-w-4xl space-y-4">
 
-        <p className="text-sm text-slate-500">
-          Updated regularly to match the ITU-R M.1677 standard.
-        </p>
+          <p>
+            The Morse Code Alphabet assigns a unique sequence of dots and
+            dashes to each of the 26 letters from A to Z. The modern
+            International Morse Code system is standardized for
+            radiocommunication and remains useful for amateur radio,
+            signaling, education, accessibility tools, and emergency
+            communication.
+          </p>
+
+          <p>
+            Each Morse character is built from only two signal elements:
+            a short signal called a <strong>dot or dit</strong> and a
+            longer signal called a <strong>dash or dah</strong>. For
+            example, <strong>E is represented by a single dot (.)</strong>,
+            while <strong>T is represented by a single dash (-)</strong>.
+            Longer patterns create the remaining letters, numbers, and
+            punctuation characters.
+          </p>
+
+          <p>
+            Below you can explore the complete Morse Code Alphabet from
+            A to Z. Click any letter to open its detailed guide, or use
+            the audio button to hear how that character sounds. You will
+            also find Morse code timing rules, memorization techniques,
+            the Koch method, common beginner mistakes, history, modern
+            applications, and frequently asked questions.
+          </p>
+
+        </div>
       </section>
 
-      {/* ─── Complete Morse Code Alphabet Chart ─── */}
+      {/* ─── Complete Alphabet Chart ─── */}
       <section className="bg-slate-50 py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Complete Morse Code Alphabet Chart
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            Click on any letter to view its detailed guide with examples and
-            practice tips. Use the play button to hear each letter&apos;s Morse code
-            sound. This chart follows the International Morse Code standard
-            (ITU-R M.1677) used worldwide.
+            Explore all 26 letters in the International Morse Code
+            Alphabet. Select a letter for a detailed explanation or
+            use the audio button to hear its Morse code pattern.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3">
+
             {letters.map((letter) => {
               const code = MORSE_CODE[letter];
               const isPlaying = playingLetter === letter;
+
               return (
                 <div
                   key={letter}
@@ -138,13 +156,16 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
                       : "border-slate-200 hover:border-green-400 hover:shadow-md"
                   }`}
                 >
+
                   <div className="flex items-center justify-center gap-1 mb-2">
+
                     <Link
                       href={`/morse-code-letter/${letter.toLowerCase()}`}
                       className="text-3xl font-bold text-slate-900 hover:text-green-600 transition-colors"
                     >
                       {letter}
                     </Link>
+
                     <button
                       onClick={() => playLetter(letter, code)}
                       className={`p-1.5 rounded-full transition-colors ${
@@ -169,10 +190,14 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
                         <Volume2 className="w-4 h-4" />
                       )}
                     </button>
+
                   </div>
+
                   <div className="flex items-center justify-center gap-1 mb-2 min-h-[12px]">
+
                     {code.split("").map((char, i) => {
-                      if (char === ".")
+
+                      if (char === ".") {
                         return (
                           <span
                             key={i}
@@ -183,7 +208,9 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
                             }`}
                           />
                         );
-                      if (char === "-")
+                      }
+
+                      if (char === "-") {
                         return (
                           <span
                             key={i}
@@ -194,954 +221,1144 @@ export default function AlphabetClient({ faqs }: AlphabetClientProps) {
                             }`}
                           />
                         );
+                      }
+
                       return null;
                     })}
+
                   </div>
+
                   <div className="text-sm font-mono text-green-600 font-medium">
                     {code}
                   </div>
+
                 </div>
               );
             })}
+
           </div>
 
-          {/* Callout box */}
           <div className="mt-8 p-5 bg-green-50 border border-green-200 rounded-xl">
-            <p className="text-green-800 font-medium mb-1">Learning Tip</p>
-            <p className="text-green-700 text-sm">
-  Letters E, T, A, I, N, O, S, and H account for approximately 65% of
-  all letters used in English. Start by mastering these eight letters
-  first — they will give you the best return on your learning effort
-  and let you recognize many common words almost immediately.
-</p>
 
-<p className="mt-3 text-sm text-green-700">
-  Looking for digits too? Continue with our{" "}
-  <Link
-    href="/morse-code-numbers"
-    className="font-medium underline"
-  >
-    Morse Code Numbers Guide
-  </Link>{" "}
-  to learn numbers 0–9.
-</p>
+            <p className="text-green-800 font-semibold mb-2">
+              Learning Tip
+            </p>
+
+            <p className="text-green-700 text-sm leading-relaxed">
+              Start with simple characters such as E (.), T (-), I (..),
+              A (.-), N (-.) and M (--). These short patterns help you
+              understand how Morse code is structured before moving to
+              longer combinations.
+            </p>
+
+            <p className="mt-3 text-sm text-green-700">
+              Want to learn digits too? Visit our{" "}
+              <Link
+                href="/morse-code-numbers"
+                className="font-semibold underline"
+              >
+                Morse Code Numbers Guide
+              </Link>{" "}
+              to learn numbers 0–9.
+            </p>
+
           </div>
+
         </div>
       </section>
 
-      {/* ─── How to Read the Morse Code Alphabet ─── */}
+      {/* ─── How to Read ─── */}
       <section className="py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             How to Read the Morse Code Alphabet
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            Reading the Morse Code Alphabet requires understanding just a few
-            fundamental timing rules. Once you grasp these basics, every letter
-            becomes a recognizable rhythmic pattern rather than a sequence of
-            individual dots and dashes to be counted.{" "}
-For a complete explanation of spacing rules and transmission speed, see our{" "}
-<Link
-  href="/morse-code-timing"
-  className="text-green-600 font-medium underline"
->
-  Morse Code Timing Guide
-</Link>.
+            Morse code is not only about recognizing dots and dashes.
+            Correct timing and spacing are also essential. Once you
+            understand the basic timing units, each character becomes
+            easier to recognize as a complete sound pattern.
           </p>
 
+          <div className="mb-8">
+            <Link
+              href="/morse-code-timing"
+              className="inline-flex items-center gap-2 text-green-600 font-semibold hover:underline"
+            >
+              Learn the complete Morse Code Timing rules
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
           <div className="space-y-5">
-            {/* Dots */}
+
             <div className="bg-white border border-slate-200 rounded-xl p-5">
+
               <h3 className="font-semibold text-slate-900 mb-2 text-lg">
                 Dots (Dit) — The Short Signal
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                A dot, commonly called a &quot;dit&quot; in Morse code terminology, is the
-                fundamental unit of all Morse code timing. Every other duration in
-                the system is measured relative to the dot. When transmitted by
-                sound, a dot is a short beep lasting exactly one time unit. When
-                transmitted by light (such as a flashlight or signal lamp), a dot
-                is a brief flash. The letter E is the simplest example, consisting
-                of a single dot. When speaking Morse code aloud, operators say
-                &quot;dit&quot; for each dot.
+                A dot, often called a <strong>dit</strong>, is the basic
+                timing unit in Morse code. It represents a short sound,
+                flash, or electrical signal. The letter E is the simplest
+                example because it contains only one dot.
               </p>
-              <div className="mt-3 flex items-center gap-2">
-                <span className="text-sm text-slate-500">Example:</span>
+
+              <div className="mt-3">
                 <span className="font-mono text-green-600 font-medium">
-                  E = . (one dit)
+                  E = .
                 </span>
               </div>
+
             </div>
 
-            {/* Dashes */}
             <div className="bg-white border border-slate-200 rounded-xl p-5">
+
               <h3 className="font-semibold text-slate-900 mb-2 text-lg">
                 Dashes (Dah) — The Long Signal
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                A dash, commonly called a &quot;dah,&quot; is exactly three times the length
-                of a dot. This precise 3:1 ratio is critical — if the dash is too
-                short or too long relative to the dot, the receiving operator may
-                misinterpret the signal. A dash is not a &quot;long dot&quot;; it is a
-                distinctly different signal with a specific duration. When
-                transmitted by sound, a dash is a longer beep. When spoken aloud,
-                operators say &quot;dah&quot; for each dash.
+                A dash, often called a <strong>dah</strong>, lasts three
+                time units. The relationship between a dot and dash is
+                therefore 1:3. The letter T is represented by one dash.
               </p>
-              <div className="mt-3 flex items-center gap-2">
-                <span className="text-sm text-slate-500">Example:</span>
+
+              <div className="mt-3">
                 <span className="font-mono text-green-600 font-medium">
-                  T = - (one dah)
+                  T = -
                 </span>
               </div>
+
             </div>
 
-            {/* Letter spacing */}
             <div className="bg-white border border-slate-200 rounded-xl p-5">
+
               <h3 className="font-semibold text-slate-900 mb-2 text-lg">
-                Letter Spacing — Gaps Between Symbols
+                Spacing Between Elements and Letters
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                Within a single letter, the gap between each dot or dash is one
-                dot-unit long. For example, the letter A (.-) has a one-unit gap
-                between the dot and the dash. Between two complete letters, the
-                gap is three dot-units long. This means the space between letters
-                is the same duration as a dash, which helps operators distinguish
-                where one letter ends and the next begins.
+                The gap between individual dots and dashes inside one
+                character is one time unit. The gap between complete
+                letters is three units. These spacing rules help a
+                receiver distinguish one character from another.
               </p>
-              <div className="mt-3 flex items-center gap-4 flex-wrap">
-                <span className="text-sm text-slate-500">
-                  Intra-character gap: 1 dot-unit
-                </span>
-                <span className="text-sm text-slate-500">
-                  Inter-character gap: 3 dot-units
-                </span>
-              </div>
+
             </div>
 
-            {/* Word spacing */}
             <div className="bg-white border border-slate-200 rounded-xl p-5">
+
               <h3 className="font-semibold text-slate-900 mb-2 text-lg">
-                Word Spacing — Gaps Between Words
+                Word Spacing
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                The gap between words is seven dot-units long. This is
-                significantly longer than any other gap in the system, making it
-                easy to identify word boundaries. In written Morse code, words are
-                separated by a forward slash (/). In audio transmission, the
-                seven-unit silence between words is unmistakable once you train
-                your ear to recognize it. This spacing rule is consistent across
-                all Morse code communication methods, whether transmitted by
-                radio, light, sound, or visual signals.
+                The standard gap between complete words is seven dot
+                units. In written Morse code, a forward slash is often
+                used to visually separate words.
               </p>
-              <div className="mt-3 flex items-center gap-2">
-                <span className="text-sm text-slate-500">
-                  Word gap: 7 dot-units
-                </span>
-              </div>
+
             </div>
+
           </div>
 
-          {/* Timing summary table */}
           <div className="mt-8 overflow-x-auto">
+
             <table className="w-full border-collapse bg-white rounded-xl border border-slate-200 overflow-hidden">
+
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
+
                   <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">
                     Element
                   </th>
+
                   <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">
                     Duration
                   </th>
+
                   <th className="text-left px-4 py-3 text-sm font-semibold text-slate-700">
                     Description
                   </th>
+
                 </tr>
               </thead>
+
               <tbody>
+
                 <tr className="border-b border-slate-100">
-                  <td className="px-4 py-3 font-semibold text-slate-900">Dot (Dit)</td>
-                  <td className="px-4 py-3 text-slate-600">1 unit</td>
-                  <td className="px-4 py-3 text-slate-600 text-sm">
-                    The basic time unit; short signal
+                  <td className="px-4 py-3 font-semibold">
+                    Dot (Dit)
+                  </td>
+                  <td className="px-4 py-3">
+                    1 unit
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-600">
+                    Basic short signal
                   </td>
                 </tr>
+
                 <tr className="border-b border-slate-100 bg-slate-50/50">
-                  <td className="px-4 py-3 font-semibold text-slate-900">Dash (Dah)</td>
-                  <td className="px-4 py-3 text-slate-600">3 units</td>
-                  <td className="px-4 py-3 text-slate-600 text-sm">
-                    Exactly three times the length of a dot
+                  <td className="px-4 py-3 font-semibold">
+                    Dash (Dah)
+                  </td>
+                  <td className="px-4 py-3">
+                    3 units
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-600">
+                    Long signal
                   </td>
                 </tr>
+
                 <tr className="border-b border-slate-100">
-                  <td className="px-4 py-3 font-semibold text-slate-900">
-                    Symbol Gap
+                  <td className="px-4 py-3 font-semibold">
+                    Element Gap
                   </td>
-                  <td className="px-4 py-3 text-slate-600">1 unit</td>
-                  <td className="px-4 py-3 text-slate-600 text-sm">
-                    Gap between dots/dashes within a letter
+                  <td className="px-4 py-3">
+                    1 unit
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-600">
+                    Between dots and dashes inside one character
                   </td>
                 </tr>
+
                 <tr className="border-b border-slate-100 bg-slate-50/50">
-                  <td className="px-4 py-3 font-semibold text-slate-900">
+                  <td className="px-4 py-3 font-semibold">
                     Letter Gap
                   </td>
-                  <td className="px-4 py-3 text-slate-600">3 units</td>
-                  <td className="px-4 py-3 text-slate-600 text-sm">
-                    Gap between two complete letters
+                  <td className="px-4 py-3">
+                    3 units
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-600">
+                    Between complete characters
                   </td>
                 </tr>
+
                 <tr>
-                  <td className="px-4 py-3 font-semibold text-slate-900">
+                  <td className="px-4 py-3 font-semibold">
                     Word Gap
                   </td>
-                  <td className="px-4 py-3 text-slate-600">7 units</td>
-                  <td className="px-4 py-3 text-slate-600 text-sm">
-                    Gap between two complete words
+                  <td className="px-4 py-3">
+                    7 units
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-600">
+                    Between complete words
                   </td>
                 </tr>
+
               </tbody>
+
             </table>
+
           </div>
+
         </div>
       </section>
 
-      {/* ─── How to Memorize the Morse Code Alphabet ─── */}
+      {/* ─── Memorization ─── */}
       <section className="bg-slate-50 py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             How to Memorize the Morse Code Alphabet
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            Memorizing the Morse Code Alphabet is much easier when you use proven
-            techniques rather than simply staring at a chart. Here are the most
-            effective strategies used by successful Morse code operators around
-            the world.
+            The fastest way to become comfortable with Morse code is to
+            combine visual reference with regular listening practice.
+            The goal is eventually to recognize each character by its
+            sound rather than counting dots and dashes.
           </p>
 
           <div className="space-y-5">
-            {/* Tip 1 */}
+
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <h3 className="font-semibold text-slate-900 mb-2">
-                1. Learn the Most Common Letters First
+                1. Start with Short Patterns
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                Start with the eight most frequently used letters in English: E
-                (.), T (-), A (.-), I (..), N (-.), O (---), S (...), and H
-                (....). These eight letters account for approximately 65% of all
-                letters in typical English text. By mastering them first, you will
-                be able to recognize a significant portion of any Morse code
-                transmission almost immediately. This approach provides quick
-                wins that keep you motivated to continue learning.
+                Begin with simple characters such as E, T, I, A, N and M.
+                These characters contain only one or two signal elements
+                and provide a foundation for understanding longer Morse
+                patterns.
               </p>
+
             </div>
 
-            {/* Tip 2 */}
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <h3 className="font-semibold text-slate-900 mb-2">
-                2. Group Letters by Pattern
+                2. Learn Characters by Sound
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                Letters within the Morse Code Alphabet follow recognizable
-                patterns that make memorization much easier. For example, E (.),
-                I (..), S (...), and H (....) are all dots — they simply add one
-                more dot each time. Similarly, T (-), M (--), and O (---) are all
-                dashes. Letters like A (.-) and N (-.) are reverses of each other.
-                R (.-.) and L (.-..) share the same starting pattern. Understanding
-                these structural relationships helps your brain organize the
-                alphabet into logical groups rather than 26 random codes.
+                Instead of visually counting dots and dashes, listen to
+                the rhythm of each character. Experienced Morse operators
+                recognize patterns as complete sounds. For example, A
+                (.-) has a different rhythm from N (-.), even though both
+                contain one dot and one dash.
               </p>
+
             </div>
 
-            {/* Tip 3 */}
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
-              <h3 className="font-semibold text-slate-900 mb-2">
-                3. Practice with Audio Every Day
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                The single most important habit for learning the Morse Code
-                Alphabet is daily audio practice. Morse code is fundamentally an
-                auditory skill — experienced operators do not mentally decode dots
-                and dashes, they recognize the rhythmic sound of each letter as a
-                whole. Use the play buttons on the chart above to listen to each
-                letter repeatedly. Start at slow speeds (5 to 10 WPM) and
-                gradually increase as your recognition improves. Even 15 minutes
-                of focused listening practice per day will produce significant
-                results within a few weeks.
-              </p>
-            </div>
 
-            {/* Tip 4 */}
-            <div className="p-5 bg-white border border-slate-200 rounded-xl">
               <h3 className="font-semibold text-slate-900 mb-2">
-                4. Use Mnemonic Associations
+                3. Practice Regularly with Audio
               </h3>
-              <p className="text-slate-600 leading-relaxed">
-                Create vivid mental images that connect each letter to its Morse
-                code pattern. For example: &quot;A for Apple&quot; (a round apple with a
-                stem on top, like a dot above a dash), &quot;B for Boot&quot; (three dots
-                under a dash, like boot prints), or &quot;C for Cup&quot; (a cup holding
-                a dash and a dot). The more vivid, silly, or unusual the mental
-                image, the more effectively your brain will retain it. This
-                technique is especially helpful for letters with three or four
-                elements that are harder to learn through repetition alone.
-              </p>
-            </div>
 
-            {/* Tip 5 */}
-            <div className="p-5 bg-white border border-slate-200 rounded-xl">
-              <h3 className="font-semibold text-slate-900 mb-2">
-                5. Create Physical Flashcards
-              </h3>
               <p className="text-slate-600 leading-relaxed">
-                Making physical flashcards is one of the oldest and most effective
-                methods for memorizing the Morse Code Alphabet. Write the letter on
-                one side and its code on the other. Shuffle the deck and test
-                yourself in both directions: letter-to-code and code-to-letter.
-                Carry a small deck with you and practice during idle moments
-                throughout the day. Many operators report that the physical act of
-                writing the codes by hand significantly improves retention compared
-                to digital-only study.
-                {" "}
-If you have already memorized the letters, continue with our{" "}
-<Link
-  href="/morse-code-numbers"
-  className="text-green-600 font-medium underline"
->
-  Morse Code Numbers Guide
-</Link>{" "}
-to learn the complete International Morse Code character set.
-              </p>
-            </div>
-
-            {/* Tip 6 */}
-            <div className="p-5 bg-green-50 border border-green-200 rounded-xl">
-              <h3 className="font-semibold text-green-800 mb-2">
-                6. Use the Koch Method
-              </h3>
-              <p className="text-green-700 leading-relaxed">
-                The Koch method is the gold standard for learning Morse code
-                efficiently. Start with just two characters at full speed
-                (typically 20 WPM with Farnsworth timing). Once you can copy those
-                two characters at 90% accuracy, add a third. Continue adding one
-                character at a time until you have learned all 26 letters and
-                numbers. This method builds speed and accuracy simultaneously and
-                avoids the common trap of learning characters slowly and then
-                struggling to increase speed later. You can practice the Koch
-                method using our{" "}
+                Short and consistent listening sessions can help build
+                recognition over time. Use the audio controls in the
+                alphabet chart above or practice with our{" "}
                 <Link
-                  href="/"
-                  className="underline text-green-800 font-medium"
+                  href="/morse-code-sounds"
+                  className="text-green-600 font-semibold underline"
                 >
-  free translator tool
-</Link>
-                {" "}
-                or dedicated apps like LCWO and G4FON.
+                  Morse Code Sounds
+                </Link>{" "}
+                page.
               </p>
+
             </div>
+
+            <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
+              <h3 className="font-semibold text-slate-900 mb-2">
+                4. Group Similar Patterns
+              </h3>
+
+              <p className="text-slate-600 leading-relaxed">
+                Some characters form useful visual groups. E (.), I (..),
+                S (...) and H (....) add one dot at each step. Likewise,
+                T (-), M (--) and O (---) add one dash. These relationships
+                can make the alphabet easier to organize in memory.
+              </p>
+
+            </div>
+
+            <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
+              <h3 className="font-semibold text-slate-900 mb-2">
+                5. Test Yourself in Both Directions
+              </h3>
+
+              <p className="text-slate-600 leading-relaxed">
+                Practice converting letters into Morse code and Morse code
+                back into letters. This strengthens both sending and
+                receiving skills. Once you are comfortable with the
+                alphabet, continue with our{" "}
+                <Link
+                  href="/morse-code-numbers"
+                  className="text-green-600 font-semibold underline"
+                >
+                  Morse Code Numbers Guide
+                </Link>.
+              </p>
+
+            </div>
+
+            <div className="p-5 bg-green-50 border border-green-200 rounded-xl">
+
+              <h3 className="font-semibold text-green-800 mb-2">
+                6. Try the Koch Method and Farnsworth Timing
+              </h3>
+
+              <p className="text-green-700 leading-relaxed">
+                The Koch method introduces a small number of characters
+                and gradually adds new ones as recognition improves.
+                Farnsworth timing keeps individual characters at a useful
+                character speed while increasing the spacing between them,
+                which can make early listening practice more manageable.
+                Both approaches are commonly used in Morse code training.
+              </p>
+
+              <div className="mt-4">
+                <Link
+                  href="/learn-morse-code"
+                  className="font-semibold underline"
+                >
+                  Learn Morse Code step by step →
+                </Link>
+              </div>
+
+            </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* ─── Common Mistakes Beginners Make ─── */}
+      {/* ─── Common Mistakes ─── */}
       <section className="py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Common Mistakes Beginners Make
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            Being aware of these common pitfalls will save you significant time and
-            frustration as you learn the Morse Code Alphabet. Every experienced
-            operator has made at least one of these mistakes early in their
-            learning journey.
+            Beginners often struggle with the same few problems. Identifying
+            them early can make your practice more focused and efficient.
           </p>
 
           <div className="space-y-5">
+
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-start gap-3">
+
                 <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    Confusing Reversed Letters
+                    Confusing Reversed Patterns
                   </h3>
+
                   <p className="text-slate-600 leading-relaxed">
-                    Several pairs of letters in the Morse Code Alphabet are exact
-                    reverses of each other: A (.-) and N (-.), F (..-.) and L
-                    (.-..), U (..-) and D (-..). Beginners frequently mix up these
-                    pairs because the dot-dash sequence sounds similar when played
-                    quickly. The best way to avoid this mistake is to practice
-                    these specific pairs together in comparison drills, training
-                    your ear to hear the difference between a pattern starting
-                    with a dot versus one starting with a dash.
+                    Characters such as A (.-) and N (-.) use the same
+                    elements in a different order. Practice similar pairs
+                    together so that your ear learns the difference in
+                    rhythm.
                   </p>
                 </div>
+
               </div>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-start gap-3">
+
                 <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    Incorrect Spacing Between Elements
+                    Incorrect Spacing
                   </h3>
+
                   <p className="text-slate-600 leading-relaxed">
-                    The most common technical error in Morse code is incorrect
-                    spacing. If you pause too long between dots and dashes within a
-                    letter, the listener may interpret it as two separate letters.
-                    If you do not pause long enough between letters, they will blur
-                    together into an unrecognizable pattern. The key is to maintain
-                    consistent timing: one unit between elements, three units
-                    between letters, and seven units between words. Practice with
-                    a metronome or use audio tools that enforce correct spacing
-                    automatically.
+                    Timing is part of the Morse code system. Use consistent
+                    gaps between elements, letters, and words so that
+                    characters do not merge together.
                   </p>
                 </div>
+
               </div>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-start gap-3">
+
                 <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    Trying to Memorize Too Many Letters at Once
+                    Learning Too Many Characters at Once
                   </h3>
+
                   <p className="text-slate-600 leading-relaxed">
-                    Many beginners try to learn five or more new letters in a single
-                    session, which leads to confusion and poor retention. Research
-                    on spaced repetition shows that learning two or three letters per
-                    day with regular review produces far better long-term results
-                    than cramming. The Koch method formalizes this by adding only
-                    one new character at a time, but even with simpler study
-                    methods, limiting yourself to a few new letters per session
-                    will dramatically improve your progress.
+                    Trying to memorize the entire alphabet in one session
+                    can create confusion. Break practice into manageable
+                    groups and regularly review previously learned
+                    characters.
                   </p>
                 </div>
+
               </div>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-start gap-3">
+
                 <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    Counting Dots and Dashes Instead of Recognizing Rhythm
+                    Counting Every Dot and Dash
                   </h3>
+
                   <p className="text-slate-600 leading-relaxed">
-                    A critical mistake that traps many beginners is mentally
-                    counting each dot and dash. This approach might work at very
-                    slow speeds but fails completely at anything above 10 WPM.
-                    Experienced operators recognize each letter as a single rhythmic
-                    unit, the same way you recognize a spoken word without
-                    analyzing individual phonemes. To develop this skill, always
-                    practice with audio rather than visual charts, and focus on the
-                    overall sound pattern of each letter rather than its
-                    individual elements.
+                    Counting can be useful when first studying the chart,
+                    but listening skills improve when you begin recognizing
+                    the complete rhythm of a character.
                   </p>
                 </div>
+
               </div>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-start gap-3">
+
                 <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
+
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-2">
-                    Ignoring Audio Practice
+                    Skipping Audio Practice
                   </h3>
+
                   <p className="text-slate-600 leading-relaxed">
-                    Relying solely on visual charts and flashcards without listening
-                    to actual Morse code audio is like trying to learn a language by
-                    only reading textbooks and never hearing it spoken. Morse code
-                    is fundamentally an auditory communication system, and your
-                    brain needs to develop the neural pathways for audio
-                    recognition. Even five minutes of daily listening practice will
-                    accelerate your learning far more than an hour of visual study
-                    alone. Use the play buttons on the chart above or explore our{" "}
+                    Visual charts are useful references, but Morse code is
+                    often learned as an audio pattern. Combine reading with
+                    listening practice using our{" "}
                     <Link
                       href="/morse-code-sounds"
-                      className="underline text-green-600 font-medium"
+                      className="underline text-green-600 font-semibold"
                     >
-                      Morse code sounds page
+                      Morse Code Sounds
                     </Link>{" "}
-                    for dedicated audio practice.
+                    page.
                   </p>
                 </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* ─── History of the Morse Code Alphabet ─── */}
+      {/* ─── History ─── */}
       <section className="bg-slate-50 py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             History of the Morse Code Alphabet
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            The Morse Code Alphabet has a rich history spanning nearly two centuries.
-            Understanding its origins helps appreciate why the alphabet is structured
-            the way it is and why it remains relevant in the modern era.
+            Morse code developed alongside the electric telegraph and
+            became one of the most important communication systems of the
+            nineteenth century.
           </p>
 
           <div className="space-y-5">
+
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <h3 className="font-semibold text-slate-900 mb-2 text-lg">
                 Samuel Morse and the Electric Telegraph
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                Samuel Finley Breese Morse (1791-1872) was originally an American
-                painter and art professor before turning his attention to
-                invention. In 1832, while returning from a trip to Europe aboard the
-                ship Sully, Morse learned about recent experiments with
-                electromagnetism and conceived the idea of an electric telegraph.
-                Over the next several years, he developed the first practical
-                telegraph system in the United States, demonstrating it
-                successfully in 1838. His system could transmit messages over long
-                distances through electrical wires, fundamentally changing the
-                speed of long-distance communication from days to minutes.
+                Samuel Morse was an American artist and inventor who became
+                closely associated with the development of the electric
+                telegraph. Telegraph technology allowed messages to travel
+                through electrical signals over long distances far faster
+                than traditional physical delivery.
               </p>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <h3 className="font-semibold text-slate-900 mb-2 text-lg">
-                Alfred Vail and the Code&apos;s Design
+                Alfred Vail and Morse Code Development
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                While Samuel Morse is often credited as the sole inventor, Alfred
-                Vail (1807-1859) played a crucial role in developing the actual
-                code that bears Morse&apos;s name. Vail, a skilled mechanic and Morse&apos;s
-                partner, is widely believed to have designed the letter-to-code
-                assignments based on letter frequency analysis of English text.
-                This frequency-based design, where the most common letters get the
-                shortest codes, is what makes the Morse Code Alphabet so efficient.
-                Vail also developed the telegraph key and the recording mechanism
-                that made the system practical for everyday use.
+                Alfred Vail worked closely with Samuel Morse during the
+                development of the telegraph system and the code used to
+                transmit characters. The historical development of Morse
+                code involved multiple revisions before the international
+                form became widely standardized.
               </p>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <h3 className="font-semibold text-slate-900 mb-2 text-lg">
-                International Morse Code Standard
+                International Morse Code
               </h3>
+
               <p className="text-slate-600 leading-relaxed">
-                The original American Morse Code used in the United States had
-                some differences from the version used in Europe. In 1865, the
-                International Telegraph Union (now the ITU) standardized the code
-                that we know today as International Morse Code. This standardized
-                alphabet, documented in ITU-R M.1677, is used worldwide and
-                ensures that operators from any country can communicate with each
-                other seamlessly. The International Morse Code Alphabet is the
-                version presented on this page and is the universal standard for
-                all modern Morse code communication.{" "}
-After learning the alphabet, you can practice decoding real messages with our{" "}
-<Link
-  href="/morse-code-decoder"
-  className="text-green-600 font-medium underline"
->
-  Morse Code Decoder
-</Link>. If you want to study each character in more detail, explore our{" "}
-<Link
-  href="/morse-code-letter/a"
-  className="text-green-600 font-medium underline"
->
-  individual Morse Code Letter Guides
-</Link>.
+                International Morse Code became the internationally
+                recognized version used for radiocommunication. Today,
+                Recommendation ITU-R M.1677 documents the International
+                Morse Code characters and related operational provisions.
+                The A–Z alphabet shown on this page follows this
+                internationally recognized system.
               </p>
+
+              <div className="mt-4 flex flex-wrap gap-4">
+
+                <Link
+                  href="/morse-code-decoder"
+                  className="text-green-600 font-semibold underline"
+                >
+                  Try the Morse Code Decoder
+                </Link>
+
+                <Link
+                  href="/morse-code-letter/a"
+                  className="text-green-600 font-semibold underline"
+                >
+                  Explore individual letter guides
+                </Link>
+
+              </div>
+
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* ─── Where Is the Morse Code Alphabet Used Today? ─── */}
+      {/* ─── Modern Uses ─── */}
       <section className="py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Where Is the Morse Code Alphabet Used Today?
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            Despite being nearly 200 years old, the Morse Code Alphabet remains
-            actively used across multiple fields and industries. Here are the most
-            significant modern applications.
+            Although Morse code originated in the nineteenth century, it
+            still appears in several modern communication and educational
+            contexts.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-center gap-3 mb-3">
+
                 <div className="w-11 h-11 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
                   <Radio className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-slate-900">Amateur Radio</h3>
+
+                <h3 className="font-semibold text-slate-900">
+                  Amateur Radio
+                </h3>
+
               </div>
+
               <p className="text-slate-600 text-sm leading-relaxed">
-                Morse code (known as CW or Continuous Wave in ham radio) remains
-                one of the most popular modes among amateur radio operators
-                worldwide. It is exceptionally efficient, capable of making
-                contacts over thousands of miles with very low power. Many ham
-                radio operators prefer CW over voice because it cuts through
-                noise and interference far more effectively.
+                Morse code, commonly called CW or Continuous Wave in
+                amateur radio, continues to be used by radio operators.
+                It can remain useful when signals are weak or noisy.
               </p>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-center gap-3 mb-3">
+
                 <div className="w-11 h-11 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
                   <Plane className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-slate-900">Aviation</h3>
+
+                <h3 className="font-semibold text-slate-900">
+                  Aviation Navigation Aids
+                </h3>
+
               </div>
+
               <p className="text-slate-600 text-sm leading-relaxed">
-                Pilots are trained to recognize Morse code identifiers for
-                navigation beacons (NDBs and VORs). Each beacon transmits its
-                three-letter identifier in Morse code, allowing pilots to confirm
-                their position. While GPS has reduced reliance on these beacons,
-                Morse code identification remains a required skill in pilot
-                training and serves as a critical backup navigation method.
+                Morse code identifiers have historically been used with
+                radio navigation aids such as VORs and NDBs. Pilots can
+                use identifiers to confirm the identity of a navigation
+                facility.
               </p>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-center gap-3 mb-3">
+
                 <div className="w-11 h-11 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
+
                 <h3 className="font-semibold text-slate-900">
-                  Emergency Communication
+                  Emergency Signaling
                 </h3>
+
               </div>
+
               <p className="text-slate-600 text-sm leading-relaxed">
-                SOS (... --- ...) is the most universally recognized distress
-                signal in the world. Morse code can be transmitted using almost
-                any method, including flashlight, whistle, tapping, or visual
-                signals, making it invaluable in survival situations where no
-                other communication equipment is available. Military, maritime,
-                and wilderness survival training all include basic Morse signaling.{" "}
-You can also learn how to decode emergency signals using our{" "}
-<Link
-  href="/morse-code-decoder"
-  className="text-green-600 font-medium underline"
->
-  Morse Code Decoder
-</Link>.
+                SOS (... --- ...) is one of the best-known Morse distress
+                signals. Morse patterns can be transmitted through sound,
+                light, tapping, or other methods capable of producing
+                short and long signals.
               </p>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-center gap-3 mb-3">
+
                 <div className="w-11 h-11 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
                   <GraduationCap className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-slate-900">Education</h3>
+
+                <h3 className="font-semibold text-slate-900">
+                  Education
+                </h3>
+
               </div>
+
               <p className="text-slate-600 text-sm leading-relaxed">
-                Educators use the Morse Code Alphabet to teach fundamental
-                concepts in computer science, binary thinking, signal processing,
-                and information theory. It demonstrates how complex information
-                can be encoded using just two states (on/off), making it an
-                excellent teaching tool for introducing students to digital
-                communication concepts and coding principles.
+                Morse code is a useful teaching example for communication,
+                encoding, signals, timing, and information systems. It
+                demonstrates how complex information can be represented
+                through combinations of simple signals.
               </p>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-center gap-3 mb-3">
+
                 <div className="w-11 h-11 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
                   <Accessibility className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-slate-900">Accessibility</h3>
+
+                <h3 className="font-semibold text-slate-900">
+                  Accessibility Technology
+                </h3>
+
               </div>
+
               <p className="text-slate-600 text-sm leading-relaxed">
-                Morse code serves as an alternative communication method for
-                people with certain disabilities. Adaptive devices can convert
-                Morse code input into text, speech, or computer commands.
-                People with limited mobility can use simple switches to tap out
-                Morse code, giving them a practical way to communicate and
-                control devices with minimal physical movement.
+                Morse input can be adapted for assistive communication and
+                computer control. A user can enter short and long signals
+                through switches or other input methods and convert those
+                signals into text or commands.
               </p>
+
             </div>
 
             <div className="p-5 bg-white border border-slate-200 rounded-xl">
+
               <div className="flex items-center gap-3 mb-3">
+
                 <div className="w-11 h-11 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
                   <BookOpen className="w-5 h-5" />
                 </div>
-                <h3 className="font-semibold text-slate-900">Military History</h3>
+
+                <h3 className="font-semibold text-slate-900">
+                  Historical Communication
+                </h3>
+
               </div>
+
               <p className="text-slate-600 text-sm leading-relaxed">
-                Morse code played a pivotal role in military communications from
-                the American Civil War through World War II and the Cold War. It
-                was used for ship-to-shore communication, espionage, and
-                encrypted messaging. The Morse Code Alphabet remains part of
-                military training curricula worldwide, and its principles
-                continue to influence modern tactical communication systems.
+                Morse code played a major role in telegraphy, maritime
+                communication, railways, and military communication. It
+                remains an important part of communication history.
               </p>
+
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* ─── Morse Code Decoding Tree ─── */}
+      {/* ─── Morse Code Tree ─── */}
       <section className="bg-white border-y border-slate-200">
+
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
+
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Morse Code Decoding Tree</h2>
-            <p className="text-slate-600 max-w-3xl mx-auto">The Morse code tree is a binary decision tree used for decoding. Starting at the root, each dot (dit) moves left and each dash (dah) moves right. This tree structure reveals why Morse code was designed the way it was — the most common letters are closest to the root, requiring fewer decisions to decode.</p>
+
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+              Morse Code Decoding Tree
+            </h2>
+
+            <p className="text-slate-600 max-w-3xl mx-auto">
+              A Morse code tree provides a visual way to understand how
+              characters are built. Starting from the top, each dot and
+              dash moves through a different branch until a character is
+              reached.
+            </p>
+
           </div>
+
           <div className="bg-slate-50 rounded-2xl p-6 sm:p-8 overflow-x-auto">
+
             <div className="min-w-[600px] font-mono text-sm leading-loose">
-              <div className="text-center text-slate-500 mb-4">↓ START</div>
-              <div className="text-center font-bold text-green-700 text-lg mb-2">E (.) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; T (-)</div>
-              <div className="text-center text-xs text-slate-400 mb-2">dot → left &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dash → right</div>
-              <div className="border-l-2 border-r-2 border-green-300 pl-4 pr-4">
-                <div className="flex justify-between">
-                  <div className="text-left">
-                    <div className="font-bold text-green-700">I (..)</div>
-                    <div className="border-l-2 border-green-200 pl-4 ml-2 space-y-1">
-                      <div><span className="font-semibold">S (...)</span>
-                        <div className="border-l-2 border-green-200 pl-4 ml-2 space-y-0.5">
-                          <div>H (....)</div>
-                          <div><span className="font-semibold">V (...-)</span></div>
-                          <div><span className="font-semibold">F (..-.)</span></div>
-                        </div>
-                      </div>
-                      <div><span className="font-semibold">U (..-)</span>
-                        <div className="border-l-2 border-green-200 pl-4 ml-2 space-y-0.5">
-                          <div><span className="font-semibold">&Aring; (.--.)</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-bold text-green-700">A (.-)</div>
-                    <div className="border-r-2 border-green-200 pr-4 mr-2 space-y-1">
-                      <div><span className="font-semibold">R (.-.)</span>
-                        <div className="border-l-2 border-green-200 pl-4 ml-2">
-                          <div>L (.-..)</div>
-                        </div>
-                      </div>
-                      <div><span className="font-semibold">W (.--)</span>
-                        <div className="border-r-2 border-green-200 pr-4 mr-2 space-y-0.5">
-                          <div>J (.---)</div>
-                          <div><span className="font-semibold">P (.--.)</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-left">
-                    <div className="font-bold text-green-700">N (-.)</div>
-                    <div className="border-l-2 border-green-200 pl-4 ml-2 space-y-1">
-                      <div><span className="font-semibold">D (-..)</span>
-                        <div className="border-l-2 border-green-200 pl-4 ml-2 space-y-0.5">
-                          <div>B (-...)</div>
-                          <div><span className="font-semibold">X (-..-)</span></div>
-                        </div>
-                      </div>
-                      <div><span className="font-semibold">K (-.-)</span>
-                        <div className="border-r-2 border-green-200 pr-4 mr-2">
-                          <div>Y (-.--)</div>
-                          <div><span className="font-semibold">C (-.-.)</span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-bold text-green-700">M (--)</div>
-                    <div className="border-r-2 border-green-200 pr-4 mr-2 space-y-1">
-                      <div><span className="font-semibold">G (--.)</span>
-                        <div className="border-l-2 border-green-200 pl-4 ml-2 space-y-0.5">
-                          <div>Z (--..)</div>
-                          <div><span className="font-semibold">Q (--.-)</span></div>
-                        </div>
-                      </div>
-                      <div><span className="font-semibold">O (---)</span></div>
-                      <div><span className="font-semibold">&CH (--..)</span></div>
-                    </div>
-                  </div>
-                </div>
+
+              <div className="text-center text-slate-500 mb-4">
+                ↓ START
               </div>
+
+              <div className="text-center font-bold text-green-700 text-lg mb-2">
+                E (.) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                T (-)
+              </div>
+
+              <div className="text-center text-xs text-slate-400 mb-4">
+                dot → left &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                dash → right
+              </div>
+
+              <div className="grid grid-cols-4 gap-6">
+
+                <div>
+
+                  <div className="font-bold text-green-700">
+                    I (..)
+                  </div>
+
+                  <div className="pl-4">
+                    <div>S (...)</div>
+                    <div>H (....)</div>
+                    <div>V (...-)</div>
+                    <div>U (..-)</div>
+                    <div>F (..-.)</div>
+                  </div>
+
+                </div>
+
+                <div>
+
+                  <div className="font-bold text-green-700">
+                    A (.-)
+                  </div>
+
+                  <div className="pl-4">
+                    <div>R (.-.)</div>
+                    <div>L (.-..)</div>
+                    <div>W (.--)</div>
+                    <div>P (.--.)</div>
+                    <div>J (.---)</div>
+                  </div>
+
+                </div>
+
+                <div>
+
+                  <div className="font-bold text-green-700">
+                    N (-.)
+                  </div>
+
+                  <div className="pl-4">
+                    <div>D (-..)</div>
+                    <div>B (-...)</div>
+                    <div>X (-..-)</div>
+                    <div>K (-.-)</div>
+                    <div>C (-.-.)</div>
+                    <div>Y (-.--)</div>
+                  </div>
+
+                </div>
+
+                <div>
+
+                  <div className="font-bold text-green-700">
+                    M (--)
+                  </div>
+
+                  <div className="pl-4">
+                    <div>G (--.)</div>
+                    <div>Z (--..)</div>
+                    <div>Q (--.-)</div>
+                    <div>O (---)</div>
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
+
           </div>
+
           <div className="mt-8 grid md:grid-cols-2 gap-8">
+
             <div>
-              <h3 className="font-bold text-slate-900 mb-3">How to Read the Tree</h3>
-              <p className="text-slate-600 leading-relaxed">To decode a character, start at the top of the tree. For each dot (dit) in the Morse code, move to the left branch. For each dash (dah), move to the right branch. The letter at the end of the path is your decoded character. For example, to decode &quot;.-.&quot;: dot goes left to E, dash goes right to A, dot goes left to R. The letter E (.) and T (-) are at the top because they are the two most common letters in English, appearing in roughly 12.7% and 9.1% of text respectively.</p>
+
+              <h3 className="font-bold text-slate-900 mb-3">
+                How to Read the Tree
+              </h3>
+
+              <p className="text-slate-600 leading-relaxed">
+                Start from the top and follow one branch for every signal.
+                For example, R is .-. : the first dot leads toward E, the
+                dash leads to A, and the final dot leads to R.
+              </p>
+
             </div>
+
             <div>
-              <h3 className="font-bold text-slate-900 mb-3">Why the Tree Matters for Learning</h3>
-              <p className="text-slate-600 leading-relaxed">Understanding the Morse code tree structure is one of the most powerful tools for learning Morse code efficiently. Rather than memorizing each letter as an isolated sequence, you learn the &quot;address&quot; of each letter within the tree. This is essentially how experienced operators decode Morse code — they do not count dots and dashes, they recognize the binary path through the tree. The Koch method of learning leverages this tree structure by teaching letters in pairs that branch from the same node.</p>
-            <div className="mt-8 text-center">
-  <Link
-    href="/morse-code-decoder"
-    className="inline-flex items-center gap-2 text-green-600 font-semibold hover:underline"
-  >
-    Practice decoding with our Morse Code Decoder
-    <ArrowRight className="w-4 h-4" />
-  </Link>
-</div>
+
+              <h3 className="font-bold text-slate-900 mb-3">
+                Why the Tree Helps
+              </h3>
+
+              <p className="text-slate-600 leading-relaxed">
+                The tree helps reveal relationships between characters.
+                Instead of treating all 26 letters as unrelated patterns,
+                you can see how longer characters grow from shorter ones.
+              </p>
+
             </div>
+
           </div>
+
+          <div className="mt-8 text-center">
+
+            <Link
+              href="/morse-code-decoder"
+              className="inline-flex items-center gap-2 text-green-600 font-semibold hover:underline"
+            >
+              Practice with our Morse Code Decoder
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+          </div>
+
         </div>
+
       </section>
 
-      {/* ─── Frequently Asked Questions ─── */}
+      {/* ─── FAQ ─── */}
       <section className="bg-slate-50 py-16">
+
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Frequently Asked Questions
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            Here are answers to the most common questions about the Morse Code
-            Alphabet, covering everything from basic concepts to practical
-            learning advice.
+            Here are answers to common questions about the Morse Code
+            Alphabet, learning methods, timing, and practical use.
           </p>
 
           <div className="space-y-4">
+
             {faqs.map((faq, i) => (
+
               <details
                 key={i}
                 className="bg-white border border-slate-200 rounded-xl p-5 group"
               >
+
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex items-center justify-between">
+
                   {faq.question}
+
                   <span className="text-green-600 text-xl group-open:rotate-45 transition-transform ml-4 flex-shrink-0">
                     +
                   </span>
+
                 </summary>
+
                 <p className="mt-3 text-slate-600 leading-relaxed">
                   {faq.answer}
                 </p>
+
               </details>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
       {/* ─── Related Resources ─── */}
       <section className="py-16">
+
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             Related Resources
           </h2>
+
           <p className="text-slate-600 mb-8 max-w-3xl">
-            Explore these related pages to deepen your understanding of Morse code
-            and practice your skills.
+            Continue learning, translating, decoding, and practicing with
+            these related Morse code resources.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
             <Link
               href="/"
               className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
             >
+
               <div className="flex items-center justify-between mb-2">
+
                 <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
                   Morse Code Translator
                 </h3>
+
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
+
               </div>
+
               <p className="text-sm text-slate-500">
-                Convert any text to Morse code and back with audio playback and
-                visual output.
+                Convert text to Morse code and decode Morse into readable text.
               </p>
+
             </Link>
 
             <Link
               href="/morse-code-numbers"
               className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
             >
+
               <div className="flex items-center justify-between mb-2">
+
                 <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
                   Morse Code Numbers
                 </h3>
+
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
+
               </div>
+
               <p className="text-sm text-slate-500">
-                Learn the Morse code for numbers 0 through 9 with visual charts
-                and audio examples.
+                Learn Morse code numbers from 0 through 9.
               </p>
+
             </Link>
+
             <Link
-  href="/morse-code-decoder"
-  className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
->
-  <div className="flex items-center justify-between mb-2">
-    <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
-      Morse Code Decoder
-    </h3>
-    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
-  </div>
-  <p className="text-sm text-slate-500">
-    Decode Morse code into readable text with instant results, separator detection, and character analysis.
-  </p>
-</Link>
+              href="/morse-code-decoder"
+              className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
+            >
+
+              <div className="flex items-center justify-between mb-2">
+
+                <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
+                  Morse Code Decoder
+                </h3>
+
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
+
+              </div>
+
+              <p className="text-sm text-slate-500">
+                Decode Morse code into readable text instantly.
+              </p>
+
+            </Link>
+
             <Link
               href="/morse-code-sounds"
               className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
             >
+
               <div className="flex items-center justify-between mb-2">
+
                 <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
                   Morse Code Sounds
                 </h3>
+
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
+
               </div>
+
               <p className="text-sm text-slate-500">
-                Listen to Morse code audio and practice recognizing letters by
-                ear at different speeds.
+                Listen to Morse code and practice recognizing characters by sound.
               </p>
+
             </Link>
 
             <Link
               href="/morse-code-quiz"
               className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
             >
+
               <div className="flex items-center justify-between mb-2">
+
                 <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
                   Morse Code Quiz
                 </h3>
+
                 <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
+
               </div>
+
               <p className="text-sm text-slate-500">
-                Test your Morse code knowledge with interactive quizzes, timed challenges, and instant feedback.
+                Test your Morse code knowledge with interactive questions.
               </p>
+
             </Link>
 
             <Link
-  href="/learn-morse-code"
-  className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
->
-  <div className="flex items-center justify-between mb-2">
-    <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
-      Learn Morse Code
-    </h3>
-    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
-  </div>
+              href="/learn-morse-code"
+              className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-md transition-all group"
+            >
 
-  <p className="text-sm text-slate-500">
-    Learn Morse code step by step with beginner-friendly lessons,
-    memorization techniques, and practical exercises.
-  </p>
-</Link>
+              <div className="flex items-center justify-between mb-2">
+
+                <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
+                  Learn Morse Code
+                </h3>
+
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-green-600 transition-colors" />
+
+              </div>
+
+              <p className="text-sm text-slate-500">
+                Follow a step-by-step learning guide for beginners.
+              </p>
+
+            </Link>
+
           </div>
+
         </div>
+
       </section>
 
       {/* ─── Final CTA ─── */}
       <section className="bg-slate-900 py-16">
+
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Ready to Master the Morse Code Alphabet?
+            Ready to Practice the Morse Code Alphabet?
           </h2>
+
           <p className="text-slate-300 max-w-2xl mx-auto mb-8">
-            Ready to put your knowledge into action? Use our free Morse Code Translator to encode, decode, and listen to Morse code with real-time audio playback. Practice what you've learned and improve your speed and accuracy.
+            Use our free Morse Code Translator to encode text, decode
+            Morse code, and listen to characters with audio playback.
+            Practice regularly and improve your recognition over time.
           </p>
+
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors text-lg">
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors text-lg"
+          >
             Try the Morse Code Translator
             <ArrowRight className="w-5 h-5" />
           </Link>
+
         </div>
+
       </section>
+
     </main>
   );
 }

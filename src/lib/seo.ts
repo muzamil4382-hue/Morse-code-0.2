@@ -11,10 +11,14 @@ export function generatePageMeta(
   description: string,
   path: string,
   keywords: string[] = [],
-  options?: { ogType?: "website" | "article" }
+  options?: {
+    ogType?: "website" | "article";
+  }
 ): Metadata {
-  const url = `${BASE_URL}${path}`;
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const url = `${BASE_URL}${normalizedPath}`;
   const ogType = options?.ogType || "website";
+
   return {
     title,
     description,
@@ -22,31 +26,94 @@ export function generatePageMeta(
     alternates: {
       canonical: url,
     },
+    openGraph: {
+      type: ogType,
+      url,
+      title,
+      description,
+      siteName: "Morse Code Translator",
+      images: [
+        {
+          url: DEFAULT_SOCIAL_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: "Morse Code Translator",
+        },
+      ],
+    },
     twitter: {
       card: "summary_large_image",
       title,
       description,
       images: [DEFAULT_SOCIAL_IMAGE],
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
 /**
  * Generate JSON-LD Article schema
+ * Supports both object-style and positional arguments.
  */
+type ArticleSchemaInput = {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  author?: string;
+};
+
+export function generateArticleSchema(
+  input: ArticleSchemaInput
+): object;
+
 export function generateArticleSchema(
   title: string,
   description: string,
   url: string,
   datePublished: string,
-  author: string = "Morse Code Translator"
+  author?: string
+): object;
+
+export function generateArticleSchema(
+  inputOrTitle: ArticleSchemaInput | string,
+  descriptionArg?: string,
+  urlArg?: string,
+  datePublishedArg?: string,
+  authorArg: string = "Morse Code Translator"
 ): object {
+  let title: string;
+  let description: string;
+  let url: string;
+  let datePublished: string;
+  let author: string;
+
+  if (typeof inputOrTitle === "object") {
+    title = inputOrTitle.title;
+    description = inputOrTitle.description;
+    url = inputOrTitle.url;
+    datePublished = inputOrTitle.datePublished;
+    author = inputOrTitle.author || "Morse Code Translator";
+  } else {
+    title = inputOrTitle;
+    description = descriptionArg!;
+    url = urlArg!;
+    datePublished = datePublishedArg!;
+    author = authorArg;
+  }
+
+  const normalizedUrl = url.startsWith("/") ? url : `/${url}`;
+  const fullUrl = `${BASE_URL}${normalizedUrl}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: title,
     description,
-    url: `${BASE_URL}${url}`,
+    url: fullUrl,
     datePublished,
     dateModified: datePublished,
     author: {
@@ -58,10 +125,14 @@ export function generateArticleSchema(
       "@type": "Organization",
       name: "Morse Code Translator",
       url: BASE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/logo.svg`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${BASE_URL}${url}`,
+      "@id": fullUrl,
     },
   };
 }
@@ -70,7 +141,10 @@ export function generateArticleSchema(
  * Generate JSON-LD FAQPage schema
  */
 export function generateFAQSchema(
-  faqs: { question: string; answer: string }[]
+  faqs: {
+    question: string;
+    answer: string;
+  }[]
 ): object {
   return {
     "@context": "https://schema.org",
@@ -90,17 +164,26 @@ export function generateFAQSchema(
  * Generate JSON-LD BreadcrumbList schema
  */
 export function generateBreadcrumbSchema(
-  items: { name: string; url: string }[]
+  items: {
+    name: string;
+    url: string;
+  }[]
 ): object {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: `${BASE_URL}${item.url}`,
-    })),
+    itemListElement: items.map((item, index) => {
+      const normalizedUrl = item.url.startsWith("/")
+        ? item.url
+        : `/${item.url}`;
+
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        item: `${BASE_URL}${normalizedUrl}`,
+      };
+    }),
   };
 }
 
@@ -108,7 +191,10 @@ export function generateBreadcrumbSchema(
  * Generate JSON-LD HowTo schema
  */
 export function generateHowToSchema(
-  steps: { name: string; text: string }[]
+  steps: {
+    name: string;
+    text: string;
+  }[]
 ): object {
   return {
     "@context": "https://schema.org",
@@ -138,17 +224,25 @@ export function generateSoftwareApplicationSchema({
   url: string;
   applicationCategory?: string;
   operatingSystem?: string;
-  offers?: { price: string; priceCurrency: string };
+  offers?: {
+    price: string;
+    priceCurrency: string;
+  };
 }): object {
+  const normalizedUrl = url.startsWith("/") ? url : `/${url}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name,
     description,
-    url: `${BASE_URL}${url}`,
+    url: `${BASE_URL}${normalizedUrl}`,
     applicationCategory,
     operatingSystem,
-    offers: offers || { price: "0", priceCurrency: "USD" },
+    offers: offers || {
+      price: "0",
+      priceCurrency: "USD",
+    },
   };
 }
 
@@ -172,7 +266,9 @@ export function generateOrganizationSchema({
     name,
     url: url || BASE_URL,
     logo: logo || `${BASE_URL}/logo.svg`,
-    description: description || "Free online Morse code translator with audio playback, visual flash, and comprehensive learning resources.",
+    description:
+      description ||
+      "Free online Morse code translator with audio playback, visual flash, and comprehensive learning resources.",
   };
 }
 

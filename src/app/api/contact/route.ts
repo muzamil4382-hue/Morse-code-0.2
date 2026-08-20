@@ -32,12 +32,12 @@ export async function POST(request: Request) {
     });
 
     await transporter.sendMail({
-      from: `"MorseCodeTranslator Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `Contact Form: ${subject}`,
-      text: `
-New contact form message
+  from: `"Morse Code Translator" <contact@morsecodetranslater.com>`,
+  to: "contact@morsecodetranslater.com",
+  replyTo: email,
+  subject: `Website Contact: ${subject}`,
+  text: `
+You received a new message from the Morse Code Translator website.
 
 Name: ${name}
 Email: ${email}
@@ -45,18 +45,11 @@ Subject: ${subject}
 
 Message:
 ${message}
-      `,
-      html: `
-        <h2>New Contact Form Message</h2>
 
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-
-        <h3>Message</h3>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-      `,
-    });
+---
+This message was submitted through the Contact Us form at morsecodetranslater.com.
+  `,
+});
 
     return NextResponse.json(
       { success: true },

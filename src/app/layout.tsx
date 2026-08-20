@@ -7,7 +7,7 @@ import "./globals.css";
 import Header from "@/components/morse/header";
 import Footer from "@/components/morse/footer";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { BASE_URL } from "@/lib/seo";
+import { BASE_URL, DEFAULT_SOCIAL_IMAGE } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
+
   title: {
     default: "Free Morse Code Translator | Encode & Decode Instantly",
     template: "%s | Morse Code Translator",
@@ -45,12 +47,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Morse Code Translator" }],
   creator: "Morse Code Translator",
 
-  metadataBase: new URL(BASE_URL),
-
-  alternates: {
-    canonical: BASE_URL,
-  },
-
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -59,6 +55,14 @@ export const metadata: Metadata = {
     title: "Free Morse Code Translator | Encode & Decode Instantly",
     description:
       "Convert text to Morse code and decode Morse instantly with our free translator. Audio playback, alphabet charts, and learning tools included.",
+    images: [
+      {
+        url: DEFAULT_SOCIAL_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Morse Code Translator",
+      },
+    ],
   },
 
   twitter: {
@@ -66,6 +70,7 @@ export const metadata: Metadata = {
     title: "Free Morse Code Translator | Encode & Decode Instantly",
     description:
       "Free Morse code translator with audio playback, alphabet charts, and learning tools.",
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
 
   robots: {
@@ -105,7 +110,6 @@ const jsonLd = [
     description:
       "Free online Morse code translator with audio, visual flash, and comprehensive learning resources.",
   },
-
   {
     "@context": "https://schema.org",
     "@type": "Organization",
