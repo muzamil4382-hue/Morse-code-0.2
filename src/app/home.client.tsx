@@ -669,13 +669,7 @@ export default function HomeClient({ faqs }: Props) {
   }, []);
 
   return (
-    <div
-      className={
-        flashActive
-          ? "bg-green-500/10 dark:bg-green-500/20 transition-colors duration-100"
-          : ""
-      }
-    >
+    <div>
       {/* ─── HERO / H1 SECTION ─── */}
 
       <section className="relative bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 dark:from-green-800 dark:via-green-900 dark:to-emerald-950 text-white overflow-hidden">
@@ -726,13 +720,49 @@ export default function HomeClient({ faqs }: Props) {
           <div className="relative overflow-hidden rounded-3xl border border-slate-200/90 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_20px_60px_-28px_rgba(15,23,42,0.35)]">
             <div className="h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-green-600" />
             <div className="p-5 sm:p-7">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6">
-                <div className="inline-flex w-fit items-center rounded-xl bg-slate-100 dark:bg-slate-800 p-1.5 border border-slate-200/80 dark:border-slate-700">
-                  <button onClick={() => setMode("text-to-morse")} className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${mode === "text-to-morse" ? "bg-white dark:bg-slate-700 text-green-700 dark:text-green-400 shadow-sm" : "text-slate-500 dark:text-slate-400"}`}>Text → Morse</button>
-                  <button onClick={handleSwap} className="mx-1 p-2 rounded-lg text-slate-500 hover:bg-white dark:hover:bg-slate-700 hover:text-green-600 transition-all" aria-label="Switch translation mode"><ArrowDownUp className="w-4 h-4" /></button>
-                  <button onClick={() => setMode("morse-to-text")} className={`rounded-lg px-4 py-2 text-sm font-semibold transition-all ${mode === "morse-to-text" ? "bg-white dark:bg-slate-700 text-green-700 dark:text-green-400 shadow-sm" : "text-slate-500 dark:text-slate-400"}`}>Morse → Text</button>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch mb-6">
+                <div className="flex w-full items-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 p-1.5 shadow-sm">
+                  <button
+                    onClick={() => setMode("text-to-morse")}
+                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
+                      mode === "text-to-morse"
+                        ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+                    }`}
+                  >
+                    <span className="hidden sm:inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/15 text-xs font-black">T</span>
+                    Text <span className="opacity-70">→</span> Morse
+                  </button>
+
+                  <button
+                    onClick={handleSwap}
+                    className="mx-1.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-green-300 hover:text-green-600 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                    aria-label="Switch translation mode"
+                    title="Swap input and output"
+                  >
+                    <ArrowDownUp className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={() => setMode("morse-to-text")}
+                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
+                      mode === "morse-to-text"
+                        ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+                    }`}
+                  >
+                    Morse <span className="opacity-70">→</span> Text
+                    <span className="hidden sm:inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/15 text-[10px] font-black">·−</span>
+                  </button>
                 </div>
-                <button onClick={handleRandom} className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 px-3.5 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:border-green-300 hover:text-green-700 transition-all" title="Generate random message"><Shuffle className="w-4 h-4" /> Random</button>
+
+                <button
+                  onClick={handleRandom}
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-600 shadow-sm transition-all hover:border-green-300 hover:text-green-700 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                  title="Generate random message"
+                >
+                  <Shuffle className="w-4 h-4" /> Random
+                </button>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -743,7 +773,15 @@ export default function HomeClient({ faqs }: Props) {
 
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
                   <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">Output</label><span className="inline-flex items-center gap-1.5 text-xs font-medium text-green-700 dark:text-green-400"><Zap className="w-3.5 h-3.5" /> Live</span></div>
-                  <div className="w-full h-[150px] overflow-y-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 whitespace-pre-wrap break-words">{hasContent ? activeOutput : <span className="text-slate-400">Your translation will appear here...</span>}</div>
+                  <div
+                    className={`w-full h-[150px] overflow-y-auto rounded-xl border px-4 py-3.5 font-mono text-base whitespace-pre-wrap break-words transition-colors duration-75 ${
+                      flashActive && flashChar !== "off"
+                        ? "border-green-400 bg-green-50 text-slate-900 shadow-[0_0_0_4px_rgba(34,197,94,0.10)] dark:bg-green-500/15 dark:text-green-50"
+                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100"
+                    }`}
+                  >
+                    {hasContent ? activeOutput : <span className="text-slate-400">Your translation will appear here...</span>}
+                  </div>
                 </div>
               </div>
 
