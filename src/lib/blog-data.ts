@@ -17,7 +17,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "Discover the fascinating history of Morse code from Samuel Morse's invention in 1836 to modern-day applications in emergency signaling, amateur radio, and assistive technology. A complete evergreen guide for beginners and enthusiasts.",
     category: "History",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-20",
     readTime: "12 min",
     keywords: [
@@ -136,7 +136,7 @@ For a chronological look at the major milestones, see our [When Was Morse Code I
     description:
       "A step-by-step guide to learning Morse code from scratch using proven methods like the Koch method, Farnsworth timing, mnemonics, and daily practice routines.",
     category: "Learning",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-18",
     readTime: "10 min",
     keywords: [
@@ -298,7 +298,7 @@ For the history behind the system you are learning, read our [Complete History G
     description:
       "Full reference chart of all Morse code characters including letters A-Z, numbers 0-9, punctuation marks, and special characters with memorization tips and learning order recommendations.",
     category: "Reference",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-16",
     readTime: "8 min",
     keywords: [
@@ -444,7 +444,7 @@ For a detailed step-by-step learning plan, read our [7 Proven Steps for Beginner
     description:
       "Complete guide to the SOS distress signal including its history, what SOS means, the Titanic story, how to signal SOS with light and sound, and modern emergency alternatives.",
     category: "Emergency",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-14",
     readTime: "9 min",
     keywords: [
@@ -561,7 +561,7 @@ For the historical background behind Morse code and SOS, read our [Complete Hist
     description:
       "Full breakdown of I LOVE YOU in Morse code with each letter explained, creative uses including bracelets and tattoos, the morse code jewelry trend, and romantic gift ideas.",
     category: "Phrases",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-12",
     readTime: "7 min",
     keywords: [
@@ -695,7 +695,7 @@ For more common phrases, see our guide to [Hello in Morse Code and 15 Common Phr
     description:
       "Fascinating facts about Morse code from WWII POW communication and NASA to the fastest operators, cultural heritage, binary computing inspiration, and much more.",
     category: "Facts",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-10",
     readTime: "13 min",
     keywords: [
@@ -814,7 +814,7 @@ The historical milestones are covered in detail throughout this guide.`,
     description:
       "Complete guide to Morse code timing rules including the PARIS standard, dot/dash ratios, timing units, WPM calculation, Farnsworth method, and professional speed standards.",
     category: "Technical",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-08",
     readTime: "8 min",
     keywords: [
@@ -968,7 +968,7 @@ To start practicing the timing techniques described here, read our [7-Step Learn
     description:
       "Complete translation of HELLO in Morse code plus 15 common phrases including OK, HELP, YES, NO, LOVE, GOODBYE, PLEASE, THANK YOU, SORRY, WELCOME, and more with full breakdowns.",
     category: "Phrases",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-06",
     readTime: "10 min",
     keywords: [
@@ -1198,7 +1198,7 @@ Use the translator above to practice each phrase.`,
     description:
       "Detailed chronological timeline of Morse code from Samuel Morse's first concept in 1832 through the telegraph era, Titanic, WWII, and its continuing role in modern communication.",
     category: "History",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-04",
     readTime: "10 min",
     keywords: [
@@ -1342,7 +1342,7 @@ For a general overview, read our [Complete History Guide](/blog/what-is-morse-co
     description:
       "Discover the surprising ways Morse code is used in modern technology from ham radio CW and accessibility tools to aviation NAVAIDs, maritime communication, iOS SOS, and military applications.",
     category: "Technology",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-03",
     readTime: "8 min",
     keywords: [
@@ -1465,7 +1465,7 @@ To learn the basics, see our [7-Step Learning Guide](/blog/how-to-learn-morse-co
     description:
       "Complete guide to binary code including how computers use it, the ASCII table, text to binary conversion examples, binary to decimal conversion, and a comparison between binary and Morse code.",
     category: "Reference",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-02",
     readTime: "8 min",
     keywords: [
@@ -1652,7 +1652,7 @@ To learn Morse code itself, try our [7-Step Guide](/blog/how-to-learn-morse-code
     description:
       "50 quiz questions organized by difficulty from beginner to expert, covering letters, numbers, phrases, history, timing, and Morse code trivia with answers provided.",
     category: "Quiz",
-    author: "Morse Code World",
+    author: "Morse Code Translator",
     date: "2026-08-01",
     readTime: "12 min",
     keywords: [

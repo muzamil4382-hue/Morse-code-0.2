@@ -14,7 +14,7 @@ const articleSchema = generateArticleSchema({
   title: "What is Morse Code? History, Uses & Modern Applications",
   description: "A comprehensive guide to Morse code covering its history, how it works, and its modern applications.",
   url: "/what-is-morse-code",
-  datePublished: "2024-12-15",
+  datePublished: "2026-8-05",
 });
 
 export default function WhatIsMorseCodePage() {
