@@ -1959,15 +1959,15 @@ export const numberData: MorseCharacterData[] = [
     visualDescription:
       "The visual pattern of 0 is five long bars: −−−−−. On reference charts, this creates the visually heaviest single-character entry — a solid block of dashes that dominates any number reference section. The uniformity of all five elements being dashes makes it stand out from mixed patterns. In oscilloscope displays, 0 produces five wide, evenly-spaced pulses. Color-coded systems show all five dashes in the same color, creating a dense, heavy visual block.",
     wordExamples: [
-      "ZERO",
-      "TEN",
-      "HUNDRED",
-      "100",
-      "FORTY",
-      "TWENTY",
-      "FIFTY",
-      "ZERO",
-    ],
+  "ZERO",
+  "TEN",
+  "HUNDRED",
+  "100",
+  "FORTY",
+  "TWENTY",
+  "FIFTY",
+  "THOUSAND",
+],
     practiceTips:
       'Practice 0 by saying "dah-dah-dah-dah-dah" with all five dashes equal. Use a metronome to maintain consistency. Practice 0 alongside 9 (−−−−·) — the only difference is that 0 has five dashes and 9 has four dashes plus a dot. Focus especially on the fifth element being a dash (not a dot). Try sending numbers: 10, 20, 100, 1000 — these give practical context for 0 in numerical combinations.',
     funFacts: [
