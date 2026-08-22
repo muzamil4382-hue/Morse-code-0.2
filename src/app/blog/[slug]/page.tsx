@@ -122,10 +122,10 @@ const fallbackImage = "/images/blog/what-is-morse-code.webp";
  * 2. slug mapping
  * 3. fallback image
  */
-function getBlogImage(
+function getPostImage(
   post: ReturnType<typeof getAllPosts>[number]
 ): string {
-  return post.image || blogImages[post.slug] || fallbackImage;
+  return blogImages[post.slug] || fallbackImage;
 }
 
 export async function generateStaticParams() {
@@ -919,7 +919,7 @@ export default async function BlogPostPage({
   /*
    * Always resolve image through central mapping.
    */
-  const heroImage = getBlogImage(post);
+  const heroImage = getPostImage(post);
 
   const articleSchema = generateArticleSchema(
     post.title,
@@ -1065,9 +1065,9 @@ export default async function BlogPostPage({
               {relatedPosts.map(
                 (relatedPost) => {
                   const relatedImage =
-                    getBlogImage(
-                      relatedPost
-                    );
+  getPostImage(
+    relatedPost
+  );
 
                   return (
                     <Link

@@ -6,7 +6,6 @@ export interface BlogPost {
   author: string;
   date: string;
   readTime: string;
-  image: string;
   content: string;
   keywords: string[];
 }
@@ -21,7 +20,6 @@ export const blogPosts: BlogPost[] = [
     author: "Morse Code Translator",
     date: "2026-08-20",
     readTime: "12 min",
-    image: "/images/blog/what-is-morse-code.webp",
     keywords: [
       "what is morse code",
       "morse code history",
@@ -141,7 +139,6 @@ For a chronological look at the major milestones, see our [When Was Morse Code I
     author: "Morse Code Translator",
     date: "2026-08-18",
     readTime: "10 min",
-    image: "/images/blog/how-to-learn-morse-code.webp",
     keywords: [
       "learn morse code",
       "morse code tutorial",
@@ -304,7 +301,6 @@ For the history behind the system you are learning, read our [Complete History G
     author: "Morse Code Translator",
     date: "2026-08-16",
     readTime: "8 min",
-    image: "/images/blog/morse-code-alphabet-chart.webp",
     keywords: [
       "morse code chart",
       "morse code alphabet",
@@ -1336,6 +1332,16 @@ In recent years, Morse code has experienced something of a renaissance:
 
 Today, nearly two centuries after its invention, Morse code remains a living, active communication system. It is used daily by thousands of amateur radio operators, taught in military and aviation training programs, incorporated into emergency signaling systems, and celebrated as a cultural and historical treasure.
 
+## Explore Related Morse Code Guides
+
+If you want to continue learning, these pages cover the most relevant next steps:
+
+- [What Is Morse Code? Complete History Guide](/blog/what-is-morse-code-complete-history-guide) — understand where the system came from.
+- [Morse Code Timing Rules](/morse-code-timing) — learn how speed, spacing, and WPM work.
+- [SOS Morse Code](/sos-morse-code) — explore one of the best-known emergency signals.
+- [25 Amazing Morse Code Facts](/blog/25-amazing-morse-code-facts-you-didnt-know) — discover more unusual history and applications.
+- [Morse Code Quiz](/morse-code-quiz) — test what you have learned.
+
 The story of Morse code is far from over. As long as there are people who appreciate elegant simplicity and reliable communication, dots and dashes will continue to carry meaning across the ether.
 
 For a general overview, read our [Complete History Guide](/blog/what-is-morse-code-complete-history-guide). To explore fascinating details, see our [25 Amazing Facts](/blog/25-amazing-morse-code-facts-you-didnt-know).`,
@@ -1355,7 +1361,7 @@ For a general overview, read our [Complete History Guide](/blog/what-is-morse-co
       "morse code applications",
             "morse code today",
     ],
-    content: `It would be easy to assume that Morse code is a relic of the past — a system rendered obsolete by the telephone, internet, and satellite communication. But nearly two centuries after its invention, Morse code continues to serve important roles in modern technology and daily life. For the historical background, see our [Complete Morse Code History Guide](/blog/what-is-morse-code-complete-history-guide). From emergency signaling on your smartphone to long-distance amateur radio communication, here are the practical ways Morse code is still used today. You can try these modern applications yourself with our [Morse Code Translator](/).
+    content: `It would be easy to assume that Morse code is a relic of the past — a system rendered obsolete by the telephone, internet, and satellite communication. But nearly two centuries after its invention, Morse code continues to serve important roles in modern technology and daily life. For the historical background, see our [Complete Morse Code History Guide](/blog/what-is-morse-code-complete-history-guide). From emergency signaling on your smartphone to long-distance amateur radio communication, here are the practical ways Morse code is still used today. You can try these modern applications yourself with our [Morse Code Translator](/), review the symbols in the [Morse Code Alphabet](/morse-code-alphabet), or compare Morse with digital data in our [Binary Code Translator Guide](/blog/binary-code-translator-guide).
 
 ## Amateur Radio (CW Communication)
 
@@ -1659,7 +1665,6 @@ To learn Morse code itself, try our [7-Step Guide](/blog/how-to-learn-morse-code
     author: "Morse Code Translator",
     date: "2026-08-01",
     readTime: "12 min",
-    image: "/images/blog/morse-code-quiz.webp",
     keywords: [
       "morse code quiz",
       "morse code test",
@@ -1821,67 +1826,21 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }
 
-export function getRelatedPosts(
-  currentSlug: string,
-  limit = 3
-): BlogPost[] {
-  const currentPost = getPostBySlug(currentSlug);
-
-  if (!currentPost) {
-    return [];
-  }
-
+export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
   return blogPosts
-    .filter((post) => post.slug !== currentSlug)
-    .map((post) => {
-      let score = 0;
+    .filter((p) => p.slug !== currentSlug)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, limit);
+}
 
-      // Same category is the strongest topical signal.
-      if (post.category === currentPost.category) {
-        score += 10;
-      }
+export function getPostsByCategory(category: string): BlogPost[] {
+  return blogPosts.filter((p) => p.category === category);
+}
 
-      // Reward shared SEO/topic keywords.
-      const currentKeywords = currentPost.keywords.map((keyword) =>
-        keyword.toLowerCase()
-      );
+export function getAllCategories(): string[] {
+  return [...new Set(blogPosts.map((p) => p.category))];
+}
 
-      const postKeywords = post.keywords.map((keyword) =>
-        keyword.toLowerCase()
-      );
-
-      const sharedKeywords = currentKeywords.filter((keyword) =>
-        postKeywords.includes(keyword)
-      );
-
-      score += sharedKeywords.length * 5;
-
-      // Add lightweight title/description topical relevance.
-      const currentTitleWords = currentPost.title
-        .toLowerCase()
-        .split(/\s+/)
-        .filter((word) => word.length > 3);
-
-      const postText = `${post.title} ${post.description}`.toLowerCase();
-
-      const sharedTitleWords = currentTitleWords.filter((word) =>
-        postText.includes(word)
-      );
-
-      score += sharedTitleWords.length * 2;
-
-      return { post, score };
-    })
-    .sort((a, b) => {
-      if (b.score !== a.score) {
-        return b.score - a.score;
-      }
-
-      return (
-        new Date(b.post.date).getTime() -
-        new Date(a.post.date).getTime()
-      );
-    })
-    .slice(0, limit)
-    .map(({ post }) => post);
+export function getAllSlugs(): string[] {
+  return blogPosts.map((p) => p.slug);
 }
