@@ -1124,7 +1124,7 @@ export default function HomeClient({ faqs }: Props) {
             .map(([letter, code]) => (
               <Link
                 key={letter}
-                href={`/morse-code-letter/${letter.toLowerCase()}`}
+                href={`/morse-code-alphabet#letter-${letter.toLowerCase()}`}
                 className="group relative flex flex-col items-center p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-green-300 dark:hover:border-green-700 hover:shadow-md transition-all"
               >
                 <span className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-green-600">
@@ -1151,7 +1151,7 @@ export default function HomeClient({ faqs }: Props) {
             .map(([number, code]) => (
               <Link
                 key={number}
-                href={`/morse-code-number/${number}`}
+                href={`/morse-code-numbers#number-${number}`}
                 className="group relative flex flex-col items-center p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-green-300 dark:hover:border-green-700 hover:shadow-md transition-all"
               >
                 <span className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-green-600">

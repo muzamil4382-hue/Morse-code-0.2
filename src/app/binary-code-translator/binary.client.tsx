@@ -58,293 +58,160 @@ export default function BinaryClient() {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-slate-50">
 
-      <div className="mx-auto max-w-6xl px-4 py-10">
-
-        {/* Breadcrumb */}
-
-        <nav
-          aria-label="Breadcrumb"
-          className="mb-8 flex items-center gap-2 text-sm text-slate-500"
-        >
-          <Link
-            href="/"
-            className="hover:text-green-600 transition-colors"
-          >
-            Home
-          </Link>
-
-          <span>/</span>
-
-          <span className="font-medium text-slate-900">
-            Binary Code Translator
-          </span>
-        </nav>
-
-        {/* HERO */}
-
-        <section className="mb-12">
-
-          <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-green-50 p-8 md:p-12">
-
-            <span className="inline-flex rounded-full bg-green-100 px-4 py-1 text-sm font-medium text-green-700">
-              Free Binary Code Translator
-            </span>
-
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-900 md:text-6xl">
+      {/* HOME-STYLE HERO — FULL WIDTH */}
+      <section className="w-full bg-gradient-to-r from-green-800 via-green-700 to-emerald-800 px-4 py-7 text-white shadow-sm sm:px-6 sm:py-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
               Binary Code Translator
             </h1>
 
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-              Instantly convert plain text into
-              <strong> 8-bit binary code </strong>
-              and convert binary back into readable text using the
-              ASCII character encoding standard.
-
-              Whether you're learning Computer Science,
-              programming,
-              Digital Electronics,
-              Machine Language,
-              or simply exploring how computers work,
-              this free Binary Code Translator helps you understand
-              binary quickly and accurately.
+            <p className="mx-auto mt-3 max-w-4xl text-base leading-7 text-green-50/90 sm:text-lg">
+              Convert text to binary or decode binary to readable text instantly.
+              Explore <strong>8-bit binary</strong>, <strong>ASCII character encoding</strong>,
+              bits, bytes, and practical binary examples with a free online converter.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-
-              <a
-                href="#translator"
-                className="rounded-xl bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
-              >
-                Start Converting
-              </a>
-
-              <Link
-                href="/blog"
-                className="rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition hover:border-green-600 hover:text-green-600"
-              >
-                Learn Binary
-              </Link>
-
+            <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-green-50/90">
+              <span>⚡ Real-Time Conversion</span>
+              <span>⌘ Text ↔ Binary</span>
+              <span>01 8-Bit Examples</span>
+              <span>▣ ASCII Reference</span>
             </div>
-<div className="mt-8 flex flex-wrap gap-3">
-
-  <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-700">
-    ✓ Free Forever
-  </span>
-
-  <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
-    ✓ ASCII Standard
-  </span>
-
-  <span className="rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700">
-    ✓ 8-Bit Encoding
-  </span>
-
-  <span className="rounded-full bg-orange-100 px-4 py-2 text-sm font-medium text-orange-700">
-    ✓ Instant Conversion
-  </span>
-
-  <span className="rounded-full bg-pink-100 px-4 py-2 text-sm font-medium text-pink-700">
-    ✓ No Registration
-  </span>
-
-</div>
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-
-                <h2 className="text-lg font-semibold text-slate-900">
-                  Instant Conversion
-                </h2>
-
-                <p className="mt-3 text-slate-600">
-                  Convert text to binary and binary to text in real time.
-                </p>
-
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-
-                <h2 className="text-lg font-semibold text-slate-900">
-                  ASCII Based
-                </h2>
-
-                <p className="mt-3 text-slate-600">
-                  Uses standard 8-bit ASCII encoding that is widely used in
-                  computer systems.
-                </p>
-
-              </div>
-
-              <div className="rounded-2xl border border-slate-200 bg-white p-5">
-
-                <h2 className="text-lg font-semibold text-slate-900">
-                  Beginner Friendly
-                </h2>
-
-                <p className="mt-3 text-slate-600">
-                  Learn binary, bits, bytes and digital computing through
-                  practical examples.
-                </p>
-
-              </div>
-
-            </div>
-
           </div>
+      </section>
 
-        </section>
+      <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
-        {/* Translator */}
-
+        {/* BINARY TRANSLATOR — HOME-STYLE TOOL */}
         <section
           id="translator"
-          className="mb-14 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm"
+          className="mb-10 w-full rounded-3xl border-t-4 border-green-600 bg-white p-5 shadow-sm sm:p-6 lg:p-8"
         >
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-green-700">
+                Interactive Tool
+              </p>
+              <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+                Convert Text and Binary Instantly
+              </h2>
+            </div>
 
-          <div className="flex items-center justify-between">
+            <button
+              onClick={handleSwap}
+              aria-label="Swap conversion direction"
+              className="inline-flex w-fit items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-green-500 hover:bg-green-50 hover:text-green-700"
+            >
+              <ArrowDownUp className="h-4 w-4" />
+              Switch Direction
+            </button>
+          </div>
 
-            <div className="flex items-center gap-4">
+          <div className="mt-6 grid grid-cols-2 rounded-2xl bg-slate-100 p-1">
+            <button
+              onClick={() => setMode("text-to-binary")}
+              className={`rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                mode === "text-to-binary"
+                  ? "bg-green-700 text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Text → Binary
+            </button>
 
-              <span
-                className={`font-semibold ${
+            <button
+              onClick={() => setMode("binary-to-text")}
+              className={`rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                mode === "binary-to-text"
+                  ? "bg-green-700 text-white shadow-sm"
+                  : "text-slate-600 hover:text-slate-900"
+              }`}
+            >
+              Binary → Text
+            </button>
+          </div>
+
+          <div className="mt-5 grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
+            <div className="min-w-0 rounded-2xl border border-slate-200 bg-slate-50/60 p-4 sm:p-5">
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <label className="font-semibold text-slate-800">
+                  {mode === "text-to-binary" ? "Enter Text" : "Enter Binary Code"}
+                </label>
+                <span className="text-xs font-medium text-slate-500">
+                  {mode === "text-to-binary" ? "ASCII-compatible text" : "Use 8-bit groups"}
+                </span>
+              </div>
+
+              <textarea
+                value={mode === "text-to-binary" ? text : binary}
+                onChange={(e) =>
                   mode === "text-to-binary"
-                    ? "text-green-600"
-                    : "text-slate-400"
-                }`}
-              >
-                Text → Binary
-              </span>
-
-              <button
-                onClick={handleSwap}
-                aria-label="Swap conversion direction"
-                className="rounded-full bg-slate-100 p-2 transition hover:bg-green-100 hover:text-green-600"
-              >
-                <ArrowDownUp className="h-5 w-5" />
-              </button>
-
-              <span
-                className={`font-semibold ${
-                  mode === "binary-to-text"
-                    ? "text-green-600"
-                    : "text-slate-400"
-                }`}
-              >
-                Binary → Text
-              </span>
-
+                    ? setText(e.target.value)
+                    : setBinary(e.target.value)
+                }
+                placeholder={
+                  mode === "text-to-binary"
+                    ? "Type your message here..."
+                    : "Example: 01001000 01100101 01101100 01101100 01101111"
+                }
+                className="block min-h-[210px] w-full resize-y rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+              />
             </div>
 
-          </div>
+            <div className="min-w-0 rounded-2xl border border-slate-200 bg-slate-50/60 p-4 sm:p-5">
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <label className="font-semibold text-slate-800">Output</label>
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-green-700">
+                  ⚡ Live
+                </span>
+              </div>
 
-          <div className="mt-8">
-
-            <label className="mb-2 block font-medium text-slate-700">
-
-              {mode === "text-to-binary"
-                ? "Enter Text"
-                : "Enter Binary Code"}
-
-            </label>
-
-            <textarea
-              value={
-                mode === "text-to-binary"
-                  ? text
-                  : binary
-              }
-              onChange={(e) =>
-                mode === "text-to-binary"
-                  ? setText(e.target.value)
-                  : setBinary(e.target.value)
-              }
-              placeholder={
-                mode === "text-to-binary"
-                  ? "Example: Hello OpenAI"
-                  : "Example: 01001000 01100101 01101100 01101100 01101111"
-              }
-              className="min-h-[180px] w-full rounded-2xl border border-slate-200 p-5 font-mono text-lg outline-none transition focus:border-green-500"
-            />
-          </div>
-          <div className="mt-8">
-
-            <label className="mb-2 block font-medium text-slate-700">
-              Output
-            </label>
-
-            <div className="min-h-[120px] rounded-2xl bg-slate-900 p-5 font-mono text-green-400">
-              {output || "Your converted result will appear here..."}
+              <div className="min-h-[210px] break-all rounded-xl border border-slate-200 bg-white p-4 font-mono text-sm leading-7 text-slate-700">
+                {output || "Your translation will appear here..."}
+              </div>
             </div>
-
           </div>
 
-          <div className="mt-6">
-
+          <div className="mt-5 grid w-full grid-cols-1 gap-4 border-t border-slate-100 pt-5 lg:grid-cols-[auto_minmax(0,1fr)] lg:items-center">
             <button
               onClick={handleCopy}
               disabled={!output}
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-5 py-3 font-medium transition hover:bg-slate-50 disabled:opacity-50"
+              className="inline-flex w-fit items-center justify-center gap-2 rounded-xl bg-green-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-800 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {copied ? (
-                <Check className="h-4 w-4 text-green-500" />
-              ) : (
-                <Copy className="h-4 w-4" />
-              )}
-
+              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
               {copied ? "Copied!" : "Copy Result"}
             </button>
+
+            <div className="grid w-full grid-cols-2 gap-2 text-center text-xs sm:grid-cols-4">
+              <div className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-2.5">
+                <p className="text-slate-500">Characters</p>
+                <p className="mt-1 font-bold text-slate-900">{mode === "text-to-binary" ? text.length : output.length}</p>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-2.5">
+                <p className="text-slate-500">Words</p>
+                <p className="mt-1 font-bold text-slate-900">
+                  {(mode === "text-to-binary" ? text : output).trim().split(/\s+/).filter(Boolean).length}
+                </p>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-2.5">
+                <p className="text-slate-500">Bits</p>
+                <p className="mt-1 font-bold text-slate-900">{output.replace(/\s/g, "").length}</p>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-2.5">
+                <p className="text-slate-500">Bytes</p>
+                <p className="mt-1 font-bold text-slate-900">{Math.ceil(output.replace(/\s/g, "").length / 8)}</p>
+              </div>
+            </div>
           </div>
-          <p className="mt-4 text-sm text-slate-500">
-  Note: This translator currently supports standard ASCII characters. Unicode
-  characters such as emojis and some non-Latin scripts may not convert
-  correctly.
-</p>
-          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-
-  <div className="rounded-xl border border-slate-200 p-4">
-    <p className="text-sm text-slate-500">Characters</p>
-    <p className="mt-1 text-xl font-bold">
-      {mode === "text-to-binary" ? text.length : output.length}
-    </p>
-  </div>
-
-  <div className="rounded-xl border border-slate-200 p-4">
-    <p className="text-sm text-slate-500">Words</p>
-    <p className="mt-1 text-xl font-bold">
-      {(mode === "text-to-binary" ? text : output)
-        .trim()
-        .split(/\s+/)
-        .filter(Boolean).length}
-    </p>
-  </div>
-
-  <div className="rounded-xl border border-slate-200 p-4">
-    <p className="text-sm text-slate-500">Bits</p>
-    <p className="mt-1 text-xl font-bold">
-      {output.replace(/\s/g, "").length}
-    </p>
-  </div>
-
-  <div className="rounded-xl border border-slate-200 p-4">
-    <p className="text-sm text-slate-500">Bytes</p>
-    <p className="mt-1 text-xl font-bold">
-  {mode === "text-to-binary"
-    ? Math.ceil(output.replace(/\s/g, "").length / 8)
-    : output.length}
-</p>
-  </div>
-
-</div>
-
         </section>
-                {/* =======================================================
+
+        {/* =======================================================
             WHAT IS BINARY CODE
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             What Is Binary Code?
@@ -381,7 +248,7 @@ export default function BinaryClient() {
               If you also want to learn human communication systems,
               visit our{" "}
               <Link
-                href="/"
+                href="/morse-code-translator"
                 className="text-green-600 hover:underline"
               >
                 Morse Code Translator
@@ -397,7 +264,7 @@ export default function BinaryClient() {
             BITS & BYTES
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Understanding Bits and Bytes
@@ -526,7 +393,7 @@ export default function BinaryClient() {
             BASE 2
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             The Base-2 Number System
@@ -558,7 +425,7 @@ export default function BinaryClient() {
             ASCII
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             ASCII Character Encoding
@@ -589,36 +456,28 @@ export default function BinaryClient() {
               </code>
               in binary.
             </p>
-<p>
-  If you want to learn how letters are represented using another
-  encoding system, see our{" "}
-  <Link
-    href="/morse-code-alphabet"
-    className="text-green-600 hover:underline"
-  >
-    Morse Code Alphabet
-  </Link>{" "}
-  guide.
-</p>
 
-<p>
-  You can also try our{" "}
-  <Link
-    href="/"
-    className="text-green-600 hover:underline"
-  >
-    Morse Code Translator
-  </Link>{" "}
-  to compare ASCII binary encoding with International Morse code.
-</p>
+            <p>
+              If you want to learn how letters are represented using another
+              encoding system, see our{" "}
+              <Link
+                href="/morse-code-alphabet"
+                className="text-green-600 hover:underline"
+              >
+                Morse Code Alphabet
+              </Link>{" "}
+              guide.
+            </p>
+
           </div>
+
         </section>
 
         {/* =======================================================
             UNICODE
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             ASCII vs Unicode
@@ -647,6 +506,7 @@ export default function BinaryClient() {
               and programming languages primarily use UTF-8,
               which is based on Unicode while remaining compatible with ASCII.
             </p>
+
           </div>
 
         </section>
@@ -654,7 +514,7 @@ export default function BinaryClient() {
             HISTORY OF BINARY CODE
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             History of Binary Code
@@ -726,16 +586,7 @@ export default function BinaryClient() {
               thousands of languages while remaining compatible with
               standard ASCII characters.
             </p>
-<p>
-  Interested in the history of another communication system? Read our{" "}
-  <Link
-    href="/what-is-morse-code"
-    className="text-green-600 hover:underline"
-  >
-    What is Morse Code
-  </Link>{" "}
-  guide.
-</p>
+
           </div>
 
         </section>
@@ -744,7 +595,7 @@ export default function BinaryClient() {
             HOW BINARY WORKS
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             How Binary Code Works
@@ -831,7 +682,7 @@ export default function BinaryClient() {
             BINARY EXAMPLES
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Binary Code Examples
@@ -961,7 +812,7 @@ export default function BinaryClient() {
             BINARY VS MORSE CODE
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Binary Code vs Morse Code
@@ -1082,7 +933,7 @@ export default function BinaryClient() {
             BINARY IN REAL LIFE
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Binary Code in Real Life
@@ -1160,7 +1011,7 @@ export default function BinaryClient() {
             INTERESTING BINARY FACTS
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             10 Interesting Facts About Binary Code
@@ -1205,7 +1056,7 @@ export default function BinaryClient() {
             COMMON MISTAKES
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Common Mistakes Beginners Make
@@ -1275,7 +1126,7 @@ export default function BinaryClient() {
             COMMON APPLICATIONS
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Common Applications of Binary Code
@@ -1357,7 +1208,7 @@ export default function BinaryClient() {
             LEARNING TIPS
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Tips for Learning Binary Faster
@@ -1387,7 +1238,7 @@ export default function BinaryClient() {
             <li>
               Practice regularly using the{" "}
               <Link
-                href="/"
+                href="/morse-code-translator"
                 className="text-green-600 hover:underline"
               >
                 Morse Code Translator
@@ -1402,7 +1253,7 @@ export default function BinaryClient() {
             FREQUENTLY ASKED QUESTIONS
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Frequently Asked Questions
@@ -1538,7 +1389,7 @@ export default function BinaryClient() {
             EXPLORE MORE
         ======================================================== */}
 
-        <section className="mb-16">
+        <section className="mb-10">
 
           <h2 className="text-3xl font-bold text-slate-900">
             Explore More
@@ -1547,14 +1398,13 @@ export default function BinaryClient() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 
             {[
-              ["/","Morse Code Translator"],
+              ["/morse-code-translator","Morse Code Translator"],
               ["/morse-code-decoder","Morse Code Decoder"],
               ["/morse-code-alphabet","Morse Code Alphabet"],
-              ["/morse-code-numbers","Morse Code Numbers"],
+                            ["/morse-code-numbers","Morse Code Numbers"],
               ["/learn-morse-code","Learn Morse Code"],
               ["/morse-code-quiz","Morse Code Quiz"],
               ["/morse-code-timing","Morse Timing"],
-              ["/morse-code-sounds","Morse Code Sounds"],
               ["/what-is-morse-code","What is Morse Code"],
               ["/blog","Blog"]
             ].map(([href,title])=>(
@@ -1579,9 +1429,9 @@ export default function BinaryClient() {
             CONCLUSION
         ======================================================== */}
 
-        <section className="mb-12">
+        <section className="mb-8">
 
-          <h2 className="text-3xl font-bold text-slate-900">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             Final Thoughts
           </h2>
 
@@ -1594,25 +1444,21 @@ export default function BinaryClient() {
             Binary Code Translator provides an easy way to convert text,
             explore binary values and understand how digital systems work.
           </p>
- <p className="mt-6 leading-8 text-slate-700">
-    Want to explore another communication system? Try our{" "}
-    <Link href="/">Morse Code Translator</Link>{" "}
-    or practice with the{" "}
-    <Link href="/morse-code-quiz">Morse Code Quiz</Link>.
-  </p>
-        </section>
-        <section className="mb-20 rounded-3xl bg-gradient-to-r from-green-600 to-green-700 p-10 text-center text-white">
 
-  <h2 className="text-3xl font-bold">
+        </section>
+        <section className="relative left-1/2 mb-0 w-screen -translate-x-1/2 bg-gradient-to-r from-green-800 via-green-700 to-emerald-800 px-4 py-8 text-center text-white sm:px-6 sm:py-9">
+          <div className="mx-auto max-w-7xl">
+
+  <h2 className="text-2xl font-bold sm:text-3xl">
     Continue Learning Digital Communication
   </h2>
 
-  <p className="mx-auto mt-4 max-w-2xl text-green-100">
+  <p className="mx-auto mt-3 max-w-2xl text-green-100">
     Explore Morse Code, learn character encoding, practice with interactive
     quizzes, and improve your understanding of digital communication systems.
   </p>
 
-  <div className="mt-8 flex flex-wrap justify-center gap-4">
+  <div className="mt-6 flex flex-wrap justify-center gap-4">
 
     <Link
       href="/learn-morse-code"
@@ -1629,6 +1475,7 @@ export default function BinaryClient() {
     </Link>
 
   </div>
+          </div>
 
 </section>
 
