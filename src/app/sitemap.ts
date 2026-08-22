@@ -15,6 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+
+    /*
+     * Core Morse Code Tools
+     */
     {
       url: `${BASE_URL}/morse-code-decoder`,
       lastModified,
@@ -34,16 +38,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/binary-code-translator`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+
+    /*
+     * Learn Morse Code
+     */
+    {
       url: `${BASE_URL}/learn-morse-code`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
-    },
-    {
-      url: `${BASE_URL}/morse-code-timing`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
     {
       url: `${BASE_URL}/what-is-morse-code`,
@@ -52,13 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/sos-morse-code`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/binary-code-translator`,
+      url: `${BASE_URL}/morse-code-timing`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -70,6 +72,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/sos-morse-code`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+
+    /*
+     * Morse Code Quiz
+     *
+     * Quiz levels use query parameters such as:
+     * /morse-code-quiz?level=1
+     *
+     * These are not separate pages, so only the
+     * main canonical quiz URL is included.
+     */
+    {
       url: `${BASE_URL}/morse-code-quiz`,
       lastModified,
       changeFrequency: "monthly",
@@ -77,7 +95,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     /*
-     * Word / Phrase pages
+     * Word / Phrase Pages
      */
     {
       url: `${BASE_URL}/i-love-you-in-morse-code`,
@@ -127,7 +145,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     /*
-     * Legal / Company pages
+     * Company / Legal Pages
      */
     {
       url: `${BASE_URL}/about`,
@@ -162,19 +180,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   /*
-   * Blog post pages
+   * Individual Blog Posts
    */
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map(
-    (post) => ({
-      url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    })
-  );
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
-  return [
-    ...staticPages,
-    ...blogPages,
-  ];
+  return [...staticPages, ...blogPages];
 }

@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { MORSE_CODE, playMorseAudio } from "@/lib/morse";
 
 const LEVELS = [
@@ -50,6 +51,7 @@ function generateQuestions(letters: readonly string[], count: number): Question[
 }
 
 export default function MorseCodeQuizPage() {
+  const searchParams = useSearchParams();
   const [levelId, setLevelId] = useState(1);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -59,17 +61,6 @@ export default function MorseCodeQuizPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const requestedLevel = Number(params.get("level"));
-    if (LEVELS.some((level) => level.id === requestedLevel)) {
-      setLevelId(requestedLevel);
-    }
-  }, []);
-
-  const currentLevel = LEVELS.find((level) => level.id === levelId) ?? LEVELS[0];
-  const totalQuestions = 15;
-
   const resetQuiz = useCallback(() => {
     setQuestions([]);
     setCurrentIdx(0);
@@ -78,6 +69,18 @@ export default function MorseCodeQuizPage() {
     setShowResult(false);
     setQuizStarted(false);
   }, []);
+
+  useEffect(() => {
+    const requestedLevel = Number(searchParams.get("level"));
+
+    if (LEVELS.some((level) => level.id === requestedLevel)) {
+      setLevelId(requestedLevel);
+      resetQuiz();
+    }
+  }, [searchParams, resetQuiz]);
+
+  const currentLevel = LEVELS.find((level) => level.id === levelId) ?? LEVELS[0];
+  const totalQuestions = 15;
 
   const selectLevel = useCallback((id: number) => {
     setLevelId(id);
