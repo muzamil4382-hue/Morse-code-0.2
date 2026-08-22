@@ -2,332 +2,1216 @@
 
 import { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
-import { Copy, Check, ChevronDown, ChevronUp, ArrowRight, Trash2, Zap, Info } from "lucide-react";
+import {
+  Copy,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Trash2,
+  ArrowRight,
+  Zap,
+  Headphones,
+  ShieldCheck,
+  Search,
+  BookOpen,
+  AlertTriangle,
+} from "lucide-react";
+
 import { MORSE_CODE, TEXT_CODE } from "@/lib/morse";
 
-interface FAQ { question: string; answer: string; }
-interface Props { faqs: FAQ[]; }
+interface FAQ {
+  question: string;
+  answer: string;
+}
 
-type SeparatorMode = "space" | "slash" | "pipe" | "bruteforce";
+interface Props {
+  faqs: FAQ[];
+}
+
+type SeparatorMode = "space" | "slash" | "pipe" | "continuous";
+
+type AnalysisItem = {
+  morse: string;
+  char: string;
+  valid: boolean;
+};
+
+const MORSE_KEYS = Object.keys(TEXT_CODE).sort(
+  (a, b) => b.length - a.length
+);
+
+/*
+ * Attempts to split continuous Morse into valid characters.
+ * Morse without separators is inherently ambiguous, so this
+ * returns one practical segmentation instead of claiming certainty.
+ */
+function decodeContinuousMorse(input: string) {
+  const clean = input.replace(/[^.-]/g, "");
+
+  if (!clean) {
+    return [];
+  }
+
+  const memo = new Map<string, string[] | null>();
+
+  function solve(sequence: string): string[] | null {
+    if (!sequence) {
+      return [];
+    }
+
+    if (memo.has(sequence)) {
+      return memo.get(sequence)!;
+    }
+
+    for (const code of MORSE_KEYS) {
+      if (sequence.startsWith(code)) {
+        const remainder = solve(sequence.slice(code.length));
+
+        if (remainder) {
+          const result = [code, ...remainder];
+          memo.set(sequence, result);
+          return result;
+        }
+      }
+    }
+
+    memo.set(sequence, null);
+    return null;
+  }
+
+  return solve(clean) || [clean];
+}
 
 export default function DecoderClient({ faqs }: Props) {
   const [morseInput, setMorseInput] = useState("");
-  const [separator, setSeparator] = useState<SeparatorMode>("space");
+
+  const [separator, setSeparator] =
+    useState<SeparatorMode>("space");
+
   const [copied, setCopied] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const [openFaq, setOpenFaq] =
+    useState<number | null>(null);
 
   const decodeResult = useMemo(() => {
-    if (!morseInput.trim()) return { text: "", analysis: [] as { morse: string; char: string; valid: boolean }[] };
+    if (!morseInput.trim()) {
+      return {
+        text: "",
+        analysis: [] as AnalysisItem[],
+      };
+    }
 
     let tokens: string[] = [];
 
-    if (separator === "bruteforce") {
-      tokens = morseInput.trim().split(/\s+/);
+    if (separator === "continuous") {
+      tokens = decodeContinuousMorse(morseInput);
     } else if (separator === "pipe") {
-      tokens = morseInput.trim().split(/[|]/).map(s => s.trim()).filter(Boolean);
+      tokens = morseInput
+        .trim()
+        .split("|")
+        .map((item) => item.trim())
+        .filter(Boolean);
     } else if (separator === "slash") {
-      tokens = morseInput.trim().replace(/\//g, " ").split(/\s+/).filter(Boolean);
+      tokens = morseInput
+        .trim()
+        .split("/")
+        .map((item) => item.trim())
+        .filter(Boolean);
     } else {
-      tokens = morseInput.trim().split(/\s+/);
+      tokens = morseInput
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
     }
 
-    const analysis = tokens.map(token => {
+    const analysis = tokens.map((token) => {
       const char = TEXT_CODE[token] || "";
-      return { morse: token, char, valid: !!char || token === "/" };
+
+      return {
+        morse: token,
+        char,
+        valid: Boolean(char),
+      };
     });
 
-    let text = analysis.map(a => {
-      if (a.morse === "/") return " ";
-      return a.char;
-    }).join("");
+    const text = analysis
+      .map((item) => item.char || "?")
+      .join("");
 
-    return { text, analysis };
+    return {
+      text,
+      analysis,
+    };
   }, [morseInput, separator]);
 
   const handleCopy = useCallback(() => {
     if (!decodeResult.text) return;
+
     navigator.clipboard.writeText(decodeResult.text);
+
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
   }, [decodeResult.text]);
 
-  const handleClear = useCallback(() => setMorseInput(""), []);
+  const handleClear = useCallback(() => {
+    setMorseInput("");
+  }, []);
 
-  const validCount = decodeResult.analysis.filter(a => a.valid).length;
+  const validCount = decodeResult.analysis.filter(
+    (item) => item.valid
+  ).length;
+
   const totalCount = decodeResult.analysis.length;
-  const invalidChars = decodeResult.analysis.filter(a => !a.valid);
+
+  const invalidChars = decodeResult.analysis.filter(
+    (item) => !item.valid
+  );
+
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+  const numbers = "0123456789".split("");
 
   return (
-    <div className="min-h-screen">
-      {/* Breadcrumb */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-6" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Home</Link>
-          <span className="text-slate-300 dark:text-slate-600">/</span>
-          <span className="text-slate-900 dark:text-white font-medium">Morse Code Decoder</span>
-        </nav>
-        <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Morse Code Decoder</h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Decode Morse code to readable text with support for custom separators, brute-force mode for unseparated input, and character-by-character analysis. Paste your dots and dashes and get instant results.</p>
+    <div className="min-h-screen bg-background">
+
+      {/* =====================================================
+          HERO
+      ====================================================== */}
+
+      <section className="w-full bg-[#0f6b3b] text-white">
+        <div className="mx-auto max-w-5xl px-4 py-10 text-center sm:px-6 sm:py-12 lg:px-8">
+
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+            Morse Code Decoder
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-4xl text-base leading-8 text-green-50 sm:text-lg">
+            Decode dots and dashes into readable text instantly.
+            This Morse Code Decoder supports{" "}
+            <strong>International Morse Code</strong>, letters{" "}
+            <strong>A–Z</strong>, numbers <strong>0–9</strong>,
+            separators, continuous Morse analysis, and
+            character-by-character validation.
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm text-green-100 sm:text-base">
+
+            <span className="inline-flex items-center gap-2">
+              <Zap className="h-4 w-4" />
+              Instant Decoding
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4" />
+              International Standard
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              <Search className="h-4 w-4" />
+              Character Analysis
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              <BookOpen className="h-4 w-4" />
+              A–Z & 0–9 Support
+            </span>
+
+          </div>
         </div>
       </section>
 
-      {/* Decoder Tool */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl shadow-slate-200/60 dark:shadow-none border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8">
-          {/* Separator Selection */}
-          <div className="mb-5">
-            <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 block flex items-center gap-2"><Info className="w-4 h-4 text-green-600" /> Separator Format</label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {([
-                { id: "space" as const, label: "Space", desc: ".- -... (standard)" },
-                { id: "slash" as const, label: "Slash /", desc: ".-/-.../-.-." },
-                { id: "pipe" as const, label: "Pipe |", desc: ".-|-...|-.-." },
-                { id: "bruteforce" as const, label: "No Separator", desc: "Brute force" },
-              ]).map(s => (
-                <button key={s.id} onClick={() => setSeparator(s.id)} className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${separator === s.id ? "border-green-500 bg-green-50 dark:bg-green-900/30 dark:border-green-600" : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"}`}>
-                  <span className={`text-sm font-semibold ${separator === s.id ? "text-green-700 dark:text-green-400" : "text-slate-700 dark:text-slate-300"}`}>{s.label}</span>
-                  <span className="block text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">{s.desc}</span>
+      {/* =====================================================
+          DECODER TOOL
+      ====================================================== */}
+
+      <section className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+
+        <div className="rounded-3xl border border-border border-t-4 border-t-green-600 bg-card p-4 shadow-lg shadow-black/[0.03] sm:p-6 lg:p-7">
+
+          <div className="mb-7 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+
+            <div>
+              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-green-600">
+                Interactive Tool
+              </p>
+
+              <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                Decode Morse Code to Text
+              </h2>
+
+              <p className="mt-2 max-w-2xl leading-7 text-muted-foreground">
+                Enter a Morse code message below. Use dots and
+                dashes, then select the separator format that
+                matches your input.
+              </p>
+            </div>
+
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 text-sm font-semibold transition-colors hover:border-green-500 hover:text-green-700"
+            >
+              Text to Morse
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+
+          </div>
+
+          {/* Separator Tabs */}
+
+          <div className="mb-6 grid grid-cols-2 gap-2 rounded-2xl border border-border bg-muted/40 p-2 md:grid-cols-4">
+
+            {[
+              {
+                id: "space" as const,
+                label: "Space",
+                example: ".- -...",
+              },
+              {
+                id: "slash" as const,
+                label: "Slash",
+                example: ".- / -...",
+              },
+              {
+                id: "pipe" as const,
+                label: "Pipe",
+                example: ".- | -...",
+              },
+              {
+                id: "continuous" as const,
+                label: "Continuous",
+                example: ".--.-",
+              },
+            ].map((item) => (
+
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setSeparator(item.id)}
+                className={`rounded-xl px-4 py-3 text-left transition-all ${
+                  separator === item.id
+                    ? "bg-green-700 text-white shadow-sm"
+                    : "text-muted-foreground hover:bg-background hover:text-foreground"
+                }`}
+              >
+                <span className="block text-sm font-semibold">
+                  {item.label}
+                </span>
+
+                <span
+                  className={`mt-1 block font-mono text-xs ${
+                    separator === item.id
+                      ? "text-green-100"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {item.example}
+                </span>
+              </button>
+
+            ))}
+
+          </div>
+
+          {/* Input + Output */}
+
+          <div className="grid gap-5 lg:grid-cols-2">
+
+            <div className="rounded-2xl border border-border bg-background p-4 sm:p-5">
+
+              <div className="mb-3 flex items-center justify-between">
+
+                <label className="font-semibold text-foreground">
+                  Enter Morse Code
+                </label>
+
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-red-500"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  Clear
                 </button>
-              ))}
-            </div>
-          </div>
 
-          {/* Input */}
-          <div className="mb-4">
-            <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block">Enter Morse Code</label>
-            <div className="relative">
-              <textarea value={morseInput} onChange={(e) => setMorseInput(e.target.value)} placeholder={separator === "bruteforce" ? "Enter Morse code without separators (e.g., .... . .-.. .-.. ---)" : "Enter Morse code with separators (e.g., .... . .-.. .-.. ---)"} className="w-full min-h-[140px] p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-y font-mono text-lg transition-all" dir="ltr" />
-              <button onClick={handleClear} className="absolute top-3 right-3 p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all cursor-pointer"><Trash2 className="w-4 h-4" /></button>
-            </div>
-            <div className="flex items-center justify-between mt-1.5 text-xs text-slate-400 dark:text-slate-500">
-              <span>{morseInput.trim().split(/\s+/).filter(Boolean).length} tokens</span>
-              <span>Use . (dot) and - (dash)</span>
-            </div>
-          </div>
+              </div>
 
-          {/* Output */}
-          <div className="mb-5">
-            <div className="flex items-center justify-between mb-2">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300">Decoded Text</label>
-              <div className="flex items-center gap-2">
-                {totalCount > 0 && (
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${validCount === totalCount ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400" : "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400"}`}>
-                    {validCount}/{totalCount} decoded
+              <textarea
+                value={morseInput}
+                onChange={(event) =>
+                  setMorseInput(event.target.value)
+                }
+                placeholder="Example: .... . .-.. .-.. ---"
+                className="min-h-[220px] w-full resize-none rounded-xl border border-border bg-muted/20 p-4 font-mono text-base text-foreground outline-none transition-all placeholder:text-muted-foreground focus:border-green-500 focus:ring-2 focus:ring-green-500/15"
+                dir="ltr"
+              />
+
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+
+                <span>
+                  {totalCount} detected{" "}
+                  {totalCount === 1
+                    ? "pattern"
+                    : "patterns"}
+                </span>
+
+                <span>
+                  Use . for dots and - for dashes
+                </span>
+
+              </div>
+
+            </div>
+
+            <div className="rounded-2xl border border-border bg-background p-4 sm:p-5">
+
+              <div className="mb-3 flex items-center justify-between">
+
+                <div>
+                  <p className="font-semibold text-foreground">
+                    Decoded Text
+                  </p>
+
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    Live result
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+
+                  {totalCount > 0 && (
+
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                        validCount === totalCount
+                          ? "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-400"
+                          : "bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400"
+                      }`}
+                    >
+                      {validCount}/{totalCount} valid
+                    </span>
+
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={handleCopy}
+                    disabled={!decodeResult.text}
+                    className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-green-500 hover:text-green-700 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {copied ? (
+                      <Check className="h-4 w-4 text-green-600" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+
+                    {copied ? "Copied" : "Copy"}
+                  </button>
+
+                </div>
+
+              </div>
+
+              <div
+                className="min-h-[220px] rounded-xl border border-border bg-muted/20 p-5 font-mono text-lg text-foreground"
+                dir="ltr"
+              >
+                {decodeResult.text ? (
+                  decodeResult.text
+                ) : (
+                  <span className="text-muted-foreground">
+                    Your decoded message will appear here...
                   </span>
                 )}
-                <button onClick={handleCopy} disabled={!decodeResult.text} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-40 cursor-pointer">
-                  {copied ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
-                  {copied ? "Copied!" : "Copy"}
-                </button>
               </div>
+
+              <div className="mt-3 text-xs leading-6 text-muted-foreground">
+
+                Tip: For the most reliable result, separate Morse
+                characters correctly. Learn the standard patterns in
+                our{" "}
+
+                <Link
+                  href="/morse-code-alphabet"
+                  className="font-semibold text-green-700 hover:underline"
+                >
+                  Morse Code Alphabet
+                </Link>
+
+                .
+
+              </div>
+
             </div>
-            <div className="p-4 rounded-xl bg-slate-900 dark:bg-slate-950 text-green-400 font-mono text-lg min-h-[80px]" dir="ltr">
-              {decodeResult.text ? <span>{decodeResult.text}</span> : <span className="text-slate-600 dark:text-slate-500">Decoded text will appear here...</span>}
-            </div>
+
           </div>
 
-          {/* Analysis Table */}
+          {/* Character Analysis */}
+
           {decodeResult.analysis.length > 0 && (
-            <div>
-              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Character Analysis</h3>
-              <div className="max-h-64 overflow-y-auto rounded-xl border border-slate-200 dark:border-slate-700">
-                <table className="w-full text-sm">
-                  <thead className="bg-slate-50 dark:bg-slate-800 sticky top-0">
-                    <tr>
-                      <th className="text-left p-3 font-semibold text-slate-900 dark:text-white">Morse</th>
-                      <th className="text-left p-3 font-semibold text-slate-900 dark:text-white">Character</th>
-                      <th className="text-left p-3 font-semibold text-slate-900 dark:text-white">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                    {decodeResult.analysis.map((a, i) => (
-                      <tr key={i} className={!a.valid ? "bg-red-50/50 dark:bg-red-900/10" : ""}>
-                        <td className="p-3 font-mono text-slate-900 dark:text-white">{a.morse}</td>
-                        <td className="p-3 font-bold text-slate-900 dark:text-white">{a.morse === "/" ? "(space)" : a.char || "?"}</td>
-                        <td className="p-3">{a.valid ? <span className="text-green-600 dark:text-green-400 text-xs font-medium">Valid</span> : <span className="text-red-500 dark:text-red-400 text-xs font-medium">Unknown</span>}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              {invalidChars.length > 0 && (
-                <div className="mt-3 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-lg">
-                  <p className="text-xs text-amber-700 dark:text-amber-400"><strong>Warning:</strong> {invalidChars.length} token(s) could not be decoded: {invalidChars.map(c => c.morse).join(", ")}. Check that your input uses standard International Morse code notation with dots (.) and dashes (-).</p>
+
+            <div className="mt-6 rounded-2xl border border-border bg-background p-4 sm:p-5">
+
+              <div className="mb-4 flex items-center gap-2">
+
+                <Search className="h-5 w-5 text-green-600" />
+
+                <div>
+
+                  <h3 className="font-bold text-foreground">
+                    Character Analysis
+                  </h3>
+
+                  <p className="text-sm text-muted-foreground">
+                    Check every Morse pattern individually.
+                  </p>
+
                 </div>
-              )}
-            </div>
-          )}
-        </div>
-      </section>
 
-      {/* How Decoding Works */}
-      <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">How Morse Code Decoding Works</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">Morse code decoding is the reverse process of encoding. The decoder receives a sequence of dots and dashes, splits them into individual character codes using separators, and looks up each code in the International Morse code table defined by ITU-R M.1677 to find the corresponding letter or number.</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">The Decoding Process</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">When you paste Morse code into the decoder, it first identifies the separator pattern in your input. In standard format, single spaces separate individual character codes (e.g., &quot;.... . .-.. .-.. ---&quot; for HELLO). Forward slashes (/) indicate word boundaries. The decoder then processes each code by looking it up in a reverse mapping table where Morse code sequences are keys and their corresponding characters are values.</p>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-  For example, the code &quot;....&quot; maps to H, &quot;.&quot; maps to E,
-  &quot;.-..&quot; maps to L, and &quot;---&quot; maps to O. The decoder
-  concatenates these characters to produce the final readable text. If a
-  code does not match any known character, it is flagged as unknown in the
-  analysis table, helping you identify and correct errors in your input.
-  If you need to convert plain text into Morse code instead of decoding it,
-  try our{" "}
-  <Link
-    href="/"
-    className="text-green-600 font-medium hover:underline"
-  >
-    Morse Code Translator
-  </Link>.
-</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Challenges in Morse Code Decoding</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">The primary challenge in Morse code decoding is ambiguity when separators are missing. Without spaces between letters, the same sequence of dots and dashes can represent multiple valid decodings. For instance, &quot;.-.-.-&quot; could be decoded as AEA (.- .- -.-), EE (.. .. -.- -..-.), or the period symbol (.-.-.-). This is why the International Telecommunication Union established strict spacing standards — precise timing ratios prevent ambiguity in real-time transmission.</p>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-  Another common challenge is distinguishing between similar-looking
-  characters when written. The letter H (....) looks very similar to the
-  number 5 (.....) — the difference is a single extra dot. Similarly,
-  S (...) and H (....) differ by one dot. Our decoder&apos;s character
-  analysis table helps you catch these subtle differences by showing the
-  exact match for each input token. To better understand these patterns,
-  study our{" "}
-  <Link
-    href="/morse-code-alphabet"
-    className="text-green-600 font-medium hover:underline"
-  >
-    Morse Code Alphabet
-  </Link>{" "}
-  before decoding longer messages.
-</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Reference */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Morse Code Quick Reference</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Use this reference table to manually verify your Morse code or learn the encoding for each character.</p>
-        </div>
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
-          <div className="max-h-96 overflow-y-auto">
-            <table className="w-full text-sm">
-              <thead className="bg-slate-50 dark:bg-slate-800 sticky top-0 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th className="text-left p-3 font-semibold text-slate-900 dark:text-white">Character</th>
-                  <th className="text-left p-3 font-semibold text-slate-900 dark:text-white">Morse Code</th>
-                  <th className="text-left p-3 font-semibold text-slate-900 dark:text-white">Character</th>
-                  <th className="text-left p-3 font-semibold text-slate-900 dark:text-white">Morse Code</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                {"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,?'/!()&:;=+-_\"\$@".split("").slice(0, 26).reduce<string[][]>((acc, char, i) => {
-                  const row = Math.floor(i / 2);
-                  if (!acc[row]) acc[row] = [];
-                  acc[row].push(char);
-                  return acc;
-                }, []).map((row, i) => (
-                  <tr key={i}>
-                    {row.map(char => (
-                      <>
-                        <td className="p-3 font-bold text-slate-900 dark:text-white" key={`c${char}`}>{char}</td>
-                        <td className="p-3 font-mono text-green-600 dark:text-green-400" key={`m${char}`}>{MORSE_CODE[char] || ""}</td>
-                      </>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-        <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
-  <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-center">
-    Once you recognize each character, you can use our{" "}
-    <Link
-      href="/"
-      className="text-green-600 font-medium hover:underline"
-    >
-      Morse Code Translator
-    </Link>{" "}
-    to instantly convert text into Morse code.
-  </p>
-</section>  
-      {/* CTA */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
-        <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors">
-          Try Morse Code Translator <ArrowRight className="w-4 h-4" />
-        </Link>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Morse Code Decoder FAQ</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Common questions about decoding Morse code to text.</p>
-          </div>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <div key={i} className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-                  <span className="font-semibold text-slate-900 dark:text-white pr-4">{faq.question}</span>
-                  {openFaq === i ? <ChevronUp className="w-5 h-5 text-slate-400 shrink-0" /> : <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />}
-                </button>
-                {openFaq === i && <div className="px-5 pb-5 -mt-1"><p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{faq.answer}</p></div>}
               </div>
-            ))}
-          </div>
+
+              <div className="max-h-72 overflow-y-auto rounded-xl border border-border">
+
+                <table className="w-full text-sm">
+
+                  <thead className="sticky top-0 bg-muted">
+
+                    <tr>
+                      <th className="p-3 text-left font-semibold">
+                        Morse Pattern
+                      </th>
+
+                      <th className="p-3 text-left font-semibold">
+                        Character
+                      </th>
+
+                      <th className="p-3 text-left font-semibold">
+                        Status
+                      </th>
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    {decodeResult.analysis.map((item, index) => (
+
+                      <tr
+                        key={`${item.morse}-${index}`}
+                        className={`border-t border-border ${
+                          !item.valid
+                            ? "bg-red-50/50 dark:bg-red-950/10"
+                            : ""
+                        }`}
+                      >
+
+                        <td className="p-3 font-mono">
+                          {item.morse}
+                        </td>
+
+                        <td className="p-3 font-bold">
+                          {item.char || "?"}
+                        </td>
+
+                        <td className="p-3">
+
+                          {item.valid ? (
+
+                            <span className="font-semibold text-green-600">
+                              Valid
+                            </span>
+
+                          ) : (
+
+                            <span className="font-semibold text-red-500">
+                              Unknown
+                            </span>
+
+                          )}
+
+                        </td>
+
+                      </tr>
+
+                    ))}
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+              {invalidChars.length > 0 && (
+
+                <div className="mt-4 flex gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/20 dark:text-amber-300">
+
+                  <AlertTriangle className="h-5 w-5 shrink-0" />
+
+                  <p className="leading-6">
+
+                    <strong>
+                      {invalidChars.length} pattern
+                      {invalidChars.length > 1 ? "s" : ""} could not
+                      be decoded.
+                    </strong>{" "}
+
+                    Check the dots, dashes, and character boundaries.
+                    You can compare them with the{" "}
+
+                    <Link
+                      href="/morse-code-alphabet"
+                      className="font-semibold underline"
+                    >
+                      complete Morse alphabet
+                    </Link>
+
+                    .
+
+                  </p>
+
+                </div>
+
+              )}
+
+            </div>
+
+          )}
+
         </div>
+
       </section>
 
-      {/* Explore More */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Explore More</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <Link href="/" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔤</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Translator</span>
-          </Link>
-          <Link href="/morse-code-alphabet" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">📋</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Alphabet Chart</span>
-          </Link>
-          <Link href="/learn-morse-code" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">📖</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Learn Morse Code</span>
-          </Link>
-          <Link href="/morse-code-quiz" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🎯</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Take the Quiz</span>
-          </Link>
-          <Link href="/what-is-morse-code" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">📖</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">History & Info</span>
-          </Link>
-                  <Link href="/morse-code-numbers" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔢</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Numbers Guide</span>
-          </Link>
-          <Link href="/morse-code-sounds" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔊</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Morse Sounds</span>
-          </Link>
-          <Link href="/morse-code-timing" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">⏱️</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Morse Timing</span>
-          </Link>
-</div>
+      {/* =====================================================
+          QUICK EXAMPLES
+      ====================================================== */}
+
+      <section className="border-y border-border bg-muted/30">
+
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+
+          <div className="mb-8">
+
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-green-600">
+              Examples
+            </p>
+
+            <h2 className="text-3xl font-bold text-foreground">
+              Common Morse Code Examples
+            </h2>
+
+            <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+
+              These examples show how individual Morse patterns are
+              separated and decoded. Use the{" "}
+
+              <Link
+                href="/"
+                className="font-semibold text-green-700 hover:underline"
+              >
+                Morse Code Translator
+              </Link>{" "}
+
+              when you want to convert normal text into Morse code
+              or translate Morse messages in both directions.
+
+            </p>
+
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+
+            {[
+              {
+                word: "HELLO",
+                code: ".... . .-.. .-.. ---",
+                description:
+                  "Each group represents one letter, separated by spaces.",
+              },
+              {
+                word: "SOS",
+                code: "... --- ...",
+                description:
+                  "The internationally recognized distress signal uses three dots, three dashes, and three dots.",
+              },
+              {
+                word: "HELLO WORLD",
+                code:
+                  ".... . .-.. .-.. --- / .-- --- .-. .-.. -..",
+                description:
+                  "A forward slash is commonly used online to show a word boundary.",
+              },
+            ].map((example) => (
+
+              <div
+                key={example.word}
+                className="rounded-2xl border border-border bg-card p-5"
+              >
+
+                <h3 className="text-lg font-bold text-foreground">
+                  {example.word}
+                </h3>
+
+                <div className="mt-4 rounded-lg border border-border bg-muted/30 p-3 font-mono text-sm text-green-700 dark:text-green-400">
+                  {example.code}
+                </div>
+
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                  {example.description}
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
       </section>
+
+      {/* =====================================================
+          HOW DECODING WORKS
+      ====================================================== */}
+
+      <section>
+
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+
+          <div className="max-w-4xl">
+
+            <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-green-600">
+              How It Works
+            </p>
+
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              How Morse Code Decoding Works
+            </h2>
+
+            <p className="mt-5 leading-8 text-muted-foreground">
+
+              Morse code decoding is the reverse of Morse encoding.
+              Each valid sequence of dots and dashes represents a
+              character. The decoder reads the pattern, identifies its
+              boundary, and matches it with a corresponding character
+              in the International Morse Code table.
+
+            </p>
+
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+
+            <div className="rounded-2xl border border-border bg-card p-6">
+
+              <div className="mb-4 inline-flex rounded-xl bg-green-100 p-3 text-green-700 dark:bg-green-950/40 dark:text-green-400">
+                <Search className="h-6 w-6" />
+              </div>
+
+              <h3 className="text-lg font-bold">
+                1. Read the Pattern
+              </h3>
+
+              <p className="mt-3 leading-7 text-muted-foreground">
+                The decoder reads dots and dashes. A dot is the short
+                signal and a dash is traditionally three timing units
+                long.
+              </p>
+
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card p-6">
+
+              <div className="mb-4 inline-flex rounded-xl bg-green-100 p-3 text-green-700 dark:bg-green-950/40 dark:text-green-400">
+                <BookOpen className="h-6 w-6" />
+              </div>
+
+              <h3 className="text-lg font-bold">
+                2. Match the Character
+              </h3>
+
+              <p className="mt-3 leading-7 text-muted-foreground">
+
+                Each pattern is compared with the{" "}
+
+                <Link
+                  href="/morse-code-alphabet"
+                  className="font-semibold text-green-700 hover:underline"
+                >
+                  Morse Code Alphabet
+                </Link>
+
+                . For example, <strong>....</strong> maps to H,
+                <strong> . </strong> maps to E, and
+                <strong> .-..</strong> maps to L.
+
+              </p>
+
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card p-6">
+
+              <div className="mb-4 inline-flex rounded-xl bg-green-100 p-3 text-green-700 dark:bg-green-950/40 dark:text-green-400">
+                <Zap className="h-6 w-6" />
+              </div>
+
+              <h3 className="text-lg font-bold">
+                3. Build the Message
+              </h3>
+
+              <p className="mt-3 leading-7 text-muted-foreground">
+                The decoded characters are joined together to create
+                readable text. Invalid patterns are flagged so you can
+                find typing or spacing mistakes quickly.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          WHY SPACING MATTERS
+      ====================================================== */}
+
+      <section className="border-y border-border bg-muted/30">
+
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+
+          <div className="grid gap-10 lg:grid-cols-2">
+
+            <div>
+
+              <h2 className="text-3xl font-bold text-foreground">
+                Why Morse Code Spacing Matters
+              </h2>
+
+              <p className="mt-5 leading-8 text-muted-foreground">
+                Morse code is not only a collection of dots and
+                dashes. Timing and spacing are part of the system.
+                Without clear character boundaries, the same continuous
+                sequence may have multiple possible interpretations.
+              </p>
+
+              <p className="mt-4 leading-8 text-muted-foreground">
+                In standard Morse timing, a dot represents one time
+                unit, while a dash represents three units. The gap
+                between elements of the same character is one unit,
+                the gap between characters is three units, and the gap
+                between words is seven units.
+              </p>
+
+              <p className="mt-4 leading-8 text-muted-foreground">
+
+                If you are learning these timing ratios, use our{" "}
+
+                <Link
+                  href="/morse-code-timing"
+                  className="font-semibold text-green-700 hover:underline"
+                >
+                  Morse Code Timing guide
+                </Link>
+
+                . For listening practice, visit{" "}
+
+                <Link
+                  href="/morse-code-sounds"
+                  className="font-semibold text-green-700 hover:underline"
+                >
+                  Morse Code Sounds
+                </Link>
+
+                .
+
+              </p>
+
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card p-6">
+
+              <h3 className="text-xl font-bold">
+                Standard Timing Reference
+              </h3>
+
+              <div className="mt-6 space-y-3">
+
+                {[
+                  ["Dot", "1 timing unit"],
+                  ["Dash", "3 timing units"],
+                  ["Gap inside a character", "1 unit"],
+                  ["Gap between characters", "3 units"],
+                  ["Gap between words", "7 units"],
+                ].map(([label, value]) => (
+
+                  <div
+                    key={label}
+                    className="flex items-center justify-between rounded-xl border border-border px-4 py-3"
+                  >
+
+                    <span className="font-medium">
+                      {label}
+                    </span>
+
+                    <span className="font-mono text-sm text-green-700 dark:text-green-400">
+                      {value}
+                    </span>
+
+                  </div>
+
+                ))}
+
+              </div>
+
+              <Link
+                href="/morse-code-timing"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-green-700 hover:underline"
+              >
+                Learn Morse Timing
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          ALPHABET AND NUMBERS
+      ====================================================== */}
+
+      <section>
+
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+
+          <div className="grid gap-10 lg:grid-cols-2">
+
+            <div>
+
+              <h2 className="text-3xl font-bold text-foreground">
+                Morse Code Alphabet A–Z
+              </h2>
+
+              <p className="mt-4 leading-7 text-muted-foreground">
+                International Morse Code represents the 26 English
+                letters using combinations of dots and dashes. Shorter
+                patterns such as E (.) and T (-) are among the simplest
+                characters, while longer sequences require more
+                careful recognition.
+              </p>
+
+              <div className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-4">
+
+                {alphabet.map((char) => (
+
+                  <Link
+                    key={char}
+                    href={`/morse-code-letter/${char.toLowerCase()}`}
+                    className="rounded-lg border border-border bg-card px-3 py-3 text-center transition-all hover:border-green-500 hover:text-green-700"
+                  >
+
+                    <span className="block font-bold">
+                      {char}
+                    </span>
+
+                    <span className="mt-1 block font-mono text-xs text-green-700 dark:text-green-400">
+                      {MORSE_CODE[char]}
+                    </span>
+
+                  </Link>
+
+                ))}
+
+              </div>
+
+              <Link
+                href="/morse-code-alphabet"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-green-700 hover:underline"
+              >
+                View Complete Alphabet Chart
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+            </div>
+
+            <div>
+
+              <h2 className="text-3xl font-bold text-foreground">
+                Morse Code Numbers 0–9
+              </h2>
+
+              <p className="mt-4 leading-7 text-muted-foreground">
+                The ten standard Morse numbers each contain five signal
+                elements. Numbers 1 through 5 progressively increase
+                the number of dots, while 6 through 0 progressively
+                increase the number of dashes.
+              </p>
+
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-5">
+
+                {numbers.map((char) => (
+
+                  <Link
+                    key={char}
+                    href={`/morse-code-number/${char}`}
+                    className="rounded-xl border border-border bg-card p-4 text-center transition-all hover:border-green-500 hover:text-green-700"
+                  >
+
+                    <span className="block text-lg font-bold">
+                      {char}
+                    </span>
+
+                    <span className="mt-2 block font-mono text-xs text-green-700 dark:text-green-400">
+                      {MORSE_CODE[char]}
+                    </span>
+
+                  </Link>
+
+                ))}
+
+              </div>
+
+              <Link
+                href="/morse-code-numbers"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-green-700 hover:underline"
+              >
+                Learn Morse Code Numbers
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          LEARNING SECTION
+      ====================================================== */}
+
+      <section className="border-y border-border bg-muted/30">
+
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+
+          <div className="mx-auto max-w-4xl text-center">
+
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-green-600">
+              Learn Faster
+            </p>
+
+            <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">
+              How to Get Better at Decoding Morse Code
+            </h2>
+
+            <p className="mt-5 leading-8 text-muted-foreground">
+              Beginners often try to count individual dots and dashes.
+              A better long-term approach is to learn the sound and
+              rhythm of complete characters. Experienced operators can
+              recognize familiar Morse patterns as whole auditory
+              units instead of manually counting every signal.
+            </p>
+
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+
+            <Link
+              href="/learn-morse-code"
+              className="rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-green-500"
+            >
+
+              <BookOpen className="h-7 w-7 text-green-600" />
+
+              <h3 className="mt-4 text-lg font-bold">
+                Learn the System
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Study letters, numbers, recognition methods, timing,
+                and practical Morse code learning techniques.
+              </p>
+
+            </Link>
+
+            <Link
+              href="/morse-code-sounds"
+              className="rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-green-500"
+            >
+
+              <Headphones className="h-7 w-7 text-green-600" />
+
+              <h3 className="mt-4 text-lg font-bold">
+                Train by Sound
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Listen to dots, dashes, and character rhythms to build
+                faster recognition and decoding ability.
+              </p>
+
+            </Link>
+
+            <Link
+              href="/morse-code-quiz"
+              className="rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-green-500"
+            >
+
+              <Zap className="h-7 w-7 text-green-600" />
+
+              <h3 className="mt-4 text-lg font-bold">
+                Test Your Skills
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Use interactive questions to identify weak characters
+                and improve your Morse code recognition.
+              </p>
+
+            </Link>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          FAQ
+      ====================================================== */}
+
+      <section>
+
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+
+          <div className="text-center">
+
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-green-600">
+              FAQ
+            </p>
+
+            <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">
+              Morse Code Decoder Questions
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl leading-7 text-muted-foreground">
+              Answers to common questions about decoding dots, dashes,
+              letters, numbers, spacing, separators, and International
+              Morse Code.
+            </p>
+
+          </div>
+
+          <div className="mt-10 space-y-3">
+
+            {faqs.map((faq, index) => (
+
+              <div
+                key={faq.question}
+                className="overflow-hidden rounded-2xl border border-border bg-card"
+              >
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenFaq(
+                      openFaq === index ? null : index
+                    )
+                  }
+                  className="flex w-full items-center justify-between gap-5 p-5 text-left transition-colors hover:bg-muted/30"
+                >
+
+                  <span className="font-semibold text-foreground">
+                    {faq.question}
+                  </span>
+
+                  {openFaq === index ? (
+                    <ChevronUp className="h-5 w-5 shrink-0 text-muted-foreground" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground" />
+                  )}
+
+                </button>
+
+                {openFaq === index && (
+
+                  <div className="px-5 pb-5">
+
+                    <p className="leading-7 text-muted-foreground">
+                      {faq.answer}
+                    </p>
+
+                  </div>
+
+                )}
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =====================================================
+          FINAL CTA
+      ====================================================== */}
+
+      <section className="w-full bg-[#0f6b3b] py-10 sm:py-12">
+
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            Continue Learning Morse Code
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl leading-7 text-green-50">
+            Convert messages, study the complete Morse alphabet,
+            understand timing, listen to character sounds, and test
+            your knowledge with interactive learning tools.
+          </p>
+
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-green-800 transition-transform hover:scale-[1.02]"
+            >
+              Morse Code Translator
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+
+            <Link
+              href="/learn-morse-code"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              <BookOpen className="h-4 w-4" />
+              Learn Morse Code
+            </Link>
+
+            <Link
+              href="/morse-code-quiz"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-5 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              <Zap className="h-4 w-4" />
+              Take Quiz
+            </Link>
+
+          </div>
+
+        </div>
+
+      </section>
+
     </div>
   );
 }
