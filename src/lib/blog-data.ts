@@ -6,6 +6,7 @@ export interface BlogPost {
   author: string;
   date: string;
   readTime: string;
+  image: string;
   content: string;
   keywords: string[];
 }
@@ -20,6 +21,7 @@ export const blogPosts: BlogPost[] = [
     author: "Morse Code Translator",
     date: "2026-08-20",
     readTime: "12 min",
+    image: "/images/blog/what-is-morse-code.webp",
     keywords: [
       "what is morse code",
       "morse code history",
@@ -139,6 +141,7 @@ For a chronological look at the major milestones, see our [When Was Morse Code I
     author: "Morse Code Translator",
     date: "2026-08-18",
     readTime: "10 min",
+    image: "/images/blog/how-to-learn-morse-code.webp",
     keywords: [
       "learn morse code",
       "morse code tutorial",
@@ -301,6 +304,7 @@ For the history behind the system you are learning, read our [Complete History G
     author: "Morse Code Translator",
     date: "2026-08-16",
     readTime: "8 min",
+    image: "/images/blog/morse-code-alphabet-chart.webp",
     keywords: [
       "morse code chart",
       "morse code alphabet",
@@ -1655,6 +1659,7 @@ To learn Morse code itself, try our [7-Step Guide](/blog/how-to-learn-morse-code
     author: "Morse Code Translator",
     date: "2026-08-01",
     readTime: "12 min",
+    image: "/images/blog/morse-code-quiz.webp",
     keywords: [
       "morse code quiz",
       "morse code test",
@@ -1816,21 +1821,67 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }
 
-export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
+export function getRelatedPosts(
+  currentSlug: string,
+  limit = 3
+): BlogPost[] {
+  const currentPost = getPostBySlug(currentSlug);
+
+  if (!currentPost) {
+    return [];
+  }
+
   return blogPosts
-    .filter((p) => p.slug !== currentSlug)
-    .sort(() => Math.random() - 0.5)
-    .slice(0, limit);
-}
+    .filter((post) => post.slug !== currentSlug)
+    .map((post) => {
+      let score = 0;
 
-export function getPostsByCategory(category: string): BlogPost[] {
-  return blogPosts.filter((p) => p.category === category);
-}
+      // Same category is the strongest topical signal.
+      if (post.category === currentPost.category) {
+        score += 10;
+      }
 
-export function getAllCategories(): string[] {
-  return [...new Set(blogPosts.map((p) => p.category))];
-}
+      // Reward shared SEO/topic keywords.
+      const currentKeywords = currentPost.keywords.map((keyword) =>
+        keyword.toLowerCase()
+      );
 
-export function getAllSlugs(): string[] {
-  return blogPosts.map((p) => p.slug);
+      const postKeywords = post.keywords.map((keyword) =>
+        keyword.toLowerCase()
+      );
+
+      const sharedKeywords = currentKeywords.filter((keyword) =>
+        postKeywords.includes(keyword)
+      );
+
+      score += sharedKeywords.length * 5;
+
+      // Add lightweight title/description topical relevance.
+      const currentTitleWords = currentPost.title
+        .toLowerCase()
+        .split(/\s+/)
+        .filter((word) => word.length > 3);
+
+      const postText = `${post.title} ${post.description}`.toLowerCase();
+
+      const sharedTitleWords = currentTitleWords.filter((word) =>
+        postText.includes(word)
+      );
+
+      score += sharedTitleWords.length * 2;
+
+      return { post, score };
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      return (
+        new Date(b.post.date).getTime() -
+        new Date(a.post.date).getTime()
+      );
+    })
+    .slice(0, limit)
+    .map(({ post }) => post);
 }
