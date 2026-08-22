@@ -11,92 +11,147 @@ import HomeClient from "./home.client";
 
 const faqs = [
   {
-    question: "How do I use this Morse code translator?",
-    answer: "Simply type your text in the input box, and the translator instantly converts it to Morse code using dots (.) and dashes (-). You can also paste Morse code and switch to Morse-to-Text mode to decode it back to readable text. The translation happens in real time as you type, with no need to press any button.",
+    question: "How do I use this Morse Code Translator?",
+    answer:
+      "Type or paste your message into the input box, and the translator instantly converts it into International Morse code using dots and dashes. You can also switch to Morse-to-text mode to decode a Morse code message back into readable text. The translation updates in real time as you type.",
   },
   {
     question: "Can I listen to Morse code audio?",
-    answer: "Yes! Our translator includes a built-in audio player that converts your Morse code into audible beeps. You can adjust the speed (5 to 35 WPM), frequency (300 to 1000 Hz), and volume to your preference. There is also a visual flash mode that displays dots and dashes as screen flashes, simulating how Morse code is transmitted via light signals.",
+    answer:
+      "Yes. The translator includes audio playback that turns Morse code into audible dots and dashes. You can adjust settings such as speed, tone frequency, and volume. A visual flash mode is also available for practicing Morse code as light signals.",
   },
   {
-    question: "Is this Morse code translator free?",
-    answer: "Yes, this Morse code translator is 100% free to use with no registration required. All features including text-to-Morse conversion, Morse-to-text decoding, audio playback, visual flash mode, WAV audio download, and copy-to-clipboard are available at no cost. There are no hidden fees, premium tiers, or usage limits.",
+    question: "Is this Morse Code Translator free?",
+    answer:
+      "Yes. This Morse Code Translator is free to use and does not require registration. You can convert text to Morse code, decode Morse code to text, listen to audio, use visual flash mode, copy your results, and download supported output files.",
   },
   {
-    question: "What is the standard speed for Morse code?",
-    answer: "The standard speed for Morse code used by amateur radio operators is typically between 15 and 25 words per minute (WPM). The International Telecommunication Union (ITU) sets the standard timing: a dot equals one unit, a dash equals three units, the space between parts of the same letter is one unit, between letters is three units, and between words is seven units. Beginners often start at 5 to 10 WPM using the Farnsworth method.",
+    question: "What is the standard Morse code timing?",
+    answer:
+      "International Morse code uses a standard timing ratio. A dot is one time unit, a dash is three units, the gap between parts of the same character is one unit, the gap between characters is three units, and the gap between words is seven units. Beginners can practice at slower effective speeds while maintaining correct character rhythm.",
   },
   {
     question: "Can I download Morse code as a WAV audio file?",
-    answer: "Yes, you can download your translated Morse code as a WAV audio file. After entering your text and seeing the Morse code output, click the Download WAV button. This generates a standard WAV audio file that you can save, share, or use in projects. The audio file uses your selected speed, frequency, and volume settings.",
+    answer:
+      "Yes. After converting your message, you can download the generated Morse code audio as a WAV file. The audio is created using the speed and sound settings selected in the translator.",
   },
   {
-    question: "What is the difference between International Morse code and American Morse code?",
-    answer: "International Morse code, standardized by the ITU in 1865, is the most widely used version today. American Morse code, developed earlier by Samuel Morse and Alfred Vail, has different timing patterns for some characters. For example, the number 1 in International Morse is .---- while in American Morse it is .-..-. International Morse code is used globally in aviation, maritime communication, amateur radio, and emergency signaling.",
+    question:
+      "What is the difference between International Morse code and American Morse code?",
+    answer:
+      "International Morse code is the globally recognized system used for most modern Morse code communication and learning. American Morse code is an earlier version that uses different patterns and timing for some letters, numbers, and punctuation. This translator focuses on International Morse code.",
   },
   {
-    question: "How do I learn Morse code effectively?",
-    answer: "The most effective methods for learning Morse code include the Koch method (learning one character at a time at full speed), the Farnsworth method (using longer spacing between characters at slower speeds), and regular practice with audio drills. Start with the most common letters (E, T, A, N, O, I, S) and build up gradually. Our Morse code quiz, timing guide, and interactive practice tools are great for improving your Morse code skills.",
+    question: "How can I learn Morse code effectively?",
+    answer:
+      "Consistent listening and recognition practice are important for learning Morse code. Popular approaches include the Koch method, which introduces characters gradually, and Farnsworth timing, which uses additional spacing between characters. You can also use the Morse Code Alphabet, timing guide, sounds page, and quiz on this website for practice.",
   },
   {
     question: "Where is Morse code still used today?",
-    answer: "Morse code is still actively used in several fields: amateur radio (ham radio) operators use it worldwide, aviation pilots recognize the SOS distress signal, the U.S. Navy and Coast Guard still train personnel in Morse code, mariners use it for visual distress signaling, and it is used in assistive technology for people with disabilities. The SOS signal remains universally recognized as an international distress call.",
+    answer:
+      "Morse code is still used and practiced by amateur radio operators around the world. It also remains useful for emergency signaling, visual communication, education, accessibility projects, and as a backup communication method in situations where simple on-off signals can be transmitted by sound or light.",
   },
   {
-    question: "What characters and symbols does this translator support?",
-    answer: "Our Morse code translator supports the complete International Morse code standard including all 26 English letters (A through Z), all 10 digits (0 through 9), and common punctuation marks including period, comma, question mark, exclamation mark, slash, parentheses, ampersand, colon, semicolon, equals sign, plus sign, minus sign, underscore, quotation marks, dollar sign, and at sign.",
+    question: "What characters does this Morse Code Translator support?",
+    answer:
+      "The translator supports the 26 English letters from A to Z, numbers from 0 to 9, spaces, and a range of commonly used punctuation symbols supported by International Morse code.",
   },
   {
-    question: "Can I share my Morse code translations?",
-    answer: "Yes, you can share your Morse code translations easily. Use the Copy button to copy the Morse code output to your clipboard, then paste it anywhere. You can also download the translation as a text file or as a WAV audio file. The share button provides direct links for sharing via social media platforms like Twitter and WhatsApp.",
+    question: "Can I copy or share my Morse code translation?",
+    answer:
+      "Yes. You can copy your translated Morse code to the clipboard and use it anywhere. Depending on the available options in the translator, you can also download your result or share the generated translation.",
   },
 ];
 
 const howToSteps = [
   {
-    name: "Enter Your Text",
-    text: "Type or paste your text message in the input area. The translator supports letters, numbers, punctuation, and spaces.",
+    name: "Enter Your Text or Morse Code",
+    text: "Type or paste your message into the input area. You can translate normal text into Morse code or switch modes to decode dots and dashes into readable text.",
   },
   {
-    name: "Get Instant Morse Code",
-    text: "Your text is converted to Morse code in real time using the International Morse code standard with proper dot and dash notation.",
+    name: "Get an Instant Translation",
+    text: "The Morse Code Translator converts your message in real time using International Morse code patterns for supported letters, numbers, and symbols.",
   },
   {
-    name: "Play, Download, or Share",
-    text: "Listen to the audio playback, download as WAV, copy to clipboard, or share your Morse code message with others.",
+    name: "Listen, Copy, Download, or Practice",
+    text: "Play the Morse code audio, adjust available settings, use visual flash mode, copy your translation, or download supported output files.",
   },
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Translator - Convert Text to Morse Code & Decode Online",
-  "Free online Morse Code Translator to convert text to Morse code and decode Morse code to text instantly. Includes audio playback, WAV download, adjustable speed controls, quizzes, timing guide, binary converter, and learning resources.",
+  "Morse Code Translator - Translate Text to Morse Code Online",
+  "Use our free Morse Code Translator to instantly convert text to Morse code and decode dots and dashes. Listen to Morse code, adjust speed and sound settings, copy or download your results, and practice online.",
   "/",
-  ["morse code translator", "text to morse code", "morse code to text", "morse code decoder", "morse code converter", "morse code audio", "learn morse code"]
+  [
+    "morse code translator",
+    "morse translator",
+    "text to morse code",
+    "morse code to text",
+    "morse code decoder",
+    "morse code converter",
+    "translate morse code",
+  ]
 );
 
 export default function HomePage() {
   const faqSchema = generateFAQSchema(faqs);
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
   ]);
+
   const howToSchema = generateHowToSchema(howToSteps);
+
   const softwareSchema = generateSoftwareApplicationSchema({
     name: "Morse Code Translator",
-    description: "Free online Morse Code Translator for converting text to Morse code and Morse code to text. Includes audio playback, WAV download, visual flash mode, adjustable speed controls, and International Morse Code (ITU) support.",
+    description:
+      "Free online Morse Code Translator for translating text to Morse code and decoding Morse code to text. Includes audio playback, visual flash mode, adjustable sound settings, copy tools, downloads, and International Morse code support.",
     url: "/",
   });
+
   const websiteSchema = generateWebSiteSchema({
     name: "Morse Code Translator",
-    description: "Free online Morse Code Translator with text-to-Morse conversion, Morse-to-text decoding, audio playback, learning guides, quizzes, timing reference, binary converter, and educational resources.",
+    description:
+      "A free online Morse Code Translator with text-to-Morse conversion, Morse-to-text decoding, audio playback, learning guides, alphabet and number references, timing information, practice tools, and quizzes.",
   });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(howToSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+
       <HomeClient faqs={faqs} />
     </>
   );
