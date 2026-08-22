@@ -1,224 +1,870 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { generatePageMeta, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
+import {
+  generatePageMeta,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/seo";
+
+const faqs = [
+  {
+    question: "What do Morse code sounds mean?",
+    answer:
+      "Morse code sounds represent short and long signal elements. A short sound is called a dot or dit, while a long sound is called a dash or dah. Different combinations form letters, numbers, punctuation, and other Morse symbols.",
+  },
+  {
+    question: "What frequency is used for Morse code sounds?",
+    answer:
+      "There is no single mandatory audio frequency for Morse code. A tone around 600 Hz is commonly used for practice because it is comfortable to hear, while many Morse code oscillators and training tools allow the pitch to be adjusted.",
+  },
+  {
+    question: "How long is a Morse code dot?",
+    answer:
+      "Morse code timing is measured in units. A dot lasts for 1 time unit, while a dash lasts for 3 units. At 20 WPM using standard PARIS timing, one dot unit is approximately 60 milliseconds.",
+  },
+  {
+    question: "How long is a Morse code dash?",
+    answer:
+      "A dash lasts three times as long as a dot. If one dot unit is 60 milliseconds, a dash is approximately 180 milliseconds.",
+  },
+  {
+    question: "What is the gap between Morse code letters?",
+    answer:
+      "The standard gap between two letters is 3 dot units. The gap between elements within the same letter is 1 dot unit, while the gap between words is 7 dot units.",
+  },
+  {
+    question: "What does PARIS mean in Morse code speed?",
+    answer:
+      "PARIS is a standard reference word used to calculate Morse code speed in words per minute. Under standard timing, PARIS represents 50 dot units, allowing Morse code speed to be measured consistently.",
+  },
+  {
+    question: "How can I learn Morse code by sound?",
+    answer:
+      "Start by listening to individual character patterns and gradually build recognition. Avoid counting every dot and dash at higher speeds. Regular listening practice, correct timing, and character recognition exercises can help develop faster auditory recognition.",
+  },
+  {
+    question: "What is the difference between a Morse code sound and written Morse code?",
+    answer:
+      "Written Morse code displays dots and dashes visually. Audio Morse code communicates the same information using short and long tones separated by precisely timed gaps.",
+  },
+  {
+    question: "Can I listen to Morse code online?",
+    answer:
+      "Yes. You can use the Morse Code Translator on this website to convert text into Morse code and use its audio playback controls to hear the corresponding Morse signals.",
+  },
+  {
+    question: "Is Morse code still used today?",
+    answer:
+      "Yes. Although Morse code is no longer a primary method for most commercial communication, it remains relevant in amateur radio, aviation and maritime history, emergency signaling, education, accessibility discussions, and recreational communication.",
+  },
+];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Sounds - Audio, Frequency & Timing Guide",
-  "Comprehensive guide to Morse code audio characteristics. Covers standard frequency ranges (500-1000 Hz) with recommended 600-700 Hz for practice, PARIS timing standard calculations showing exact millisecond durations at 20 WPM, and four proven listening practice techniques for building audio recognition skills.",
+  "Morse Code Sounds | Audio, Frequency, Timing & Listening Guide",
+  "Learn how Morse code sounds work with dots, dashes, audio frequency, pitch, WPM, PARIS timing, character gaps, word spacing, listening practice, and Morse code recognition techniques.",
   "/morse-code-sounds",
   [
-    "morse code sounds", "morse code audio", "morse code frequency", "morse code pitch", "morse code tone"
+    "morse code sounds",
+    "morse code audio",
+    "morse code sound",
+    "morse code frequency",
+    "morse code tone",
+    "morse code pitch",
+    "morse code timing",
+    "morse code audio frequency",
+    "listen to morse code",
+    "morse code practice",
+    "morse code wpm",
+    "dot and dash sounds",
+    "morse code dits and dahs",
+    "morse code audio practice",
+    "international morse code",
   ]
 );
+
+const internalLinks = [
+  {
+    href: "/",
+    icon: "↔",
+    title: "Morse Code Translator",
+    text: "Convert text to Morse code and listen to the generated audio.",
+  },
+  {
+    href: "/morse-code-decoder",
+    icon: "⌁",
+    title: "Morse Code Decoder",
+    text: "Decode dots and dashes back into readable text.",
+  },
+  {
+    href: "/morse-code-alphabet",
+    icon: "A–Z",
+    title: "Morse Code Alphabet",
+    text: "Study the complete alphabet and individual Morse patterns.",
+  },
+  {
+    href: "/morse-code-numbers",
+    icon: "0–9",
+    title: "Morse Code Numbers",
+    text: "Learn how all ten digits are represented using five signals.",
+  },
+  {
+    href: "/morse-code-timing",
+    icon: "⏱",
+    title: "Morse Code Timing",
+    text: "Understand dots, dashes, character gaps, word gaps, and WPM.",
+  },
+  {
+    href: "/learn-morse-code",
+    icon: "↗",
+    title: "Learn Morse Code",
+    text: "Follow a structured approach for memorizing and recognizing Morse.",
+  },
+  {
+    href: "/morse-code-quiz",
+    icon: "✓",
+    title: "Morse Code Quiz",
+    text: "Test your knowledge and recognition of Morse code characters.",
+  },
+  {
+    href: "/sos-morse-code",
+    icon: "SOS",
+    title: "SOS Morse Code",
+    text: "Learn why ... --- ... became the internationally recognized distress signal.",
+  },
+  {
+    href: "/what-is-morse-code",
+    icon: "?",
+    title: "What Is Morse Code?",
+    text: "Explore the history, purpose, technology, and modern uses of Morse code.",
+  },
+];
+
 export default function MorseCodeSoundsPage() {
-  const faqSchema = generateFAQSchema([
-    {
-      question: "What frequency is Morse code usually transmitted at?",
-      answer: "Morse code audio is typically in the range of 550-750 Hz, with 600-700 Hz being the most common. This frequency range is easily heard by most people and provides clear distinction between dots and dashes.",
-    },
-    {
-      question: "How fast is Morse code typically sent?",
-      answer: "Beginner speeds are 5-10 WPM, while experienced operators commonly use 15-25 WPM. The world record for receiving Morse code is over 75 WPM. Most amateur radio exams require 5 WPM proficiency.",
-    },
-    {
-      question: "What is the timing relationship between dots and dashes?",
-      answer: "A dash is exactly 3 times the length of a dot. The space between parts of the same letter equals 1 dot length, between letters equals 3 dot lengths, and between words equals 7 dot lengths.",
-    },
-  ]);
+  const faqSchema = generateFAQSchema(faqs);
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Morse Code Sounds", url: "/morse-code-sounds" },
+    {
+      name: "Home",
+      url: "/",
+    },
+    {
+      name: "Morse Code Sounds",
+      url: "/morse-code-sounds",
+    },
   ]);
 
   return (
-    <main className="min-h-screen">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    <main className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema),
+        }}
+      />
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-green-600 transition-colors">Home</Link>
-          <span className="text-slate-400">/</span>
-          <span className="text-slate-900 font-medium">Morse Code Sounds</span>
-        </nav>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
 
-        <div className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">Morse Code Sounds</h1>
-          <p className="text-lg text-slate-600">
-            A comprehensive guide to Morse code audio: frequencies, timing rules, pitch standards, and effective
-            listening practice techniques for mastering Morse code by ear.
+      {/* =====================================================
+          HERO
+      ====================================================== */}
+
+      <section className="w-full border-b border-green-950/10 bg-gradient-to-br from-green-800 via-green-800 to-emerald-900 py-12 sm:py-14 md:py-16">
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+            Morse Code Sounds
+          </h1>
+
+          <p className="mx-auto mt-4 max-w-4xl text-base leading-7 text-green-50/90 sm:text-lg sm:leading-8">
+            Learn how <strong>Morse code audio</strong> works through short
+            and long tones, sound frequency, pitch, WPM, dots, dashes,
+            character spacing, word gaps, and practical listening techniques.
           </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-green-50/90">
+            <span className="inline-flex items-center gap-2">
+              ⚡ Dot &amp; Dash Audio
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              🎧 Listening Practice
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              ⏱ Standard Timing
+            </span>
+
+            <span className="inline-flex items-center gap-2">
+              ♫ Frequency &amp; Pitch
+            </span>
+          </div>
         </div>
+      </section>
 
-        {/* Audio Basics */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Understanding Morse Code Audio</h2>
-          <div className="text-slate-700 leading-relaxed space-y-4">
-            <p>
-              Morse code audio consists of two fundamental sounds: a <strong>short tone</strong> (representing a dot or &quot;dit&quot;)
-              and a <strong>long tone</strong> (representing a dash or &quot;dah&quot;). Each letter has a unique sound pattern you can explore on our <Link href="/morse-code-alphabet" className="text-green-600 underline hover:text-green-700">Morse code alphabet chart</Link>. These tones are typically produced by a
-              sine wave oscillator at a specific frequency. The beauty of Morse code lies in its simplicity — with just two types
-              of sounds arranged in different patterns, you can communicate any message in any language that uses the Latin alphabet.
-            </p>
-            <p className="text-slate-700 leading-relaxed">
-  You can also hear these sounds using our{" "}
-  <Link
-    href="/"
-    className="text-green-600 underline hover:text-green-700"
-  >
-    Morse Code Translator
-  </Link>.
-</p>
-            <p>
-              When learning to receive Morse code by ear, your brain initially processes each sound individually — counting the
-              dots and dashes to figure out which letter they represent. But with practice, something remarkable happens: you
-              stop &quot;decoding&quot; and start <em>recognizing</em>. Each letter develops its own unique rhythmic
-              &quot;fingerprint&quot; that your brain learns to identify instantly, the way you recognize a spoken word
-              without consciously processing each individual phoneme.
-            </p>
+      {/* =====================================================
+          MAIN CONTENT
+      ====================================================== */}
+
+      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        {/* =====================================================
+            INTRODUCTION
+        ====================================================== */}
+
+        <section className="mb-16">
+          <div className="max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Morse Code Audio Guide
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+              Understanding How Morse Code Sounds Work
+            </h2>
+
+            <div className="mt-6 space-y-5 text-base leading-8 text-slate-600 dark:text-slate-300">
+              <p>
+                Morse code can be understood visually as dots and dashes, but
+                its original communication system was fundamentally based on{" "}
+                <strong>signals, timing, and rhythm</strong>. When Morse code
+                is transmitted as audio, a short tone represents a{" "}
+                <strong>dot</strong>, also called a <strong>dit</strong>, while
+                a longer tone represents a <strong>dash</strong>, also called a{" "}
+                <strong>dah</strong>.
+              </p>
+
+              <p>
+                Every character in the{" "}
+                <Link
+                  href="/morse-code-alphabet"
+                  className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  Morse Code Alphabet
+                </Link>{" "}
+                has its own pattern. For example, the letter E is represented
+                by one short signal, while T is represented by one long signal.
+                More complex characters combine multiple dots and dashes into
+                recognizable audio patterns.
+              </p>
+
+              <p>
+                The goal of listening practice is not to count every dot and
+                dash forever. With repeated exposure, experienced learners
+                begin recognizing the overall rhythm of a character. You can
+                generate and listen to custom messages using the{" "}
+                <Link
+                  href="/"
+                  className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  Morse Code Translator
+                </Link>
+                , then verify unfamiliar signals with the{" "}
+                <Link
+                  href="/morse-code-decoder"
+                  className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  Morse Code Decoder
+                </Link>
+                .
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Frequency */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Frequency Guide</h2>
-          <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 mb-4">
-            <h3 className="font-semibold text-slate-900 mb-3">Standard Frequency Ranges</h3>
-            <div className="space-y-3">
-              {[
-                { range: "500–550 Hz", label: "Low pitch", desc: "Used by some military organizations. Deeper, more authoritative sound.", color: "bg-slate-400" },
-                { range: "550–650 Hz", label: "Standard low", desc: "Common in European and older equipment. Warm, mellow tone.", color: "bg-green-400" },
-                { range: "650–750 Hz", label: "Standard (recommended)", desc: "The most widely used range. Clear, pleasant tone at 600-700 Hz.", color: "bg-green-600" },
-                { range: "750–900 Hz", label: "High pitch", desc: "Some modern equipment. Crisp, bright sound. Can be tiring at length.", color: "bg-green-400" },
-                { range: "900–1000 Hz", label: "Very high", desc: "Rarely used. Sharp tone, can cause fatigue during long sessions.", color: "bg-slate-400" },
-              ].map((item) => (
-                <div key={item.range} className="flex items-center gap-4">
-                  <div className={`w-3 h-3 rounded-full ${item.color} flex-shrink-0`} />
-                  <div className="flex-1">
-                    <span className="font-mono text-green-600 font-medium">{item.range}</span>
-                    <span className="text-sm text-slate-500 ml-2">({item.label})</span>
-                    <p className="text-sm text-slate-600">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
+        {/* =====================================================
+            QUICK FACTS
+        ====================================================== */}
+
+        <section className="mb-16">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-2xl font-bold text-green-700 dark:text-green-400">
+                1 Unit
+              </div>
+
+              <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                Standard duration of one Morse code dot.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-2xl font-bold text-green-700 dark:text-green-400">
+                3 Units
+              </div>
+
+              <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                Standard duration of a dash and the gap between letters.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-2xl font-bold text-green-700 dark:text-green-400">
+                7 Units
+              </div>
+
+              <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                Standard timing relationship used between words.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+              <div className="text-2xl font-bold text-green-700 dark:text-green-400">
+                50 Units
+              </div>
+
+              <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                Timing reference associated with the standard word PARIS.
+              </p>
             </div>
           </div>
-          <p className="text-slate-700 leading-relaxed">
-            Our <Link href="/" className="text-green-600 underline">Morse Code Translator</Link> defaults
-            to 600 Hz, which is an excellent all-around frequency for both learning and practice. You can adjust between
-            300-1000 Hz in the settings panel.
+        </section>
+
+        {/* =====================================================
+            DOT DASH
+        ====================================================== */}
+
+        <section className="mb-16">
+          <div className="max-w-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Dots, Dashes and Morse Code Rhythm
+            </h2>
+
+            <p className="mt-4 leading-8 text-slate-600 dark:text-slate-300">
+              The difference between a dot and dash is based primarily on{" "}
+              <strong>duration</strong>. Correct timing is just as important as
+              the sound itself. If the timing relationship changes too much,
+              the listener may have difficulty identifying where one element,
+              letter, or word ends.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            <div className="rounded-2xl border border-green-200 bg-green-50 p-6 dark:border-green-900/50 dark:bg-green-950/20">
+              <span className="text-xs font-bold uppercase tracking-wider text-green-700 dark:text-green-400">
+                Short Signal
+              </span>
+
+              <h3 className="mt-3 text-2xl font-bold text-slate-900 dark:text-white">
+                Dot / Dit
+              </h3>
+
+              <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                A dot lasts for one timing unit. It is the shortest sound
+                element used in International Morse Code.
+              </p>
+
+              <div className="mt-5 rounded-xl border border-green-200 bg-white p-4 font-mono text-xl font-bold text-green-700 dark:border-green-900/50 dark:bg-slate-900 dark:text-green-400">
+                .
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                Long Signal
+              </span>
+
+              <h3 className="mt-3 text-2xl font-bold text-slate-900 dark:text-white">
+                Dash / Dah
+              </h3>
+
+              <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                A dash lasts for three timing units, making it exactly three
+                times the duration of a standard dot.
+              </p>
+
+              <div className="mt-5 rounded-xl border border-slate-200 bg-white p-4 font-mono text-xl font-bold text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                -
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-6 max-w-4xl leading-8 text-slate-600 dark:text-slate-300">
+            To understand how these patterns form complete characters, browse
+            the full{" "}
+            <Link
+              href="/morse-code-alphabet"
+              className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+            >
+              A–Z Morse Code Alphabet
+            </Link>{" "}
+            or study{" "}
+            <Link
+              href="/morse-code-numbers"
+              className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+            >
+              Morse Code Numbers from 0–9
+            </Link>
+            .
           </p>
         </section>
 
-        {/* Timing */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">Timing Rules</h2>
-          <p className="text-slate-700 leading-relaxed mb-4">
-            Precise timing is the foundation of intelligible Morse code. All timing is based on the length of one
-            <strong> dot unit</strong>:
-          </p>
-          <div className="bg-slate-900 rounded-xl p-6 text-green-400 font-mono space-y-2">
-            <p>Dot (dit) .............. = 1 unit</p>
-            <p>Dash (dah) ............ = 3 units</p>
-            <p>Element gap .......... = 1 unit</p>
-            <p>Letter gap ........... = 3 units</p>
-            <p>Word gap ............. = 7 units</p>
-          </div>
-          <div className="mt-4 text-slate-700 leading-relaxed space-y-3">
-            <p>
-              At a speed of 20 WPM (words per minute), one dot unit equals approximately 60 milliseconds.
-              This means a dot is 60ms, a dash is 180ms, the gap between elements is 60ms, between letters is 180ms,
-              and between words is 420ms. See the full timing reference with an interactive WPM calculator on our <Link href="/morse-code-timing" className="text-green-600 underline hover:text-green-700">Morse code timing</Link> page. These timing relationships are what allow the receiver to distinguish between,
-              for example, five E&apos;s (.....) and the number 5 (.....) — the letter gaps vs. the lack of gaps
-              within the number code make all the difference.
-            </p>
-            <p>
-              Speed in Morse code is measured using the &quot;PARIS&quot; standard. The word &quot;PARIS&quot; contains
-              exactly 50 dot units, so one &quot;word&quot; at any speed is always 50 units. At 20 WPM, the entire word
-              PARIS takes exactly 3 seconds to transmit. This standardized measurement allows speeds to be compared
-              consistently across different operators and equipment. For a complete character reference, see our <Link href="/morse-code-alphabet" className="text-green-600 underline hover:text-green-700">Morse code alphabet chart</Link>.
-            </p>
-          </div>
-        </section>
+        {/* =====================================================
+            FREQUENCY
+        ====================================================== */}
 
-        {/* Practice Tips */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">How to Practice Listening</h2>
-          <div className="space-y-4">
-            <div className="p-4 bg-green-50 border border-green-200 rounded-xl">
-              <h3 className="font-semibold text-green-800 mb-2">1. Start Slow, Build Gradually</h3>
-              <p className="text-green-700">Begin at 5-10 WPM with character speeds of 15-20 WPM and longer spacing. This helps you learn the character sounds without being overwhelmed by speed.</p>
-            </div>
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <h3 className="font-semibold text-slate-900 mb-2">2. Listen Before You Send</h3>
-              <p className="text-slate-600">Focus on receiving (copying) Morse code before you practice sending. Receiving is the harder skill and the one that matters most for real-world communication.</p>
-            </div>
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <h3 className="font-semibold text-slate-900 mb-2">3. Use the Koch Method</h3>
-              <p className="text-slate-600">Start with just two characters at full speed. Add a new character only when you achieve 90% accuracy. This builds instant recognition instead of counting habits. Read our complete <Link href="/learn-morse-code" className="text-green-600 underline hover:text-green-700">Morse code learning guide</Link> for a detailed walkthrough of this method.</p>
-            </div>
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-              <h3 className="font-semibold text-slate-900 mb-2">4. Practice 15 Minutes Daily</h3>
-              <p className="text-slate-600">Consistency is key. Short daily sessions of 15-30 minutes are far more effective than occasional marathon sessions. Your brain needs regular exposure to build the neural pathways for character recognition. Test your listening skills with our <Link href="/morse-code-quiz" className="text-green-600 underline hover:text-green-700">Morse code quiz</Link>.</p>
+        <section className="mb-16 border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Audio Frequency
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Morse Code Frequency and Audio Pitch
+            </h2>
+
+            <div className="mt-5 space-y-5 leading-8 text-slate-600 dark:text-slate-300">
+              <p>
+                Morse code does not require one fixed audio pitch. The
+                information is carried by the{" "}
+                <strong>pattern and timing of the signal</strong>, rather than
+                by a specific frequency. Different radios, oscillators,
+                software applications, and training tools can use different
+                tones.
+              </p>
+
+              <p>
+                For practice, tones around the middle of the audible range are
+                commonly comfortable for extended listening. A setting near{" "}
+                <strong>600 Hz</strong> is often used by Morse code training
+                tools because it produces a clear tone without being extremely
+                low or high.
+              </p>
             </div>
           </div>
-        </section>
 
-        {/* FAQ */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-3">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800">
+            <div className="grid border-b border-slate-200 bg-slate-50 text-sm font-bold text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-white md:grid-cols-[180px_1fr]">
+              <div className="p-4">Example Range</div>
+              <div className="border-t border-slate-200 p-4 md:border-l md:border-t-0 dark:border-slate-800">
+                Listening Character
+              </div>
+            </div>
+
             {[
-              { q: "What frequency is Morse code transmitted at?", a: "Morse code audio is typically in the range of 550-750 Hz, with 600-700 Hz being the most common. This range is easily heard and provides clear distinction between dots and dashes." },
-              { q: "How fast is Morse code sent?", a: "Beginners start at 5-10 WPM, experienced operators use 15-25 WPM, and the world record for receiving is over 75 WPM." },
-              { q: "What is the timing between dots and dashes?", a: "A dash is 3x the length of a dot. Gaps between elements = 1 dot, between letters = 3 dots, between words = 7 dots." },
-            ].map((faq, i) => (
-              <details key={i} className="bg-white border border-slate-200 rounded-lg p-4 group">
-                <summary className="font-semibold text-slate-900 cursor-pointer list-none flex items-center justify-between">
-                  {faq.q}
-                  <span className="text-green-600 text-xl group-open:rotate-45 transition-transform">+</span>
+              {
+                range: "Lower pitch",
+                text: "A deeper audio tone that may feel less sharp during listening.",
+              },
+              {
+                range: "Around 600 Hz",
+                text: "A balanced practice pitch commonly used for clear Morse code training.",
+              },
+              {
+                range: "Higher pitch",
+                text: "A brighter tone that can improve perceived contrast for some listeners.",
+              },
+            ].map((item) => (
+              <div
+                key={item.range}
+                className="grid border-b border-slate-200 last:border-b-0 dark:border-slate-800 md:grid-cols-[180px_1fr]"
+              >
+                <div className="p-4 font-semibold text-green-700 dark:text-green-400">
+                  {item.range}
+                </div>
+
+                <div className="border-t border-slate-200 p-4 leading-7 text-slate-600 md:border-l md:border-t-0 dark:border-slate-800 dark:text-slate-300">
+                  {item.text}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 leading-8 text-slate-600 dark:text-slate-300">
+            You can experiment with audio playback through the{" "}
+            <Link
+              href="/"
+              className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+            >
+              Morse Code Translator
+            </Link>
+            , where text can be converted into Morse code and played as audio.
+          </p>
+        </section>
+
+        {/* =====================================================
+            TIMING
+        ====================================================== */}
+
+        <section className="mb-16 border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              International Morse Timing
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              The 1–3–7 Timing Relationship
+            </h2>
+
+            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-300">
+              Morse code timing is based on a simple unit system. A dot is the
+              fundamental measurement, and the duration of dashes and spaces is
+              calculated relative to that dot.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              ["Dot", "1 Unit"],
+              ["Dash", "3 Units"],
+              ["Element Gap", "1 Unit"],
+              ["Letter Gap", "3 Units"],
+              ["Word Gap", "7 Units"],
+            ].map(([label, value]) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-center dark:border-slate-800 dark:bg-slate-900"
+              >
+                <div className="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                  {label}
+                </div>
+
+                <div className="mt-2 text-xl font-bold text-green-700 dark:text-green-400">
+                  {value}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-green-200 bg-green-50 p-6 dark:border-green-900/50 dark:bg-green-950/20">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+              Example: 20 WPM Timing
+            </h3>
+
+            <div className="mt-4 space-y-2 font-mono text-sm leading-7 text-slate-700 dark:text-slate-300">
+              <p>Dot = approximately 60 milliseconds</p>
+              <p>Dash = approximately 180 milliseconds</p>
+              <p>Letter gap = approximately 180 milliseconds</p>
+              <p>Word gap = approximately 420 milliseconds</p>
+            </div>
+
+            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-300">
+              These values follow the standard timing relationship derived from
+              WPM. For detailed explanations and speed calculations, visit the{" "}
+              <Link
+                href="/morse-code-timing"
+                className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+              >
+                complete Morse Code Timing guide
+              </Link>
+              .
+            </p>
+          </div>
+        </section>
+
+        {/* =====================================================
+            PARIS
+        ====================================================== */}
+
+        <section className="mb-16 border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Why Morse Code Speed Uses the Word PARIS
+            </h2>
+
+            <div className="mt-5 space-y-5 leading-8 text-slate-600 dark:text-slate-300">
+              <p>
+                Morse code speed is commonly measured in{" "}
+                <strong>words per minute (WPM)</strong>. The word{" "}
+                <strong>PARIS</strong> is traditionally used as a timing
+                reference because, under standard Morse timing, it represents{" "}
+                <strong>50 dot units</strong>.
+              </p>
+
+              <p>
+                This creates a consistent mathematical relationship between WPM
+                and the duration of one dot. A commonly used formula is:
+              </p>
+
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 font-mono text-center text-lg font-bold text-green-700 dark:border-slate-800 dark:bg-slate-900 dark:text-green-400">
+                Dot duration (ms) = 1200 ÷ WPM
+              </div>
+
+              <p>
+                At 20 WPM, this calculation gives approximately{" "}
+                <strong>60 milliseconds per dot</strong>. At 10 WPM, one dot
+                is approximately 120 milliseconds. This relationship makes it
+                possible to scale the entire Morse code timing system as speed
+                changes.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            LEARNING BY SOUND
+        ====================================================== */}
+
+        <section className="mb-16 border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Listening Practice
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              How to Learn Morse Code by Listening
+            </h2>
+
+            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-300">
+              Learning Morse code visually and learning it by sound are related
+              but different skills. Visual study helps you understand the
+              symbols, while listening practice develops faster recognition of
+              the rhythm associated with each character.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2">
+            {[
+              {
+                number: "01",
+                title: "Learn the Character Sounds",
+                text: "Begin with a small number of characters and focus on recognizing the complete sound pattern instead of manually counting dots and dashes.",
+              },
+              {
+                number: "02",
+                title: "Keep Timing Consistent",
+                text: "A clear timing relationship helps your brain distinguish dots, dashes, letters, and words. Practice with standard spacing whenever possible.",
+              },
+              {
+                number: "03",
+                title: "Increase Difficulty Gradually",
+                text: "Start with comfortable practice sessions, then gradually increase the amount of text, character variety, or transmission speed.",
+              },
+              {
+                number: "04",
+                title: "Test Recognition Regularly",
+                text: "Use interactive exercises to identify gaps in your knowledge and revisit characters that are difficult to recognize by ear.",
+              },
+            ].map((item) => (
+              <article
+                key={item.number}
+                className="rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-green-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:hover:border-green-800"
+              >
+                <div className="text-sm font-bold text-green-700 dark:text-green-400">
+                  {item.number}
+                </div>
+
+                <h3 className="mt-3 text-xl font-bold text-slate-900 dark:text-white">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">
+                  {item.text}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-8 max-w-4xl leading-8 text-slate-600 dark:text-slate-300">
+            For a structured learning path, continue with{" "}
+            <Link
+              href="/learn-morse-code"
+              className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+            >
+              Learn Morse Code
+            </Link>
+            . Once you are comfortable with the alphabet, test your recognition
+            using the{" "}
+            <Link
+              href="/morse-code-quiz"
+              className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+            >
+              Morse Code Quiz
+            </Link>
+            .
+          </p>
+        </section>
+
+        {/* =====================================================
+            CONTEXTUAL LEARNING
+        ====================================================== */}
+
+        <section className="mb-16 border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Morse Code Sounds in Real Communication
+            </h2>
+
+            <div className="mt-5 space-y-5 leading-8 text-slate-600 dark:text-slate-300">
+              <p>
+                Morse code developed as a communication system for transmitting
+                information through timed electrical signals. Over time, the
+                system became closely associated with the telegraph, radio
+                communication, amateur radio, maritime communication, aviation
+                history, and emergency signaling.
+              </p>
+
+              <p>
+                One of the best-known Morse patterns is{" "}
+                <Link
+                  href="/sos-morse-code"
+                  className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  SOS: ... --- ...
+                </Link>
+                . Its simple rhythm consists of three short signals, three long
+                signals, and three short signals.
+              </p>
+
+              <p>
+                Understanding audio also helps when decoding a message. If you
+                hear an unfamiliar pattern, you can compare it with the{" "}
+                <Link
+                  href="/morse-code-alphabet"
+                  className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  Morse alphabet reference
+                </Link>{" "}
+                or enter the written dots and dashes into the{" "}
+                <Link
+                  href="/morse-code-decoder"
+                  className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  Morse Code Decoder
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            FAQ
+        ====================================================== */}
+
+        <section className="mb-16 border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Common Questions
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Morse Code Sounds FAQ
+            </h2>
+
+            <p className="mt-4 leading-8 text-slate-600 dark:text-slate-300">
+              Common questions about Morse code audio, tone frequency, pitch,
+              timing, WPM, dots, dashes, spacing, and listening practice.
+            </p>
+          </div>
+
+          <div className="mt-8 space-y-3">
+            {faqs.map((faq) => (
+              <details
+                key={faq.question}
+                className="group rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-5 p-5 font-bold text-slate-900 dark:text-white">
+                  <span>{faq.question}</span>
+
+                  <span className="shrink-0 text-xl font-normal text-green-700 transition-transform group-open:rotate-45 dark:text-green-400">
+                    +
+                  </span>
                 </summary>
-                <p className="mt-3 text-slate-600 leading-relaxed">{faq.a}</p>
+
+                <div className="px-5 pb-5">
+                  <p className="leading-8 text-slate-600 dark:text-slate-300">
+                    {faq.answer}
+                  </p>
+                </div>
               </details>
             ))}
           </div>
         </section>
 
-        {/* Explore More */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Explore More</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <Link href="/" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              🔤 Translator with Audio
-            </Link>
-            <Link href="/learn-morse-code" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              📖 Learning Guide
-            </Link>
-            <Link href="/morse-code-quiz" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              🎯 Practice Quiz
-            </Link>
-            <Link href="/morse-code-timing" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              ⏱️ Timing Reference
-            </Link>
-            <Link href="/morse-code-alphabet" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              📋 Alphabet Chart
-            </Link>
-            <Link href="/morse-code-decoder" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              🔓 Morse Decoder
-            </Link>
-            <Link href="/morse-code-numbers" className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors">
-              🔢 Numbers Guide
-            </Link>
-            <Link
-  href="/sos-morse-code"
-  className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"
->
-  🆘 SOS Morse Code
-</Link>
+        {/* =====================================================
+            EXPLORE MORE
+        ====================================================== */}
+
+        <section className="border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Related Resources
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Continue Learning Morse Code
+            </h2>
+
+            <p className="mt-4 leading-8 text-slate-600 dark:text-slate-300">
+              Explore related tools, references, learning guides, character
+              charts, timing explanations, and interactive practice resources.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {internalLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-green-400 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-green-800"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 min-w-10 items-center justify-center rounded-xl bg-green-50 text-sm font-bold text-green-700 dark:bg-green-950/40 dark:text-green-400">
+                    {item.icon}
+                  </div>
+
+                  <div>
+                    <h3 className="font-bold text-slate-900 transition group-hover:text-green-700 dark:text-white dark:group-hover:text-green-400">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                      {item.text}
+                    </p>
+
+                    <span className="mt-4 inline-flex text-sm font-semibold text-green-700 dark:text-green-400">
+                      Explore →
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
       </div>
+
+      {/* =====================================================
+          FINAL CTA – BEFORE FOOTER
+      ====================================================== */}
+
+      <section className="w-full bg-gradient-to-r from-green-800 to-emerald-800 py-14 sm:py-16">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Ready to Hear Morse Code in Action?
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl leading-8 text-green-50/90">
+            Convert your own message into International Morse Code, listen to
+            the dots and dashes, adjust the playback settings, and build your
+            recognition skills through practical listening.
+          </p>
+
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 font-bold text-green-800 transition hover:bg-green-50"
+            >
+              Open Morse Code Translator →
+            </Link>
+
+            <Link
+              href="/learn-morse-code"
+              className="inline-flex items-center justify-center rounded-xl border border-green-300/60 px-6 py-3 font-bold text-white transition hover:bg-white/10"
+            >
+              Learn Morse Code
+            </Link>
+
+            <Link
+              href="/morse-code-quiz"
+              className="inline-flex items-center justify-center rounded-xl border border-green-300/60 px-6 py-3 font-bold text-white transition hover:bg-white/10"
+            >
+              Take Quiz
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -594,57 +594,62 @@ export default function CharacterReferencePage({
       <main className="min-h-screen bg-white dark:bg-slate-950">
         {/* HERO */}
 
-        <section className="border-b border-slate-200 bg-gradient-to-b from-green-50 via-white to-white dark:border-slate-800 dark:from-green-950/30 dark:via-slate-950 dark:to-slate-950">
-          <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-            <nav
-              aria-label="Breadcrumb"
-              className="mb-8 flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-slate-400"
-            >
-              <Link
-                href="/"
-                className="transition-colors hover:text-green-700 dark:hover:text-green-400"
-              >
-                Home
-              </Link>
-
-              <span>/</span>
-
-              <span className="font-medium text-slate-700 dark:text-slate-200">
+        <section className="border-b border-green-900/40 bg-gradient-to-r from-[#075b2c] via-[#064d28] to-[#063b24]">
+          <div className="mx-auto max-w-5xl px-4 py-14 text-center sm:px-6 md:py-16 lg:px-8">
+            <div className="mx-auto max-w-4xl">
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
                 {isAlphabet
                   ? "Morse Code Alphabet"
                   : "Morse Code Numbers"}
-              </span>
-            </nav>
-
-            <div className="max-w-4xl">
-              <span className="inline-flex rounded-full border border-green-200 bg-green-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-green-700 dark:border-green-900/60 dark:bg-green-950/40 dark:text-green-400">
-                International Morse Code Reference
-              </span>
-
-              <h1 className="mt-5 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-6xl">
-                {isAlphabet
-                  ? "Morse Code Alphabet: A–Z Complete Guide"
-                  : "Morse Code Numbers: 0–9 Complete Guide"}
               </h1>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-                {pageDescription}
+              <p className="mx-auto mt-5 max-w-4xl text-lg leading-8 text-green-50/80 sm:text-xl">
+                {isAlphabet ? (
+                  <>
+                    Learn the complete Morse code alphabet from{" "}
+                    <strong className="font-semibold text-white">
+                      A to Z
+                    </strong>
+                    , including every letter&apos;s{" "}
+                    <strong className="font-semibold text-white">
+                      dot and dash pattern
+                    </strong>
+                    , sound rhythm, examples, timing, and practice guidance.
+                  </>
+                ) : (
+                  <>
+                    Learn Morse code numbers from{" "}
+                    <strong className="font-semibold text-white">
+                      0 to 9
+                    </strong>
+                    , including dot and dash patterns, sound rhythm,
+                    timing rules, examples, and practice guidance.
+                  </>
+                )}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/"
-                  className="rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-700"
-                >
-                  Try Morse Code Translator
-                </Link>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-4 text-sm font-medium text-green-50/90">
+                <span className="inline-flex items-center gap-2">
+                  <span className="text-base">📖</span>
+                  {isAlphabet
+                    ? "Complete A–Z Reference"
+                    : "Complete 0–9 Reference"}
+                </span>
 
-                <Link
-                  href="/morse-code-quiz"
-                  className="rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-green-500 hover:text-green-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-                >
-                  Take the Morse Code Quiz
-                </Link>
+                <span className="inline-flex items-center gap-2">
+                  <span className="text-base">🔊</span>
+                  Listen to Each {isAlphabet ? "Letter" : "Number"}
+                </span>
+
+                <span className="inline-flex items-center gap-2">
+                  <span className="text-base">⏱</span>
+                  International Morse Timing
+                </span>
+
+                <span className="inline-flex items-center gap-2">
+                  <span className="text-base">🧠</span>
+                  Practice & Quiz
+                </span>
               </div>
             </div>
           </div>
@@ -653,7 +658,7 @@ export default function CharacterReferencePage({
         {/* QUICK REFERENCE */}
 
         <section className="border-b border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900/50">
-          <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                 {isAlphabet
@@ -700,7 +705,7 @@ export default function CharacterReferencePage({
 
         {/* INTRODUCTION */}
 
-        <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
               Understanding{" "}
@@ -758,7 +763,7 @@ export default function CharacterReferencePage({
 
         {/* CHARACTER CONTENT */}
 
-        <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-5xl px-4 pb-16 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-4xl">
             <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
               Complete{" "}

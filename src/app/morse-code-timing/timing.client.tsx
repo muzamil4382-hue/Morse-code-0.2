@@ -2,28 +2,79 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronUp, Clock, ArrowRight, Info } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Info,
+} from "lucide-react";
 import { playMorseAudio } from "@/lib/morse";
 
-interface FAQ { question: string; answer: string; }
-interface Props { faqs: FAQ[]; }
+interface FAQ {
+  question: string;
+  answer: string;
+}
 
-const TIMING_ELEMENTS = [
-  { name: "Dot (dit)", units: 1, type: "signal" as const },
-  { name: "Intra-character gap", units: 1, type: "gap-short" as const },
-  { name: "Dash (dah)", units: 3, type: "signal" as const },
-  { name: "Intra-character gap", units: 1, type: "gap-short" as const },
-  { name: "Inter-character gap", units: 3, type: "gap-letter" as const },
-  { name: "Inter-word gap", units: 7, type: "gap-word" as const },
-];
+interface Props {
+  faqs: FAQ[];
+}
 
 const WPM_TABLE = [
-  { wpm: 5, dot: 240, dash: 720, intraChar: 240, interChar: 720, wordGap: 1680 },
-  { wpm: 10, dot: 120, dash: 360, intraChar: 120, interChar: 360, wordGap: 840 },
-  { wpm: 15, dot: 80, dash: 240, intraChar: 80, interChar: 240, wordGap: 560 },
-  { wpm: 20, dot: 60, dash: 180, intraChar: 60, interChar: 180, wordGap: 420 },
-  { wpm: 25, dot: 48, dash: 144, intraChar: 48, interChar: 144, wordGap: 336 },
-  { wpm: 30, dot: 40, dash: 120, intraChar: 40, interChar: 120, wordGap: 280 },
+  {
+    wpm: 5,
+    dot: 240,
+    dash: 720,
+    intraChar: 240,
+    interChar: 720,
+    wordGap: 1680,
+    level: "Slow practice",
+  },
+  {
+    wpm: 10,
+    dot: 120,
+    dash: 360,
+    intraChar: 120,
+    interChar: 360,
+    wordGap: 840,
+    level: "Beginner practice",
+  },
+  {
+    wpm: 15,
+    dot: 80,
+    dash: 240,
+    intraChar: 80,
+    interChar: 240,
+    wordGap: 560,
+    level: "Moderate practice",
+  },
+  {
+    wpm: 20,
+    dot: 60,
+    dash: 180,
+    intraChar: 60,
+    interChar: 180,
+    wordGap: 420,
+    level: "Common practice speed",
+  },
+  {
+    wpm: 25,
+    dot: 48,
+    dash: 144,
+    intraChar: 48,
+    interChar: 144,
+    wordGap: 336,
+    level: "Fast practice",
+  },
+  {
+    wpm: 30,
+    dot: 40,
+    dash: 120,
+    intraChar: 40,
+    interChar: 120,
+    wordGap: 280,
+    level: "Advanced practice",
+  },
 ];
 
 export default function TimingClient({ faqs }: Props) {
@@ -37,195 +88,433 @@ export default function TimingClient({ faqs }: Props) {
   const wordGap = dotDur * 7;
 
   const handlePlayExample = () => {
-    playMorseAudio(".... . .-.. .-.. ---", { speed: wpm, frequency: 600, volume: 0.5 });
+    playMorseAudio(".... . .-.. .-.. ---", {
+      speed: wpm,
+      frequency: 600,
+      volume: 0.5,
+    });
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Breadcrumb */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-6" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Home</Link>
-          <span className="text-slate-300 dark:text-slate-600">/</span>
-          <span className="text-slate-900 dark:text-white font-medium">Morse Code Timing</span>
-        </nav>
-        <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Morse Code Timing</h1>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">The definitive reference for Morse code timing rules, ITU-R M.1677 standard, Farnsworth timing method, and exact millisecond durations at every common WPM speed from 5 to 30 words per minute.</p>
+    <main className="min-h-screen bg-background">
+      {/* =====================================================
+          HERO
+      ====================================================== */}
+
+      <section className="w-full bg-gradient-to-br from-green-800 via-green-800 to-emerald-950">
+        <div className="mx-auto max-w-5xl px-4 py-14 text-center sm:px-6 sm:py-16 lg:px-8">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Morse Code Timing
+          </h1>
+
+          <p className="mx-auto mt-5 max-w-4xl text-lg leading-8 text-green-50/90 sm:text-xl">
+            Understand{" "}
+            <strong className="font-semibold text-white">
+              Morse code timing
+            </strong>
+            , WPM speed, dot and dash duration, character spacing, word gaps,
+            the <strong className="font-semibold text-white">PARIS 50-unit</strong>{" "}
+            reference, and the{" "}
+            <strong className="font-semibold text-white">
+              Farnsworth timing method
+            </strong>
+            .
+          </p>
+
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-green-100">
+            <span>⏱ Standard Timing Ratios</span>
+            <span>📊 Interactive WPM Calculator</span>
+            <span>📡 International Morse Code</span>
+            <span>🔊 Audio Speed Practice</span>
+          </div>
         </div>
       </section>
 
-      {/* ITU-R M.1677 Standard */}
-      <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">ITU-R M.1677 Timing Standard</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">The International Telecommunication Union recommendation ITU-R M.1677 defines the precise timing ratios that govern all Morse code transmission. These ratios have been the international standard since 1865 and ensure that Morse code can be reliably decoded regardless of the operator&apos;s location, language, or equipment.</p>
-          <p className="mt-6 text-slate-600 dark:text-slate-400 leading-relaxed">
-  These timing rules are used by our{" "}
-  <Link
-    href="/"
-    className="text-green-600 underline hover:text-green-700"
-  >
-    Morse Code Translator
-  </Link>{" "}
-  and{" "}
-  <Link
-    href="/morse-code-decoder"
-    className="text-green-600 underline hover:text-green-700"
-  >
-    Morse Code Decoder
-  </Link>{" "}
-  to ensure accurate encoding and decoding using the International standard.
-</p>
-          </div>
+      {/* =====================================================
+          INTRO
+      ====================================================== */}
 
-          {/* Visual Diagram */}
-          <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-6 sm:p-8 mb-8">
-            <h3 className="font-bold text-slate-900 dark:text-white mb-4">Timing Element Diagram</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">All Morse code timing is measured in multiples of the dot duration (1 unit). A dash is exactly 3 units long. Gaps between signal elements within a character are 1 unit, between characters are 3 units, and between words are 7 units.</p>
-            <div className="space-y-4">
-              {TIMING_ELEMENTS.map((el, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <span className="text-sm text-slate-700 dark:text-slate-300 w-48 shrink-0 font-medium">{el.name}</span>
-                  <div className="flex-1 flex items-center">
-                    <div
-                      className={`h-10 rounded flex items-center justify-center text-xs font-bold ${
-                        el.type === "signal"
-                          ? "bg-green-500 text-white"
-                          : el.type === "gap-short"
-                          ? "bg-slate-300 dark:bg-slate-600"
-                          : el.type === "gap-letter"
-                          ? "bg-amber-400 dark:bg-amber-600"
-                          : "bg-red-400 dark:bg-red-600 text-white"
-                      }`}
-                      style={{ width: `${Math.max(el.units * 60, 48)}px` }}
-                    >
-                      {el.units} unit{el.units > 1 ? "s" : ""}
-                    </div>
-                  </div>
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-4xl">
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+            Morse Code Speed Guide
+          </span>
+
+          <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            How Morse Code Timing Works
+          </h2>
+
+          <p className="mt-5 w-full max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
+            Morse code is more than a collection of dots and dashes. The
+            relationship between signal lengths and silent gaps is part of the
+            communication system itself. A correctly transmitted message uses
+            proportional timing so that a listener can distinguish individual
+            elements, characters, and words.
+          </p>
+
+          <p className="mt-4 w-full max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
+            International Morse Code is defined by the{" "}
+            <strong>International Telecommunication Union</strong> in{" "}
+            <strong>ITU-R M.1677</strong>. The practical timing model is based
+            on a simple unit system: a dot equals one unit and all other
+            elements are measured as multiples of that unit.
+          </p>
+
+          <p className="mt-4 w-full max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
+            If you are learning the actual character patterns, start with the{" "}
+            <Link
+              href="/morse-code-alphabet"
+              className="font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              Morse Code Alphabet
+            </Link>
+            . You can then use the{" "}
+            <Link
+              href="/"
+              className="font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              Morse Code Translator
+            </Link>{" "}
+            to convert messages and the{" "}
+            <Link
+              href="/morse-code-sounds"
+              className="font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              Morse Code Sounds
+            </Link>{" "}
+            page to hear how different characters are transmitted.
+          </p>
+        </div>
+      </section>
+
+      {/* =====================================================
+          STANDARD TIMING
+      ====================================================== */}
+
+      <section className="border-y border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/40">
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Standard Reference
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+              The 1–3–1–3–7 Morse Code Timing Rule
+            </h2>
+
+            <p className="mt-5 w-full max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
+              Standard Morse timing uses five important proportional durations.
+              Once you understand these values, you can calculate the timing
+              for any WPM speed.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {[
+                {
+                  title: "Dot",
+                  value: "1 Unit",
+                  text: "The basic timing reference.",
+                },
+                {
+                  title: "Dash",
+                  value: "3 Units",
+                  text: "Three times the dot duration.",
+                },
+                {
+                  title: "Inside Character",
+                  value: "1 Unit",
+                  text: "Gap between dots and dashes.",
+                },
+                {
+                  title: "Between Letters",
+                  value: "3 Units",
+                  text: "Gap separating characters.",
+                },
+                {
+                  title: "Between Words",
+                  value: "7 Units",
+                  text: "The standard word space.",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+                >
+                  <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
+                    {item.title}
+                  </p>
+
+                  <p className="mt-3 text-2xl font-extrabold text-green-700 dark:text-green-400">
+                    {item.value}
+                  </p>
+
+                  <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                    {item.text}
+                  </p>
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-6 mt-6 text-xs">
-              <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-green-500 rounded-sm inline-block"></span>Signal (dot/dash)</span>
-              <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-slate-300 dark:bg-slate-600 rounded-sm inline-block"></span>Intra-char gap (1u)</span>
-              <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-amber-400 dark:bg-amber-600 rounded-sm inline-block"></span>Letter gap (3u)</span>
-              <span className="flex items-center gap-1.5"><span className="w-3 h-3 bg-red-400 dark:bg-red-600 rounded-sm inline-block"></span>Word gap (7u)</span>
+
+            <div className="mt-10 rounded-2xl border border-green-200 bg-green-50 p-6 dark:border-green-900/50 dark:bg-green-950/20">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                Why the Ratios Matter
+              </h3>
+
+              <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">
+                At 20 WPM, one timing unit equals 60 milliseconds. Therefore,
+                a dash lasts 180 milliseconds, the character gap is 180
+                milliseconds, and the word gap is 420 milliseconds. When the
+                transmission speed changes, these durations scale
+                proportionally.
+              </p>
             </div>
           </div>
-
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead className="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Element</th>
-                  <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Duration (units)</th>
-                  <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Description</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                {[
-                  ["Dot (dit)", "1 unit", "The fundamental timing unit. All other durations are multiples of this. At 20 WPM, one dot equals 60 milliseconds exactly."],
-                  ["Dash (dah)", "3 units", "Exactly three dot durations. Creates the distinctive long signal. At 20 WPM, one dash equals 180 milliseconds."],
-                  ["Intra-character gap", "1 unit", "Silence between dots and dashes within the same letter. Equal to one dot duration. At 20 WPM, 60 milliseconds."],
-                  ["Inter-character gap", "3 units", "Silence between complete characters. Crucial for distinguishing letters. At 20 WPM, 180 milliseconds."],
-                  ["Inter-word gap", "7 units", "Long silence between words. Often represented as a slash (/) in written Morse. At 20 WPM, 420 milliseconds."],
-                ].map(([elem, dur, desc], i) => (
-                  <tr key={i}>
-                    <td className="p-4 font-medium text-slate-900 dark:text-white">{elem}</td>
-                    <td className="p-4 font-mono text-green-600 dark:text-green-400 font-semibold">{dur}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-400">{desc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
         </div>
       </section>
 
-      {/* Interactive WPM Calculator */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Interactive WPM Timing Calculator</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Adjust the WPM slider to see the exact millisecond durations for each timing element at any speed. The reference word PARIS (50 dot units) is used to calibrate all WPM measurements.</p>
-        <p className="mt-6 text-center text-slate-600 dark:text-slate-400">
-  Test different speeds using our{" "}
-  <Link
-    href="/"
-    className="text-green-600 underline hover:text-green-700"
-  >
-    Morse Code Translator
-  </Link>{" "}
-  and hear how timing changes as you increase WPM.
-</p>
-        </div>
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8">
-          <div className="mb-6">
-            <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block">Speed: <span className="text-green-600 dark:text-green-400 font-bold text-lg">{wpm} WPM</span></label>
-            <input type="range" min="5" max="35" value={wpm} onChange={(e) => setWpm(Number(e.target.value))} className="w-full accent-green-600" />
-            <div className="flex justify-between text-xs text-slate-400 mt-1"><span>5 WPM</span><span>35 WPM</span></div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-            {[
-              { label: "Dot", value: dotDur, unit: "ms" },
-              { label: "Dash", value: dashDur, unit: "ms" },
-              { label: "Intra-char", value: intraGap, unit: "ms" },
-              { label: "Letter gap", value: interCharGap, unit: "ms" },
-              { label: "Word gap", value: wordGap, unit: "ms" },
-            ].map((item, i) => (
-              <div key={i} className="text-center p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
-                <div className="text-2xl font-extrabold text-green-700 dark:text-green-400">{item.value}<span className="text-sm font-normal text-slate-500 dark:text-slate-400 ml-0.5">{item.unit}</span></div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">{item.label}</div>
+      {/* =====================================================
+          INTERACTIVE CALCULATOR
+      ====================================================== */}
+
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="rounded-3xl border border-slate-200 border-t-4 border-t-green-700 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+                  Interactive Tool
+                </span>
+
+                <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white">
+                  Morse Code WPM Calculator
+                </h2>
+
+                <p className="mt-3 max-w-3xl leading-7 text-slate-600 dark:text-slate-400">
+                  Change the WPM value to calculate the exact duration of a
+                  dot, dash, character gap, and word gap.
+                </p>
               </div>
-            ))}
-          </div>
-          <div className="text-center">
-            <button onClick={handlePlayExample} className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors cursor-pointer">
-              <Clock className="w-4 h-4" /> Play &quot;HELLO&quot; at {wpm} WPM
-            </button>
+
+              <div className="rounded-xl border border-green-200 bg-green-50 px-5 py-3 text-center dark:border-green-900 dark:bg-green-950/30">
+                <span className="block text-xs text-slate-500 dark:text-slate-400">
+                  Current Speed
+                </span>
+
+                <span className="text-2xl font-extrabold text-green-700 dark:text-green-400">
+                  {wpm} WPM
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <input
+                type="range"
+                min="5"
+                max="40"
+                value={wpm}
+                onChange={(e) => setWpm(Number(e.target.value))}
+                className="w-full accent-green-700"
+                aria-label="Morse code speed in words per minute"
+              />
+
+              <div className="mt-2 flex justify-between text-xs text-slate-400">
+                <span>5 WPM</span>
+                <span>40 WPM</span>
+              </div>
+            </div>
+
+            <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-5">
+              {[
+                {
+                  label: "Dot",
+                  value: dotDur,
+                },
+                {
+                  label: "Dash",
+                  value: dashDur,
+                },
+                {
+                  label: "Inside Character",
+                  value: intraGap,
+                },
+                {
+                  label: "Letter Gap",
+                  value: interCharGap,
+                },
+                {
+                  label: "Word Gap",
+                  value: wordGap,
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center dark:border-slate-800 dark:bg-slate-950"
+                >
+                  <p className="text-2xl font-extrabold text-green-700 dark:text-green-400">
+                    {item.value}
+                    <span className="ml-1 text-sm font-medium">ms</span>
+                  </p>
+
+                  <p className="mt-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+                    {item.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={handlePlayExample}
+                className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-green-700 px-6 py-3 font-semibold text-white transition hover:bg-green-800"
+              >
+                <Clock className="h-4 w-4" />
+                Play HELLO at {wpm} WPM
+              </button>
+
+              <Link
+                href="/morse-code-sounds"
+                className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition hover:border-green-600 hover:text-green-700 dark:border-slate-700 dark:text-slate-200"
+              >
+                Practice Morse Sounds
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* WPM Speed Reference Table */}
-      <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">WPM Speed Reference Table</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">The table below shows exact millisecond durations for each timing element at the six most common Morse code speeds. These values are calculated using the formula: dot duration = 1200 / WPM milliseconds.</p>
+      {/* =====================================================
+          FORMULA
+      ====================================================== */}
+
+      <section className="border-y border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/40">
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+                WPM Formula
+              </span>
+
+              <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white">
+                How to Calculate Morse Code Timing
+              </h2>
+
+              <p className="mt-5 w-full max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
+                Morse speed is commonly calculated using the reference word{" "}
+                <strong>PARIS</strong>, which represents 50 timing units under
+                the standard measurement convention.
+              </p>
+
+              <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+                <p className="text-sm font-medium text-slate-500">
+                  Dot duration formula
+                </p>
+
+                <p className="mt-3 font-mono text-2xl font-bold text-green-700 dark:text-green-400">
+                  1200 ÷ WPM = milliseconds
+                </p>
+
+                <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">
+                  Example: at 20 WPM, 1200 ÷ 20 = 60 milliseconds per dot.
+                  Every other timing value is then calculated from that
+                  fundamental duration.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+              <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
+                <Info className="h-5 w-5 text-green-700" />
+                Quick Example at 20 WPM
+              </h3>
+
+              <div className="mt-6 space-y-4">
+                {[
+                  ["Dot", "60 ms"],
+                  ["Dash", "180 ms"],
+                  ["Gap inside character", "60 ms"],
+                  ["Gap between letters", "180 ms"],
+                  ["Gap between words", "420 ms"],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-800"
+                  >
+                    <span className="font-medium text-slate-700 dark:text-slate-300">
+                      {label}
+                    </span>
+
+                    <span className="font-mono font-bold text-green-700 dark:text-green-400">
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        </div>
+      </section>
+
+      {/* =====================================================
+          WPM TABLE
+      ====================================================== */}
+
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+            Speed Reference
+          </span>
+
+          <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            Morse Code WPM Timing Chart
+          </h2>
+
+          <p className="mt-4 max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
+            This reference table shows calculated timing values at common Morse
+            code speeds. The values use the standard formula of 1200 divided by
+            WPM for one dot duration.
+          </p>
+
+          <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead className="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+              <table className="w-full min-w-[850px] text-sm">
+                <thead className="bg-slate-50 dark:bg-slate-900">
                   <tr>
-                    <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">WPM</th>
-                    <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Dot (ms)</th>
-                    <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Dash (ms)</th>
-                    <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Intra-char (ms)</th>
-                    <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Letter gap (ms)</th>
-                    <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Word gap (ms)</th>
-                    <th className="text-left p-4 font-semibold text-slate-900 dark:text-white">Typical Use</th>
+                    <th className="p-4 text-left font-bold">Speed</th>
+                    <th className="p-4 text-left font-bold">Dot</th>
+                    <th className="p-4 text-left font-bold">Dash</th>
+                    <th className="p-4 text-left font-bold">Inside Character</th>
+                    <th className="p-4 text-left font-bold">Letter Gap</th>
+                    <th className="p-4 text-left font-bold">Word Gap</th>
+                    <th className="p-4 text-left font-bold">Practice Use</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
-                  {[
-                    [5, 240, 720, 240, 720, 1680, "Complete beginner"],
-                    [10, 120, 360, 120, 360, 840, "Basic practice"],
-                    [15, 80, 240, 80, 240, 560, "Intermediate"],
-                    [20, 60, 180, 60, 180, 420, "Standard ham radio"],
-                    [25, 48, 144, 48, 144, 336, "Advanced operator"],
-                    [30, 40, 120, 40, 120, 280, "Expert / contest"],
-                  ].map(([w, d, da, ic, lc, wg, use], i) => (
-                    <tr key={i} className={wpm === w ? "bg-green-50 dark:bg-green-900/20" : ""}>
-                      <td className="p-4 font-bold text-slate-900 dark:text-white">{w} WPM</td>
-                      <td className="p-4 font-mono text-green-600 dark:text-green-400">{d} ms</td>
-                      <td className="p-4 font-mono text-slate-600 dark:text-slate-400">{da} ms</td>
-                      <td className="p-4 font-mono text-slate-600 dark:text-slate-400">{ic} ms</td>
-                      <td className="p-4 font-mono text-slate-600 dark:text-slate-400">{lc} ms</td>
-                      <td className="p-4 font-mono text-slate-600 dark:text-slate-400">{wg} ms</td>
-                      <td className="p-4 text-slate-600 dark:text-slate-400">{use}</td>
+
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+                  {WPM_TABLE.map((row) => (
+                    <tr
+                      key={row.wpm}
+                      className={
+                        wpm === row.wpm
+                          ? "bg-green-50 dark:bg-green-950/20"
+                          : ""
+                      }
+                    >
+                      <td className="p-4 font-bold text-slate-900 dark:text-white">
+                        {row.wpm} WPM
+                      </td>
+
+                      <td className="p-4 font-mono text-green-700 dark:text-green-400">
+                        {row.dot} ms
+                      </td>
+
+                      <td className="p-4">{row.dash} ms</td>
+                      <td className="p-4">{row.intraChar} ms</td>
+                      <td className="p-4">{row.interChar} ms</td>
+                      <td className="p-4">{row.wordGap} ms</td>
+                      <td className="p-4 text-slate-600 dark:text-slate-400">
+                        {row.level}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -235,127 +524,275 @@ export default function TimingClient({ faqs }: Props) {
         </div>
       </section>
 
-      {/* Farnsworth Timing */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Farnsworth Timing Method</h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">The Farnsworth timing method, developed by Donald R. Farnsworth, is the most widely used training technique for learning Morse code. It solves a fundamental problem in Morse code education: learning characters at slow speeds and then trying to increase speed later causes a &quot;speed wall&quot; around 10 WPM where the learner must transition from counting dots to recognizing rhythmic patterns.</p>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800">
-            <h3 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Info className="w-5 h-5 text-green-600" /> How Farnsworth Works</h3>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Farnsworth timing sends each character at a higher speed (e.g., 20 WPM) but inserts extra-long gaps between characters so the overall transmission speed averages much lower (e.g., 5 WPM). The character itself — its dots, dashes, and intra-character gaps — uses standard timing ratios at 20 WPM. Only the inter-character gap is stretched from 180ms to approximately 1400ms.</p>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">This approach lets the learner hear each character at its proper rhythmic proportions from day one. As proficiency improves, the extra inter-character gap is gradually reduced until standard timing is reached. The learner never has to unlearn slow-speed character recognition, because they always heard characters at full speed.</p>
-          <p className="mt-5 text-slate-600 dark:text-slate-400">
-  If you are just getting started, follow our{" "}
-  <Link
-    href="/learn-morse-code"
-    className="text-green-600 underline hover:text-green-700"
-  >
-    Learn Morse Code guide
-  </Link>{" "}
-  to practice Farnsworth timing step by step.
-</p>
-          </div>
-          <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800">
-            <h3 className="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><Clock className="w-5 h-5 text-green-600" /> Farnsworth vs. Standard</h3>
-            <div className="space-y-4">
-              <div>
-                <span className="text-sm font-semibold text-slate-900 dark:text-white">Standard 5 WPM timing:</span>
-                <div className="flex items-center gap-1 mt-1">
-                  <div className="h-6 w-12 bg-green-500 rounded-sm"></div>
-                  <div className="h-3 w-6 bg-slate-300 dark:bg-slate-600 rounded-sm"></div>
-                  <div className="h-6 w-36 bg-green-500 rounded-sm"></div>
-                  <div className="h-3 w-6 bg-slate-300 dark:bg-slate-600 rounded-sm"></div>
-                  <div className="h-3 w-18 bg-amber-400 dark:bg-amber-600 rounded-sm"></div>
-                </div>
-                <span className="text-xs text-slate-500 dark:text-slate-400">Dot=240ms, Dash=720ms, gaps=240ms — all stretched equally</span>
+      {/* =====================================================
+          FARNSWORTH
+      ====================================================== */}
+
+      <section className="border-y border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/40">
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Learning Method
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+              Farnsworth Timing Method Explained
+            </h2>
+
+            <p className="mt-5 w-full max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
+              Farnsworth timing is designed to help learners recognize the
+              sound pattern of complete Morse characters. Instead of slowing
+              down every dot and dash, the character itself can be sent at a
+              higher character speed while additional space is inserted between
+              letters and words.
+            </p>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Standard Timing
+                </h3>
+
+                <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">
+                  At standard timing, the entire message scales according to
+                  the selected WPM. Lower speed means longer dots, longer
+                  dashes, and longer standard gaps.
+                </p>
               </div>
-              <div>
-                <span className="text-sm font-semibold text-slate-900 dark:text-white">Farnsworth 20/5 WPM timing:</span>
-                <div className="flex items-center gap-1 mt-1">
-                  <div className="h-6 w-6 bg-green-500 rounded-sm"></div>
-                  <div className="h-3 w-3 bg-slate-300 dark:bg-slate-600 rounded-sm"></div>
-                  <div className="h-6 w-18 bg-green-500 rounded-sm"></div>
-                  <div className="h-3 w-3 bg-slate-300 dark:bg-slate-600 rounded-sm"></div>
-                  <div className="h-3 w-28 bg-blue-400 dark:bg-blue-600 rounded-sm"></div>
-                </div>
-                <span className="text-xs text-slate-500 dark:text-slate-400">Dot=60ms, Dash=180ms — normal speed, extra gap between letters</span>
+
+              <div className="rounded-2xl border border-green-200 bg-green-50 p-6 dark:border-green-900/50 dark:bg-green-950/20">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Farnsworth Timing
+                </h3>
+
+                <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">
+                  Individual characters retain their selected internal rhythm,
+                  while extra delay is added between characters and words to
+                  reduce the overall message speed.
+                </p>
               </div>
             </div>
+
+            <p className="mt-8 leading-8 text-slate-600 dark:text-slate-400">
+              To combine timing practice with character recognition, use the{" "}
+              <Link
+                href="/learn-morse-code"
+                className="font-semibold text-green-700 hover:underline dark:text-green-400"
+              >
+                Learn Morse Code guide
+              </Link>
+              . After practicing, test your recognition speed with the{" "}
+              <Link
+                href="/morse-code-quiz"
+                className="font-semibold text-green-700 hover:underline dark:text-green-400"
+              >
+                Morse Code Quiz
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>
 
+      {/* =====================================================
+          RELATED RESOURCES
+      ====================================================== */}
 
-      {/* Explore More */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
-        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6">Explore More</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <Link href="/morse-code-alphabet" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">📋</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Alphabet Chart</span>
-          </Link>
-          <Link href="/morse-code-sounds" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔊</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Morse Code Sounds</span>
-          </Link>
-          <Link href="/learn-morse-code" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">📖</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Learn Morse Code</span>
-          </Link>
-          <Link href="/morse-code-quiz" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🎯</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Morse Code Quiz</span>
-          </Link>
-          <Link href="/what-is-morse-code" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">📖</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">History & Info</span>
-          </Link>
-                  <Link href="/" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔤</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Translator</span>
-          </Link>
-          <Link href="/morse-code-decoder" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔓</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Decoder</span>
-          </Link>
-          <Link href="/morse-code-numbers" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group">
-            <span className="text-green-600 text-lg">🔢</span>
-            <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">Numbers</span>
-          </Link>
-          <Link
-  href="/sos-morse-code"
-  className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-green-400 hover:shadow-sm transition-all group"
->
-  <span className="text-green-600 text-lg">🆘</span>
-  <span className="ml-2 text-sm font-medium text-slate-900 dark:text-white group-hover:text-green-600">
-    SOS Morse Code
-  </span>
-</Link>
-</div>
+      <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+        <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+          Internal Resources
+        </span>
+
+        <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white">
+          Continue Learning Morse Code
+        </h2>
+
+        <p className="mt-4 max-w-3xl leading-7 text-slate-600 dark:text-slate-400">
+          Explore related tools and guides for translation, decoding, character
+          recognition, audio practice, numbers, SOS signals, and Morse code
+          learning.
+        </p>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              href: "/",
+              icon: "🔤",
+              title: "Morse Code Translator",
+              text: "Convert text to Morse and Morse back to readable text.",
+            },
+            {
+              href: "/morse-code-decoder",
+              icon: "🔓",
+              title: "Morse Code Decoder",
+              text: "Decode dots and dashes with character analysis.",
+            },
+            {
+              href: "/morse-code-alphabet",
+              icon: "📋",
+              title: "Morse Code Alphabet",
+              text: "Study all A–Z Morse code character patterns.",
+            },
+            {
+              href: "/morse-code-numbers",
+              icon: "🔢",
+              title: "Morse Code Numbers",
+              text: "Learn how the digits 0 through 9 are represented.",
+            },
+            {
+              href: "/morse-code-sounds",
+              icon: "🔊",
+              title: "Morse Code Sounds",
+              text: "Listen to Morse signals and practice recognition.",
+            },
+            {
+              href: "/learn-morse-code",
+              icon: "📖",
+              title: "Learn Morse Code",
+              text: "Follow a structured path for learning Morse code.",
+            },
+            {
+              href: "/morse-code-quiz",
+              icon: "🎯",
+              title: "Morse Code Quiz",
+              text: "Test your knowledge with interactive questions.",
+            },
+            {
+              href: "/sos-morse-code",
+              icon: "🆘",
+              title: "SOS Morse Code",
+              text: "Learn the internationally recognized SOS signal.",
+            },
+            {
+              href: "/what-is-morse-code",
+              icon: "📚",
+              title: "What Is Morse Code?",
+              text: "Explore the history, purpose, and modern uses of Morse.",
+            },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-green-500 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+            >
+              <span className="text-2xl">{item.icon}</span>
+
+              <h3 className="mt-4 font-bold text-slate-900 group-hover:text-green-700 dark:text-white dark:group-hover:text-green-400">
+                {item.title}
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                {item.text}
+              </p>
+
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-green-700 dark:text-green-400">
+                Explore
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+          ))}
+        </div>
       </section>
 
-      {/* FAQ */}
-      <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Morse Code Timing FAQ</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Common questions about Morse code timing, speed measurement, and the Farnsworth method.</p>
+      {/* =====================================================
+          FAQ
+      ====================================================== */}
+
+      <section className="border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-950/40">
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Questions & Answers
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+              Morse Code Timing FAQ
+            </h2>
+
+            <p className="mt-4 leading-7 text-slate-600 dark:text-slate-400">
+              Common questions about Morse code speed, WPM calculation, timing
+              ratios, dot duration, word spacing, and Farnsworth practice.
+            </p>
           </div>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <div key={i} className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-                  <span className="font-semibold text-slate-900 dark:text-white pr-4">{faq.question}</span>
-                  {openFaq === i ? <ChevronUp className="w-5 h-5 text-slate-400 shrink-0" /> : <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />}
+
+          <div className="mt-8 space-y-3">
+            {faqs.map((faq, index) => (
+              <div
+                key={faq.question}
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+              >
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenFaq(openFaq === index ? null : index)
+                  }
+                  className="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left transition hover:bg-slate-50 dark:hover:bg-slate-800"
+                >
+                  <span className="font-bold text-slate-900 dark:text-white">
+                    {faq.question}
+                  </span>
+
+                  {openFaq === index ? (
+                    <ChevronUp className="h-5 w-5 shrink-0 text-slate-400" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 shrink-0 text-slate-400" />
+                  )}
                 </button>
-                {openFaq === i && <div className="px-5 pb-5 -mt-1"><p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">{faq.answer}</p></div>}
+
+                {openFaq === index && (
+                  <div className="px-5 pb-5">
+                    <p className="leading-7 text-slate-600 dark:text-slate-400">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* =====================================================
+          FINAL CTA - JUST ABOVE FOOTER
+      ====================================================== */}
+
+      <section className="w-full bg-gradient-to-r from-green-800 via-green-800 to-emerald-900">
+        <div className="mx-auto max-w-5xl px-4 py-14 text-center sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            Put Morse Code Timing Into Practice
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-green-50/90">
+            Use the translator to send messages, practice listening to Morse
+            sounds, study the alphabet, and test your recognition skills with
+            interactive exercises.
+          </p>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-green-800 transition hover:bg-green-50"
+            >
+              Morse Code Translator
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+
+            <Link
+              href="/learn-morse-code"
+              className="inline-flex items-center gap-2 rounded-xl border border-green-300/60 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+            >
+              Learn Morse Code
+            </Link>
+
+            <Link
+              href="/morse-code-quiz"
+              className="inline-flex items-center gap-2 rounded-xl border border-green-300/60 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+            >
+              Take Quiz
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
