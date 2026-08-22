@@ -118,6 +118,46 @@ const learnLinks: NavChild[] = [
   },
 ];
 
+
+/* =========================
+   QUIZ DROPDOWN
+========================= */
+
+const quizLinks: NavChild[] = [
+  {
+    label: "Level 1 – Easy Start",
+    href: "/morse-code-quiz?level=1",
+  },
+  {
+    label: "Level 2 – Basic Letters",
+    href: "/morse-code-quiz?level=2",
+  },
+  {
+    label: "Level 3 – More Characters",
+    href: "/morse-code-quiz?level=3",
+  },
+  {
+    label: "Level 4 – Beginner Challenge",
+    href: "/morse-code-quiz?level=4",
+  },
+  {
+    label: "Level 5 – New Patterns",
+    href: "/morse-code-quiz?level=5",
+  },
+  {
+    label: "Level 6 – Advanced Letters",
+    href: "/morse-code-quiz?level=6",
+  },
+  {
+    label: "Level 7 – Full Alphabet Prep",
+    href: "/morse-code-quiz?level=7",
+  },
+  {
+    label: "Level 8 – A–Z Challenge",
+    href: "/morse-code-quiz?level=8",
+  },
+];
+
 /* =========================
    BLOG DROPDOWN
 ========================= */
@@ -164,7 +204,7 @@ const navItems: NavItem[] = [
   },
   {
     label: "Quiz",
-    href: "/morse-code-quiz",
+    children: quizLinks,
   },
   {
     label: "Blog",
@@ -282,8 +322,9 @@ function DesktopDropdown({
   }, []);
 
   const isActive =
-    item.href === pathname ||
-    item.children?.some((child) => child.href === pathname);
+  item.href === pathname ||
+  item.children?.some((child) => child.href === pathname) ||
+  (item.label === "Quiz" && pathname === "/morse-code-quiz");
 
   /* DIRECT LINK */
 
@@ -368,7 +409,8 @@ function MobileAccordion({
 
   const isActive =
     item.href === pathname ||
-    item.children?.some((child) => child.href === pathname);
+    item.children?.some((child) => child.href === pathname) ||
+    (item.label === "Quiz" && pathname === "/morse-code-quiz");
 
   /* DIRECT LINK */
 
