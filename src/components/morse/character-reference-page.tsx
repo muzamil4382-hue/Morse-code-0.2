@@ -1184,37 +1184,33 @@ export default function CharacterReferencePage({
                       </p>
 
                       <div className="mt-4 flex flex-wrap gap-2">
-                        key={`${item.char}-${related}-${relatedIndex}`}
-                            const firstCharacter =
-                              related.charAt(0);
+  {item.relatedChars.map(
+    (related, relatedIndex) => {
+      const firstCharacter = related.charAt(0);
 
-                            const isRelatedNumber =
-                              /^[0-9]$/.test(
-                                firstCharacter
-                              );
+      const isRelatedNumber =
+        /^[0-9]$/.test(firstCharacter);
 
-                            const href =
-                              isRelatedNumber
-                                ? `/morse-code-numbers#number-${firstCharacter}`
-                                : `/morse-code-alphabet#letter-${firstCharacter.toLowerCase()}`;
+      const href = isRelatedNumber
+        ? `/morse-code-numbers#number-${firstCharacter}`
+        : `/morse-code-alphabet#letter-${firstCharacter.toLowerCase()}`;
 
-                            const text =
-                              isRelatedNumber
-                                ? `${firstCharacter} in Morse Code`
-                                : `${firstCharacter.toUpperCase()} in Morse Code`;
+      const text = isRelatedNumber
+        ? `${firstCharacter} in Morse Code`
+        : `${firstCharacter.toUpperCase()} in Morse Code`;
 
-                            return (
-                              <Link
-                                key={`${item.char}-${related}-${index}`}
-                                href={href}
-                                className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-green-400 hover:bg-green-50 hover:text-green-700 dark:border-slate-700 dark:text-slate-300 dark:hover:border-green-700 dark:hover:bg-green-950/30"
-                              >
-                                {text}
-                              </Link>
-                            );
-                          }
-                        )}
-                      </div>
+      return (
+        <Link
+          key={`${item.char}-${related}-${relatedIndex}`}
+          href={href}
+          className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-green-400 hover:bg-green-50 hover:text-green-700 dark:border-slate-700 dark:text-slate-300 dark:hover:border-green-700 dark:hover:bg-green-950/30"
+        >
+          {text}
+        </Link>
+      );
+    }
+  )}
+</div>
                     </section>
                   )}
 

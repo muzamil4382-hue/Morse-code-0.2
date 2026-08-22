@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-data";
-import { letterData, numberData } from "@/lib/morse-characters";
 import { BASE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -29,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/morse-code-numbers`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/learn-morse-code`,
       lastModified,
       changeFrequency: "monthly",
@@ -36,12 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/morse-code-timing`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/morse-code-numbers`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -76,6 +75,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+
+    /*
+     * Word / Phrase pages
+     */
     {
       url: `${BASE_URL}/i-love-you-in-morse-code`,
       lastModified,
@@ -112,12 +115,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+
+    /*
+     * Blog
+     */
     {
       url: `${BASE_URL}/blog`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
+
+    /*
+     * Legal / Company pages
+     */
     {
       url: `${BASE_URL}/about`,
       lastModified,
@@ -151,39 +162,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   /*
-   * Blog posts
+   * Blog post pages
    */
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-
-  /*
-   * Morse Code Letter pages — A-Z
-   */
-  const letterPages: MetadataRoute.Sitemap = letterData.map((letter) => ({
-    url: `${BASE_URL}/morse-code-letter/${letter.char.toLowerCase()}`,
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  /*
-   * Morse Code Number pages — 0-9
-   */
-  const numberPages: MetadataRoute.Sitemap = numberData.map((number) => ({
-    url: `${BASE_URL}/morse-code-number/${number.char}`,
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map(
+    (post) => ({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })
+  );
 
   return [
     ...staticPages,
     ...blogPages,
-    ...letterPages,
-    ...numberPages,
   ];
 }
