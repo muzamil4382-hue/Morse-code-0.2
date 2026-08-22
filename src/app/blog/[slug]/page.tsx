@@ -1013,13 +1013,63 @@ export default async function BlogPostPage({
             {post.description}
           </p>
 
-          <div className="mt-6 flex items-center gap-3 border-t border-slate-200 pt-4 text-sm text-slate-400">
-            <span>{post.author}</span>
+          {/* Author & Editorial Information */}
+<div className="mt-7 border-t border-slate-200 pt-5">
+  <div className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:flex-row sm:items-start">
+    
+    {/* Team Icon */}
+    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-600 text-sm font-bold text-white">
+      MC
+    </div>
 
-            <span>·</span>
+    <div className="flex-1">
+      <p className="text-sm text-slate-500">
+        Written and reviewed by
+      </p>
 
-            <span>{post.date}</span>
-          </div>
+      <Link
+        href="/about"
+        className="mt-1 inline-block text-base font-bold text-slate-900 transition hover:text-green-700"
+      >
+        Morse Code Translator Team
+      </Link>
+
+      <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
+        Our editorial team researches, writes, and reviews content to provide
+        clear and accurate information about Morse code, communication
+        standards, learning methods, and related topics.
+      </p>
+
+      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-500">
+        <span>
+          Published:{" "}
+          <time dateTime={post.date}>
+            {post.date}
+          </time>
+        </span>
+
+        <span className="hidden text-slate-300 sm:inline">
+          •
+        </span>
+
+        <span>
+          Reviewed for accuracy
+        </span>
+
+        <span className="hidden text-slate-300 sm:inline">
+          •
+        </span>
+
+        <Link
+          href="/editorial-policy"
+          className="font-semibold text-green-700 transition hover:text-green-800 hover:underline"
+        >
+          Editorial Policy →
+        </Link>
+      </div>
+    </div>
+  </div>
+</div>
         </header>
 
         {/* Hero Image */}
