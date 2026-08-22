@@ -13,7 +13,22 @@ const faqs = [
   {
     question: "How do I use this Morse Code Translator?",
     answer:
-      "Type or paste your message into the input box, and the translator instantly converts it into International Morse code using dots and dashes. You can also switch to Morse-to-text mode to decode a Morse code message back into readable text. The translation updates in real time as you type.",
+      "Type or paste your message into the input box, and the translator instantly converts text to Morse code using dots and dashes. You can also switch to Morse-to-text mode to decode a Morse code message back into readable text. The translation updates in real time as you type.",
+  },
+  {
+    question: "Is this a free Morse code converter?",
+    answer:
+      "Yes. This free Morse code converter lets you translate text to Morse code and decode Morse code back into text without registration. You can also listen to the generated audio, adjust available settings, copy your result, and download supported output files.",
+  },
+  {
+    question: "Can I convert text to Morse code instantly?",
+    answer:
+      "Yes. Simply enter your message into the translator, and your text is converted to International Morse code instantly. Each supported letter, number, and symbol is translated into the correct combination of dots and dashes.",
+  },
+  {
+    question: "What is a Morse translator?",
+    answer:
+      "A Morse translator is an online tool that converts normal text into Morse code or decodes Morse code back into readable text. This tool supports both text-to-Morse conversion and Morse-to-text decoding.",
   },
   {
     question: "Can I listen to Morse code audio?",
@@ -21,14 +36,9 @@ const faqs = [
       "Yes. The translator includes audio playback that turns Morse code into audible dots and dashes. You can adjust settings such as speed, tone frequency, and volume. A visual flash mode is also available for practicing Morse code as light signals.",
   },
   {
-    question: "Is this Morse Code Translator free?",
-    answer:
-      "Yes. This Morse Code Translator is free to use and does not require registration. You can convert text to Morse code, decode Morse code to text, listen to audio, use visual flash mode, copy your results, and download supported output files.",
-  },
-  {
     question: "What is the standard Morse code timing?",
     answer:
-      "International Morse code uses a standard timing ratio. A dot is one time unit, a dash is three units, the gap between parts of the same character is one unit, the gap between characters is three units, and the gap between words is seven units. Beginners can practice at slower effective speeds while maintaining correct character rhythm.",
+      "International Morse code uses a standard timing ratio. A dot is one time unit, a dash is three units, the gap between parts of the same character is one unit, the gap between characters is three units, and the gap between words is seven units.",
   },
   {
     question: "Can I download Morse code as a WAV audio file?",
@@ -49,7 +59,7 @@ const faqs = [
   {
     question: "Where is Morse code still used today?",
     answer:
-      "Morse code is still used and practiced by amateur radio operators around the world. It also remains useful for emergency signaling, visual communication, education, accessibility projects, and as a backup communication method in situations where simple on-off signals can be transmitted by sound or light.",
+      "Morse code is still used and practiced by amateur radio operators around the world. It is also useful for emergency signaling, visual communication, education, accessibility projects, and situations where simple on-off signals can be transmitted by sound or light.",
   },
   {
     question: "What characters does this Morse Code Translator support?",
@@ -66,11 +76,11 @@ const faqs = [
 const howToSteps = [
   {
     name: "Enter Your Text or Morse Code",
-    text: "Type or paste your message into the input area. You can translate normal text into Morse code or switch modes to decode dots and dashes into readable text.",
+    text: "Type or paste your message into the input area. You can convert normal text to Morse code or switch modes to decode dots and dashes into readable text.",
   },
   {
     name: "Get an Instant Translation",
-    text: "The Morse Code Translator converts your message in real time using International Morse code patterns for supported letters, numbers, and symbols.",
+    text: "The Morse Code Translator instantly converts your message using International Morse code patterns for supported letters, numbers, and symbols.",
   },
   {
     name: "Listen, Copy, Download, or Practice",
@@ -79,17 +89,17 @@ const howToSteps = [
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Translator - Translate Text to Morse Code Online",
-  "Use our free Morse Code Translator to instantly convert text to Morse code and decode dots and dashes. Listen to Morse code, adjust speed and sound settings, copy or download your results, and practice online.",
+  "Morse Code Translator – Translate Text to Morse Code",
+  "Free Morse Code Translator to convert text to Morse code and decode Morse instantly. Use this Morse translator and Morse code converter with audio, adjustable speed, flash signals, copy, and download tools.",
   "/",
   [
     "morse code translator",
     "morse translator",
     "text to morse code",
+    "morse code converter",
     "morse code to text",
     "morse code decoder",
-    "morse code converter",
-    "translate morse code",
+    "translate text to morse code",
   ]
 );
 
@@ -105,14 +115,14 @@ export default function HomePage() {
   const softwareSchema = generateSoftwareApplicationSchema({
     name: "Morse Code Translator",
     description:
-      "Free online Morse Code Translator for translating text to Morse code and decoding Morse code to text. Includes audio playback, visual flash mode, adjustable sound settings, copy tools, downloads, and International Morse code support.",
+      "A free online Morse Code Translator and Morse code converter for translating text to Morse code and decoding Morse code to text. Includes audio playback, visual flash mode, adjustable sound settings, copy tools, downloads, and International Morse code support.",
     url: "/",
   });
 
   const websiteSchema = generateWebSiteSchema({
     name: "Morse Code Translator",
     description:
-      "A free online Morse Code Translator with text-to-Morse conversion, Morse-to-text decoding, audio playback, learning guides, alphabet and number references, timing information, practice tools, and quizzes.",
+      "A free online Morse Code Translator for converting text to Morse code and decoding Morse code to text, with audio playback, learning guides, alphabet references, timing information, practice tools, and quizzes.",
   });
 
   return (

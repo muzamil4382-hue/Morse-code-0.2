@@ -683,15 +683,13 @@ export default function HomeClient({ faqs }: Props) {
             </h1>
 
             <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-3">
-              Convert text to Morse code or decode Morse code to text instantly.
-              This free online Morse Code Translator supports International Morse Code,
-              letters A–Z, numbers 0–9, and supported punctuation.
+              Use this free Morse Code Translator, Morse translator, and text to Morse code converter to encode messages or decode dots and dashes instantly. Convert text to Morse code, translate Morse code to text, and use audio, visual signals, and downloadable results.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-green-200 dark:text-green-300">
               <span className="flex items-center gap-1.5">
                 <Zap className="w-4 h-4" />
-                Real-Time Translation
+                Instant Translation
               </span>
 
               <span className="flex items-center gap-1.5">
@@ -817,6 +815,18 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
+      {/* ─── TRANSLATOR KEYWORD / INTENT INTRO ─── */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-4 pb-8 sm:pt-6 sm:pb-10">
+        <div className="rounded-2xl border border-green-100 bg-green-50/60 p-6 text-center dark:border-green-900/40 dark:bg-green-950/20 sm:p-8">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+            Free Morse Translator for Text and Morse Code
+          </h2>
+          <p className="mx-auto mt-3 max-w-3xl text-slate-600 dark:text-slate-300 leading-relaxed">
+            Whether you call it a Morse translator, text to Morse code tool, Morse code converter, or Morse code decoder, this tool helps you translate messages in both directions. Enter normal text to create dots and dashes, or paste Morse code to convert it back into readable text.
+          </p>
+        </div>
+      </section>
+
       {/* ─── STATISTICS BAR ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
@@ -883,11 +893,7 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Convert text to Morse code
-            or decode Morse code to
-            text in three simple
-            steps. If you&apos;re new to
-            Morse code, explore our{" "}
+            Use this online Morse translator to convert text to Morse code or decode Morse code to text in three simple steps. If you&apos;re new to Morse code, explore our{" "}
             <Link
               href="/learn-morse-code"
               className="text-green-600 hover:underline font-semibold"
@@ -974,10 +980,7 @@ export default function HomeClient({ faqs }: Props) {
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Translate, decode,
-              listen, practice, and
-              explore Morse code from
-              one interactive tool.
+              Use one free Morse code converter to translate text, decode dots and dashes, listen to audio, practice signals, and explore Morse code.
             </p>
           </div>
 
@@ -1086,7 +1089,7 @@ export default function HomeClient({ faqs }: Props) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Quick Morse Code Reference
+            Text to Morse Code Converter and Quick Reference
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -1500,135 +1503,6 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-
-      {/* ─── LEARN, DECODE & EXPLORE ─── */}
-      <section className="bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold mb-4">
-              <BookOpen className="w-4 h-4" />
-              Learn, Decode & Practice
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              More Ways to Use Morse Code
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-              Whether you want to decode an existing signal, learn by listening, practice common phrases, or understand signal timing, these guides and tools cover the next step.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-5">
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 shrink-0 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center">
-                  <ArrowDownUp className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Decode Morse Code</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                    Already have a sequence of dots and dashes? Use the <Link href="/morse-code-decoder" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Morse Code Decoder</Link> to convert it back into readable text and check spacing between characters and words.
-                  </p>
-                  <Link href="/morse-code-decoder" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Open Morse Code Decoder →</Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 shrink-0 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center">
-                  <Headphones className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Learn Morse Code by Sound</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                    Listening practice helps you recognize characters as patterns instead of counting dots and dashes. Explore <Link href="/morse-code-sounds" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Morse Code Sounds</Link>, then use the <Link href="/morse-code-quiz" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Morse Code Quiz</Link> to test recognition.
-                  </p>
-                  <Link href="/morse-code-sounds" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Explore Morse Code Sounds →</Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 shrink-0 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Understand Timing and Speed</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                    Correct rhythm matters as much as the characters themselves. Review the <Link href="/morse-code-timing" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Morse Code Timing Guide</Link> for dot, dash, character, and word spacing before increasing your practice speed.
-                  </p>
-                  <Link href="/morse-code-timing" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Learn Morse Code Timing →</Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 shrink-0 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center">
-                  <Cpu className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Try Another Code Translator</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                    Morse code and binary are different systems, but both show how information can be represented using simple symbols. Try the <Link href="/binary-code-translator" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Binary Code Translator</Link> to convert supported text and explore another form of encoding.
-                  </p>
-                  <Link href="/binary-code-translator" className="text-green-600 dark:text-green-400 font-semibold hover:underline">Open Binary Code Translator →</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-green-600 dark:bg-green-700 rounded-2xl p-6 sm:p-8 text-white">
-            <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
-              <div>
-                <h3 className="text-2xl font-bold mb-2">A Simple Morse Code Learning Path</h3>
-                <p className="text-green-50 leading-relaxed">
-                  Start with the <Link href="/morse-code-alphabet" className="font-bold underline underline-offset-2">alphabet</Link> and <Link href="/morse-code-numbers" className="font-bold underline underline-offset-2">numbers</Link>, practice rhythm with the timing guide, listen to character patterns, and finish with the quiz. This gives beginners a clear path without trying to memorize everything at once.
-                </p>
-              </div>
-              <Link href="/learn-morse-code" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-green-700 rounded-lg font-bold hover:bg-green-50 transition-colors whitespace-nowrap">
-                <BookOpen className="w-4 h-4" />
-                Start Learning
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── COMMON WORDS & PHRASES ─── */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Common Words and Phrases in Morse Code
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            After learning individual characters, short and familiar phrases are useful for practicing real translations. Use these examples as a starting point, then create your own message with the translator above.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[
-            { href: "/hello-in-morse-code", label: "HELLO", code: ".... . .-.. .-.. ---", desc: "A common first practice word." },
-            { href: "/hi-in-morse-code", label: "HI", code: ".... ..", desc: "A short everyday greeting." },
-            { href: "/i-love-you-in-morse-code", label: "I LOVE YOU", code: ".. / .-.. --- ...- . / -.-- --- ..-", desc: "A popular phrase to translate." },
-            { href: "/help-me-in-morse-code", label: "HELP ME", code: ".... . .-.. .--. / -- .", desc: "A useful practice phrase." },
-            { href: "/yes-in-morse-code", label: "YES", code: "-.-- . ...", desc: "A short response in Morse." },
-            { href: "/no-in-morse-code", label: "NO", code: "-. ---", desc: "Another simple practice word." },
-          ].map((item) => (
-            <Link key={item.href} href={item.href} className="group bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-green-300 dark:hover:border-green-700 hover:shadow-md transition-all">
-              <div className="flex items-center justify-between gap-3 mb-3">
-                <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">{item.label}</h3>
-                <span className="text-xs text-green-700 dark:text-green-400 font-semibold">Learn →</span>
-              </div>
-              <p className="font-mono text-sm text-green-700 dark:text-green-400 break-words mb-2">{item.code}</p>
-              <p className="text-sm text-slate-600 dark:text-slate-400">{item.desc}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-
       {/* ─── MODERN USE ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
@@ -1786,11 +1660,7 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Continue learning with
-            our Morse code alphabet,
-            decoder, timing guide,
-            quiz, numbers, and
-            practical examples.
+            Explore related tools for Morse code decoding, alphabet reference, timing, numbers, practice, quizzes, and common Morse code words.
           </p>
         </div>
 
@@ -1850,41 +1720,6 @@ export default function HomeClient({ faqs }: Props) {
                 "Learn Morse Code",
               desc: "Step-by-step learning resources for beginners.",
             },
-            {
-              href: "/what-is-morse-code",
-              title: "What Is Morse Code?",
-              desc: "Understand the system, history, and basic principles.",
-            },
-            {
-              href: "/morse-code-sounds",
-              title: "Morse Code Sounds",
-              desc: "Listen to dots, dashes, and character patterns.",
-            },
-            {
-              href: "/binary-code-translator",
-              title: "Binary Code Translator",
-              desc: "Explore another way to represent information with symbols.",
-            },
-            {
-              href: "/hi-in-morse-code",
-              title: "Hi in Morse Code",
-              desc: "Translate a short everyday greeting.",
-            },
-            {
-              href: "/help-me-in-morse-code",
-              title: "Help Me in Morse Code",
-              desc: "Learn the Morse code for a useful phrase.",
-            },
-            {
-              href: "/yes-in-morse-code",
-              title: "Yes in Morse Code",
-              desc: "See how to write YES using dots and dashes.",
-            },
-            {
-              href: "/no-in-morse-code",
-              title: "No in Morse Code",
-              desc: "Learn the Morse code pattern for NO.",
-            },
           ].map((tool, i) => (
             <Link
               key={i}
@@ -1913,12 +1748,7 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-green-100 dark:text-green-200 max-w-2xl mx-auto mb-8">
-            Use the free translator to
-            encode text, decode Morse
-            code, listen to audio,
-            practice signal timing,
-            and explore the complete
-            Morse Code Alphabet.
+            Use our free Morse Code Translator to convert text to Morse code, decode Morse messages, listen to audio, practice signal timing, and explore the complete Morse Code Alphabet.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">

@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/morse-code-translator",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/morse-code-letters",
         destination: "/morse-code-alphabet",
         permanent: true,

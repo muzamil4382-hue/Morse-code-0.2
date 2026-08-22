@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+
+# Prevent search engines from crawling API endpoints
 Disallow: /api/
 
+# XML Sitemap
 Sitemap: https://www.morsecodetranslater.com/sitemap.xml
