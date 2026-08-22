@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
   title: {
     default: "Free Morse Code Translator | Encode & Decode Instantly",
-    template: "%s | Morse Code Translator",
+    template: "%s",
   },
 
   description:
@@ -44,8 +44,15 @@ export const metadata: Metadata = {
     "morse code chart",
   ],
 
-  authors: [{ name: "Morse Code Translator" }],
-  creator: "Morse Code Translator",
+  authors: [
+    {
+      name: "Morse Code Translator Team",
+      url: `${BASE_URL}/about`,
+    },
+  ],
+
+  creator: "Morse Code Translator Team",
+  publisher: "Morse Code Translator",
 
   openGraph: {
     type: "website",
@@ -60,7 +67,7 @@ export const metadata: Metadata = {
         url: DEFAULT_SOCIAL_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Morse Code Translator",
+        alt: "Morse Code Translator - Free Online Morse Code Tools",
       },
     ],
   },
@@ -79,12 +86,17 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
 
   icons: {
     icon: [
-      { url: "/favicon.ico" },
+      {
+        url: "/favicon.ico",
+      },
       {
         url: "/favicon-32x32.png",
         sizes: "32x32",
@@ -101,23 +113,45 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteId = `${BASE_URL}/#website`;
+const organizationId = `${BASE_URL}/#organization`;
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": websiteId,
     name: "Morse Code Translator",
+    alternateName: "MorseCodeTranslator.com",
     url: BASE_URL,
     description:
-      "Free online Morse code translator with audio, visual flash, and comprehensive learning resources.",
+      "Free online Morse code translator with text-to-Morse conversion, Morse-to-text decoding, audio playback, visual flash, and learning resources.",
+    publisher: {
+      "@id": organizationId,
+    },
+    inLanguage: "en-US",
   },
+
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId,
     name: "Morse Code Translator",
+    alternateName: "MorseCodeTranslator.com",
     url: BASE_URL,
-    logo: `${BASE_URL}/logo.svg`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${BASE_URL}/logo.svg`,
+    },
     description:
-      "Free online Morse code translation tool with audio playback, visual flash mode, and comprehensive learning resources for Morse code enthusiasts, students, and professionals.",
+      "Morse Code Translator provides free online tools and educational resources for translating, decoding, learning, and understanding International Morse Code.",
+    publishingPrinciples: `${BASE_URL}/editorial-policy`,
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      url: `${BASE_URL}/contact`,
+      availableLanguage: "English",
+    },
   },
 ];
 
@@ -130,7 +164,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script
-          id="website-jsonld"
+          id="site-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd),

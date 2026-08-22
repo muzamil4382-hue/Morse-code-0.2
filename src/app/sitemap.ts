@@ -6,9 +6,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   /*
-   * Main static pages
+   * Static Pages
    */
   const staticPages: MetadataRoute.Sitemap = [
+    /*
+     * Homepage
+     */
     {
       url: BASE_URL,
       lastModified,
@@ -45,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     /*
-     * Learn Morse Code
+     * Learning Resources
      */
     {
       url: `${BASE_URL}/learn-morse-code`,
@@ -79,13 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     /*
-     * Morse Code Quiz
-     *
-     * Quiz levels use query parameters such as:
-     * /morse-code-quiz?level=1
-     *
-     * These are not separate pages, so only the
-     * main canonical quiz URL is included.
+     * Interactive Tools
      */
     {
       url: `${BASE_URL}/morse-code-quiz`,
@@ -95,14 +92,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     /*
-     * Word / Phrase Pages
+     * Popular Word & Phrase Pages
      */
-    {
-      url: `${BASE_URL}/i-love-you-in-morse-code`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
     {
       url: `${BASE_URL}/hello-in-morse-code`,
       lastModified,
@@ -120,6 +111,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/i-love-you-in-morse-code`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/yes-in-morse-code`,
@@ -145,20 +142,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
 
     /*
-     * Company / Legal Pages
+     * Trust & Company Pages
      */
     {
       url: `${BASE_URL}/about`,
       lastModified,
       changeFrequency: "yearly",
-      priority: 0.3,
+      priority: 0.4,
     },
     {
       url: `${BASE_URL}/contact`,
       lastModified,
       changeFrequency: "yearly",
-      priority: 0.3,
+      priority: 0.4,
     },
+    {
+      url: `${BASE_URL}/editorial-policy`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.4,
+    },
+
+    /*
+     * Legal Pages
+     */
     {
       url: `${BASE_URL}/privacy`,
       lastModified,
@@ -185,7 +192,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.date),
-    changeFrequency: "monthly",
+    changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
