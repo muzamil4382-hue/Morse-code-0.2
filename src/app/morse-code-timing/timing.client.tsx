@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -188,6 +189,31 @@ export default function TimingClient({ faqs }: Props) {
       </section>
 
       {/* =====================================================
+          TIMING RULES INFOGRAPHIC
+      ====================================================== */}
+
+      <section className="mx-auto max-w-5xl px-4 pb-14 sm:px-6 lg:px-8">
+        <figure className="mx-auto max-w-5xl">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <Image
+              src="/images/infographic/morse-code-timing-rules.webp"
+              alt="Morse code timing rules infographic showing the 1-3-1-3-7 ratio for dots, dashes, character gaps, letter gaps, and word gaps"
+              width={1200}
+              height={675}
+              priority
+              className="h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+
+          <figcaption className="mt-4 text-center text-sm leading-7 text-slate-600 dark:text-slate-400">
+            Standard International Morse code timing uses proportional units:
+            dot 1, dash 3, internal character gap 1, letter gap 3, and word gap 7.
+          </figcaption>
+        </figure>
+      </section>
+
+      {/* =====================================================
           STANDARD TIMING
       ====================================================== */}
 
@@ -269,6 +295,50 @@ export default function TimingClient({ faqs }: Props) {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          MORSE CODE SPACING INFOGRAPHIC
+      ====================================================== */}
+
+      <section className="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-background">
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+          <figure className="mx-auto max-w-5xl">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <Image
+                src="/images/infographic/morse-code-spacing-guide.webp"
+                alt="Morse code spacing guide showing one-unit gaps inside characters, three-unit gaps between letters, and seven-unit gaps between words"
+                width={1200}
+                height={675}
+                className="h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            </div>
+
+            <figcaption className="mt-4 text-center text-sm leading-7 text-slate-600 dark:text-slate-400">
+              Morse code spacing helps separate signal elements, individual letters,
+              and complete words so a transmitted message remains easy to interpret.
+            </figcaption>
+          </figure>
+
+          <p className="mx-auto mt-6 max-w-4xl text-center leading-8 text-slate-600 dark:text-slate-400">
+            For practical listening exercises, open{" "}
+            <Link
+              href="/morse-code-sounds"
+              className="font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              Morse Code Sounds
+            </Link>{" "}
+            or use the{" "}
+            <Link
+              href="/"
+              className="font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              Morse Code Translator
+            </Link>{" "}
+            to generate your own practice messages.
+          </p>
         </div>
       </section>
 

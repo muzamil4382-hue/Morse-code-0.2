@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Copy,
@@ -587,7 +588,43 @@ export default function DecoderClient({ faqs }: Props) {
           QUICK EXAMPLES
       ====================================================== */}
 
-      <section className="border-y border-border bg-muted/30">
+             {/* =====================================================
+           HOW TO DECODE INFOGRAPHIC
+       ====================================================== */}
+
+       <section className="border-y border-border bg-muted/20">
+         <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+           <figure className="mx-auto max-w-5xl">
+             <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+               <Image
+                 src="/images/infographic/how-to-decode-morse-code.webp"
+                 alt="Step-by-step infographic explaining how to decode Morse code by identifying dots and dashes, separating characters, matching patterns, and reading the final message"
+                 width={1200}
+                 height={675}
+                 className="h-auto w-full"
+                 sizes="(max-width: 1024px) 100vw, 1024px"
+               />
+             </div>
+             <figcaption className="mt-4 text-center text-sm leading-7 text-muted-foreground">
+               Decode Morse code by separating each pattern, matching dots and dashes to the Morse alphabet, and combining the decoded characters into readable text.
+             </figcaption>
+           </figure>
+
+           <p className="mx-auto mt-6 max-w-4xl text-center leading-8 text-muted-foreground">
+             If you are new to Morse patterns, start with the{" "}
+             <Link href="/morse-code-alphabet" className="font-semibold text-green-700 hover:underline dark:text-green-400">
+               Morse Code Alphabet
+             </Link>
+             {" "}and use{" "}
+             <Link href="/learn-morse-code" className="font-semibold text-green-700 hover:underline dark:text-green-400">
+               Learn Morse Code
+             </Link>
+             {" "}for structured practice.
+           </p>
+         </div>
+       </section>
+
+<section className="border-y border-border bg-muted/30">
 
         <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
 

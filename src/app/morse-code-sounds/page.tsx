@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   generatePageMeta,
@@ -271,6 +272,48 @@ export default function MorseCodeSoundsPage() {
               </p>
             </div>
           </div>
+        </section>
+
+        {/* =====================================================
+            MORSE CODE SOUNDS INFOGRAPHIC
+        ====================================================== */}
+
+        <section className="mb-16">
+          <figure className="mx-auto max-w-5xl">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <Image
+                src="/images/infographic/morse-code-sounds-guide.webp"
+                alt="Morse code sounds guide showing the difference between a short dit and a long dah, their timing, rhythm, and how dots and dashes form Morse code characters"
+                width={1200}
+                height={675}
+                priority
+                className="h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            </div>
+
+            <figcaption className="mt-4 text-center text-sm leading-7 text-slate-600 dark:text-slate-400">
+              Morse code is heard as short dits and longer dahs. Their relative timing and spacing create the rhythm that distinguishes individual characters and words.
+            </figcaption>
+          </figure>
+
+          <p className="mx-auto mt-6 max-w-4xl text-center leading-8 text-slate-600 dark:text-slate-300">
+            For the complete timing ratios behind these sounds, see the{" "}
+            <Link
+              href="/morse-code-timing"
+              className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+            >
+              Morse Code Timing guide
+            </Link>
+            . To practice recognizing full character patterns, continue with{" "}
+            <Link
+              href="/learn-morse-code"
+              className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+            >
+              Learn Morse Code
+            </Link>
+            .
+          </p>
         </section>
 
         {/* =====================================================

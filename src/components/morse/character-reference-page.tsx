@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { MorseCharacterData } from "@/lib/morse-characters";
 import {
@@ -163,6 +164,39 @@ function renderInlineLinks(text: string): ReactNode[] {
       </Link>
     );
   });
+}
+
+
+function InfographicFigure({
+  src,
+  alt,
+  caption,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  priority?: boolean;
+}) {
+  return (
+    <figure className="mx-auto max-w-5xl">
+      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <Image
+          src={src}
+          alt={alt}
+          width={1200}
+          height={675}
+          priority={priority}
+          className="h-auto w-full"
+          sizes="(max-width: 1024px) 100vw, 1024px"
+        />
+      </div>
+
+      <figcaption className="mt-4 text-center text-sm leading-7 text-slate-600 dark:text-slate-300">
+        {caption}
+      </figcaption>
+    </figure>
+  );
 }
 
 /* =========================================================
@@ -703,6 +737,26 @@ export default function CharacterReferencePage({
           </div>
         </section>
 
+        {/* PRIMARY INFOGRAPHIC */}
+
+        <section className="mx-auto max-w-5xl px-4 pt-12 sm:px-6 lg:px-8">
+          {isAlphabet ? (
+            <InfographicFigure
+              src="/images/alphabet/morse-code-alphabet-chart.webp"
+              alt="Complete International Morse Code alphabet chart showing letters A to Z with their dot and dash patterns"
+              caption="Complete International Morse Code alphabet chart from A to Z with each letter's dot and dash pattern."
+              priority
+            />
+          ) : (
+            <InfographicFigure
+              src="/images/numbers/morse-code-numbers-chart.webp"
+              alt="International Morse Code numbers chart showing digits 0 to 9 with their dot and dash patterns"
+              caption="Complete International Morse Code numbers chart from 0 to 9 with each digit's dot and dash pattern."
+              priority
+            />
+          )}
+        </section>
+
         {/* INTRODUCTION */}
 
         <section className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
@@ -726,40 +780,82 @@ export default function CharacterReferencePage({
               </p>
 
               <p>
-                Combine visual recognition with listening and
-                timing practice. Use the{" "}
+                Combine visual recognition with listening and timing
+                practice. Use the{" "}
                 <Link
                   href="/"
                   className="font-medium text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
                 >
                   Morse Code Translator
-                </Link>
-                , learn signal spacing through{" "}
+                </Link>{" "}
+                to convert your own text, study signal spacing with{" "}
                 <Link
                   href="/morse-code-timing"
                   className="font-medium text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
                 >
                   Morse Code Timing
                 </Link>
-                , explore{" "}
+                , and improve recognition through{" "}
                 <Link
                   href="/morse-code-sounds"
                   className="font-medium text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
                 >
                   Morse Code Sounds
                 </Link>
-                , and test your recognition with the{" "}
+                . You can also{" "}
+                <Link
+                  href="/learn-morse-code"
+                  className="font-medium text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  learn Morse code step by step
+                </Link>{" "}
+                and test your recognition with the{" "}
                 <Link
                   href="/morse-code-quiz"
                   className="font-medium text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
                 >
                   Morse Code Quiz
                 </Link>
-                .
+                .{" "}
+                {isAlphabet ? (
+                  <>
+                    After learning the letters, continue with the{" "}
+                    <Link
+                      href="/morse-code-numbers"
+                      className="font-medium text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                    >
+                      Morse Code Numbers 0–9 chart
+                    </Link>
+                    .
+                  </>
+                ) : (
+                  <>
+                    For letters and complete A–Z patterns, see the{" "}
+                    <Link
+                      href="/morse-code-alphabet"
+                      className="font-medium text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                    >
+                      Morse Code Alphabet
+                    </Link>
+                    .
+                  </>
+                )}
               </p>
             </div>
           </div>
         </section>
+
+        {/* HOW TO READ INFOGRAPHIC */}
+
+        {isAlphabet && (
+          <section className="mx-auto max-w-5xl px-4 pb-12 sm:px-6 lg:px-8">
+            <InfographicFigure
+              src="/images/alphabet/how-to-read-morse-code.webp"
+              alt="Visual guide explaining how dots and dashes combine to form Morse Code letters with example patterns"
+              caption="Learn how short dots and longer dashes combine into recognizable Morse Code letter patterns."
+            />
+          </section>
+        )}
 
         {/* CHARACTER CONTENT */}
 
@@ -1285,6 +1381,107 @@ export default function CharacterReferencePage({
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        {/* CONTINUE LEARNING */}
+
+        <section className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+          <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
+                Continue Learning Morse Code
+              </h2>
+
+              <p className="mt-3 leading-8 text-slate-600 dark:text-slate-300">
+                Use these related guides and tools to move from
+                recognizing individual {pluralLabel.toLowerCase()} to
+                translating, listening, timing, decoding, and
+                practicing complete Morse messages.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Link
+                href="/"
+                className="rounded-2xl border border-green-200 bg-green-50 p-5 transition hover:border-green-400 hover:shadow-sm dark:border-green-900/60 dark:bg-green-950/20"
+              >
+                <span className="text-lg">↔</span>
+                <h3 className="mt-3 font-bold text-green-900 dark:text-green-200">
+                  Morse Code Translator
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  Translate text into Morse code or decode a Morse message.
+                </p>
+              </Link>
+
+              <Link
+                href={isAlphabet ? "/morse-code-numbers" : "/morse-code-alphabet"}
+                className="rounded-2xl border border-slate-200 p-5 transition hover:border-green-400 hover:shadow-sm dark:border-slate-800"
+              >
+                <span className="text-lg">#</span>
+                <h3 className="mt-3 font-bold text-slate-900 dark:text-white">
+                  {isAlphabet ? "Morse Code Numbers" : "Morse Code Alphabet"}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  {isAlphabet
+                    ? "Learn the complete 0–9 number patterns."
+                    : "Study the complete A–Z letter patterns."}
+                </p>
+              </Link>
+
+              <Link
+                href="/morse-code-decoder"
+                className="rounded-2xl border border-slate-200 p-5 transition hover:border-green-400 hover:shadow-sm dark:border-slate-800"
+              >
+                <span className="text-lg">⌁</span>
+                <h3 className="mt-3 font-bold text-slate-900 dark:text-white">
+                  Morse Code Decoder
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  Decode dots and dashes into readable text.
+                </p>
+              </Link>
+
+              <Link
+                href="/learn-morse-code"
+                className="rounded-2xl border border-slate-200 p-5 transition hover:border-green-400 hover:shadow-sm dark:border-slate-800"
+              >
+                <span className="text-lg">📘</span>
+                <h3 className="mt-3 font-bold text-slate-900 dark:text-white">
+                  Learn Morse Code
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  Follow a structured guide for learning Morse code.
+                </p>
+              </Link>
+
+              <Link
+                href="/morse-code-timing"
+                className="rounded-2xl border border-slate-200 p-5 transition hover:border-green-400 hover:shadow-sm dark:border-slate-800"
+              >
+                <span className="text-lg">⏱</span>
+                <h3 className="mt-3 font-bold text-slate-900 dark:text-white">
+                  Morse Code Timing
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  Understand dots, dashes, and standard spacing rules.
+                </p>
+              </Link>
+
+              <Link
+                href="/morse-code-quiz"
+                className="rounded-2xl border border-slate-200 p-5 transition hover:border-green-400 hover:shadow-sm dark:border-slate-800"
+              >
+                <span className="text-lg">🧠</span>
+                <h3 className="mt-3 font-bold text-slate-900 dark:text-white">
+                  Morse Code Quiz
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  Test how well you can recognize Morse patterns.
+                </p>
+              </Link>
+            </div>
           </div>
         </section>
 

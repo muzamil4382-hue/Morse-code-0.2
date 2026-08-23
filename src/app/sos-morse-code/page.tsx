@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   WordPageTemplate,
@@ -96,6 +97,43 @@ export default function SOSPage() {
           theater. SOS transcends language barriers, cultural differences, and
           technological changes. Whether transmitted by telegraph, radio,
           flashlight, or even smoke signal, the pattern is unmistakable.
+        </p>
+
+        <figure className="mb-10">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <Image
+              src="/images/infographic/sos-morse-code-pattern.webp"
+              alt="SOS Morse code pattern infographic showing three dots, three dashes, and three dots with the short-long-short distress signal sequence"
+              width={1200}
+              height={675}
+              priority
+              className="h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+
+          <figcaption className="mt-4 text-center text-sm leading-7 text-slate-600">
+            SOS is transmitted as three short signals, three long signals, and
+            three short signals: <span className="font-mono">... --- ...</span>.
+          </figcaption>
+        </figure>
+
+        <p className="text-slate-700 leading-relaxed mb-10">
+          To understand the timing behind the SOS pattern, see our{" "}
+          <Link
+            href="/morse-code-timing"
+            className="text-green-600 underline hover:text-green-700"
+          >
+            Morse Code Timing
+          </Link>{" "}
+          guide. You can also listen to dots and dashes on the{" "}
+          <Link
+            href="/morse-code-sounds"
+            className="text-green-600 underline hover:text-green-700"
+          >
+            Morse Code Sounds
+          </Link>{" "}
+          page.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 mb-4">

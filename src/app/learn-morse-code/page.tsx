@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   generatePageMeta,
@@ -131,6 +132,24 @@ export default function LearnMorseCodePage() {
             tricks, and daily practice routines.
           </p>
         </div>
+
+        {/* Learning Roadmap Infographic */}
+        <figure className="mb-12">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <Image
+              src="/images/infographic/learn-morse-code-roadmap.webp"
+              alt="How to learn Morse code step-by-step roadmap for beginners, from learning characters and patterns to listening practice, timing, decoding words, and building speed"
+              width={1200}
+              height={675}
+              priority
+              className="h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+          <figcaption className="mt-3 text-center text-sm leading-6 text-slate-600">
+            A step-by-step Morse code learning roadmap, from recognizing basic characters to building listening speed and confidence.
+          </figcaption>
+        </figure>
 
         {/* Steps */}
         <div className="space-y-8 mb-12">
@@ -333,6 +352,28 @@ export default function LearnMorseCodePage() {
             },
 
             {
+              num: "method",
+              title: "Koch Method vs Farnsworth Method",
+              content: (
+                <figure className="my-4">
+                  <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                    <Image
+                      src="/images/infographic/koch-vs-farnsworth-method.webp"
+                      alt="Comparison infographic explaining the Koch method and Farnsworth method for learning Morse code, including character speed, spacing, and practice approach"
+                      width={1200}
+                      height={675}
+                      className="h-auto w-full"
+                      sizes="(max-width: 1024px) 100vw, 1024px"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-center text-sm leading-6 text-slate-600">
+                    The Koch method focuses on learning complete character sounds, while Farnsworth timing uses wider spacing to give beginners more processing time.
+                  </figcaption>
+                </figure>
+              ),
+            },
+
+            {
               num: 6,
               title: "Use the Koch Method for Systematic Learning",
               content: (
@@ -406,25 +447,36 @@ export default function LearnMorseCodePage() {
                 </>
               ),
             },
-          ].map((step) => (
-            <div key={step.num} className="flex gap-5">
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 bg-green-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold">
-                  {step.num}
-                </div>
-              </div>
-
-              <div>
+          ].map((step) =>
+            step.num === "method" ? (
+              <div key={step.num}>
                 <h2 className="text-xl font-bold text-slate-900 mb-3">
                   {step.title}
                 </h2>
-
                 <div className="text-slate-700 leading-relaxed space-y-3">
                   {step.content}
                 </div>
               </div>
-            </div>
-          ))}
+            ) : (
+              <div key={step.num} className="flex gap-5">
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 bg-green-600 text-white rounded-2xl flex items-center justify-center text-xl font-bold">
+                    {step.num}
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 mb-3">
+                    {step.title}
+                  </h2>
+
+                  <div className="text-slate-700 leading-relaxed space-y-3">
+                    {step.content}
+                  </div>
+                </div>
+              </div>
+            )
+          )}
         </div>
 
         {/* Resources */}

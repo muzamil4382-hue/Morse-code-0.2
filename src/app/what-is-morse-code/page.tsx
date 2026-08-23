@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { generatePageMeta, generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
@@ -120,6 +121,52 @@ export default function WhatIsMorseCodePage() {
 </p>
 
           </div>
+        </section>
+
+        {/* MORSE CODE EXPLAINER INFOGRAPHIC */}
+        <section className="mb-10">
+          <figure className="mx-auto">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <Image
+                src="/images/infographic/what-is-morse-code-infographic.webp"
+                alt="What is Morse code infographic explaining how dots and dashes represent letters, numbers, and messages through short and long signals"
+                width={1200}
+                height={675}
+                priority
+                className="h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            </div>
+
+            <figcaption className="mt-4 text-center text-sm leading-7 text-slate-600">
+              Morse code converts letters, numbers, and symbols into combinations of short dots and longer dashes that can be sent by sound, light, radio, or other on-off signals.
+            </figcaption>
+          </figure>
+
+          <p className="mt-6 text-slate-700 leading-relaxed">
+            For a complete character reference, explore the{" "}
+            <Link
+              href="/morse-code-alphabet"
+              className="text-green-600 underline hover:text-green-700"
+            >
+              Morse Code Alphabet
+            </Link>
+            {" "}and{" "}
+            <Link
+              href="/morse-code-numbers"
+              className="text-green-600 underline hover:text-green-700"
+            >
+              Morse Code Numbers
+            </Link>
+            . If you want hands-on practice, use the{" "}
+            <Link
+              href="/"
+              className="text-green-600 underline hover:text-green-700"
+            >
+              Morse Code Translator
+            </Link>
+            {" "}to encode or decode your own message.
+          </p>
         </section>
 
         {/* How It Works */}
