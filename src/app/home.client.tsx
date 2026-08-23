@@ -993,7 +993,10 @@ export default function HomeClient({ faqs }: Props) {
               height={1100}
               className="w-full h-auto"
               sizes="(max-width: 1024px) 100vw, 1024px"
-            />
+            
+              quality={75}
+              loading="lazy"
+              />
           </div>
 
           <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">
@@ -1478,7 +1481,10 @@ export default function HomeClient({ faqs }: Props) {
               height={1100}
               className="w-full h-auto"
               sizes="(max-width: 1024px) 100vw, 1024px"
-            />
+            
+              quality={75}
+              loading="lazy"
+              />
           </div>
 
           <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">
