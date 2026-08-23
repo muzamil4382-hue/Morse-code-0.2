@@ -768,8 +768,8 @@ export default function HomeClient({ faqs }: Props) {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
-                  <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label><button onClick={handleClear} className="p-2 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Clear input"><Trash2 className="w-4 h-4" /></button></div>
-                  <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-400 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
+                  <div className="flex items-center justify-between mb-3"><label htmlFor="morse-input" className="text-sm font-bold text-slate-700 dark:text-slate-200">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label><button onClick={handleClear} className="p-2 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Clear input"><Trash2 className="w-4 h-4" /></button></div>
+                  <textarea id="morse-input" value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-400 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
@@ -788,9 +788,9 @@ export default function HomeClient({ faqs }: Props) {
 
               <div className="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-white dark:from-slate-800/70 dark:to-slate-900 p-4 sm:p-5">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Speed</span><span className="text-green-600">{speed} WPM</span></label><input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Frequency</span><span className="text-green-600">{frequency} Hz</span></label><input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Volume</span><span className="text-green-600">{Math.round(volume * 100)}%</span></label><input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label htmlFor="morse-speed" className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Speed</span><span className="text-green-700 dark:text-green-300">{speed} WPM</span></label><input id="morse-speed" type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label htmlFor="morse-frequency" className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Frequency</span><span className="text-green-700 dark:text-green-300">{frequency} Hz</span></label><input id="morse-frequency" type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label htmlFor="morse-volume" className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Volume</span><span className="text-green-700 dark:text-green-300">{Math.round(volume * 100)}%</span></label><input id="morse-volume" type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" /></div>
                 </div>
               </div>
 
@@ -818,7 +818,26 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-      {/* ─── STATISTICS BAR ─── */}
+       {/* ─── MORSE CODE TRANSLATOR INFOGRAPHIC ─── */}
+       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+           <Image
+             src="/images/infographic/morse-code-translator-guide.webp"
+             alt="Morse code translator infographic showing how text is converted into dots and dashes and decoded back into readable text"
+             width={1200}
+             height={675}
+             className="h-auto w-full"
+             sizes="(max-width: 1024px) 100vw, 1024px"
+           />
+           <div className="border-t border-slate-100 px-5 py-4 text-center dark:border-slate-800">
+             <p className="text-sm text-slate-600 dark:text-slate-300">
+               A visual overview of how the Morse Code Translator converts text into dots and dashes and decodes Morse code back into readable text.
+             </p>
+           </div>
+         </div>
+       </section>
+
+       {/* ─── STATISTICS BAR ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -891,21 +910,21 @@ export default function HomeClient({ faqs }: Props) {
             Morse code, explore our{" "}
             <Link
               href="/learn-morse-code"
-              className="text-green-600 hover:underline font-semibold"
+              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
             >
               Learn Morse Code Guide
             </Link>
             , view the{" "}
             <Link
               href="/morse-code-alphabet"
-              className="text-green-600 hover:underline font-semibold"
+              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
             >
               Morse Code Alphabet
             </Link>
             , or understand{" "}
             <Link
               href="/morse-code-timing"
-              className="text-green-600 hover:underline font-semibold"
+              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
             >
               Morse Code Timing
             </Link>
@@ -962,27 +981,6 @@ export default function HomeClient({ faqs }: Props) {
             </div>
           ))}
         </div>
-      </section>
-
-
-      {/* ─── MORSE CODE TRANSLATOR INFOGRAPHIC ─── */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
-        <figure>
-          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <Image
-              src="/images/home/morse-code-translator-guide.webp"
-              alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
-              width={1600}
-              height={1100}
-              className="w-full h-auto"
-              sizes="(max-width: 1024px) 100vw, 1024px"
-            />
-          </div>
-
-          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-400">
-            Use the Morse Code Translator to encode normal text into dots and dashes or decode a Morse code message back into readable text.
-          </figcaption>
-        </figure>
       </section>
 
       {/* ─── KEY FEATURES ─── */}
@@ -1118,14 +1116,14 @@ export default function HomeClient({ faqs }: Props) {
             our{" "}
             <Link
               href="/morse-code-alphabet"
-              className="text-green-600 hover:underline font-semibold"
+              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
             >
               Morse Code Alphabet
             </Link>{" "}
             and explore the{" "}
             <Link
               href="/morse-code-decoder"
-              className="text-green-600 hover:underline font-semibold"
+              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
             >
               Morse Code Decoder
             </Link>
@@ -1300,7 +1298,7 @@ export default function HomeClient({ faqs }: Props) {
           <div className="mt-8 text-center">
             <Link
               href="/what-is-morse-code"
-              className="text-green-600 dark:text-green-400 font-medium hover:underline"
+              className="text-green-700 dark:text-green-300 font-medium hover:underline"
             >
               Read the Complete History
               of Morse Code →
@@ -1441,7 +1439,7 @@ export default function HomeClient({ faqs }: Props) {
         <div className="mt-8 text-center">
           <Link
             href="/morse-code-timing"
-            className="text-green-600 dark:text-green-400 font-medium hover:underline"
+            className="text-green-700 dark:text-green-300 font-medium hover:underline"
           >
             Learn More About Morse
             Code Timing →
@@ -1449,28 +1447,26 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
+       {/* ─── MORSE CODE TIMING INFOGRAPHIC ─── */}
+       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
+         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+           <Image
+             src="/images/infographic/morse-code-timing-guide.webp"
+             alt="Morse code timing infographic showing dot, dash, character gap, and word gap timing rules"
+             width={1200}
+             height={675}
+             className="h-auto w-full"
+             sizes="(max-width: 1024px) 100vw, 1024px"
+           />
+           <div className="border-t border-slate-100 px-5 py-4 text-center dark:border-slate-800">
+             <p className="text-sm text-slate-600 dark:text-slate-300">
+               A visual reference for the standard Morse code timing ratios: 1 unit for a dot, 3 for a dash, 3 between characters, and 7 between words.
+             </p>
+           </div>
+         </div>
+       </section>
 
-      {/* ─── MORSE CODE TIMING INFOGRAPHIC ─── */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
-        <figure>
-          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <Image
-              src="/images/home/morse-code-timing-guide.webp"
-              alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
-              width={1600}
-              height={1100}
-              className="w-full h-auto"
-              sizes="(max-width: 1024px) 100vw, 1024px"
-            />
-          </div>
-
-          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-400">
-            Standard Morse code timing uses fixed ratios: one unit for a dot, three for a dash, three between characters, and seven between words.
-          </figcaption>
-        </figure>
-      </section>
-
-      {/* ─── SOS ─── */}
+       {/* ─── SOS ─── */}
 
       <section className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 border-y border-red-100 dark:border-red-900/50">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
@@ -1534,7 +1530,7 @@ export default function HomeClient({ faqs }: Props) {
           <div className="mt-8 text-center">
             <Link
               href="/sos-morse-code"
-              className="text-red-600 dark:text-red-400 font-medium hover:underline"
+              className="text-red-700 dark:text-red-300 font-medium hover:underline"
             >
               Read the Complete SOS
               Morse Code Guide →
@@ -1543,47 +1539,91 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-      {/* ─── WHERE MORSE CODE IS USED TODAY ─── */}
+      {/* ─── MODERN USE ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Where Is Morse Code Used Today?
+            Morse Code in Modern Use
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Although Morse code is no longer the primary method of global
-            communication, it is still used and studied in amateur radio,
-            maritime communication, aviation, emergency signaling, education,
-            accessibility projects, and other signal-based communication systems.
+            Although Morse code is no
+            longer the primary method
+            of global communication,
+            it remains relevant in
+            amateur radio, aviation
+            navigation, education,
+            emergency signaling, and
+            accessibility technology.
           </p>
         </div>
 
-        <figure>
-          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <Image
-              src="/images/home/modern-uses-of-morse-code.webp"
-              alt="Infographic showing modern uses of Morse code, including amateur radio, maritime communication, aviation, emergency signaling, education, and signal-based communication"
-              width={1600}
-              height={1100}
-              className="w-full h-auto"
-              sizes="(max-width: 1024px) 100vw, 1024px"
-            />
-          </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            {
+              icon: (
+                <Radio className="w-6 h-6" />
+              ),
+              title: "Amateur Radio",
+              desc: "Morse code, commonly called CW in amateur radio, remains popular for long-distance communication and weak-signal operation.",
+            },
+            {
+              icon: (
+                <Plane className="w-6 h-6" />
+              ),
+              title: "Aviation",
+              desc: "Morse identifiers have historically been used by radio navigation aids and remain relevant when interpreting certain navigation signals.",
+            },
+            {
+              icon: (
+                <Zap className="w-6 h-6" />
+              ),
+              title:
+                "Emergency Signaling",
+              desc: "Short and long signals can be transmitted using light, sound, tapping, or other simple methods when conventional communication is unavailable.",
+            },
+            {
+              icon: (
+                <Accessibility className="w-6 h-6" />
+              ),
+              title:
+                "Assistive Technology",
+              desc: "Morse-based input can allow communication through a small number of switches or simple repeated signals.",
+            },
+            {
+              icon: (
+                <Users className="w-6 h-6" />
+              ),
+              title: "Education",
+              desc: "Morse code is used as a practical way to teach communication systems, signal timing, encoding, and the history of telecommunications.",
+            },
+            {
+              icon: (
+                <Wifi className="w-6 h-6" />
+              ),
+              title:
+                "Digital Communication Concepts",
+              desc: "Morse code demonstrates how information can be represented through distinct signal patterns, making it useful for introducing encoding concepts.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-all"
+            >
+              <div className="w-12 h-12 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center mb-4">
+                {item.icon}
+              </div>
 
-          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-400">
-            Morse code continues to have practical and educational applications
-            where simple, reliable signal communication is useful.
-          </figcaption>
-        </figure>
+              <h3 className="font-bold text-slate-900 dark:text-white mb-2">
+                {item.title}
+              </h3>
 
-        <div className="mt-8 text-center">
-          <Link
-            href="/what-is-morse-code"
-            className="text-green-600 dark:text-green-400 font-medium hover:underline"
-          >
-            Learn More About Morse Code →
-          </Link>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -1656,8 +1696,11 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Explore the Morse code alphabet, numbers, sounds, timing, decoding,
-            learning guides, quizzes, and popular Morse code words and phrases.
+            Continue learning with
+            our Morse code alphabet,
+            decoder, timing guide,
+            quiz, numbers, and
+            practical examples.
           </p>
         </div>
 
@@ -1717,48 +1760,13 @@ export default function HomeClient({ faqs }: Props) {
                 "Learn Morse Code",
               desc: "Step-by-step learning resources for beginners.",
             },
-            {
-              href: "/morse-code-sounds",
-              title: "Morse Code Sounds",
-              desc: "Understand how dots and dashes sound in Morse code.",
-            },
-            {
-              href: "/what-is-morse-code",
-              title: "What Is Morse Code?",
-              desc: "Learn what Morse code is and how the signaling system works.",
-            },
-            {
-              href: "/binary-code-translator",
-              title: "Binary Code Translator",
-              desc: "Convert text and binary code with a separate online tool.",
-            },
-            {
-              href: "/hi-in-morse-code",
-              title: "Hi in Morse Code",
-              desc: "See the Morse code pattern for the short greeting HI.",
-            },
-            {
-              href: "/help-me-in-morse-code",
-              title: "Help Me in Morse Code",
-              desc: "Translate the emergency phrase HELP ME into Morse code.",
-            },
-            {
-              href: "/yes-in-morse-code",
-              title: "Yes in Morse Code",
-              desc: "Learn how to write YES using dots and dashes.",
-            },
-            {
-              href: "/no-in-morse-code",
-              title: "No in Morse Code",
-              desc: "Learn how to write NO using dots and dashes.",
-            },
           ].map((tool, i) => (
             <Link
               key={i}
               href={tool.href}
               className="group block bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-green-300 dark:hover:border-green-700 hover:shadow-lg transition-all"
             >
-              <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-1">
+              <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-green-700 dark:group-hover:text-green-300 transition-colors mb-1">
                 {tool.title}
               </h3>
 
