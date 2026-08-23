@@ -118,46 +118,6 @@ const learnLinks: NavChild[] = [
   },
 ];
 
-
-/* =========================
-   QUIZ DROPDOWN
-========================= */
-
-const quizLinks: NavChild[] = [
-  {
-    label: "Level 1 – Easy Start",
-    href: "/morse-code-quiz?level=1",
-  },
-  {
-    label: "Level 2 – Basic Letters",
-    href: "/morse-code-quiz?level=2",
-  },
-  {
-    label: "Level 3 – More Characters",
-    href: "/morse-code-quiz?level=3",
-  },
-  {
-    label: "Level 4 – Beginner Challenge",
-    href: "/morse-code-quiz?level=4",
-  },
-  {
-    label: "Level 5 – New Patterns",
-    href: "/morse-code-quiz?level=5",
-  },
-  {
-    label: "Level 6 – Advanced Letters",
-    href: "/morse-code-quiz?level=6",
-  },
-  {
-    label: "Level 7 – Full Alphabet Prep",
-    href: "/morse-code-quiz?level=7",
-  },
-  {
-    label: "Level 8 – A–Z Challenge",
-    href: "/morse-code-quiz?level=8",
-  },
-];
-
 /* =========================
    BLOG DROPDOWN
 ========================= */
@@ -204,7 +164,7 @@ const navItems: NavItem[] = [
   },
   {
     label: "Quiz",
-    children: quizLinks,
+    href: "/morse-code-quiz",
   },
   {
     label: "Blog",
@@ -254,7 +214,7 @@ function ThemeToggle() {
         className="p-2 rounded-lg hover:bg-slate-200/60 transition-colors cursor-pointer"
         aria-label="Toggle theme"
       >
-        <Monitor className="w-4 h-4 text-slate-400" />
+        <Monitor className="w-4 h-4 text-slate-600 dark:text-slate-300" />
       </button>
     );
   }
@@ -322,9 +282,8 @@ function DesktopDropdown({
   }, []);
 
   const isActive =
-  item.href === pathname ||
-  item.children?.some((child) => child.href === pathname) ||
-  (item.label === "Quiz" && pathname === "/morse-code-quiz");
+    item.href === pathname ||
+    item.children?.some((child) => child.href === pathname);
 
   /* DIRECT LINK */
 
@@ -409,8 +368,7 @@ function MobileAccordion({
 
   const isActive =
     item.href === pathname ||
-    item.children?.some((child) => child.href === pathname) ||
-    (item.label === "Quiz" && pathname === "/morse-code-quiz");
+    item.children?.some((child) => child.href === pathname);
 
   /* DIRECT LINK */
 
@@ -422,7 +380,7 @@ function MobileAccordion({
         className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
           item.href === pathname
             ? "bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400"
-            : "text-slate-600 dark:text-slate-300 hover:text-green-600 hover:bg-green-50/50 dark:hover:bg-green-900/20"
+            : "text-slate-600 dark:text-slate-300 hover:text-green-700 dark:hover:text-green-400 hover:bg-green-50/50 dark:hover:bg-green-900/20"
         }`}
       >
         {item.label}
@@ -439,7 +397,7 @@ function MobileAccordion({
         className={`flex items-center justify-between w-full px-4 py-2.5 text-sm font-medium rounded-lg transition-all cursor-pointer ${
           isActive
             ? "bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400"
-            : "text-slate-600 dark:text-slate-300 hover:text-green-600 hover:bg-green-50/50 dark:hover:bg-green-900/20"
+            : "text-slate-600 dark:text-slate-300 hover:text-green-700 dark:hover:text-green-400 hover:bg-green-50/50 dark:hover:bg-green-900/20"
         }`}
       >
         {item.label}
@@ -461,7 +419,7 @@ function MobileAccordion({
               className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
                 child.href === pathname
                   ? "text-green-700 dark:text-green-400 font-medium"
-                  : "text-slate-500 dark:text-slate-400 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50/30 dark:hover:bg-green-900/10"
+                  : "text-slate-500 dark:text-slate-400 hover:text-green-700 dark:hover:text-green-400 hover:bg-green-50/30 dark:hover:bg-green-900/10"
               }`}
             >
               {child.label}
@@ -502,9 +460,9 @@ export default function Header() {
 
             <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
               Morse
-              <span className="text-green-600">Code</span>
+              <span className="text-green-700 dark:text-green-400">Code</span>
 
-              <span className="text-slate-400 dark:text-slate-500 text-xs font-normal ml-0.5">
+              <span className="text-slate-600 dark:text-slate-400 text-xs font-normal ml-0.5">
                 Translator
               </span>
             </span>

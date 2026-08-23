@@ -728,7 +728,7 @@ export default function HomeClient({ faqs }: Props) {
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
                       mode === "text-to-morse"
                         ? "bg-green-600 text-white shadow-md shadow-green-600/20"
-                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
                     }`}
                   >
                     <span className="hidden sm:inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/15 text-xs font-black">T</span>
@@ -737,7 +737,7 @@ export default function HomeClient({ faqs }: Props) {
 
                   <button
                     onClick={handleSwap}
-                    className="mx-1.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-green-300 hover:text-green-600 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                    className="mx-1.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-green-300 hover:text-green-700 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300"
                     aria-label="Switch translation mode"
                     title="Swap input and output"
                   >
@@ -749,7 +749,7 @@ export default function HomeClient({ faqs }: Props) {
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
                       mode === "morse-to-text"
                         ? "bg-green-600 text-white shadow-md shadow-green-600/20"
-                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
+                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white"
                     }`}
                   >
                     Morse <span className="opacity-70">→</span> Text
@@ -768,8 +768,8 @@ export default function HomeClient({ faqs }: Props) {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
-                  <div className="flex items-center justify-between mb-3"><label htmlFor="morse-input" className="text-sm font-bold text-slate-700 dark:text-slate-200">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label><button onClick={handleClear} className="p-2 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Clear input"><Trash2 className="w-4 h-4" /></button></div>
-                  <textarea id="morse-input" value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-400 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
+                  <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label><button onClick={handleClear} className="p-2 rounded-lg text-slate-500 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Clear input"><Trash2 className="w-4 h-4" /></button></div>
+                  <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-500 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
@@ -781,16 +781,16 @@ export default function HomeClient({ faqs }: Props) {
                         : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100"
                     }`}
                   >
-                    {hasContent ? activeOutput : <span className="text-slate-400">Your translation will appear here...</span>}
+                    {hasContent ? activeOutput : <span className="text-slate-500">Your translation will appear here...</span>}
                   </div>
                 </div>
               </div>
 
               <div className="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-white dark:from-slate-800/70 dark:to-slate-900 p-4 sm:p-5">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  <div><label htmlFor="morse-speed" className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Speed</span><span className="text-green-700 dark:text-green-300">{speed} WPM</span></label><input id="morse-speed" type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label htmlFor="morse-frequency" className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Frequency</span><span className="text-green-700 dark:text-green-300">{frequency} Hz</span></label><input id="morse-frequency" type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label htmlFor="morse-volume" className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Volume</span><span className="text-green-700 dark:text-green-300">{Math.round(volume * 100)}%</span></label><input id="morse-volume" type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Speed</span><span className="text-green-700">{speed} WPM</span></label><input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Frequency</span><span className="text-green-700">{frequency} Hz</span></label><input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Volume</span><span className="text-green-700">{Math.round(volume * 100)}%</span></label><input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" /></div>
                 </div>
               </div>
 
@@ -801,8 +801,8 @@ export default function HomeClient({ faqs }: Props) {
                 <button onClick={() => setSoundEnabled(!soundEnabled)} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${soundEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Music className="w-4 h-4" />Sound</button>
                 <button onClick={handleFlash} disabled={!hasContent} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${flashActive ? "bg-amber-500 text-white" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Lightbulb className="w-4 h-4" />Light</button>
                 <button onClick={handleVibrate} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200"><Vibrate className="w-4 h-4" />Vibrate</button>
-                <button onClick={handleCopyText} disabled={mode === "text-to-morse" ? !text : !computedText} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "text" ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}{copiedAction === "text" ? "Copied" : "Copy Text"}</button>
-                <button onClick={handleCopyMorse} disabled={mode === "text-to-morse" ? !computedMorse : !morseInput} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "morse" ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}{copiedAction === "morse" ? "Copied" : "Copy Morse"}</button>
+                <button onClick={handleCopyText} disabled={mode === "text-to-morse" ? !text : !computedText} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "text" ? <Check className="w-4 h-4 text-green-700" /> : <Copy className="w-4 h-4" />}{copiedAction === "text" ? "Copied" : "Copy Text"}</button>
+                <button onClick={handleCopyMorse} disabled={mode === "text-to-morse" ? !computedMorse : !morseInput} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "morse" ? <Check className="w-4 h-4 text-green-700" /> : <Copy className="w-4 h-4" />}{copiedAction === "morse" ? "Copied" : "Copy Morse"}</button>
                 <button onClick={handleDownloadWav} disabled={!hasContent} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800 dark:bg-slate-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-900 disabled:opacity-40"><Download className="w-4 h-4" />Save Audio</button>
                 <button
                   onClick={handleClearAll}
@@ -818,26 +818,7 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-       {/* ─── MORSE CODE TRANSLATOR INFOGRAPHIC ─── */}
-       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-           <Image
-             src="/images/infographic/morse-code-translator-guide.webp"
-             alt="Morse code translator infographic showing how text is converted into dots and dashes and decoded back into readable text"
-             width={1200}
-             height={675}
-             className="h-auto w-full"
-             sizes="(max-width: 1024px) 100vw, 1024px"
-           />
-           <div className="border-t border-slate-100 px-5 py-4 text-center dark:border-slate-800">
-             <p className="text-sm text-slate-600 dark:text-slate-300">
-               A visual overview of how the Morse Code Translator converts text into dots and dashes and decodes Morse code back into readable text.
-             </p>
-           </div>
-         </div>
-       </section>
-
-       {/* ─── STATISTICS BAR ─── */}
+      {/* ─── STATISTICS BAR ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -875,7 +856,7 @@ export default function HomeClient({ faqs }: Props) {
               key={i}
               className="flex items-center gap-3 p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800"
             >
-              <div className="w-10 h-10 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg flex items-center justify-center shrink-0">
                 {item.icon}
               </div>
 
@@ -884,7 +865,7 @@ export default function HomeClient({ faqs }: Props) {
                   {item.stat}
                 </div>
 
-                <div className="text-xs text-slate-500 dark:text-slate-400">
+                <div className="text-xs text-slate-500 dark:text-slate-500">
                   {item.label}
                 </div>
               </div>
@@ -902,7 +883,7 @@ export default function HomeClient({ faqs }: Props) {
             Translator
           </h2>
 
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">
             Convert text to Morse code
             or decode Morse code to
             text in three simple
@@ -910,21 +891,21 @@ export default function HomeClient({ faqs }: Props) {
             Morse code, explore our{" "}
             <Link
               href="/learn-morse-code"
-              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
+              className="text-green-700 hover:underline font-semibold"
             >
               Learn Morse Code Guide
             </Link>
             , view the{" "}
             <Link
               href="/morse-code-alphabet"
-              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
+              className="text-green-700 hover:underline font-semibold"
             >
               Morse Code Alphabet
             </Link>
             , or understand{" "}
             <Link
               href="/morse-code-timing"
-              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
+              className="text-green-700 hover:underline font-semibold"
             >
               Morse Code Timing
             </Link>
@@ -963,11 +944,11 @@ export default function HomeClient({ faqs }: Props) {
               key={i}
               className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-800 hover:shadow-lg hover:shadow-green-500/5 transition-all group"
             >
-              <div className="w-12 h-12 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors">
+              <div className="w-12 h-12 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors">
                 {item.icon}
               </div>
 
-              <span className="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">
+              <span className="text-xs font-bold text-green-700 dark:text-green-400 uppercase tracking-wider">
                 {item.step}
               </span>
 
@@ -975,7 +956,7 @@ export default function HomeClient({ faqs }: Props) {
                 {item.title}
               </h3>
 
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -983,6 +964,27 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
+      {/* ─── MORSE CODE TRANSLATOR INFOGRAPHIC ─── */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
+        <figure>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <Image
+              src="/images/infographic/how-to-decode-morse-code.webp"
+              alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
+              width={1600}
+              height={1100}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+
+          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">
+            Use the Morse Code Translator to encode normal text into dots and dashes or decode a Morse code message back into readable text.
+          </figcaption>
+        </figure>
+      </section>
+
+      
       {/* ─── KEY FEATURES ─── */}
 
       <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
@@ -993,7 +995,7 @@ export default function HomeClient({ faqs }: Props) {
               Translator
             </h2>
 
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-500 max-w-2xl mx-auto">
               Translate, decode,
               listen, practice, and
               explore Morse code from
@@ -1081,7 +1083,7 @@ export default function HomeClient({ faqs }: Props) {
                 className="p-5 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-green-200 dark:hover:border-green-800 hover:shadow-md transition-all"
               >
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-lg flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg flex items-center justify-center shrink-0">
                     {feature.icon}
                   </div>
 
@@ -1090,7 +1092,7 @@ export default function HomeClient({ faqs }: Props) {
                       {feature.title}
                     </h3>
 
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <p className="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">
                       {feature.desc}
                     </p>
                   </div>
@@ -1109,21 +1111,21 @@ export default function HomeClient({ faqs }: Props) {
             Quick Morse Code Reference
           </h2>
 
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-500 max-w-2xl mx-auto">
             Browse common Morse code
             letters and numbers. For a
             complete reference, visit
             our{" "}
             <Link
               href="/morse-code-alphabet"
-              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
+              className="text-green-700 hover:underline font-semibold"
             >
               Morse Code Alphabet
             </Link>{" "}
             and explore the{" "}
             <Link
               href="/morse-code-decoder"
-              className="text-green-700 dark:text-green-300 hover:underline font-semibold"
+              className="text-green-700 hover:underline font-semibold"
             >
               Morse Code Decoder
             </Link>
@@ -1132,7 +1134,7 @@ export default function HomeClient({ faqs }: Props) {
         </div>
 
         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-          <Type className="w-5 h-5 text-green-600" />
+          <Type className="w-5 h-5 text-green-700" />
           Letters (A-Z)
         </h3>
 
@@ -1147,11 +1149,11 @@ export default function HomeClient({ faqs }: Props) {
                 href={`/morse-code-alphabet#letter-${letter.toLowerCase()}`}
                 className="group relative flex flex-col items-center p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-green-300 dark:hover:border-green-700 hover:shadow-md transition-all"
               >
-                <span className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-green-600">
+                <span className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-green-700">
                   {letter}
                 </span>
 
-                <span className="text-xs font-mono text-green-600 dark:text-green-400 mt-1">
+                <span className="text-xs font-mono text-green-700 dark:text-green-400 mt-1">
                   {code}
                 </span>
               </Link>
@@ -1159,7 +1161,7 @@ export default function HomeClient({ faqs }: Props) {
         </div>
 
         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-          <Hash className="w-5 h-5 text-green-600" />
+          <Hash className="w-5 h-5 text-green-700" />
           Numbers (0-9)
         </h3>
 
@@ -1174,11 +1176,11 @@ export default function HomeClient({ faqs }: Props) {
                 href={`/morse-code-numbers#number-${number}`}
                 className="group relative flex flex-col items-center p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-green-300 dark:hover:border-green-700 hover:shadow-md transition-all"
               >
-                <span className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-green-600">
+                <span className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-green-700">
                   {number}
                 </span>
 
-                <span className="text-xs font-mono text-green-600 dark:text-green-400 mt-1">
+                <span className="text-xs font-mono text-green-700 dark:text-green-400 mt-1">
                   {code}
                 </span>
               </Link>
@@ -1207,7 +1209,7 @@ export default function HomeClient({ faqs }: Props) {
               What Is Morse Code?
             </h2>
 
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">
               Morse code is a
               telecommunication system
               that represents
@@ -1228,7 +1230,7 @@ export default function HomeClient({ faqs }: Props) {
                 History and Origins
               </h3>
 
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-slate-500 leading-relaxed mb-4">
                 Morse code became
                 historically important
                 because the electric
@@ -1247,7 +1249,7 @@ export default function HomeClient({ faqs }: Props) {
                 Baltimore.
               </p>
 
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-500 leading-relaxed">
                 International Morse
                 Code later provided a
                 more standardized
@@ -1268,7 +1270,7 @@ export default function HomeClient({ faqs }: Props) {
                 How Morse Code Works
               </h3>
 
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              <p className="text-slate-600 dark:text-slate-500 leading-relaxed mb-4">
                 A dot represents one
                 unit of time and a
                 dash represents three
@@ -1281,7 +1283,7 @@ export default function HomeClient({ faqs }: Props) {
                 units.
               </p>
 
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-500 leading-relaxed">
                 Morse transmission
                 speed is commonly
                 measured in words per
@@ -1298,7 +1300,7 @@ export default function HomeClient({ faqs }: Props) {
           <div className="mt-8 text-center">
             <Link
               href="/what-is-morse-code"
-              className="text-green-700 dark:text-green-300 font-medium hover:underline"
+              className="text-green-700 dark:text-green-400 font-medium hover:underline"
             >
               Read the Complete History
               of Morse Code →
@@ -1315,7 +1317,7 @@ export default function HomeClient({ faqs }: Props) {
             Morse Code Timing Rules
           </h2>
 
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">
             International Morse Code
             uses a proportional timing
             system. Understanding
@@ -1380,11 +1382,11 @@ export default function HomeClient({ faqs }: Props) {
                       {element}
                     </td>
 
-                    <td className="p-4 font-mono text-green-600 dark:text-green-400 font-semibold">
+                    <td className="p-4 font-mono text-green-700 dark:text-green-400 font-semibold">
                       {duration}
                     </td>
 
-                    <td className="p-4 text-slate-600 dark:text-slate-400">
+                    <td className="p-4 text-slate-600 dark:text-slate-500">
                       {description}
                     </td>
                   </tr>
@@ -1397,11 +1399,11 @@ export default function HomeClient({ faqs }: Props) {
         <div className="mt-8 grid md:grid-cols-2 gap-6">
           <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
             <h3 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-              <Clock className="w-5 h-5 text-green-600" />
+              <Clock className="w-5 h-5 text-green-700" />
               Farnsworth Method
             </h3>
 
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">
               Farnsworth timing is a
               training method that
               sends characters at a
@@ -1417,11 +1419,11 @@ export default function HomeClient({ faqs }: Props) {
 
           <div className="bg-white dark:bg-slate-900 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
             <h3 className="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-green-600" />
+              <Cpu className="w-5 h-5 text-green-700" />
               Koch Method
             </h3>
 
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">
               The Koch method teaches
               Morse code by introducing
               a small number of
@@ -1439,7 +1441,7 @@ export default function HomeClient({ faqs }: Props) {
         <div className="mt-8 text-center">
           <Link
             href="/morse-code-timing"
-            className="text-green-700 dark:text-green-300 font-medium hover:underline"
+            className="text-green-700 dark:text-green-400 font-medium hover:underline"
           >
             Learn More About Morse
             Code Timing →
@@ -1447,26 +1449,28 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-       {/* ─── MORSE CODE TIMING INFOGRAPHIC ─── */}
-       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
-         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-           <Image
-             src="/images/infographic/morse-code-timing-guide.webp"
-             alt="Morse code timing infographic showing dot, dash, character gap, and word gap timing rules"
-             width={1200}
-             height={675}
-             className="h-auto w-full"
-             sizes="(max-width: 1024px) 100vw, 1024px"
-           />
-           <div className="border-t border-slate-100 px-5 py-4 text-center dark:border-slate-800">
-             <p className="text-sm text-slate-600 dark:text-slate-300">
-               A visual reference for the standard Morse code timing ratios: 1 unit for a dot, 3 for a dash, 3 between characters, and 7 between words.
-             </p>
-           </div>
-         </div>
-       </section>
+      {/* ─── MORSE CODE TIMING INFOGRAPHIC ─── */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
+        <figure>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <Image
+              src="/images/infographic/morse-code-timing-rules.webp"
+              alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
+              width={1600}
+              height={1100}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
 
-       {/* ─── SOS ─── */}
+          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">
+            Standard Morse code timing uses fixed ratios: one unit for a dot, three for a dash, three between characters, and seven between words.
+          </figcaption>
+        </figure>
+      </section>
+
+      
+      {/* ─── SOS ─── */}
 
       <section className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 border-y border-red-100 dark:border-red-900/50">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
@@ -1480,7 +1484,7 @@ export default function HomeClient({ faqs }: Props) {
               SOS in Morse Code
             </h2>
 
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">
               SOS is transmitted as{" "}
               <span className="font-mono font-bold text-green-700 dark:text-green-400">
                 ··· --- ···
@@ -1499,7 +1503,7 @@ export default function HomeClient({ faqs }: Props) {
               ··· --- ···
             </div>
 
-            <p className="text-slate-600 dark:text-slate-400 mb-6">
+            <p className="text-slate-600 dark:text-slate-500 mb-6">
               SOS is a Morse code
               distress signal. It was
               selected because its
@@ -1530,7 +1534,7 @@ export default function HomeClient({ faqs }: Props) {
           <div className="mt-8 text-center">
             <Link
               href="/sos-morse-code"
-              className="text-red-700 dark:text-red-300 font-medium hover:underline"
+              className="text-red-600 dark:text-red-400 font-medium hover:underline"
             >
               Read the Complete SOS
               Morse Code Guide →
@@ -1547,7 +1551,7 @@ export default function HomeClient({ faqs }: Props) {
             Morse Code in Modern Use
           </h2>
 
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">
             Although Morse code is no
             longer the primary method
             of global communication,
@@ -1611,7 +1615,7 @@ export default function HomeClient({ faqs }: Props) {
               key={i}
               className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-all"
             >
-              <div className="w-12 h-12 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-xl flex items-center justify-center mb-4">
                 {item.icon}
               </div>
 
@@ -1619,7 +1623,7 @@ export default function HomeClient({ faqs }: Props) {
                 {item.title}
               </h3>
 
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -1637,7 +1641,7 @@ export default function HomeClient({ faqs }: Props) {
               About Morse Code
             </h2>
 
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 dark:text-slate-500 max-w-2xl mx-auto">
               Answers to common
               questions about Morse
               code translation,
@@ -1667,15 +1671,15 @@ export default function HomeClient({ faqs }: Props) {
                   </span>
 
                   {openFaq === i ? (
-                    <ChevronUp className="w-5 h-5 text-slate-400 shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-slate-500 shrink-0" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-slate-500 shrink-0" />
                   )}
                 </button>
 
                 {openFaq === i && (
                   <div className="px-5 pb-5 -mt-1">
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                    <p className="text-slate-600 dark:text-slate-500 leading-relaxed text-sm">
                       {faq.answer}
                     </p>
                   </div>
@@ -1695,7 +1699,7 @@ export default function HomeClient({ faqs }: Props) {
             Tools
           </h2>
 
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-500 max-w-2xl mx-auto">
             Continue learning with
             our Morse code alphabet,
             decoder, timing guide,
@@ -1766,11 +1770,11 @@ export default function HomeClient({ faqs }: Props) {
               href={tool.href}
               className="group block bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 hover:border-green-300 dark:hover:border-green-700 hover:shadow-lg transition-all"
             >
-              <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-green-700 dark:group-hover:text-green-300 transition-colors mb-1">
+              <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors mb-1">
                 {tool.title}
               </h3>
 
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-600 dark:text-slate-500 leading-relaxed">
                 {tool.desc}
               </p>
             </Link>
