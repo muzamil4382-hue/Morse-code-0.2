@@ -1563,7 +1563,7 @@ export default function HomeClient({ faqs }: Props) {
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
               src="/images/home/modern-uses-of-morse-code.webp"
-              alt="Infographic showing where Morse code is used today, including amateur radio, maritime communication, aviation, military and defense, satellite communication, and education"
+              alt="Infographic showing modern uses of Morse code, including amateur radio, maritime communication, aviation, emergency signaling, education, and signal-based communication"
               width={1600}
               height={1100}
               className="w-full h-auto"
@@ -1656,11 +1656,8 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Continue learning with
-            our Morse code alphabet,
-            decoder, timing guide,
-            quiz, numbers, and
-            practical examples.
+            Explore the Morse code alphabet, numbers, sounds, timing, decoding,
+            learning guides, quizzes, and popular Morse code words and phrases.
           </p>
         </div>
 
@@ -1719,6 +1716,41 @@ export default function HomeClient({ faqs }: Props) {
               title:
                 "Learn Morse Code",
               desc: "Step-by-step learning resources for beginners.",
+            },
+            {
+              href: "/morse-code-sounds",
+              title: "Morse Code Sounds",
+              desc: "Understand how dots and dashes sound in Morse code.",
+            },
+            {
+              href: "/what-is-morse-code",
+              title: "What Is Morse Code?",
+              desc: "Learn what Morse code is and how the signaling system works.",
+            },
+            {
+              href: "/binary-code-translator",
+              title: "Binary Code Translator",
+              desc: "Convert text and binary code with a separate online tool.",
+            },
+            {
+              href: "/hi-in-morse-code",
+              title: "Hi in Morse Code",
+              desc: "See the Morse code pattern for the short greeting HI.",
+            },
+            {
+              href: "/help-me-in-morse-code",
+              title: "Help Me in Morse Code",
+              desc: "Translate the emergency phrase HELP ME into Morse code.",
+            },
+            {
+              href: "/yes-in-morse-code",
+              title: "Yes in Morse Code",
+              desc: "Learn how to write YES using dots and dashes.",
+            },
+            {
+              href: "/no-in-morse-code",
+              title: "No in Morse Code",
+              desc: "Learn how to write NO using dots and dashes.",
             },
           ].map((tool, i) => (
             <Link
