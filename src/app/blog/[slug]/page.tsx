@@ -111,6 +111,170 @@ const blogImages: Record<string, string> = {
   "morse-code-quiz-test-your-knowledge":
     "/images/blog/morse-code-quiz.webp",
 };
+/*
+ * SEO-friendly image metadata
+ *
+ * Each blog image has:
+ * - alt text for accessibility and image SEO
+ * - caption for additional context
+ */
+const blogImageMeta: Record<
+  string,
+  {
+    alt: string;
+    caption: string;
+  }
+> = {
+  /*
+   * History
+   */
+  "what-is-morse-code-complete-history-guide": {
+    alt: "Morse code dots and dashes communication system illustration",
+    caption:
+      "Morse code uses combinations of dots and dashes to represent letters, numbers, and symbols.",
+  },
+
+  "when-was-morse-code-invented-history": {
+    alt: "History of Morse code invention and early telegraph communication",
+    caption:
+      "Morse code was developed alongside the electric telegraph and transformed long-distance communication.",
+  },
+
+  "when-was-morse-code-invented-history-timeline": {
+    alt: "Morse code invention history timeline and telegraph development",
+    caption:
+      "A timeline showing the development of Morse code and early telegraph communication.",
+  },
+
+  /*
+   * Learning
+   */
+  "how-to-learn-morse-code-7-easy-steps": {
+    alt: "Learn Morse code with dots, dashes, listening practice, and character recognition",
+    caption:
+      "Regular listening and character recognition practice can help beginners learn Morse code more effectively.",
+  },
+
+  /*
+   * Reference
+   */
+  "morse-code-alphabet-chart-complete-reference": {
+    alt: "Complete Morse code alphabet chart showing letters A to Z with dots and dashes",
+    caption:
+      "The International Morse code alphabet assigns a unique dot-and-dash pattern to every letter from A to Z.",
+  },
+
+  /*
+   * Emergency
+   */
+  "sos-signal-in-morse-code-complete-guide": {
+    alt: "SOS distress signal in Morse code shown as three dots three dashes and three dots",
+    caption:
+      "SOS is represented in Morse code as three dots, three dashes, and three dots: ... --- ...",
+  },
+
+  /*
+   * Phrases
+   */
+  "i-love-you-in-morse-code-complete-guide": {
+    alt: "I love you translated into Morse code using dots and dashes",
+    caption:
+      "The phrase I love you can be translated into International Morse code letter by letter.",
+  },
+
+  "i-love-you-in-morse-code-meaning-translation": {
+    alt: "I love you Morse code translation with dot and dash patterns",
+    caption:
+      "A Morse code representation of the phrase I love you using International Morse code.",
+  },
+
+  "hello-in-morse-code-common-phrases": {
+    alt: "Hello in Morse code translated using dots and dashes",
+    caption:
+      "HELLO in International Morse code is represented as four individual letter patterns.",
+  },
+
+  "hello-in-morse-code-and-common-phrases": {
+    alt: "Hello in Morse code with common Morse code phrases",
+    caption:
+      "Common words and phrases can be translated into Morse code one letter at a time.",
+  },
+
+  /*
+   * Facts
+   */
+  "25-amazing-morse-code-facts": {
+    alt: "Interesting facts about Morse code history communication and modern use",
+    caption:
+      "Morse code has a long history and continues to be studied and used by communication enthusiasts today.",
+  },
+
+  "25-amazing-morse-code-facts-you-didnt-know": {
+    alt: "Twenty five interesting facts about Morse code and its history",
+    caption:
+      "Explore interesting facts about the history, development, and continued use of Morse code.",
+  },
+
+  /*
+   * Technical
+   */
+  "morse-code-timing-rules-dots-dashes-wpm": {
+    alt: "Morse code timing rules showing dot dash spacing and words per minute",
+    caption:
+      "Correct Morse code timing uses specific ratios for dots, dashes, character gaps, and word spacing.",
+  },
+
+  "morse-code-timing-rules-and-speed-explained": {
+    alt: "Morse code speed and timing explained with dots dashes spacing and WPM",
+    caption:
+      "Morse code speed is commonly measured in words per minute while maintaining standard timing relationships.",
+  },
+
+  /*
+   * Technology
+   */
+  "morse-code-in-modern-technology": {
+    alt: "Modern technology applications of Morse code communication signals",
+    caption:
+      "Morse code principles can still be used in amateur radio, accessibility, education, and signal-based communication.",
+  },
+
+  "morse-code-in-modern-technology-applications": {
+    alt: "Morse code applications in modern communication technology",
+    caption:
+      "Modern applications continue to use simple encoded signals inspired by Morse code communication.",
+  },
+
+  /*
+   * Binary
+   */
+  "binary-code-translator-convert-text-guide": {
+    alt: "Binary code translator converting text into binary numbers",
+    caption:
+      "Binary code represents information using combinations of zeros and ones.",
+  },
+
+  "binary-code-translator-guide": {
+    alt: "Binary code translator guide showing text to binary conversion",
+    caption:
+      "A binary translator can convert readable text into sequences of zeros and ones.",
+  },
+
+  /*
+   * Quiz
+   */
+  "morse-code-quiz-test-your-knowledge": {
+    alt: "Interactive Morse code quiz for testing Morse code knowledge",
+    caption:
+      "A Morse code quiz helps learners test their recognition of letters, numbers, and Morse patterns.",
+  },
+};
+
+const fallbackImageMeta = {
+  alt: "Morse code dots and dashes communication guide",
+  caption:
+    "Learn about Morse code, its alphabet, timing, history, and modern applications.",
+};
 
 const fallbackImage = "/images/blog/what-is-morse-code.webp";
 
@@ -921,6 +1085,13 @@ export default async function BlogPostPage({
    */
   const heroImage = getPostImage(post);
 
+  /*
+   * Get SEO-friendly alt text and visible caption
+   * for the current blog post image.
+   */
+  const heroImageMeta =
+    blogImageMeta[post.slug] || fallbackImageMeta;
+
   const articleSchema = generateArticleSchema(
     post.title,
     post.description,
@@ -1073,16 +1244,22 @@ export default async function BlogPostPage({
         </header>
 
         {/* Hero Image */}
-        <div className="relative mb-10 aspect-[16/9] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
-          <Image
-            src={heroImage}
-            alt={`${post.title} - Morse Code Guide`}
-            fill
-            preload
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 896px"
-          />
-        </div>
+        <figure className="mb-10">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+            <Image
+              src={heroImage}
+              alt={heroImageMeta.alt}
+              fill
+              preload
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 896px"
+            />
+          </div>
+
+          <figcaption className="mt-3 px-1 text-center text-sm leading-6 text-slate-500">
+            {heroImageMeta.caption}
+          </figcaption>
+        </figure>
 
         {/* Article Content */}
         <div className="mx-auto mb-14 max-w-3xl">
@@ -1115,9 +1292,11 @@ export default async function BlogPostPage({
               {relatedPosts.map(
                 (relatedPost) => {
                   const relatedImage =
-  getPostImage(
-    relatedPost
-  );
+                    getPostImage(relatedPost);
+
+                  const relatedImageMeta =
+                    blogImageMeta[relatedPost.slug] ||
+                    fallbackImageMeta;
 
                   return (
                     <Link
@@ -1134,7 +1313,7 @@ export default async function BlogPostPage({
                             relatedImage
                           }
                           alt={
-                            relatedPost.title
+                            relatedImageMeta.alt
                           }
                           fill
                           className="object-cover transition duration-300 group-hover:scale-105"

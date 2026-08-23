@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import {
   Volume2,
@@ -683,13 +684,15 @@ export default function HomeClient({ faqs }: Props) {
             </h1>
 
             <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-3">
-              Use this free Morse Code Translator, Morse translator, and text to Morse code converter to encode messages or decode dots and dashes instantly. Convert text to Morse code, translate Morse code to text, and use audio, visual signals, and downloadable results.
+              Convert text to Morse code or decode Morse code to text instantly.
+              This free online Morse Code Translator supports International Morse Code,
+              letters A–Z, numbers 0–9, and supported punctuation.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-green-200 dark:text-green-300">
               <span className="flex items-center gap-1.5">
                 <Zap className="w-4 h-4" />
-                Instant Translation
+                Real-Time Translation
               </span>
 
               <span className="flex items-center gap-1.5">
@@ -815,18 +818,6 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-      {/* ─── TRANSLATOR KEYWORD / INTENT INTRO ─── */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-4 pb-8 sm:pt-6 sm:pb-10">
-        <div className="rounded-2xl border border-green-100 bg-green-50/60 p-6 text-center dark:border-green-900/40 dark:bg-green-950/20 sm:p-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
-            Free Morse Translator for Text and Morse Code
-          </h2>
-          <p className="mx-auto mt-3 max-w-3xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            Whether you call it a Morse translator, text to Morse code tool, Morse code converter, or Morse code decoder, this tool helps you translate messages in both directions. Enter normal text to create dots and dashes, or paste Morse code to convert it back into readable text.
-          </p>
-        </div>
-      </section>
-
       {/* ─── STATISTICS BAR ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
@@ -893,7 +884,11 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Use this online Morse translator to convert text to Morse code or decode Morse code to text in three simple steps. If you&apos;re new to Morse code, explore our{" "}
+            Convert text to Morse code
+            or decode Morse code to
+            text in three simple
+            steps. If you&apos;re new to
+            Morse code, explore our{" "}
             <Link
               href="/learn-morse-code"
               className="text-green-600 hover:underline font-semibold"
@@ -969,6 +964,27 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
+
+      {/* ─── MORSE CODE TRANSLATOR INFOGRAPHIC ─── */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
+        <figure>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <Image
+              src="/images/home/morse-code-translator-guide.webp"
+              alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
+              width={1600}
+              height={1100}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+
+          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-400">
+            Use the Morse Code Translator to encode normal text into dots and dashes or decode a Morse code message back into readable text.
+          </figcaption>
+        </figure>
+      </section>
+
       {/* ─── KEY FEATURES ─── */}
 
       <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
@@ -980,7 +996,10 @@ export default function HomeClient({ faqs }: Props) {
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Use one free Morse code converter to translate text, decode dots and dashes, listen to audio, practice signals, and explore Morse code.
+              Translate, decode,
+              listen, practice, and
+              explore Morse code from
+              one interactive tool.
             </p>
           </div>
 
@@ -1089,7 +1108,7 @@ export default function HomeClient({ faqs }: Props) {
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Text to Morse Code Converter and Quick Reference
+            Quick Morse Code Reference
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -1430,6 +1449,27 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
+
+      {/* ─── MORSE CODE TIMING INFOGRAPHIC ─── */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
+        <figure>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <Image
+              src="/images/home/morse-code-timing-guide.webp"
+              alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
+              width={1600}
+              height={1100}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+
+          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-400">
+            Standard Morse code timing uses fixed ratios: one unit for a dot, three for a dash, three between characters, and seven between words.
+          </figcaption>
+        </figure>
+      </section>
+
       {/* ─── SOS ─── */}
 
       <section className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 border-y border-red-100 dark:border-red-900/50">
@@ -1503,91 +1543,47 @@ export default function HomeClient({ faqs }: Props) {
         </div>
       </section>
 
-      {/* ─── MODERN USE ─── */}
+      {/* ─── WHERE MORSE CODE IS USED TODAY ─── */}
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            Morse Code in Modern Use
+            Where Is Morse Code Used Today?
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
-            Although Morse code is no
-            longer the primary method
-            of global communication,
-            it remains relevant in
-            amateur radio, aviation
-            navigation, education,
-            emergency signaling, and
-            accessibility technology.
+            Although Morse code is no longer the primary method of global
+            communication, it is still used and studied in amateur radio,
+            maritime communication, aviation, emergency signaling, education,
+            accessibility projects, and other signal-based communication systems.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            {
-              icon: (
-                <Radio className="w-6 h-6" />
-              ),
-              title: "Amateur Radio",
-              desc: "Morse code, commonly called CW in amateur radio, remains popular for long-distance communication and weak-signal operation.",
-            },
-            {
-              icon: (
-                <Plane className="w-6 h-6" />
-              ),
-              title: "Aviation",
-              desc: "Morse identifiers have historically been used by radio navigation aids and remain relevant when interpreting certain navigation signals.",
-            },
-            {
-              icon: (
-                <Zap className="w-6 h-6" />
-              ),
-              title:
-                "Emergency Signaling",
-              desc: "Short and long signals can be transmitted using light, sound, tapping, or other simple methods when conventional communication is unavailable.",
-            },
-            {
-              icon: (
-                <Accessibility className="w-6 h-6" />
-              ),
-              title:
-                "Assistive Technology",
-              desc: "Morse-based input can allow communication through a small number of switches or simple repeated signals.",
-            },
-            {
-              icon: (
-                <Users className="w-6 h-6" />
-              ),
-              title: "Education",
-              desc: "Morse code is used as a practical way to teach communication systems, signal timing, encoding, and the history of telecommunications.",
-            },
-            {
-              icon: (
-                <Wifi className="w-6 h-6" />
-              ),
-              title:
-                "Digital Communication Concepts",
-              desc: "Morse code demonstrates how information can be represented through distinct signal patterns, making it useful for introducing encoding concepts.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="p-5 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-md transition-all"
-            >
-              <div className="w-12 h-12 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl flex items-center justify-center mb-4">
-                {item.icon}
-              </div>
+        <figure>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <Image
+              src="/images/home/modern-uses-of-morse-code.webp"
+              alt="Infographic showing where Morse code is used today, including amateur radio, maritime communication, aviation, military and defense, satellite communication, and education"
+              width={1600}
+              height={1100}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
 
-              <h3 className="font-bold text-slate-900 dark:text-white mb-2">
-                {item.title}
-              </h3>
+          <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-400">
+            Morse code continues to have practical and educational applications
+            where simple, reliable signal communication is useful.
+          </figcaption>
+        </figure>
 
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
+        <div className="mt-8 text-center">
+          <Link
+            href="/what-is-morse-code"
+            className="text-green-600 dark:text-green-400 font-medium hover:underline"
+          >
+            Learn More About Morse Code →
+          </Link>
         </div>
       </section>
 
@@ -1660,7 +1656,11 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Explore related tools for Morse code decoding, alphabet reference, timing, numbers, practice, quizzes, and common Morse code words.
+            Continue learning with
+            our Morse code alphabet,
+            decoder, timing guide,
+            quiz, numbers, and
+            practical examples.
           </p>
         </div>
 
@@ -1748,7 +1748,12 @@ export default function HomeClient({ faqs }: Props) {
           </h2>
 
           <p className="text-lg text-green-100 dark:text-green-200 max-w-2xl mx-auto mb-8">
-            Use our free Morse Code Translator to convert text to Morse code, decode Morse messages, listen to audio, practice signal timing, and explore the complete Morse Code Alphabet.
+            Use the free translator to
+            encode text, decode Morse
+            code, listen to audio,
+            practice signal timing,
+            and explore the complete
+            Morse Code Alphabet.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
