@@ -1362,7 +1362,7 @@ For a general overview, read our [Complete History Guide](/blog/what-is-morse-co
             "morse code today",
     ],
     content: `It would be easy to assume that Morse code is a relic of the past — a system rendered obsolete by the telephone, internet, and satellite communication. But nearly two centuries after its invention, Morse code continues to serve important roles in modern technology and daily life. For the historical background, see our [Complete Morse Code History Guide](/blog/what-is-morse-code-complete-history-guide). From emergency signaling on your smartphone to long-distance amateur radio communication, here are the practical ways Morse code is still used today. You can try these modern applications yourself with our [Morse Code Translator](/), review the symbols in the [Morse Code Alphabet](/morse-code-alphabet), or compare Morse with digital data in our [Binary Code Translator Guide](/blog/binary-code-translator-guide).
-
+Modern communication technologies also make it easier to follow major events in real time. For live tournament news, match updates, and coverage, visit the [US Open 2026 Live Hub](https://usopen-2026-live-hub.blogspot.com/2026/08/us-open-2026-live-hub.html).
 ## Amateur Radio (CW Communication)
 
 Amateur radio is the single largest active community of Morse code users in the world. Ham radio operators use Morse code — referred to as "CW" (Continuous Wave) — for long-distance communication, and our [Morse Code Timing Guide](/morse-code-timing) explains the timing and WPM concepts that matter when sending and receiving CW.
