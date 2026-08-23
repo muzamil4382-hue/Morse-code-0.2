@@ -987,16 +987,16 @@ export default function HomeClient({ faqs }: Props) {
         <figure>
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
-              src="/images/infographic/how-to-decode-morse-code.webp"
-              alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
-              width={1600}
-              height={1100}
-              className="w-full h-auto"
-              sizes="(max-width: 1024px) 100vw, 1024px"
-            
-              quality={75}
-              loading="lazy"
-              />
+  src="/images/infographic/how-to-decode-morse-code.webp"
+  alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
+  width={1600}
+  height={1100}
+  className="w-full h-auto"
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+  quality={65}
+  loading="lazy"
+  decoding="async"
+/>
           </div>
 
           <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">
@@ -1475,16 +1475,16 @@ export default function HomeClient({ faqs }: Props) {
         <figure>
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
-              src="/images/infographic/morse-code-timing-rules.webp"
-              alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
-              width={1600}
-              height={1100}
-              className="w-full h-auto"
-              sizes="(max-width: 1024px) 100vw, 1024px"
-            
-              quality={75}
-              loading="lazy"
-              />
+  src="/images/infographic/morse-code-timing-rules.webp"
+  alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
+  width={1600}
+  height={1100}
+  className="w-full h-auto"
+  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+  quality={65}
+  loading="lazy"
+  decoding="async"
+/>
           </div>
 
           <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">

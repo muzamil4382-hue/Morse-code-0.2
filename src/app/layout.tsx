@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 
 import "./globals.css";
 
@@ -131,7 +130,6 @@ const jsonLd = [
     },
     inLanguage: "en-US",
   },
-
   {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -163,7 +161,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
+        <script
           id="site-jsonld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -182,9 +180,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-
           <main>{children}</main>
-
           <Footer />
         </ThemeProvider>
       </body>
