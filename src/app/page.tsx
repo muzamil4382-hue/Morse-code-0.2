@@ -7,7 +7,14 @@ import {
   generateSoftwareApplicationSchema,
   generateWebSiteSchema,
 } from "@/lib/seo";
-import HomeClient from "./home.client";
+import dynamic from "next/dynamic";
+import HomeContent from "./home-content";
+import HomeFaq from "./home-faq.client";
+import HomeSos from "./home-sos.client";
+
+const HomeClient = dynamic(() => import("./home.client"), {
+  ssr: true,
+});
 
 const faqs = [
   {
@@ -162,7 +169,12 @@ export default function HomePage() {
         }}
       />
 
-      <HomeClient faqs={faqs} />
+      <HomeClient />
+
+      <HomeContent>
+        <HomeSos />
+        <HomeFaq faqs={faqs} />
+      </HomeContent>
     </>
   );
 }
