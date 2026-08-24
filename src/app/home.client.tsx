@@ -717,7 +717,7 @@ export default function HomeClient({ faqs }: Props) {
                     onClick={() => setMode("text-to-morse")}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-colors ${
                       mode === "text-to-morse"
-                        ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                        ? "bg-green-700 text-white shadow-md shadow-green-700/20"
                         : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
                     }`}
                   >
@@ -740,7 +740,7 @@ export default function HomeClient({ faqs }: Props) {
                     onClick={() => setMode("morse-to-text")}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-colors ${
                       mode === "morse-to-text"
-                        ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                        ? "bg-green-700 text-white shadow-md shadow-green-700/20"
                         : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
                     }`}
                   >
@@ -775,7 +775,7 @@ export default function HomeClient({ faqs }: Props) {
                         : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100"
                     }`}
                   >
-                    {hasContent ? activeOutput : <span className="text-slate-400">Your translation will appear here...</span>}
+                    {hasContent ? activeOutput : <span className="text-slate-600 dark:text-slate-300">Your translation will appear here...</span>}
                   </div>
                 </div>
               </div>
@@ -789,7 +789,7 @@ export default function HomeClient({ faqs }: Props) {
               </div>
 
               <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
-                <button onClick={handlePlay} disabled={!hasContent || playing} className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-green-700 disabled:opacity-40"><Volume2 className="w-4 h-4" />{playing ? "Playing..." : "Play"}</button>
+                <button onClick={handlePlay} disabled={!hasContent || playing} className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-700 px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 disabled:opacity-40"><Volume2 className="w-4 h-4" />{playing ? "Playing..." : "Play"}</button>
                 <button onClick={handleStop} disabled={!playing} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800 dark:bg-slate-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-900 disabled:opacity-40"><Square className="w-4 h-4" />Stop</button>
                 <button onClick={() => setRepeatEnabled(!repeatEnabled)} aria-pressed={repeatEnabled} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${repeatEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Repeat2 className="w-4 h-4" />Repeat</button>
                 <button onClick={() => setSoundEnabled(!soundEnabled)} aria-pressed={soundEnabled} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${soundEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Music className="w-4 h-4" />Sound</button>
@@ -1187,7 +1187,7 @@ export default function HomeClient({ faqs }: Props) {
         <div className="mt-8 text-center">
           <Link
             href="/morse-code-alphabet"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-700 text-white rounded-lg font-semibold hover:bg-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-700 focus-visible:ring-offset-2 dark:focus-visible:ring-green-400 transition-colors"
           >
             View Complete Morse Code
             Alphabet
