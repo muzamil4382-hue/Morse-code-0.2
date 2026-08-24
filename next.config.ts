@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      /*
+       * Existing redirects
+       */
       {
         source: "/morse-code-translator",
         destination: "/",
@@ -18,6 +21,26 @@ const nextConfig: NextConfig = {
       {
         source: "/morse-code-letters",
         destination: "/morse-code-alphabet",
+        permanent: true,
+      },
+
+      /*
+       * Old individual Morse code letter pages
+       * A–Z → Morse Code Alphabet sections
+       */
+      {
+        source: "/morse-code-letter/:letter([a-zA-Z])",
+        destination: "/morse-code-alphabet#letter-:letter",
+        permanent: true,
+      },
+
+      /*
+       * Old individual Morse code number pages
+       * 0–9 → Morse Code Numbers sections
+       */
+      {
+        source: "/morse-code-number/:number([0-9])",
+        destination: "/morse-code-numbers#number-:number",
         permanent: true,
       },
     ];
