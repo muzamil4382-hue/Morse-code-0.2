@@ -970,7 +970,7 @@ export default function HomeClient({ faqs }: Props) {
         <figure>
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
-              src="/images/infographic/morse-code-translator-guide.webp"
+              src="/images/home/morse-code-translator-guide.webp"
               alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
               width={1600}
               height={1100}
@@ -1455,7 +1455,7 @@ export default function HomeClient({ faqs }: Props) {
         <figure>
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
-              src="/images/infographic/morse-code-timing-rules.webp"
+              src="/images/home/morse-code-timing-rules.webp"
               alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
               width={1600}
               height={1100}
@@ -1562,7 +1562,7 @@ export default function HomeClient({ faqs }: Props) {
         <figure>
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
-              src="/images/infographic/modern-uses-of-morse-code.webp"
+              src="/images/home/modern-uses-of-morse-code.webp"
               alt="Infographic showing modern uses of Morse code, including amateur radio, maritime communication, aviation, emergency signaling, education, and signal-based communication"
               width={1600}
               height={1100}
