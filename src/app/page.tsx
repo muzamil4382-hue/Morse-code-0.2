@@ -90,7 +90,7 @@ const howToSteps = [
 
 export const metadata: Metadata = generatePageMeta(
   "Morse Code Translator – Translate Text to Morse Code",
-  "Free Morse Code Translator to convert text to Morse code and decode Morse instantly. Use this Morse translator and Morse code converter with audio, adjustable speed, flash signals, copy, and download tools.",
+  "Free Morse Code Translator to convert text to Morse code and decode Morse code to text instantly. Includes audio, speed controls, flash signals, copy and download tools.",
   "/",
   [
     "morse code translator",

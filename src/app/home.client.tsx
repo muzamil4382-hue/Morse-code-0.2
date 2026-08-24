@@ -684,9 +684,9 @@ export default function HomeClient({ faqs }: Props) {
             </h1>
 
             <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-3">
-              Convert text to Morse code or decode Morse code to text instantly.
-              This free online Morse Code Translator supports International Morse Code,
-              letters A–Z, numbers 0–9, and supported punctuation.
+              Convert text to Morse code or decode dots and dashes into readable text instantly.
+              This free online Morse Code Translator uses International Morse Code and supports
+              letters A–Z, numbers 0–9, spaces, and commonly used punctuation.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-green-200 dark:text-green-300">
@@ -769,12 +769,15 @@ export default function HomeClient({ faqs }: Props) {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
                   <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label><button onClick={handleClear} className="p-2 rounded-lg text-slate-500 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Clear input"><Trash2 className="w-4 h-4" /></button></div>
-                  <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-500 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
+                  <textarea aria-label={mode === "text-to-morse" ? "Enter text to convert to Morse code" : "Enter Morse code to decode"} value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-500 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
                   <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">Output</label><span className="inline-flex items-center gap-1.5 text-xs font-medium text-green-700 dark:text-green-400"><Zap className="w-3.5 h-3.5" /> Live</span></div>
                   <div
+                    role="status"
+                    aria-live="polite"
+                    aria-label="Translation output"
                     className={`w-full h-[150px] overflow-y-auto rounded-xl border px-4 py-3.5 font-mono text-base whitespace-pre-wrap break-words transition-colors duration-75 ${
                       flashActive && flashChar !== "off"
                         ? "border-green-400 bg-green-50 text-slate-900 shadow-[0_0_0_4px_rgba(34,197,94,0.10)] dark:bg-green-500/15 dark:text-green-50"
@@ -815,9 +818,9 @@ export default function HomeClient({ faqs }: Props) {
               <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
                 <button onClick={handlePlay} disabled={!hasContent || playing} className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-green-700 disabled:opacity-40"><Volume2 className="w-4 h-4" />{playing ? "Playing..." : "Play"}</button>
                 <button onClick={handleStop} disabled={!playing} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800 dark:bg-slate-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-900 disabled:opacity-40"><Square className="w-4 h-4" />Stop</button>
-                <button onClick={() => setRepeatEnabled(!repeatEnabled)} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${repeatEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Repeat2 className="w-4 h-4" />Repeat</button>
-                <button onClick={() => setSoundEnabled(!soundEnabled)} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${soundEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Music className="w-4 h-4" />Sound</button>
-                <button onClick={handleFlash} disabled={!hasContent} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${flashActive ? "bg-amber-500 text-white" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Lightbulb className="w-4 h-4" />Light</button>
+                <button onClick={() => setRepeatEnabled(!repeatEnabled)} aria-pressed={repeatEnabled} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${repeatEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Repeat2 className="w-4 h-4" />Repeat</button>
+                <button onClick={() => setSoundEnabled(!soundEnabled)} aria-pressed={soundEnabled} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${soundEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Music className="w-4 h-4" />Sound</button>
+                <button onClick={handleFlash} aria-pressed={flashActive} disabled={!hasContent} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${flashActive ? "bg-amber-500 text-white" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Lightbulb className="w-4 h-4" />Light</button>
                 <button onClick={handleVibrate} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200"><Vibrate className="w-4 h-4" />Vibrate</button>
                 <button onClick={handleCopyText} disabled={mode === "text-to-morse" ? !text : !computedText} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "text" ? <Check className="w-4 h-4 text-green-700" /> : <Copy className="w-4 h-4" />}{copiedAction === "text" ? "Copied" : "Copy Text"}</button>
                 <button onClick={handleCopyMorse} disabled={mode === "text-to-morse" ? !computedMorse : !morseInput} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "morse" ? <Check className="w-4 h-4 text-green-700" /> : <Copy className="w-4 h-4" />}{copiedAction === "morse" ? "Copied" : "Copy Morse"}</button>
@@ -987,16 +990,16 @@ export default function HomeClient({ faqs }: Props) {
         <figure>
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
-  src="/images/infographic/how-to-decode-morse-code.webp"
-  alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
-  width={1600}
-  height={1100}
-  className="w-full h-auto"
-  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
-  quality={65}
-  loading="lazy"
-  decoding="async"
-/>
+              src="/images/infographic/how-to-decode-morse-code.webp"
+              alt="Morse code translator infographic showing how to convert text into dots and dashes and decode Morse code back into readable text"
+              width={1600}
+              height={1100}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            
+              quality={75}
+              loading="lazy"
+              />
           </div>
 
           <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">
@@ -1006,6 +1009,29 @@ export default function HomeClient({ faqs }: Props) {
       </section>
 
       
+      {/* ─── MORSE CODE TRANSLATOR OVERVIEW ─── */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 p-6 sm:p-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-4">
+            Text to Morse Code and Morse Code to Text
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p>
+              Use this <strong className="text-slate-900 dark:text-white">Morse code converter</strong> to
+              encode plain English text into dots and dashes or use the <strong className="text-slate-900 dark:text-white">Morse code decoder</strong>
+              to turn a Morse message back into readable text. The translator processes supported characters
+              instantly and is designed for quick lookup, practice, and everyday communication examples.
+            </p>
+            <p>
+              The tool follows <strong className="text-slate-900 dark:text-white">International Morse Code</strong>,
+              the system used for modern Morse communication. You can adjust words per minute (WPM), tone
+              frequency, and volume, then listen to the resulting signal, use visual flash mode, copy the
+              output, or save supported results for practice.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ─── KEY FEATURES ─── */}
 
       <section className="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
@@ -1017,10 +1043,8 @@ export default function HomeClient({ faqs }: Props) {
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-500 max-w-2xl mx-auto">
-              Translate, decode,
-              listen, practice, and
-              explore Morse code from
-              one interactive tool.
+              Encode text, decode dots and dashes, listen to Morse audio, practice timing,
+              and work with International Morse Code from one interactive tool.
             </p>
           </div>
 
@@ -1231,16 +1255,9 @@ export default function HomeClient({ faqs }: Props) {
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-500 max-w-3xl mx-auto">
-              Morse code is a
-              telecommunication system
-              that represents
-              characters with short and
-              long signals. It is
-              closely associated with
-              Samuel F. B. Morse and
-              Alfred Vail, whose work
-              helped develop the
-              electric telegraph in
+              Morse code is a character-encoding system that represents letters, numbers, and punctuation
+              with short and long signals, commonly called dots and dashes. It is closely associated
+              with Samuel F. B. Morse, Alfred Vail, and the development of the electric telegraph in
               the nineteenth century.
             </p>
           </div>
@@ -1475,16 +1492,16 @@ export default function HomeClient({ faqs }: Props) {
         <figure>
           <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
             <Image
-  src="/images/infographic/morse-code-timing-rules.webp"
-  alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
-  width={1600}
-  height={1100}
-  className="w-full h-auto"
-  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
-  quality={65}
-  loading="lazy"
-  decoding="async"
-/>
+              src="/images/infographic/morse-code-timing-rules.webp"
+              alt="Morse code timing infographic showing dot and dash duration, character spacing, word spacing, and standard timing ratios"
+              width={1600}
+              height={1100}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            
+              quality={75}
+              loading="lazy"
+              />
           </div>
 
           <figcaption className="mt-4 text-center text-sm sm:text-base text-slate-500 dark:text-slate-500">
@@ -1666,11 +1683,8 @@ export default function HomeClient({ faqs }: Props) {
             </h2>
 
             <p className="text-lg text-slate-600 dark:text-slate-500 max-w-2xl mx-auto">
-              Answers to common
-              questions about Morse
-              code translation,
-              decoding, timing, and
-              learning.
+              Find practical answers about Morse code translation, decoding dots and dashes, International
+              Morse Code timing, audio signals, learning methods, and supported characters.
             </p>
           </div>
 
@@ -1689,6 +1703,8 @@ export default function HomeClient({ faqs }: Props) {
                     )
                   }
                   className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  aria-expanded={openFaq === i}
+                  aria-controls={`faq-answer-${i}`}
                 >
                   <span className="font-semibold text-slate-900 dark:text-white pr-4">
                     {faq.question}
@@ -1702,7 +1718,7 @@ export default function HomeClient({ faqs }: Props) {
                 </button>
 
                 {openFaq === i && (
-                  <div className="px-5 pb-5 -mt-1">
+                  <div id={`faq-answer-${i}`} className="px-5 pb-5 -mt-1">
                     <p className="text-slate-600 dark:text-slate-500 leading-relaxed text-sm">
                       {faq.answer}
                     </p>
