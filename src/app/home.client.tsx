@@ -768,9 +768,69 @@ export default function HomeClient() {
 
               <div className="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-white dark:from-slate-800/70 dark:to-slate-900 p-4 sm:p-5">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Speed</span><span className="text-green-900">{speed} WPM</span></label><input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Frequency</span><span className="text-green-900">{frequency} Hz</span></label><input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Volume</span><span className="text-green-900">{Math.round(volume * 100)}%</span></label><input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div>
+  <label
+    htmlFor="morse-speed"
+    className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"
+  >
+    <span>Speed</span>
+    <span className="text-green-900">{speed} WPM</span>
+  </label>
+
+  <input
+    id="morse-speed"
+    type="range"
+    min="5"
+    max="35"
+    value={speed}
+    onChange={(e) => setSpeed(Number(e.target.value))}
+    className="w-full accent-green-600"
+  />
+</div>
+
+<div>
+  <label
+    htmlFor="morse-frequency"
+    className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"
+  >
+    <span>Frequency</span>
+    <span className="text-green-900">{frequency} Hz</span>
+  </label>
+
+  <input
+    id="morse-frequency"
+    type="range"
+    min="300"
+    max="1000"
+    step="50"
+    value={frequency}
+    onChange={(e) => setFrequency(Number(e.target.value))}
+    className="w-full accent-green-600"
+  />
+</div>
+
+<div>
+  <label
+    htmlFor="morse-volume"
+    className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"
+  >
+    <span>Volume</span>
+    <span className="text-green-900">
+      {Math.round(volume * 100)}%
+    </span>
+  </label>
+
+  <input
+    id="morse-volume"
+    type="range"
+    min="0"
+    max="1"
+    step="0.1"
+    value={volume}
+    onChange={(e) => setVolume(Number(e.target.value))}
+    className="w-full accent-green-600"
+  />
+</div>
                 </div>
               </div>
 
