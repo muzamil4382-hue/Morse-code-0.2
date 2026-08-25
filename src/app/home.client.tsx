@@ -707,7 +707,7 @@ export default function HomeClient() {
                     onClick={() => setMode("text-to-morse")}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
                       mode === "text-to-morse"
-                        ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                        ? "bg-green-700 text-white shadow-md shadow-green-700/20"
                         : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
                     }`}
                   >
@@ -728,7 +728,7 @@ export default function HomeClient() {
                     onClick={() => setMode("morse-to-text")}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
                       mode === "morse-to-text"
-                        ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                        ? "bg-green-700 text-white shadow-md shadow-green-700/20"
                         : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
                     }`}
                   >
@@ -749,7 +749,7 @@ export default function HomeClient() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
                   <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label><button onClick={handleClear} className="p-2 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Clear input"><Trash2 className="w-4 h-4" /></button></div>
-                  <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-400 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
+                  <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-500 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
@@ -761,16 +761,16 @@ export default function HomeClient() {
                         : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100"
                     }`}
                   >
-                    {hasContent ? activeOutput : <span className="text-slate-400">Your translation will appear here...</span>}
+                    {hasContent ? activeOutput : <span className="text-slate-500">Your translation will appear here...</span>}
                   </div>
                 </div>
               </div>
 
               <div className="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-white dark:from-slate-800/70 dark:to-slate-900 p-4 sm:p-5">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Speed</span><span className="text-green-600">{speed} WPM</span></label><input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Frequency</span><span className="text-green-600">{frequency} Hz</span></label><input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" /></div>
-                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Volume</span><span className="text-green-600">{Math.round(volume * 100)}%</span></label><input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Speed</span><span className="text-green-900">{speed} WPM</span></label><input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Frequency</span><span className="text-green-900">{frequency} Hz</span></label><input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" /></div>
+                  <div><label className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"><span>Volume</span><span className="text-green-900">{Math.round(volume * 100)}%</span></label><input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" /></div>
                 </div>
               </div>
 

@@ -103,16 +103,16 @@ export default function TranslatorCore({
       {showSettings && (
         <div className="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-4">
           <div>
-            <label className="text-sm font-medium text-slate-700 mb-2 block">Speed: <span className="text-green-600 font-semibold">{speed} WPM</span></label>
-            <input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" />
+            <label className="text-sm font-medium text-slate-700 mb-2 block">Speed: <span className="text-green-900 font-semibold">{speed} WPM</span></label>
+            <input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-900" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700 mb-2 block">Frequency: <span className="text-green-600 font-semibold">{frequency} Hz</span></label>
-            <input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" />
+            <label className="text-sm font-medium text-slate-700 mb-2 block">Frequency: <span className="text-green-900 font-semibold">{frequency} Hz</span></label>
+            <input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-900" />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-700 mb-2 block">Volume: <span className="text-green-600 font-semibold">{Math.round(volume * 100)}%</span></label>
-            <input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" />
+            <label className="text-sm font-medium text-slate-700 mb-2 block">Volume: <span className="text-green-900 font-semibold">{Math.round(volume * 100)}%</span></label>
+            <input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-900" />
           </div>
         </div>
       )}
@@ -130,7 +130,7 @@ export default function TranslatorCore({
               else setMorse(e.target.value);
             }}
             placeholder={mode === "text-to-morse" ? "Type your text here..." : "Enter Morse code (use . and -)..."}
-            className="w-full min-h-[120px] p-4 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-y font-mono text-lg transition-all"
+            className="w-full min-h-[120px] p-4 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder-slate-500 focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-y font-mono text-lg transition-all"
             dir="ltr"
           />
           <button

@@ -409,7 +409,7 @@ export default function HomeContent({ children }: Props) {
         <div className="mt-8 text-center">
           <Link
             href="/morse-code-alphabet"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-700 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
           >
             View Complete Morse Code
             Alphabet
