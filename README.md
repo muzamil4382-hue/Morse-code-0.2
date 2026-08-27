@@ -1,184 +1,168 @@
+<div align="center">
+
 # ⚡ Morse Code Translator
 
-<p align="center">
-  <strong>A fast, modern, and SEO-friendly Morse Code Translator built with Next.js.</strong>
+### Translate Text ↔ Morse Code Instantly
+
+<p>
+A fast, modern and SEO-friendly Morse Code Translator built with Next.js.
 </p>
 
-<p align="center">
-  Convert text to Morse code, decode Morse code to text, listen to Morse code audio, use visual flash signals, download WAV files, and explore interactive learning resources.
-</p>
+[![Live Website](https://img.shields.io/badge/🌐_Live_Website-Visit_Now-16a34a?style=for-the-badge)](https://www.morsecodetranslater.com)
+[![Next.js](https://img.shields.io/badge/Next.js-15+-000000?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-UI-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-Styled-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-<p align="center">
-  <a href="https://www.morsecodetranslater.com">🌐 Visit Live Website</a>
-</p>
+<br />
+
+### 🚀 [Visit Morse Code Translator](https://www.morsecodetranslater.com)
+
+</div>
 
 ---
 
-## ✨ Features
+## ✨ What is Morse Code Translator?
 
-### 🔄 Morse Code Translation
+**Morse Code Translator** is a free online tool that allows users to convert normal text into International Morse code and decode Morse code back into readable text.
 
-- Convert **Text → Morse Code**
-- Convert **Morse Code → Text**
-- Real-time translation
-- Copy translated output
-- Random text generation
+The website also includes audio playback, visual flash signals, speed and sound controls, WAV downloads, interactive learning tools, Morse code references, quizzes, and educational guides.
 
-### 🔊 Audio & Controls
+<div align="center">
 
-- Adjustable Morse code speed
-- Frequency controls
-- Volume controls
-- Morse code audio playback
-- Visual flash mode
-- WAV audio download
+| 🔄 Translation | 🔊 Audio | 💡 Flash Mode | 📚 Learning |
+|:---:|:---:|:---:|:---:|
+| Text ↔ Morse | Adjustable Sound | Visual Signals | Guides & Quiz |
 
-### 📚 Learning Resources
-
-- Morse Code Alphabet
-- Morse Code Numbers
-- Morse Code Sounds
-- Morse Code Timing
-- Learn Morse Code Guide
-- SOS Morse Code
-- Interactive Morse Code Quiz
-- Binary Code Translator
-- Morse Code blog resources
-
-### 🔎 SEO Features
-
-- Optimized metadata
-- Canonical URLs
-- Open Graph metadata
-- Twitter metadata
-- FAQ Schema
-- Breadcrumb Schema
-- HowTo Schema
-- SoftwareApplication Schema
-- WebSite Schema
-- XML Sitemap
-- Internal linking
+</div>
 
 ---
 
-## 🛠 Tech Stack
+# 🚀 Live Website
 
-| Technology | Usage |
-|---|---|
-| **Next.js** | Framework and App Router |
-| **React** | UI Components |
-| **TypeScript** | Type Safety |
-| **Tailwind CSS** | Styling |
-| **Framer Motion** | Animations |
-| **Lucide React** | Icons |
-| **shadcn/ui** | UI Components |
-| **next-themes** | Theme Management |
+<div align="center">
+
+## 🌐 [www.morsecodetranslater.com](https://www.morsecodetranslater.com)
+
+**Try the translator online and explore all Morse Code tools and learning resources.**
+
+[![Open Website](https://img.shields.io/badge/OPEN_WEBSITE-→-16a34a?style=for-the-badge)](https://www.morsecodetranslater.com)
+
+</div>
 
 ---
 
-## 📂 Project Structure
+# 🧭 Explore the Website
+
+<div align="center">
+
+### 🔧 Main Tools
+
+| Tool | Description | Link |
+|---|---|---|
+| ⚡ **Morse Code Translator** | Convert Text ↔ Morse Code | [Open Tool →](https://www.morsecodetranslater.com/) |
+| 🔓 **Morse Code Decoder** | Decode dots and dashes into text | [Open Decoder →](https://www.morsecodetranslater.com/morse-code-decoder) |
+| 🔢 **Binary Code Translator** | Convert and understand binary code | [Open Tool →](https://www.morsecodetranslater.com/binary-code-translator) |
+| 🧠 **Morse Code Quiz** | Test your Morse code knowledge | [Start Quiz →](https://www.morsecodetranslater.com/morse-code-quiz) |
+
+</div>
+
+<br />
+
+<div align="center">
+
+### 📚 Learn Morse Code
+
+| Resource | Description | Link |
+|---|---|---|
+| 🔤 **Morse Code Alphabet** | Complete A–Z Morse code reference | [View Alphabet →](https://www.morsecodetranslater.com/morse-code-alphabet) |
+| 🔢 **Morse Code Numbers** | Morse code numbers from 0–9 | [View Numbers →](https://www.morsecodetranslater.com/morse-code-numbers) |
+| 🔊 **Morse Code Sounds** | Learn how Morse code sounds | [Listen & Learn →](https://www.morsecodetranslater.com/morse-code-sounds) |
+| ⏱️ **Morse Code Timing** | Understand dots, dashes and spacing | [Learn Timing →](https://www.morsecodetranslater.com/morse-code-timing) |
+| 📖 **Learn Morse Code** | Complete Morse code learning guide | [Start Learning →](https://www.morsecodetranslater.com/learn-morse-code) |
+| ❓ **What is Morse Code?** | History and explanation of Morse code | [Read Guide →](https://www.morsecodetranslater.com/what-is-morse-code) |
+| 🆘 **SOS in Morse Code** | Learn the famous SOS signal | [View SOS Guide →](https://www.morsecodetranslater.com/sos-morse-code) |
+
+</div>
+
+---
+
+# ✨ Features
+
+## 🔄 Smart Morse Code Translation
+
+- ⚡ Instant Text → Morse Code conversion
+- 🔁 Instant Morse Code → Text decoding
+- ⌨️ Real-time translation
+- 📋 Copy translated output
+- 🎲 Random text generation
+- 🌍 International Morse code support
+
+---
+
+## 🔊 Audio Controls
+
+The translator provides interactive sound controls for practicing and listening to Morse code.
+
+- 🔉 Audio playback
+- ⏩ Adjustable Morse code speed
+- 🎵 Frequency controls
+- 🔊 Volume controls
+- 💾 WAV audio download
+
+---
+
+## 💡 Visual Flash Mode
+
+Practice Morse code visually using flashing light signals.
+
+This feature can help users understand how Morse code can be communicated through visual signals.
+
+---
+
+## 📚 Learning Resources
+
+The website includes multiple learning pages designed to help users understand Morse code.
 
 ```text
-src/
-├── app/
-│   ├── page.tsx
-│   ├── layout.tsx
-│   ├── globals.css
-│   ├── sitemap.ts
-│   ├── home.client.tsx
-│   ├── home-content.tsx
-│   ├── home-faq.client.tsx
-│   └── home-sos.client.tsx
-│
-├── components/
-│   ├── morse/
-│   │   ├── header.tsx
-│   │   ├── footer.tsx
-│   │   ├── sections/
-│   │   ├── translator-core.tsx
-│   │   └── word-page-template.tsx
-│   ├── theme/
-│   └── ui/
-│
-├── hooks/
-│   ├── use-mobile.ts
-│   └── use-toast.ts
-│
-└── lib/
-    ├── morse.ts
-    ├── morse-characters.ts
-    ├── seo.ts
-    ├── blog-data.ts
-    ├── db.ts
-    └── utils.ts
-
-public/
-└── images/
-    └── home/
-        ├── modern-user-morse-code.webp
-        ├── morse-code-timing-rules.webp
-        └── slator-guide.webp
+🔤 Morse Code Alphabet
+🔢 Morse Code Numbers
+🔊 Morse Code Sounds
+⏱️ Morse Code Timing
+📖 Learn Morse Code
+❓ What is Morse Code?
+🆘 SOS Morse Code
+🧠 Interactive Quiz
+📝 Educational Blog
 ```
 
 ---
 
-# 🏠 Homepage Architecture
+# 🖼️ Homepage Architecture
 
-The homepage is structured into separate components to keep interactive functionality separate from static and SEO-focused content.
+The homepage is divided into multiple components to improve organization and separate interactive functionality from static SEO-focused content.
 
-## `page.tsx`
-
-The main homepage server component handles:
-
-- Page metadata
-- FAQ structured data
-- Breadcrumb structured data
-- HowTo structured data
-- SoftwareApplication schema
-- WebSite schema
-- Homepage component rendering
-
-## `home.client.tsx`
-
-Contains the main interactive Morse Code Translator.
-
-Main functionality includes:
-
-- Text input
-- Morse code output
-- Text ↔ Morse switching
-- Audio playback
-- Visual flash mode
-- Speed controls
-- Frequency controls
-- Volume controls
-- Copy functionality
-- WAV download
-- Random text generation
-
-## `home-content.tsx`
-
-Contains static and SEO-focused homepage content, including:
-
-- Educational Morse code content
-- Internal links
-- Resource sections
-- Supporting content
-- Homepage infographics
-
-## `home-faq.client.tsx`
-
-Contains the interactive FAQ section.
-
-FAQ data is also used to generate FAQ structured data for search engines.
-
-## `home-sos.client.tsx`
-
-Contains the SOS-related homepage section.
+```text
+src/app/
+│
+├── page.tsx
+│
+├── home.client.tsx
+│   └── Main interactive Morse Code Translator
+│
+├── home-content.tsx
+│   └── Static educational and SEO content
+│
+├── home-faq.client.tsx
+│   └── Interactive FAQ section
+│
+└── home-sos.client.tsx
+    └── SOS-related homepage section
+```
 
 ---
 
-# 🖼 Homepage Infographics
+# 🖼️ Homepage Infographics
 
 Homepage infographic images are stored in:
 
@@ -186,139 +170,87 @@ Homepage infographic images are stored in:
 public/images/home/
 ```
 
-Current infographic files:
+Current images:
 
 ```text
-modern-user-morse-code.webp
-morse-code-timing-rules.webp
-slator-guide.webp
+📁 public
+ └── 📁 images
+      └── 📁 home
+           ├── modern-user-morse-code.webp
+           ├── morse-code-timing-rules.webp
+           └── slator-guide.webp
 ```
 
-Images should include:
+Images are implemented with:
 
-- Descriptive `alt` text
-- Defined dimensions
-- Optimized file sizes
-- Appropriate loading behavior
+- 🖼️ Descriptive `alt` text
+- ⚡ Optimized formats
+- 📐 Defined dimensions
+- 📱 Responsive behavior
+- ♿ Accessibility considerations
 
 ---
 
-# 🚀 Getting Started
+# 🛠️ Tech Stack
 
-## Prerequisites
+<div align="center">
 
-Make sure you have installed:
-
-- Node.js 18 or later
-- npm
-
-## Installation
-
-Clone the repository:
-
-```bash
-git clone <repository-url>
-```
-
-Move into the project directory:
-
-```bash
-cd Morse-code-0.2
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
----
-
-## 💻 Development Server
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Open the local development environment:
-
-```text
-http://localhost:3000
-```
-
----
-
-## 🏗 Production Build
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Start the production server:
-
-```bash
-npm run start
-```
-
-> For more accurate Lighthouse and performance testing, test the production build instead of relying only on development mode.
-
----
-
-# 🧭 Main Routes
-
-## 🔧 Tools
-
-| Route | Description |
+| Technology | Purpose |
 |---|---|
-| `/` | Main Morse Code Translator |
-| `/morse-code-decoder` | Decode Morse code to text |
-| `/binary-code-translator` | Binary Code Translator |
-| `/morse-code-quiz` | Interactive Morse Code Quiz |
+| ▲ **Next.js** | Framework & App Router |
+| ⚛️ **React** | User Interface |
+| 🔷 **TypeScript** | Type Safety |
+| 🎨 **Tailwind CSS** | Styling |
+| ✨ **Framer Motion** | Animations |
+| 🎯 **Lucide React** | Icons |
+| 🧩 **shadcn/ui** | UI Components |
+| 🌙 **next-themes** | Theme Management |
 
-## 📚 Learning & Reference
-
-| Route | Description |
-|---|---|
-| `/morse-code-alphabet` | Complete Morse Code Alphabet |
-| `/morse-code-numbers` | Morse Code Numbers |
-| `/morse-code-sounds` | Morse Code Sounds |
-| `/morse-code-timing` | Morse Code Timing Guide |
-| `/learn-morse-code` | Learn Morse Code |
-| `/what-is-morse-code` | What is Morse Code |
-| `/sos-morse-code` | SOS Morse Code Guide |
-
-## 💬 Popular Word Pages
-
-```text
-/hello-in-morse-code
-/hi-in-morse-code
-/help-me-in-morse-code
-/yes-in-morse-code
-/no-in-morse-code
-/i-love-you-in-morse-code
-```
+</div>
 
 ---
 
-# 📝 Blog
-
-The website includes a blog section for educational Morse code and related topics.
-
-Blog routes follow this structure:
+# 📂 Project Structure
 
 ```text
-/blog
-/blog/[slug]
-```
-
-Blog post data is managed through:
-
-```text
-src/lib/blog-data.ts
+Morse-code-0.2/
+│
+├── 📁 public/
+│   └── 📁 images/
+│       └── 📁 home/
+│           ├── modern-user-morse-code.webp
+│           ├── morse-code-timing-rules.webp
+│           └── slator-guide.webp
+│
+├── 📁 src/
+│   │
+│   ├── 📁 app/
+│   │   ├── page.tsx
+│   │   ├── layout.tsx
+│   │   ├── globals.css
+│   │   ├── sitemap.ts
+│   │   ├── home.client.tsx
+│   │   ├── home-content.tsx
+│   │   ├── home-faq.client.tsx
+│   │   └── home-sos.client.tsx
+│   │
+│   ├── 📁 components/
+│   │   ├── 📁 morse/
+│   │   ├── 📁 theme/
+│   │   └── 📁 ui/
+│   │
+│   ├── 📁 hooks/
+│   │
+│   └── 📁 lib/
+│       ├── morse.ts
+│       ├── morse-characters.ts
+│       ├── seo.ts
+│       ├── blog-data.ts
+│       ├── db.ts
+│       └── utils.ts
+│
+├── package.json
+└── README.md
 ```
 
 ---
@@ -333,60 +265,36 @@ src/lib/seo.ts
 
 The project includes:
 
-- SEO metadata
-- Canonical URLs
-- Open Graph tags
-- Twitter metadata
-- FAQ Schema
-- Breadcrumb Schema
-- HowTo Schema
-- SoftwareApplication Schema
-- WebSite Schema
-- XML Sitemap
-- Internal linking
-
----
-
-# 📊 Structured Data
-
-The homepage generates multiple structured data types.
-
-## FAQ Schema
-
-Provides structured FAQ information for search engines.
-
-## Breadcrumb Schema
-
-Defines the homepage position within the website structure.
-
-## HowTo Schema
-
-Explains how users can use the Morse Code Translator.
-
-## SoftwareApplication Schema
-
-Describes the Morse Code Translator as an online application.
-
-## WebSite Schema
-
-Provides general structured information about the website.
+| SEO Feature | Status |
+|---|:---:|
+| 🏷️ Optimized Metadata | ✅ |
+| 🔗 Canonical URLs | ✅ |
+| 🌐 Open Graph Tags | ✅ |
+| 🐦 Twitter Metadata | ✅ |
+| ❓ FAQ Schema | ✅ |
+| 🍞 Breadcrumb Schema | ✅ |
+| 📝 HowTo Schema | ✅ |
+| 💻 SoftwareApplication Schema | ✅ |
+| 🌍 WebSite Schema | ✅ |
+| 🗺️ XML Sitemap | ✅ |
+| 🔗 Internal Linking | ✅ |
 
 ---
 
 # ♿ Accessibility
 
-The project focuses on accessibility through:
+Accessibility is considered throughout the project.
 
-- Proper labels for form controls
-- Accessible range sliders
-- Sufficient color contrast
-- Semantic HTML
-- Proper heading hierarchy
-- Descriptive image `alt` text
-- Keyboard navigation
-- Accessible buttons and links
+### Key areas include:
 
-When adding new components, accessibility should be checked alongside visual design and functionality.
+- ♿ Semantic HTML
+- 🏷️ Proper form labels
+- ⌨️ Keyboard navigation
+- 🎨 Improved color contrast
+- 🖼️ Descriptive image `alt` text
+- 🔘 Accessible buttons and links
+- 📊 Accessible interactive controls
+- 📱 Responsive layouts
 
 ---
 
@@ -394,15 +302,73 @@ When adding new components, accessibility should be checked alongside visual des
 
 Performance optimization focuses on:
 
-- Reducing unnecessary JavaScript
-- Separating static and interactive components
-- Optimizing images
-- Preventing layout shifts
-- Reducing unused JavaScript
-- Reducing render-blocking resources
-- Testing both mobile and desktop performance
+```text
+⚡ Reduce unnecessary JavaScript
+🧩 Separate static and interactive components
+🖼️ Optimize images
+📐 Prevent layout shifts
+🚀 Reduce unused resources
+📱 Optimize mobile experience
+💻 Optimize desktop experience
+```
 
-Recommended production testing:
+For accurate testing, use a production build:
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+# 🚀 Getting Started
+
+## 📋 Prerequisites
+
+Before starting, make sure you have:
+
+- Node.js 18+
+- npm
+
+---
+
+## 📥 Installation
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone <repository-url>
+```
+
+### 2️⃣ Open the project
+
+```bash
+cd Morse-code-0.2
+```
+
+### 3️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 💻 Start Development Server
+
+```bash
+npm run dev
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## 🏗️ Production Build
 
 ```bash
 npm run build
@@ -415,10 +381,26 @@ npm run start
 
 | Command | Description |
 |---|---|
-| `npm run dev` | Start the development server |
-| `npm run build` | Create a production build |
-| `npm run start` | Start the production server |
-| `npm run lint` | Run ESLint |
+| `npm run dev` | 🟢 Start development server |
+| `npm run build` | 🏗️ Create production build |
+| `npm run start` | 🚀 Start production server |
+| `npm run lint` | 🔍 Run ESLint |
+
+---
+
+# 📊 Structured Data
+
+The homepage generates multiple schema types.
+
+```text
+📋 FAQ Schema
+🍞 Breadcrumb Schema
+📝 HowTo Schema
+💻 SoftwareApplication Schema
+🌐 WebSite Schema
+```
+
+These schemas help search engines better understand the website and its functionality.
 
 ---
 
@@ -426,31 +408,54 @@ npm run start
 
 When adding a new page:
 
-1. Create a dedicated route.
-2. Add unique metadata.
-3. Add structured data where relevant.
-4. Add contextual internal links.
-5. Use semantic heading structure.
-6. Optimize images.
-7. Check mobile responsiveness.
-8. Test production performance.
-9. Check accessibility.
-10. Add the page to the sitemap when required.
+```text
+1️⃣ Create a dedicated route
+2️⃣ Add unique metadata
+3️⃣ Add structured data where relevant
+4️⃣ Add contextual internal links
+5️⃣ Use semantic heading structure
+6️⃣ Optimize images
+7️⃣ Check mobile responsiveness
+8️⃣ Test production performance
+9️⃣ Check accessibility
+🔟 Add the page to the sitemap when required
+```
 
 ---
 
-# 🌐 Live Website
+<div align="center">
 
-<p align="center">
-  <a href="https://www.morsecodetranslater.com">
-    <strong>🌐 www.morsecodetranslater.com</strong>
-  </a>
-</p>
+# 🌐 Explore Morse Code Translator
+
+### ⚡ Learn • Translate • Decode • Practice
+
+[![Visit Website](https://img.shields.io/badge/🌐_Visit_Website-www.morsecodetranslater.com-16a34a?style=for-the-badge)](https://www.morsecodetranslater.com)
+
+<br />
+
+### Quick Links
+
+[🏠 Home](https://www.morsecodetranslater.com) •
+[🔤 Alphabet](https://www.morsecodetranslater.com/morse-code-alphabet) •
+[🔢 Numbers](https://www.morsecodetranslater.com/morse-code-numbers) •
+[🔓 Decoder](https://www.morsecodetranslater.com/morse-code-decoder) •
+[🧠 Quiz](https://www.morsecodetranslater.com/morse-code-quiz) •
+[📖 Learn Morse](https://www.morsecodetranslater.com/learn-morse-code)
+
+</div>
 
 ---
 
-# 📄 License
+<div align="center">
+
+## 📄 License
 
 This is a private project.
 
 **All rights reserved.**
+
+<br />
+
+Made for **Morse Code Translator**
+
+</div>
