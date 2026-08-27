@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         destination: "/morse-code-numbers#number-:number",
         permanent: true,
       },
+      {
+  source: "/love-in-morse-code",
+  destination: "/i-love-you-in-morse-code",
+  permanent: true,
+},
     ];
   },
 };
