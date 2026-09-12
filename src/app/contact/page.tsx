@@ -8,29 +8,33 @@ import ContactClient from "./contact.client";
 
 const faqs = [
   {
-    question: "Do you offer a Morse code API for developers?",
-    answer: "We do not currently offer a public Morse code API. However, we have received numerous requests from developers who want to integrate Morse code translation into their applications, and we are actively evaluating the feasibility of releasing a REST API in the future. If you have a specific use case, please let us know through the contact form so we can prioritize accordingly.",
+    question: "Do you offer a public Morse code API?",
+    answer:
+      "We do not currently offer a public Morse code API. If you have a developer use case or would like API access in the future, use the contact form to describe what you need.",
   },
   {
     question: "Can I suggest a new feature or tool?",
-    answer: "Absolutely. We actively develop new features based on user feedback. Past suggestions that became features include the visual flash mode, WAV audio download, and the binary code translator. Submit your ideas through the contact form and our development team will review them during our next planning cycle.",
+    answer:
+      "Yes. We welcome practical suggestions for Morse code tools, learning resources, accessibility improvements, and other website features. Explain the problem the idea would solve and how you would use it.",
   },
   {
-    question: "How do I report a bug or incorrect translation?",
-    answer: "If you find an error in translation output, a broken feature, or any other technical issue, please use the contact form and include a detailed description of the problem, the text you entered, the output you received, and the browser you are using. We investigate and fix all reported bugs, typically within one to two business days.",
+    question: "How do I report an incorrect translation or technical problem?",
+    answer:
+      "Choose Bug Report or Content Correction and include the page URL, the exact text or Morse code you entered, the result you received, and a short description of what appears incorrect. This gives us enough context to investigate the issue.",
   },
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Contact Us - Morse Code Translator",
-  "Get in touch with the Morse Code Translator team. Report bugs, suggest features, ask questions, or provide feedback. We typically respond within 24 to 48 hours.",
+  "Contact Morse Code Translator | Questions, Bugs & Feedback",
+  "Contact Morse Code Translator with questions, bug reports, content corrections, feature suggestions, or general feedback. Learn what information to include so we can review your request efficiently.",
   "/contact",
   [
     "contact morse code translator",
-    "morse code feedback",
     "morse code support",
-    "report bug",
-    "suggest feature",
+    "morse code feedback",
+    "report morse code bug",
+    "morse code feature request",
+    "morse code content correction",
   ]
 );
 

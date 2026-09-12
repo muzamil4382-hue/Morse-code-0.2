@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+
 import Link from "next/link";
 import {
   generatePageMeta,
@@ -6,14 +6,16 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = generatePageMeta(
-  "Disclaimer | Morse Code Translator",
-  "Read the Morse Code Translator disclaimer, including information about educational use, translation accuracy, emergency communication, external links, and content limitations.",
+  "Morse Code Translator Disclaimer | Accuracy, Use & Limitations",
+  "Understand how Morse Code Translator tools and educational content should be used, including translation accuracy, International Morse Code conventions, emergency communication limits, external links, and important website limitations.",
   "/disclaimer",
   [
     "morse code translator disclaimer",
     "morse code disclaimer",
     "morse code educational use",
     "morse code translation accuracy",
+    "morse code tool limitations",
+    "international morse code disclaimer",
   ]
 );
 
@@ -71,8 +73,8 @@ export default function DisclaimerPage() {
           <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-500">
             <span>
               Last updated:{" "}
-              <time dateTime="2026-08-22">
-                August 22, 2026
+              <time dateTime="2026-09-12">
+                September 12, 2026
               </time>
             </span>
 
@@ -141,9 +143,18 @@ export default function DisclaimerPage() {
               The website includes tools for translating text to Morse code,
               decoding Morse code, learning Morse code characters, practicing
               timing, and exploring related educational resources. These tools
-              should be used as learning and reference aids rather than as a
-              substitute for professional communication systems or specialized
-              training.
+              are designed to make Morse code easier to understand and practice;
+              they are not intended to replace official communication procedures,
+              operational manuals, licensed instruction, or specialized training.
+            </p>
+
+            <p>
+              Because online tools depend on the information entered by the user,
+              the selected character set, and the way a message is formatted,
+              users should review important output before relying on it. A
+              translation result should not be treated as proof that a message is
+              suitable for a particular radio, maritime, aviation, military, or
+              other regulated communication system.
             </p>
           </section>
 
@@ -154,10 +165,13 @@ export default function DisclaimerPage() {
             </h2>
 
             <p>
-              Our tools are designed around commonly recognized International
-              Morse code conventions. However, Morse code has historical and
-              regional variations, and different organizations may follow
-              specific procedures or communication requirements.
+              Our tools are intended to follow commonly used International Morse
+              Code conventions for standard letters, numbers, and punctuation.
+              Morse code has also been used in different historical, technical,
+              and operational contexts, where procedures or available character
+              sets may differ. For that reason, a result generated here should
+              be checked against the standard or procedure that applies to your
+              specific use case.
             </p>
 
             <div className="my-6 rounded-xl border border-slate-200 bg-slate-50 p-5 not-prose">
@@ -200,6 +214,47 @@ export default function DisclaimerPage() {
             </p>
           </section>
 
+          {/* How to use the tools responsibly */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              How to Use Our Morse Code Tools
+            </h2>
+
+            <p>
+              For ordinary learning, practice, and personal projects, you can
+              use the translator and decoder to convert messages, check Morse
+              characters, and understand how text is represented in dots and
+              dashes. For best results, review the input and output rather than
+              copying a result blindly.
+            </p>
+
+            <div className="my-6 grid gap-4 sm:grid-cols-3 not-prose">
+              <div className="rounded-xl border border-slate-200 bg-white p-5">
+                <h3 className="font-bold text-slate-900">1. Enter carefully</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Check spelling, punctuation, spacing, and the message you want
+                  to translate or decode.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-5">
+                <h3 className="font-bold text-slate-900">2. Check the output</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Compare important characters with a trusted Morse code
+                  reference, especially when the message matters.
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-slate-200 bg-white p-5">
+                <h3 className="font-bold text-slate-900">3. Follow the right standard</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Use the applicable official procedure when your message is part
+                  of a regulated or professional communication system.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {/* Emergency */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-slate-900">
@@ -232,7 +287,7 @@ export default function DisclaimerPage() {
             <p>
               Information about distress signals, including{" "}
               <Link
-                href="/sos-morse-code"
+                href="/blog/sos-signal-morse-code-everything-you-need-to-know"
                 className="font-medium text-green-700 hover:underline"
               >
                 SOS in Morse code
@@ -240,6 +295,29 @@ export default function DisclaimerPage() {
               , is provided for educational purposes. Readers should seek
               appropriate professional training before relying on Morse code for
               emergency communication.
+            </p>
+          </section>
+
+          {/* Educational vs operational use */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              Educational Use vs. Operational Communication
+            </h2>
+
+            <p>
+              There is an important difference between learning Morse code online
+              and using Morse code as part of an operational communication
+              procedure. An educational website can explain characters, timing,
+              examples, and common conventions, but an operational environment
+              may impose additional requirements for equipment, identification,
+              message format, timing, authentication, or emergency procedures.
+            </p>
+
+            <p>
+              If your use involves aviation, maritime operations, amateur radio,
+              military procedures, public safety, or another regulated setting,
+              follow the current instructions and standards issued by the
+              responsible authority or organization.
             </p>
           </section>
 
@@ -285,9 +363,9 @@ export default function DisclaimerPage() {
             </h2>
 
             <p>
-              Nothing on this website should be interpreted as professional,
-              legal, technical, safety, aviation, maritime, military, or
-              regulatory advice. Requirements can vary depending on your
+              Nothing on this website should be interpreted as professional, legal,
+              technical, safety, aviation, maritime, military, or regulatory
+              advice. Requirements can vary depending on your
               location, organization, equipment, and intended use.
             </p>
 
@@ -295,6 +373,28 @@ export default function DisclaimerPage() {
               For licensing requirements, professional training, operational
               procedures, or regulatory compliance, consult the appropriate
               authority, certified instructor, or official organization.
+            </p>
+          </section>
+
+          {/* Website and tool limitations */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              Website and Tool Limitations
+            </h2>
+
+            <p>
+              Online services can be affected by browser behavior, device
+              compatibility, network availability, software changes, maintenance,
+              or other technical conditions. We do not guarantee uninterrupted
+              availability of every page, feature, or tool.
+            </p>
+
+            <p>
+              Information on this website may also change as pages are reviewed,
+              corrected, expanded, or reorganized. Where a specific external
+              standard or procedure controls your situation, that official source
+              should take priority over general educational information published
+              here.
             </p>
           </section>
 
@@ -311,10 +411,12 @@ export default function DisclaimerPage() {
             </p>
 
             <p>
-              We do not control third-party websites and are not responsible for
-              their content, availability, accuracy, security, or privacy
-              practices. Visiting an external website is subject to that
-              website&apos;s own terms and policies.
+              We do not control third-party websites and cannot guarantee the
+              accuracy, availability, security, or privacy practices of external
+              services. A link does not necessarily mean that we endorse every
+              statement, product, or service found on the destination website.
+              Visiting an external website is subject to that website&apos;s own
+              terms, policies, and privacy practices.
             </p>
           </section>
 
@@ -339,10 +441,26 @@ export default function DisclaimerPage() {
                 >
                   Contact Us page
                 </Link>
-                . The Morse Code Translator Team will review relevant reports
-                and make corrections when appropriate.
+                . We review relevant reports and, when a correction is warranted,
+                may update the affected page or tool.
               </p>
             </div>
+          </section>
+
+          {/* Reader responsibility */}
+          <section className="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-6 not-prose">
+            <h2 className="text-2xl font-bold text-slate-900">
+              What This Means for You
+            </h2>
+
+            <p className="mt-3 text-slate-700 leading-relaxed">
+              You are welcome to use Morse Code Translator for learning,
+              experimentation, personal projects, and general reference. For
+              decisions where an incorrect Morse code message could create a
+              safety, legal, regulatory, or operational risk, verify the
+              information with the appropriate official source or qualified
+              professional before acting on it.
+            </p>
           </section>
 
           {/* Related Pages */}

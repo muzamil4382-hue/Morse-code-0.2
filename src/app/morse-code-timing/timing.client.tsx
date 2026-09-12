@@ -105,7 +105,7 @@ export default function TimingClient({ faqs }: Props) {
       <section className="w-full bg-gradient-to-br from-green-800 via-green-800 to-emerald-950">
         <div className="mx-auto max-w-5xl px-4 py-14 text-center sm:px-6 sm:py-16 lg:px-8">
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Morse Code Timing
+            Morse Code Timing: WPM, Speed & Spacing
           </h1>
 
           <p className="mx-auto mt-5 max-w-4xl text-lg leading-8 text-green-50/90 sm:text-xl">
@@ -148,7 +148,8 @@ export default function TimingClient({ faqs }: Props) {
           <p className="mt-5 w-full max-w-4xl leading-8 text-slate-600 dark:text-slate-400">
             Morse code is more than a collection of dots and dashes. The
             relationship between signal lengths and silent gaps is part of the
-            communication system itself. A correctly transmitted message uses
+            communication system itself. Timing tells a listener where one
+            signal element ends, where a character ends, and where a word begins. A correctly transmitted message uses
             proportional timing so that a listener can distinguish individual
             elements, characters, and words.
           </p>
@@ -728,10 +729,10 @@ export default function TimingClient({ faqs }: Props) {
               text: "Test your knowledge with interactive questions.",
             },
             {
-              href: "/sos-morse-code",
+              href: "/blog/sos-signal-morse-code-everything-you-need-to-know",
               icon: "🆘",
-              title: "SOS Morse Code",
-              text: "Learn the internationally recognized SOS signal.",
+              title: "SOS Signal in Morse Code",
+              text: "Understand the SOS signal, its Morse pattern, and common emergency-signal context.",
             },
             {
               href: "/what-is-morse-code",
@@ -761,6 +762,61 @@ export default function TimingClient({ faqs }: Props) {
               </span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* =====================================================
+          SOURCES & FURTHER READING
+      ====================================================== */}
+
+      <section className="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-background">
+        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Standards & References
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+              Morse Code Timing References
+            </h2>
+
+            <p className="mt-4 leading-8 text-slate-600 dark:text-slate-400">
+              The timing ratios on this page describe standard International
+              Morse Code practice. For authoritative reference material, consult
+              the International Telecommunication Union recommendation and
+              established amateur-radio resources.
+            </p>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <a
+                href="https://www.itu.int/rec/R-REC-M.1677"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-green-500 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900"
+              >
+                <h3 className="font-bold text-slate-900 dark:text-white">
+                  ITU-R Recommendation M.1677
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  International reference material for International Morse Code.
+                </p>
+              </a>
+
+              <a
+                href="https://www.arrl.org/code-characters"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:border-green-500 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900"
+              >
+                <h3 className="font-bold text-slate-900 dark:text-white">
+                  ARRL Code Characters
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                  A practical reference for Morse characters and related learning.
+                </p>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -810,7 +866,7 @@ export default function TimingClient({ faqs }: Props) {
                 </button>
 
                 {openFaq === index && (
-                  <div className="px-5 pb-5">
+                  <div id={`timing-faq-${index}`} className="px-5 pb-5">
                     <p className="leading-7 text-slate-600 dark:text-slate-400">
                       {faq.answer}
                     </p>

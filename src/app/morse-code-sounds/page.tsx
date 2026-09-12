@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "What frequency is used for Morse code sounds?",
     answer:
-      "There is no single mandatory audio frequency for Morse code. A tone around 600 Hz is commonly used for practice because it is comfortable to hear, while many Morse code oscillators and training tools allow the pitch to be adjusted.",
+      "There is no single required audio frequency for Morse code. Training tools commonly allow the pitch to be adjusted, so learners can choose a clear and comfortable tone.",
   },
   {
     question: "How long is a Morse code dot?",
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: "How can I learn Morse code by sound?",
     answer:
-      "Start by listening to individual character patterns and gradually build recognition. Avoid counting every dot and dash at higher speeds. Regular listening practice, correct timing, and character recognition exercises can help develop faster auditory recognition.",
+      "Start by listening to individual character patterns and gradually build recognition. Avoid counting every dot and dash at higher speeds. Regular listening practice, consistent timing, and character-recognition exercises can improve auditory recognition over time.",
   },
   {
     question: "What is the difference between a Morse code sound and written Morse code?",
@@ -61,8 +61,8 @@ const faqs = [
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Sounds | Audio, Frequency, Timing & Listening Guide",
-  "Learn how Morse code sounds work with dots, dashes, audio frequency, pitch, WPM, PARIS timing, character gaps, word spacing, listening practice, and Morse code recognition techniques.",
+  "Morse Code Sounds: Audio, Timing, Frequency & Practice",
+  "Learn how Morse code sounds work, including dits and dahs, audio pitch, timing, WPM, letter and word spacing, and practical listening practice for International Morse Code.",
   "/morse-code-sounds",
   [
     "morse code sounds",
@@ -127,7 +127,7 @@ const internalLinks = [
     text: "Test your knowledge and recognition of Morse code characters.",
   },
   {
-    href: "/sos-morse-code",
+    href: "/blog/sos-signal-morse-code-everything-you-need-to-know",
     icon: "SOS",
     title: "SOS Morse Code",
     text: "Learn why ... --- ... became the internationally recognized distress signal.",
@@ -468,11 +468,9 @@ export default function MorseCodeSoundsPage() {
               </p>
 
               <p>
-                For practice, tones around the middle of the audible range are
-                commonly comfortable for extended listening. A setting near{" "}
-                <strong>600 Hz</strong> is often used by Morse code training
-                tools because it produces a clear tone without being extremely
-                low or high.
+                Many training tools let you choose a clear, comfortable tone
+                for repeated listening. The pitch does not change the meaning
+                of a Morse code character; the signal pattern and timing do.
               </p>
             </div>
           </div>
@@ -491,8 +489,8 @@ export default function MorseCodeSoundsPage() {
                 text: "A deeper audio tone that may feel less sharp during listening.",
               },
               {
-                range: "Around 600 Hz",
-                text: "A balanced practice pitch commonly used for clear Morse code training.",
+                range: "Comfortable practice pitch",
+                text: "Choose a clear tone that is comfortable for repeated listening; the pitch itself does not encode the message.",
               },
               {
                 range: "Higher pitch",
@@ -731,17 +729,25 @@ export default function MorseCodeSoundsPage() {
 
             <div className="mt-5 space-y-5 leading-8 text-slate-600 dark:text-slate-300">
               <p>
-                Morse code developed as a communication system for transmitting
-                information through timed electrical signals. Over time, the
-                system became closely associated with the telegraph, radio
-                communication, amateur radio, maritime communication, aviation
-                history, and emergency signaling.
+                Morse code audio carries information through the sequence and
+                timing of short and long signals. The meaning comes from the
+                pattern, not from the musical quality or pitch of the tone.
+                That makes timing essential when listening to or generating a
+                Morse transmission.
+              </p>
+
+              <p>
+                For example, the letter S is <strong>...</strong> and the
+                letter O is <strong>---</strong>. Together, they form the
+                familiar SOS pattern: <strong>... --- ...</strong>. The same
+                timing principles apply whether Morse is heard as an audio
+                tone or represented as dots and dashes on a screen.
               </p>
 
               <p>
                 One of the best-known Morse patterns is{" "}
                 <Link
-                  href="/sos-morse-code"
+                  href="/blog/sos-signal-morse-code-everything-you-need-to-know"
                   className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
                 >
                   SOS: ... --- ...
@@ -767,6 +773,58 @@ export default function MorseCodeSoundsPage() {
                   Morse Code Decoder
                 </Link>
                 .
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            AUDIO VS WRITTEN
+        ====================================================== */}
+
+        <section className="mb-16 border-t border-slate-200 pt-16 dark:border-slate-800">
+          <div className="max-w-4xl">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-green-700 dark:text-green-400">
+              Practical Understanding
+            </span>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Audio Morse Code vs. Written Morse Code
+            </h2>
+
+            <div className="mt-5 space-y-5 leading-8 text-slate-600 dark:text-slate-300">
+              <p>
+                Written Morse code shows a character as dots and dashes, while
+                audio Morse code expresses those same elements through short
+                and long signals. In both forms, the character pattern stays
+                the same.
+              </p>
+
+              <p>
+                Audio adds an important layer: <strong>timing</strong>. A
+                listener needs to distinguish the length of each signal and
+                the pauses between elements, letters, and words. This is why a
+                message can contain the correct dots and dashes but still be
+                difficult to recognize if the spacing is inconsistent.
+              </p>
+
+              <p>
+                If you are learning by ear, use the
+                <Link
+                  href="/morse-code-timing"
+                  className="font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  Morse Code Timing guide
+                </Link>{" "}
+                alongside the
+                <Link
+                  href="/morse-code-alphabet"
+                  className="ml-1 font-semibold text-green-700 underline underline-offset-4 hover:text-green-800 dark:text-green-400"
+                >
+                  Morse Code Alphabet
+                </Link>
+                . This gives you both the visual pattern and the timing
+                framework behind the sound.
               </p>
             </div>
           </div>

@@ -7,13 +7,16 @@ import {
 
 export const metadata: Metadata = generatePageMeta(
   "Terms & Conditions | Morse Code Translator",
-  "Read the Terms and Conditions for using Morse Code Translator, including acceptable use, intellectual property, translation accuracy, limitations, and website policies.",
+  "Review the Terms and Conditions for Morse Code Translator, including acceptable use, intellectual property, translation accuracy, external resources, website limitations, and user responsibilities.",
   "/terms",
   [
     "morse code translator terms",
-    "terms and conditions",
+    "morse code terms and conditions",
     "morse code terms of service",
     "website terms",
+    "morse code tool disclaimer",
+    "online translator terms",
+    "intellectual property terms",
   ]
 );
 
@@ -71,8 +74,8 @@ export default function TermsPage() {
           <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-500">
             <span>
               Last updated:{" "}
-              <time dateTime="2026-08-22">
-                August 22, 2026
+              <time dateTime="2026-09-12">
+                September 12, 2026
               </time>
             </span>
 
@@ -151,10 +154,24 @@ export default function TermsPage() {
 
             <p>
               Morse Code Translator provides free online tools and educational
-              resources related to International Morse code. Our website may
-              include text-to-Morse translation, Morse-to-text decoding,
-              alphabet and number references, timing guides, audio tools,
-              quizzes, tutorials, and informational articles.
+              resources related to International Morse code. Depending on the
+              page, the website may include a{" "}
+              <Link href="/" className="font-medium text-green-700 hover:underline">
+                Morse code translator
+              </Link>
+              , a{" "}
+              <Link href="/morse-code-decoder" className="font-medium text-green-700 hover:underline">
+                Morse code decoder
+              </Link>
+              ,{" "}
+              <Link href="/morse-code-alphabet" className="font-medium text-green-700 hover:underline">
+                alphabet and number references
+              </Link>
+              ,{" "}
+              <Link href="/morse-code-timing" className="font-medium text-green-700 hover:underline">
+                timing guidance
+              </Link>
+              , audio resources, quizzes, tutorials, and informational articles.
             </p>
 
             <div className="my-6 rounded-xl border border-slate-200 bg-slate-50 p-5 not-prose">
@@ -195,7 +212,18 @@ export default function TermsPage() {
 
             <p>
               We may modify, improve, add, remove, or update website features
-              and content at any time without prior notice.
+              and content as the website develops. A feature, page, tool, or
+              resource may therefore change or become unavailable without prior
+              notice.
+            </p>
+
+            <p>
+              For information about how we create and review educational
+              material, see our{" "}
+              <Link href="/editorial-policy" className="font-medium text-green-700 hover:underline">
+                Editorial Policy
+              </Link>
+              .
             </p>
           </section>
 
@@ -307,7 +335,14 @@ export default function TermsPage() {
               >
                 Disclaimer
               </Link>
-              .
+              . If you are studying signal duration and spacing, our{" "}
+              <Link
+                href="/morse-code-timing"
+                className="font-medium text-green-700 hover:underline"
+              >
+                Morse code timing guide
+              </Link>
+              {" "}provides additional reference material.
             </p>
           </section>
 
@@ -334,40 +369,146 @@ export default function TermsPage() {
             <p>
               Information about signals such as{" "}
               <Link
-                href="/sos-morse-code"
+                href="/blog/sos-signal-morse-code-everything-you-need-to-know"
                 className="font-medium text-green-700 hover:underline"
               >
                 SOS in Morse code
               </Link>{" "}
-              is provided for educational purposes and should not replace
-              appropriate emergency training or communication equipment.
+              is provided for educational purposes. It should not replace
+              emergency training, approved communication procedures, or
+              dedicated communication equipment.
             </p>
           </section>
 
           {/* Third Party Links */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-slate-900">
-              7. Third-Party Links
+              7. Third-Party Links and Reference Sources
             </h2>
 
             <p>
-              Our website may include links to third-party websites,
-              organizations, research sources, or educational resources. These
-              links are provided for convenience and additional information.
+              Our website may link to third-party websites, standards
+              organizations, research sources, or educational resources when
+              they provide useful context for a topic. These links are
+              intended to help readers verify information or explore a subject
+              in greater depth.
             </p>
+
+            <div className="my-6 rounded-2xl border border-slate-200 bg-slate-50 p-6 not-prose">
+              <h3 className="mb-4 font-bold text-slate-900">
+                Authoritative Morse code and copyright references
+              </h3>
+
+              <div className="space-y-4 text-sm leading-relaxed">
+                <p>
+                  <a
+                    href="https://www.itu.int/rec/R-REC-M.1677"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="font-semibold text-green-700 hover:underline"
+                  >
+                    ITU-R Recommendation M.1677 — International Morse code
+                  </a>{" "}
+                  provides an authoritative reference for International Morse
+                  code characters and their use in radiocommunication services.
+                </p>
+
+                <p>
+                  <a
+                    href="https://www.wipo.int/en/web/copyright/faq-copyright"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="font-semibold text-green-700 hover:underline"
+                  >
+                    WIPO Copyright FAQs
+                  </a>{" "}
+                  provides general information about copyright and the types of
+                  creative works that may receive protection.
+                </p>
+              </div>
+            </div>
 
             <p>
               We do not control third-party websites and are not responsible
               for their content, availability, security, policies, or
-              practices. Accessing an external website is subject to that
-              website&apos;s own terms and privacy policies.
+              practices. External websites may change their content or URLs
+              after we link to them. Visiting an external website is subject
+              to that website&apos;s own terms, privacy policy, and other
+              applicable rules.
+            </p>
+
+            <p className="text-sm text-slate-600">
+              External references are provided for general educational and
+              informational purposes. They do not constitute legal advice or
+              create an endorsement, partnership, or guarantee of any
+              third-party service.
+            </p>
+          </section>
+
+          {/* User Feedback */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              8. Feedback and User-Submitted Information
+            </h2>
+
+            <p>
+              If you contact us with a question, bug report, correction, feature
+              suggestion, or other feedback, please provide only information
+              that is relevant to your request. Do not send passwords,
+              payment-card details, authentication codes, or other sensitive
+              information through a general contact form.
+            </p>
+
+            <p>
+              By submitting feedback, you represent that you have the right to
+              share it. We may use relevant suggestions or technical details to
+              improve the website, troubleshoot problems, or evaluate new
+              features, subject to our{" "}
+              <Link href="/privacy" className="font-medium text-green-700 hover:underline">
+                Privacy Policy
+              </Link>
+              .
+            </p>
+          </section>
+
+          {/* Availability and Liability */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              9. Availability and Limitation of Liability
+            </h2>
+
+            <p>
+              We aim to keep the website useful and available, but we do not
+              guarantee that every page, tool, translation, feature, or
+              supporting service will always be available, uninterrupted, or
+              error-free. Website availability may be affected by maintenance,
+              technical issues, hosting problems, network conditions, or
+              changes to third-party services.
+            </p>
+
+            <p>
+              To the extent permitted by applicable law, Morse Code Translator
+              is not responsible for losses or damages arising from reliance on
+              the website, its tools, translations, educational content, or
+              external resources. Nothing in these Terms is intended to exclude
+              or limit a right or liability that cannot lawfully be excluded or
+              limited.
+            </p>
+
+            <p>
+              For a fuller explanation of intended use and tool limitations,
+              review our{" "}
+              <Link href="/disclaimer" className="font-medium text-green-700 hover:underline">
+                Disclaimer
+              </Link>
+              .
             </p>
           </section>
 
           {/* Privacy */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-slate-900">
-              8. Privacy
+              10. Privacy
             </h2>
 
             <p>
@@ -386,7 +527,7 @@ export default function TermsPage() {
           {/* Changes */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-slate-900">
-              9. Changes to These Terms
+              11. Changes to These Terms
             </h2>
 
             <p>
@@ -401,6 +542,44 @@ export default function TermsPage() {
               website after updated terms are posted constitutes acceptance of
               the revised Terms and Conditions.
             </p>
+          </section>
+
+          {/* Related Resources */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              Reference Resources
+            </h2>
+
+            <p>
+              If you want to verify the technical or intellectual-property
+              topics mentioned in these Terms, the following primary sources
+              provide useful background:
+            </p>
+
+            <ul className="mt-4 list-disc space-y-2 pl-6">
+              <li>
+                <a
+                  href="https://www.itu.int/rec/R-REC-M.1677"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="font-medium text-green-700 hover:underline"
+                >
+                  ITU-R Recommendation M.1677
+                </a>{" "}
+                — International Morse code reference.
+              </li>
+              <li>
+                <a
+                  href="https://www.wipo.int/en/web/copyright/faq-copyright"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="font-medium text-green-700 hover:underline"
+                >
+                  WIPO Copyright FAQs
+                </a>{" "}
+                — general copyright information.
+              </li>
+            </ul>
           </section>
 
           {/* Related Policies */}
@@ -469,7 +648,7 @@ export default function TermsPage() {
           {/* Contact */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-slate-900">
-              10. Contact Us
+              12. Contact Us
             </h2>
 
             <p>
@@ -532,6 +711,27 @@ export default function TermsPage() {
               className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 p-4 font-medium text-green-700 transition hover:bg-green-100"
             >
               🎯 Quiz
+            </Link>
+
+            <Link
+              href="/morse-code-timing"
+              className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 p-4 font-medium text-green-700 transition hover:bg-green-100"
+            >
+              ⏱️ Timing
+            </Link>
+
+            <Link
+              href="/morse-code-sounds"
+              className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 p-4 font-medium text-green-700 transition hover:bg-green-100"
+            >
+              🔊 Sounds
+            </Link>
+
+            <Link
+              href="/what-is-morse-code"
+              className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 p-4 font-medium text-green-700 transition hover:bg-green-100"
+            >
+              ℹ️ What Is Morse Code?
             </Link>
 
             <Link

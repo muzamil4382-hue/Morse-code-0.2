@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "What is a binary code translator?",
     answer:
-      "A binary code translator is a tool that converts readable text into binary digits (0s and 1s) and converts binary sequences back into text. This page focuses on common 8-bit character representations used for ASCII-compatible text conversion.",
+      "A binary code translator converts text into sequences of 0s and 1s or decodes valid binary groups back into readable characters. This tool works with 8-bit byte groups for the text it accepts.",
   },
   {
     question: "How does text to binary conversion work?",
@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "How do I convert binary to text?",
     answer:
-      "Enter binary values in groups of 8 bits, separated by spaces. Each valid group is interpreted as a character code and converted into readable text by the translator.",
+      "Enter binary values in groups of 8 bits, separated by spaces. Each valid group is interpreted as a character code and converted into readable text.",
   },
   {
     question: "What is binary code?",
@@ -118,14 +118,12 @@ export default function BinaryCodeTranslatorPage() {
           __html: JSON.stringify(faqSchema),
         }}
       />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

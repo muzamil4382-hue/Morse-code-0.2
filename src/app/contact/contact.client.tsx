@@ -39,16 +39,16 @@ const inquiryTypes = [
 
 const faqs = [
   {
-    q: "Do you offer a Morse code API?",
-    a: "We do not currently offer a public Morse code API. If you have a specific use case or would like to see an API added in the future, you can contact the Morse Code Translator Team and share your requirements.",
+    q: "Do you offer a public Morse code API?",
+    a: "We do not currently offer a public Morse code API. If you have a developer use case or would like API access in the future, use the contact form to describe what you need.",
   },
   {
-    q: "Can I suggest a new feature?",
-    a: "Yes. We welcome suggestions for new tools, improvements, learning resources, and features. Describe your idea in as much detail as possible so our team can understand how it could improve the website.",
+    q: "Can I suggest a new feature or tool?",
+    a: "Yes. We welcome practical suggestions for Morse code tools, learning resources, accessibility improvements, and other website features. Explain the problem the idea would solve and how you would use it.",
   },
   {
     q: "How do I report an incorrect translation or technical problem?",
-    a: "Select Bug Report or Content Correction as your inquiry type and include the page URL, the text or Morse code you entered, the result you received, and a short description of the issue.",
+    a: "Choose Bug Report or Content Correction and include the page URL, the exact text or Morse code you entered, the result you received, and a short description of what appears incorrect. This gives us enough context to investigate the issue.",
   },
 ];
 
@@ -133,11 +133,11 @@ export default function ContactPage() {
         <section className="mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200 text-sm font-medium text-green-700 mb-4">
             <MessageSquare className="w-4 h-4" />
-            Contact the Morse Code Translator Team
+            Contact Morse Code Translator
           </div>
 
           <h1 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
-            Contact Us
+            Contact the Morse Code Translator Team
           </h1>
 
           <p className="text-lg text-slate-600 max-w-3xl leading-relaxed">
@@ -159,8 +159,7 @@ export default function ContactPage() {
             </h2>
 
             <p className="text-sm text-slate-600 leading-relaxed">
-              Ask questions about our Morse code translator, decoder,
-              alphabet charts, learning resources, or other tools.
+              Ask about our Morse code translator, decoder, alphabet charts, learning resources, or other tools. For faster help, include the page or tool you are asking about.
             </p>
           </div>
 
@@ -174,8 +173,7 @@ export default function ContactPage() {
             </h2>
 
             <p className="text-sm text-slate-600 leading-relaxed">
-              Found a broken page, incorrect translation, technical problem,
-              or inaccurate information? Let us know.
+              Found a broken page, unexpected translation output, technical problem, or inaccurate information? Tell us what happened and, when possible, include the page URL and the input you used.
             </p>
           </div>
 
@@ -189,8 +187,7 @@ export default function ContactPage() {
             </h2>
 
             <p className="text-sm text-slate-600 leading-relaxed">
-              Share ideas for new Morse code tools, educational content,
-              features, or improvements to the website.
+              Share ideas for new Morse code tools, educational content, accessibility improvements, or other website features.
             </p>
           </div>
         </section>
@@ -207,8 +204,7 @@ export default function ContactPage() {
               </h2>
 
               <p className="text-sm text-slate-300 leading-relaxed mb-6">
-                Please provide enough detail for us to understand your
-                question, suggestion, or issue.
+                A clear description helps us understand your request and investigate it efficiently. If you are reporting a problem, include the page URL, your input, the output you expected, and what happened instead.
               </p>
 
               <div className="border-t border-slate-700 pt-5">
@@ -216,8 +212,7 @@ export default function ContactPage() {
                   <ShieldCheck className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
 
                   <p className="text-sm text-slate-300 leading-relaxed">
-                    Messages submitted through this form are used to respond
-                    to your inquiry and help us improve Morse Code Translator.
+                    We use the information you submit to respond to your inquiry and, when appropriate, investigate or improve the website. Please avoid sending passwords or other sensitive information.
                   </p>
                 </div>
               </div>
@@ -369,8 +364,7 @@ export default function ContactPage() {
                 </h2>
 
                 <p className="text-green-800 max-w-md mx-auto mb-7 leading-relaxed">
-                  Thank you for contacting the Morse Code Translator Team.
-                  Your message has been submitted successfully.
+                  Thank you for contacting the Morse Code Translator Team. Your message has been submitted successfully.
                 </p>
 
                 <button
@@ -384,6 +378,55 @@ export default function ContactPage() {
                 </button>
               </div>
             )}
+          </div>
+        </section>
+
+        {/* Contact Guidance */}
+        <section className="mb-14">
+          <div className="max-w-3xl mb-6">
+            <p className="text-sm font-semibold uppercase tracking-wider text-green-600 mb-2">
+              Before You Send
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+              Help Us Understand Your Request
+            </h2>
+            <p className="text-slate-600 leading-relaxed">
+              The more specific your message is, the easier it is to identify
+              the right answer or reproduce a reported problem. You do not need
+              to use technical language.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+              <h3 className="font-semibold text-slate-900 mb-2">
+                For translation issues
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Include the exact text or Morse code, the output you received,
+                and the page where the issue occurred.
+              </p>
+            </div>
+
+            <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+              <h3 className="font-semibold text-slate-900 mb-2">
+                For technical bugs
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Describe the steps that caused the problem and mention the
+                browser or device if it helps reproduce the issue.
+              </p>
+            </div>
+
+            <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+              <h3 className="font-semibold text-slate-900 mb-2">
+                For suggestions
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                Tell us what you would like to improve and why the change
+                would make the tool or learning experience more useful.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -444,7 +487,7 @@ export default function ContactPage() {
               </p>
 
               <h2 className="text-2xl font-bold text-slate-900">
-                Popular Morse Code Resources
+                Explore Morse Code Resources
               </h2>
             </div>
 

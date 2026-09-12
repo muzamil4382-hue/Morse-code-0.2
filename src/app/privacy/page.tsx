@@ -4,13 +4,16 @@ import { generatePageMeta, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = generatePageMeta(
   "Privacy Policy | Morse Code Translator",
-  "Read the Privacy Policy for Morse Code Translator and learn how we handle website usage data, contact information, cookies, and your privacy.",
+  "Learn how Morse Code Translator handles website usage data, contact messages, cookies, translation input, security, privacy choices, and external services.",
   "/privacy",
   [
     "privacy policy",
     "morse code translator privacy",
     "website privacy policy",
     "data privacy",
+    "morse code translator data privacy",
+    "cookies and privacy",
+    "website data collection",
   ]
 );
 
@@ -64,7 +67,7 @@ export default function PrivacyPage() {
           </p>
 
           <p className="text-sm text-slate-500 mt-5">
-            <strong>Last updated:</strong> August 22, 2026
+            <strong>Last updated:</strong> September 12, 2026
           </p>
         </div>
 
@@ -75,7 +78,7 @@ export default function PrivacyPage() {
               Privacy at a Glance
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="rounded-xl bg-white border border-green-100 p-4">
                 <div className="text-lg mb-2">🔒</div>
                 <h3 className="font-semibold text-slate-900 mb-1">
@@ -140,8 +143,11 @@ export default function PrivacyPage() {
           </h2>
 
           <p>
-            Depending on how you interact with the website, we may collect or
-            receive limited categories of information.
+            The information involved depends on what you do on the site. Some
+            data is generated automatically when a browser loads a webpage,
+            while other information is provided only when you choose to contact
+            us. We aim to collect or receive only information that is reasonably
+            useful for operating, securing, improving, or supporting the website.
           </p>
 
           <div className="not-prose overflow-hidden rounded-xl border border-slate-200 my-6">
@@ -243,7 +249,32 @@ export default function PrivacyPage() {
           </ul>
 
           <h2 className="text-2xl font-bold text-slate-900">
-            5. Cookies and Similar Technologies
+            5. Legal Bases and Purpose of Processing
+          </h2>
+
+          <p>
+            Where privacy or data-protection law requires a legal basis for
+            processing personal information, the applicable basis depends on
+            the purpose and circumstances. Depending on the activity, this may
+            include your consent, providing a service you request, complying
+            with a legal obligation, or pursuing legitimate interests such as
+            website security, maintenance, and improvement where permitted by
+            law.
+          </p>
+
+          <p>
+            We do not treat every category of information in the same way. For
+            example, a message you voluntarily send through{" "}
+            <Link href="/contact" className="text-green-600 underline">
+              Contact Us
+            </Link>{" "}
+            is different from basic technical information generated when a page
+            loads. The purpose for collecting or using information should be
+            considered together with the context in which it was provided.
+          </p>
+
+          <h2 className="text-2xl font-bold text-slate-900">
+            6. Cookies and Similar Technologies
           </h2>
 
           <p>
@@ -260,7 +291,7 @@ export default function PrivacyPage() {
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900">
-            6. Third-Party Services and External Links
+            7. Third-Party Services and External Links
           </h2>
 
           <p>
@@ -277,8 +308,32 @@ export default function PrivacyPage() {
             </p>
           </div>
 
+          <p>
+            For general privacy education, you may find the{" "}
+            <a
+              href="https://ico.org.uk/for-the-public/online/cookies/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 underline"
+            >
+              UK Information Commissioner&apos;s Office guidance on cookies
+            </a>{" "}
+            useful. The{" "}
+            <a
+              href="https://www.edpb.europa.eu/sme/be-compliant/respect-individuals-rights_en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 underline"
+            >
+              European Data Protection Board&apos;s guide to individual rights
+            </a>{" "}
+            is another independent resource. These links are provided for
+            general information and do not replace legal advice or determine
+            which laws apply to your particular situation.
+          </p>
+
           <h2 className="text-2xl font-bold text-slate-900">
-            7. Data Security
+            8. Data Security
           </h2>
 
           <p>
@@ -290,11 +345,43 @@ export default function PrivacyPage() {
 
           <p>
             You use the website at your own discretion and should take normal
-            precautions when sharing information online.
+            precautions when sharing information online. For practical guidance
+            on protecting personal information, you can also review the{" "}
+            <a
+              href="https://www.edpb.europa.eu/sme/be-compliant/secure-personal-data_en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-600 underline"
+            >
+              European Data Protection Board&apos;s guidance on securing personal data
+            </a>.
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900">
-            8. Children&apos;s Privacy
+            9. Data Retention
+          </h2>
+
+          <p>
+            We do not keep personal information for longer than is reasonably
+            necessary for the purpose for which it was collected, unless a
+            longer period is required or permitted by law. Retention can depend
+            on the type of information, why it was received, security or
+            operational needs, and whether a legal or support issue requires
+            records to be retained.
+          </p>
+
+          <p>
+            Because different website features and third-party services may
+            have different retention periods, this policy does not promise one
+            universal deletion period for every type of data. If you want to
+            ask about information you have submitted to us, use the{" "}
+            <Link href="/contact" className="text-green-600 underline">
+              Contact Us page
+            </Link>.
+          </p>
+
+          <h2 className="text-2xl font-bold text-slate-900">
+            10. Children&apos;s Privacy
           </h2>
 
           <p>
@@ -313,7 +400,7 @@ export default function PrivacyPage() {
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900">
-            9. Your Privacy Choices
+            11. Your Privacy Choices
           </h2>
 
           <p>
@@ -330,18 +417,25 @@ export default function PrivacyPage() {
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900">
-            10. Changes to This Privacy Policy
+            12. Changes to This Privacy Policy
           </h2>
 
           <p>
             We may update this Privacy Policy as the website, its features, or
             applicable requirements change. When changes are made, the
             &quot;Last updated&quot; date at the top of this page will be
-            revised.
+            revised. For related information, you can also review our{" "}
+            <Link href="/editorial-policy" className="text-green-600 underline">
+              Editorial Policy
+            </Link>{" "}
+            and{" "}
+            <Link href="/disclaimer" className="text-green-600 underline">
+              Disclaimer
+            </Link>.
           </p>
 
           <h2 className="text-2xl font-bold text-slate-900">
-            11. Contact Us
+            13. Contact Us
           </h2>
 
           <p>
@@ -398,6 +492,19 @@ export default function PrivacyPage() {
                 Get in touch with the Morse Code Translator team.
               </p>
             </Link>
+
+            <Link
+              href="/editorial-policy"
+              className="group rounded-xl border border-slate-200 bg-white p-5 hover:border-green-400 hover:shadow-sm transition-all"
+            >
+              <span className="text-xl">📝</span>
+              <h3 className="font-semibold text-slate-900 mt-3 group-hover:text-green-600">
+                Editorial Policy
+              </h3>
+              <p className="text-sm text-slate-600 mt-2">
+                Learn how we approach accuracy, updates, and educational content.
+              </p>
+            </Link>
           </div>
         </section>
 
@@ -407,7 +514,7 @@ export default function PrivacyPage() {
             Explore Morse Code Tools
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             <Link
               href="/"
               className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-700 font-medium hover:bg-green-100 transition-colors"

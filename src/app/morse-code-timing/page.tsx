@@ -8,9 +8,9 @@ import TimingClient from "./timing.client";
 
 const faqs = [
   {
-    question: "What is Morse code timing?",
+    question: "What are the standard Morse code timing rules?",
     answer:
-      "Morse code timing is the system of proportional durations used for dots, dashes, and spaces. In standard timing, a dot equals 1 unit, a dash equals 3 units, the gap inside a character equals 1 unit, the gap between characters equals 3 units, and the gap between words equals 7 units.",
+      "International Morse Code uses proportional timing: a dot is 1 unit, a dash is 3 units, the gap between elements inside a character is 1 unit, the gap between characters is 3 units, and the gap between words is 7 units. These ratios remain the same as transmission speed changes.",
   },
   {
     question: "What is the ITU-R M.1677 Morse code standard?",
@@ -60,8 +60,8 @@ const faqs = [
 ];
 
 export const metadata: Metadata = generatePageMeta(
-  "Morse Code Timing: WPM, Dot Duration & Farnsworth Guide",
-  "Learn Morse code timing with standard dot, dash, character and word spacing. Calculate WPM durations, understand the 1-3-1-3-7 timing ratios, PARIS standard, and Farnsworth timing.",
+  "Morse Code Timing: WPM, Dot Duration, Spacing & Farnsworth",
+  "Learn Morse code timing, WPM speed, dot and dash duration, character and word spacing, the PARIS timing standard, and Farnsworth practice. Use the calculator and timing chart to train accurately.",
   "/morse-code-timing",
   [
     "morse code timing",
@@ -79,6 +79,11 @@ export const metadata: Metadata = generatePageMeta(
     "PARIS standard Morse code",
     "dot dash timing",
     "Morse code word gap",
+    "Morse code letter spacing",
+    "Morse code character spacing",
+    "Morse code timing calculator",
+    "Morse code dot dash duration",
+    "Morse code PARIS timing",
   ]
 );
 
