@@ -211,7 +211,7 @@ export default function HomeContent() {
             ["04", "Save the Output", "Copy, share, or download the result using the actions available in the translator."],
           ].map(([num, title, text]) => (
             <div key={num} className={cardClass}>
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-green-600 text-sm font-extrabold text-white">{num}</span>
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-green-700 text-sm font-extrabold text-white">{num}</span>
               <h3 className="mt-4 text-lg font-bold text-slate-950 dark:text-white">{title}</h3>
               <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">{text}</p>
             </div>
@@ -474,7 +474,7 @@ export default function HomeContent() {
           <div className="rounded-3xl border border-green-200 bg-gradient-to-br from-green-50 to-white p-7 sm:p-10 dark:border-green-900/50 dark:from-green-950/30 dark:to-slate-900">
             <h2 className={headingClass}>Conclusion</h2>
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-700 dark:text-slate-300">Morse code is a compact language of timed signals that connects communication history with modern learning, radio, accessibility, navigation, and creative projects. The easiest way to understand it is to combine the written patterns with sound, timing, and repeated practice.</p>
-            <div className="mt-6 flex flex-wrap gap-3"><Link href="/learn-morse-code" className="inline-flex items-center gap-2 rounded-xl bg-green-600 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-700">Start learning <ArrowRight className="h-4 w-4" /></Link><Link href="/morse-code-alphabet" className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:border-green-300 dark:border-slate-700 dark:bg-slate-900 dark:text-white">View alphabet <BookOpen className="h-4 w-4" /></Link></div>
+            <div className="mt-6 flex flex-wrap gap-3"><Link href="/learn-morse-code" className="inline-flex items-center gap-2 rounded-xl bg-green-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-green-800">Start learning <ArrowRight className="h-4 w-4" /></Link><Link href="/morse-code-alphabet" className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 transition hover:border-green-300 dark:border-slate-700 dark:bg-slate-900 dark:text-white">View alphabet <BookOpen className="h-4 w-4" /></Link></div>
           </div>
         </div>
       </section>
