@@ -27,9 +27,6 @@ const blogImages: Record<string, string> = {
   /*
    * History
    */
-  "what-is-morse-code-complete-history-guide":
-    "/images/blog/what-is-morse-code.webp",
-
   "when-was-morse-code-invented-history":
     "/images/blog/when-was-morse-code-invented.webp",
 
@@ -39,9 +36,6 @@ const blogImages: Record<string, string> = {
   /*
    * Learning
    */
-  "how-to-learn-morse-code-7-easy-steps":
-    "/images/blog/how-to-learn-morse-code.webp",
-
   /*
    * Reference
    */
@@ -128,12 +122,6 @@ const blogImageMeta: Record<
   /*
    * History
    */
-  "what-is-morse-code-complete-history-guide": {
-    alt: "Morse code dots and dashes communication system illustration",
-    caption:
-      "Morse code uses combinations of dots and dashes to represent letters, numbers, and symbols.",
-  },
-
   "when-was-morse-code-invented-history": {
     alt: "History of Morse code invention and early telegraph communication",
     caption:
@@ -149,12 +137,6 @@ const blogImageMeta: Record<
   /*
    * Learning
    */
-  "how-to-learn-morse-code-7-easy-steps": {
-    alt: "Learn Morse code with dots, dashes, listening practice, and character recognition",
-    caption:
-      "Regular listening and character recognition practice can help beginners learn Morse code more effectively.",
-  },
-
   /*
    * Reference
    */
@@ -1068,6 +1050,13 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
+  // These legacy Blog URLs are canonicalized to the dedicated knowledge pages
+  // through next.config.ts (301 redirects). They are intentionally not rendered
+  // as duplicate Blog articles here.
+  if (slug === "what-is-morse-code-complete-history-guide" || slug === "how-to-learn-morse-code-7-easy-steps") {
+    notFound();
+  }
 
   const post = getPostBySlug(slug);
 

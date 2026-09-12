@@ -60,6 +60,15 @@ const blogImages: Record<string, string> = {
 
 const fallbackImage = "/images/blog/what-is-morse-code.webp";
 
+const canonicalPostRoutes: Record<string, string> = {
+  "what-is-morse-code-complete-history-guide": "/what-is-morse-code",
+  "how-to-learn-morse-code-7-easy-steps": "/learn-morse-code",
+};
+
+function getPostHref(slug: string) {
+  return canonicalPostRoutes[slug] || `/blog/${slug}`;
+}
+
 const categoryStyles: Record<string, string> = {
   History: "bg-amber-50 text-amber-700 border-amber-100",
   Learning: "bg-emerald-50 text-emerald-700 border-emerald-100",
@@ -166,7 +175,7 @@ export default function BlogPage() {
             </div>
 
             <Link
-              href={`/blog/${featuredPost.slug}`}
+              href={getPostHref(featuredPost.slug)}
               className="group grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-300 hover:shadow-xl md:grid-cols-2"
             >
               <div className="relative min-h-[260px] overflow-hidden md:min-h-full">
@@ -242,7 +251,7 @@ export default function BlogPage() {
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-300 hover:shadow-lg"
               >
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={getPostHref(post.slug)}
                   className="relative block aspect-[16/9] overflow-hidden"
                   aria-label={`Read ${post.title}`}
                 >
@@ -273,7 +282,7 @@ export default function BlogPage() {
                     </span>
                   </div>
 
-                  <Link href={`/blog/${post.slug}`}>
+                  <Link href={getPostHref(post.slug)}>
                     <h2 className="text-xl font-bold leading-7 text-slate-900 transition-colors group-hover:text-green-700">
                       {post.title}
                     </h2>
@@ -289,7 +298,7 @@ export default function BlogPage() {
                     </span>
 
                     <Link
-                      href={`/blog/${post.slug}`}
+                      href={getPostHref(post.slug)}
                       className="text-sm font-semibold text-green-700 transition-colors hover:text-green-800"
                     >
                       Read article →

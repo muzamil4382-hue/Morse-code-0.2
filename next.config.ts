@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      /*
+       * Existing redirects
+       */
       {
         source: "/morse-code-translator",
         destination: "/",
@@ -25,56 +28,84 @@ const nextConfig: NextConfig = {
         destination: "/morse-code-alphabet",
         permanent: true,
       },
+
+      /*
+       * Old individual Morse code letter pages
+       * A–Z → Morse Code Alphabet sections
+       */
       {
         source: "/morse-code-letter/:letter([a-zA-Z])",
         destination: "/morse-code-alphabet#letter-:letter",
         permanent: true,
       },
+
+      /*
+       * Old individual Morse code number pages
+       * 0–9 → Morse Code Numbers sections
+       */
       {
         source: "/morse-code-number/:number([0-9])",
         destination: "/morse-code-numbers#number-:number",
         permanent: true,
       },
+
+      /*
+       * Old love page
+       */
       {
         source: "/love-in-morse-code",
-        destination: "/blog/i-love-you-in-morse-code-meaning-translation",
+        destination: "/i-love-you-in-morse-code",
         permanent: true,
       },
       {
-        source: "/sos-morse-code",
-        destination: "/blog/sos-signal-morse-code-everything-you-need-to-know",
+        source: "/blog/what-is-morse-code-complete-history-guide",
+        destination: "/what-is-morse-code",
         permanent: true,
       },
       {
-        source: "/i-love-you-in-morse-code",
-        destination: "/blog/i-love-you-in-morse-code-meaning-translation",
-        permanent: true,
-      },
-      {
-        source: "/hello-in-morse-code",
-        destination: "/blog/hello-in-morse-code-and-common-phrases",
+        source: "/blog/how-to-learn-morse-code-7-easy-steps",
+        destination: "/learn-morse-code",
         permanent: true,
       },
     ];
   },
 
+  /*
+   * Morse word pages
+   *
+   * Keep the existing public URLs unchanged for SEO.
+   * Internally serve them through the single dynamic
+   * /morse-word/[slug] page.
+   */
   async rewrites() {
     return [
       {
+        source: "/sos-morse-code",
+        destination: "/morse-word/sos-morse-code",
+      },
+      {
+        source: "/hello-in-morse-code",
+        destination: "/morse-word/hello-in-morse-code",
+      },
+      {
         source: "/hi-in-morse-code",
-        destination: "/morse-code-word/hi-in-morse-code",
+        destination: "/morse-word/hi-in-morse-code",
+      },
+      {
+        source: "/i-love-you-in-morse-code",
+        destination: "/morse-word/i-love-you-in-morse-code",
       },
       {
         source: "/help-me-in-morse-code",
-        destination: "/morse-code-word/help-me-in-morse-code",
+        destination: "/morse-word/help-me-in-morse-code",
       },
       {
         source: "/yes-in-morse-code",
-        destination: "/morse-code-word/yes-in-morse-code",
+        destination: "/morse-word/yes-in-morse-code",
       },
       {
         source: "/no-in-morse-code",
-        destination: "/morse-code-word/no-in-morse-code",
+        destination: "/morse-word/no-in-morse-code",
       },
     ];
   },
