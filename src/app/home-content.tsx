@@ -234,7 +234,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dot</h3>
@@ -244,7 +244,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dashes</h3>
@@ -254,7 +254,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Pause/Space</h3>
@@ -265,7 +265,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Audio</h3>
@@ -309,7 +309,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
@@ -321,7 +321,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
@@ -333,7 +333,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Globe className="h-6 w-6" />
             </div>
             <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
@@ -372,9 +372,11 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-3">
               <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">01</span>
-              <div className="h-2.5 w-2.5 rounded-full bg-green-600 shadow-sm"></div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+                <Compass className="h-5 w-5" />
+              </div>
             </div>
             <h3 className="mt-3 text-base font-bold text-slate-900 dark:text-white">Pick a direction</h3>
             <p className={bodyClass}>
@@ -384,9 +386,11 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-3">
               <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">02</span>
-              <div className="h-2.5 w-2.5 rounded-full bg-green-600 shadow-sm"></div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+                <FileText className="h-5 w-5" />
+              </div>
             </div>
             <h3 className="mt-3 text-base font-bold text-slate-900 dark:text-white">Paste the input</h3>
             <p className={bodyClass}>
@@ -395,9 +399,11 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-3">
               <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">03</span>
-              <div className="h-2.5 w-2.5 rounded-full bg-green-600 shadow-sm"></div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+                <Volume2 className="h-5 w-5" />
+              </div>
             </div>
             <h3 className="mt-3 text-base font-bold text-slate-900 dark:text-white">Use Audio</h3>
             <p className={bodyClass}>
@@ -406,9 +412,11 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-3">
               <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">04</span>
-              <div className="h-2.5 w-2.5 rounded-full bg-green-600 shadow-sm"></div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+                <CheckCircle2 className="h-5 w-5" />
+              </div>
             </div>
             <h3 className="mt-3 text-base font-bold text-slate-900 dark:text-white">Save the output</h3>
             <p className={bodyClass}>
@@ -434,7 +442,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <BookOpen className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Read the Pattern</h3>
@@ -444,7 +452,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Tap the Rhythm</h3>
@@ -455,7 +463,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Practice Live</h3>
@@ -481,7 +489,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Terminal className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Telegraph</h3>
@@ -491,7 +499,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Radio</h3>
@@ -501,7 +509,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Flame className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Smoke Signals</h3>
@@ -511,7 +519,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Cpu className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Electronics Debugging</h3>
@@ -521,7 +529,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Communication</h3>
@@ -531,7 +539,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Globe className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Accessibility & Heritage</h3>
@@ -557,7 +565,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Real Time Counter</h3>
@@ -566,7 +574,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <FileText className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Text to Morse Code</h3>
@@ -575,7 +583,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Morse to Text</h3>
@@ -584,7 +592,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <CheckCircle2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Instant Copy</h3>
@@ -593,7 +601,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Lightbulb className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Inspire Me</h3>
@@ -602,7 +610,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Audio</h3>
@@ -611,7 +619,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Flash</h3>
@@ -620,7 +628,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Sliders className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Audio Customization</h3>
@@ -645,7 +653,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Read Morse by Sound</h3>
@@ -656,7 +664,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Write Morse with Timing</h3>
@@ -683,7 +691,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Layers className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Start Small</h3>
@@ -692,7 +700,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Listen, Tap, Repeat</h3>
@@ -701,7 +709,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Recognize the Rhythm</h3>
@@ -724,7 +732,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dot</h3>
@@ -733,7 +741,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dash</h3>
@@ -742,7 +750,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <BookOpen className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Common Patterns</h3>
@@ -751,7 +759,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Timing and Rhythm</h3>
@@ -867,7 +875,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">E: The Shortest Character</h3>
@@ -876,7 +884,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">SOS: A Memorable Rhythm</h3>
@@ -885,7 +893,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Why Rhythm Matters</h3>
@@ -910,7 +918,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Sparkles className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Jewellery</h3>
@@ -919,7 +927,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <FileText className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Tattoo</h3>
@@ -928,7 +936,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <BookOpen className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Education</h3>
@@ -937,7 +945,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Assistive Communication</h3>
@@ -946,7 +954,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Radio</h3>
@@ -955,7 +963,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Compass className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Navigation</h3>
@@ -964,7 +972,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Layers className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Encoded Messages</h3>
@@ -973,7 +981,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Military Signals & Rescue</h3>
@@ -982,7 +990,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <HelpCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Games & Puzzles</h3>
@@ -1007,7 +1015,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Award className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">As a Skill and Hobby</h3>
@@ -1016,7 +1024,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">As Cultural Heritage</h3>
@@ -1025,7 +1033,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">In Modern Communication</h3>
@@ -1172,8 +1180,8 @@ export default function HomeContent() {
         <div className={cardClass}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {qCodes.map(([code, meaning]) => (
-              <div key={code} className="rounded-xl border border-slate-200 bg-green-50/30 p-4 hover:border-green-600/40 hover:bg-white dark:border-slate-800 dark:bg-slate-900/50 dark:hover:bg-slate-800 transition-all flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 font-mono font-bold">
+              <div key={code} className="rounded-xl border border-slate-200 bg-green-50/30 p-4 hover:border-green-600/40 hover:bg-white dark:border-slate-800 dark:bg-slate-900/50 dark:hover:bg-slate-800 transition-all flex items-start gap-4 group">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 font-mono font-bold group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                   <Radio className="h-5 w-5" />
                 </div>
                 <div>
@@ -1200,7 +1208,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-3 text-amber-500">
+            <div className="mb-3 text-amber-500 group-hover:scale-110 transition-transform">
               <AlertCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Missing Signals</h3>
@@ -1209,7 +1217,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-amber-500">
+            <div className="mb-3 text-amber-500 group-hover:scale-110 transition-transform">
               <AlertCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Swapping Dots & Dashes</h3>
@@ -1218,7 +1226,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-amber-500">
+            <div className="mb-3 text-amber-500 group-hover:scale-110 transition-transform">
               <AlertCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Incorrect Separation</h3>
@@ -1242,7 +1250,7 @@ export default function HomeContent() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {settings.map(([name, description]) => (
             <div key={name} className={cardClass}>
-              <div className="mb-3 text-green-700 dark:text-green-400">
+              <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
                 <Sliders className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">{name}</h3>
@@ -1266,7 +1274,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Globe className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
@@ -1279,7 +1287,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Titanic Disaster 1912</h3>
@@ -1331,28 +1339,28 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400">
+            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
               <HelpCircle className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">Nothing appears in the output</h3>
             <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Check that you selected the correct direction, Text to Morse or Morse to Text.</p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400">
+            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
               <Sliders className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The Morse sounds too fast or slow</h3>
             <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Adjust the WPM or playback speed in settings.</p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400">
+            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
               <Volume2 className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The audio is too quiet or has wrong pitch</h3>
             <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Adjust volume and frequency settings, then test again.</p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400">
+            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
               <FileText className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The translation looks wrong</h3>
