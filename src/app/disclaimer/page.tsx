@@ -1,4 +1,4 @@
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   generatePageMeta,
@@ -198,10 +198,10 @@ export default function DisclaimerPage() {
               </Link>
               ,{" "}
               <Link
-                href="/morse-code-decoder"
+                href="/"
                 className="font-medium text-green-700 hover:underline"
               >
-                Morse Code Decoder
+                Morse Code Translator and Decoder
               </Link>
               , and{" "}
               <Link
@@ -526,6 +526,46 @@ export default function DisclaimerPage() {
             </div>
           </section>
 
+          {/* Reference Standards */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-slate-900">
+              Morse Code Standards and Reference Sources
+            </h2>
+
+            <p>
+              For authoritative technical reference, users can consult the
+              International Telecommunication Union recommendation for
+              International Morse code and the ARRL character reference used
+              in amateur-radio education. These sources are useful when a
+              specific communication procedure or standard matters.
+            </p>
+
+            <ul className="mt-4 list-disc space-y-2 pl-6">
+              <li>
+                <a
+                  href="https://www.itu.int/rec/R-REC-M.1677"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="font-medium text-green-700 hover:underline"
+                >
+                  ITU-R Recommendation M.1677
+                </a>{" "}
+                — International Morse code reference.
+              </li>
+              <li>
+                <a
+                  href="https://www.arrl.org/code-characters"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="font-medium text-green-700 hover:underline"
+                >
+                  ARRL Code Characters
+                </a>{" "}
+                — Morse character reference for amateur-radio learners.
+              </li>
+            </ul>
+          </section>
+
           {/* Contact */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-slate-900">
@@ -567,10 +607,10 @@ export default function DisclaimerPage() {
             </Link>
 
             <Link
-              href="/morse-code-decoder"
+              href="/"
               className="flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 p-4 font-medium text-green-700 transition hover:bg-green-100"
             >
-              🔓 Decoder
+              🔓 Translator & Decoder
             </Link>
 
             <Link
