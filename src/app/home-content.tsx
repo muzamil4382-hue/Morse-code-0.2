@@ -43,7 +43,7 @@ const leadTextClass =
   "text-center text-sm sm:text-base leading-relaxed text-slate-800 dark:text-slate-300 mb-12 max-w-3xl mx-auto font-medium";
 
 const bodyClass =
-  "mt-2 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-400 font-normal";
+  "mt-2 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300 font-normal";
 
 const cardClass =
   "group relative overflow-hidden rounded-2xl border border-green-600/20 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/40 hover:bg-green-50/20 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 dark:hover:border-green-500/30";
@@ -280,13 +280,13 @@ export default function HomeContent() {
             <Sparkles className="h-5 w-5 text-green-700 dark:text-green-400" />
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Benefits</h3>
           </div>
-          <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-300">
+          <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-200">
             Using <Link href="/what-is-morse-code" className={linkClass}>morse code</Link>, we can turn our text into codes and simple beats! Imagine listening to a random beat
             which gives you a secret message. Also, morse code is built easy for easy communication. For example,
             most common words in English like “E” are given small notations so that one can remember and type them
             easily in no time. E is represented by a single dot .
           </p>
-          <p className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-400 border-t border-slate-200 pt-4 dark:border-slate-800">
+          <p className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 border-t border-slate-200 pt-4 dark:border-slate-800">
             <span>For the standardized International Morse reference, see</span>
             <ExternalLink href="https://www.itu.int/rec/R-REC-M.1677-1-200910-I">
               ITU Recommendation M.1677
@@ -347,7 +347,7 @@ export default function HomeContent() {
         </div>
 
         <div className={`mt-6 ${cardClass}`}>
-          <p className="text-xs leading-relaxed text-slate-800 dark:text-slate-300">
+          <p className="text-xs leading-relaxed text-slate-800 dark:text-slate-200">
             The historical record also credits Alfred Vail with major work on the improved telegraph apparatus
             and the alphabetic code. The Smithsonian Institution Archives documents Vail&apos;s role in developing
             the alpha code used with the electromagnetic telegraph.{" "}
@@ -373,7 +373,7 @@ export default function HomeContent() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">01</span>
+              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">01</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <Compass className="h-5 w-5" />
               </div>
@@ -387,7 +387,7 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">02</span>
+              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">02</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <FileText className="h-5 w-5" />
               </div>
@@ -400,7 +400,7 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">03</span>
+              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">03</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <Volume2 className="h-5 w-5" />
               </div>
@@ -413,7 +413,7 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">04</span>
+              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">04</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <CheckCircle2 className="h-5 w-5" />
               </div>
@@ -1186,7 +1186,7 @@ export default function HomeContent() {
                 </div>
                 <div>
                   <span className="inline-block font-mono text-base font-bold text-green-800 dark:text-green-400">{code}</span>
-                  <p className="mt-1 text-xs sm:text-sm text-slate-700 dark:text-slate-400">{meaning}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-700 dark:text-slate-300">{meaning}</p>
                 </div>
               </div>
             ))}
@@ -1322,7 +1322,7 @@ export default function HomeContent() {
             <p className="font-mono text-lg font-bold tracking-widest text-green-800 dark:text-green-400 text-center">
               $\cdot \cdot \cdot --- \cdot \cdot \cdot$ / $\cdot \cdot \cdot \cdot$ $\cdot$ $\cdot - \cdot \cdot$ $\cdot - \cdot \cdot$ $---$
             </p>
-            <p className="mt-2 text-center text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Example: S-O-S / H-E-L-L-O rendered in symbol typography</p>
+            <p className="mt-2 text-center text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Example: S-O-S / H-E-L-L-O rendered in symbol typography</p>
           </div>
         </div>
       </section>
@@ -1343,28 +1343,28 @@ export default function HomeContent() {
               <HelpCircle className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">Nothing appears in the output</h3>
-            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Check that you selected the correct direction, Text to Morse or Morse to Text.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-300">Check that you selected the correct direction, Text to Morse or Morse to Text.</p>
           </div>
           <div className={cardClass}>
             <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
               <Sliders className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The Morse sounds too fast or slow</h3>
-            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Adjust the WPM or playback speed in settings.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-300">Adjust the WPM or playback speed in settings.</p>
           </div>
           <div className={cardClass}>
             <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
               <Volume2 className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The audio is too quiet or has wrong pitch</h3>
-            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Adjust volume and frequency settings, then test again.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-300">Adjust volume and frequency settings, then test again.</p>
           </div>
           <div className={cardClass}>
             <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
               <FileText className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The translation looks wrong</h3>
-            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Check the spaces between Morse characters.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-300">Check the spaces between Morse characters.</p>
           </div>
         </div>
       </section>
