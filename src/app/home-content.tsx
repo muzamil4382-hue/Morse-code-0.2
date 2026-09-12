@@ -23,7 +23,9 @@ import {
   Settings,
   Flame,
   Activity,
-  Award
+  Award,
+  Terminal,
+  Type
 } from "lucide-react";
 
 /* --- UI/UX EXPERT STYLING SYSTEM --- */
@@ -44,10 +46,10 @@ const bodyClass =
   "mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400 font-normal";
 
 const cardClass =
-  "group relative overflow-hidden rounded-2xl border border-green-600/10 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/30 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 dark:hover:border-green-500/30";
+  "group relative overflow-hidden rounded-2xl border border-green-600/10 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/30 hover:bg-green-50/20 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 dark:hover:border-green-500/30";
 
 const gridCardClass =
-  "group relative overflow-hidden rounded-2xl border border-green-600/10 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/30 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 flex flex-col justify-between";
+  "group relative overflow-hidden rounded-2xl border border-green-600/10 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/30 hover:bg-green-50/20 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 flex flex-col justify-between";
 
 const linkClass =
   "inline-flex items-center gap-1 font-semibold text-green-700 underline decoration-green-400/40 decoration-2 underline-offset-4 transition-colors hover:text-green-800 hover:decoration-green-600 dark:text-green-400 dark:hover:text-green-300";
@@ -125,12 +127,32 @@ export const faqs = [
 ];
 
 const alphabet = [
-  ["A", ".-"], ["B", "-..."], ["C", "-.-."], ["D", "-.."], ["E", "."],
-  ["F", "..-."], ["G", "--."], ["H", "...."], ["I", ".."], ["J", ".---"],
-  ["K", "-.-"], ["L", ".-.."], ["M", "--"], ["N", "-."], ["O", "---"],
-  ["P", ".--."], ["Q", "--.-"], ["R", ".-."], ["S", "..."], ["T", "-"],
-  ["U", "..-"], ["V", "...-"], ["W", ".--"], ["X", "-..-"], ["Y", "-.--"],
-  ["Z", "--.."],
+  ["A", ".-", "di-dah", "ab-BOT"],
+  ["B", "-...", "dah-di-di-dit", "BO-hi-mi-a"],
+  ["C", "-.-.", "dah-di-dah-dit", "CO-ca-CO-la"],
+  ["D", "-..", "dah-di-dit", "DAN-ger-ous"],
+  ["E", ".", "dit", "ECH"],
+  ["F", "..-.", "di-di-dah-dit", "fi-la-DEL-phia"],
+  ["G", "--.", "dah-dah-dit", "GO-ING-to"],
+  ["H", "....", "di-di-di-dit", "hi-de-ho-down"],
+  ["I", "..", "di-dit", "IN-SECT"],
+  ["J", ".---", "di-dah-dah-dah", "ja-BO-CA-DA"],
+  ["K", "-.-", "dah-di-dah", "kan-KA-roo"],
+  ["L", ".-..", "di-dah-di-dit", "le-MON-ad-ed"],
+  ["M", "--", "dah-dah", "MO-ON"],
+  ["N", "-.", "dah-dit", "NURse"],
+  ["O", "---", "dah-dah-dah", "OVER-LORD"],
+  ["P", ".--.", "di-dah-dah-dit", "pe-TRO-le-um"],
+  ["Q", "--.-", "dah-dah-di-dah", "QUE-BE-COIS"],
+  ["R", ".-.", "di-dah-dit", "re-TAR-ded"],
+  ["S", "...", "di-di-dit", "SUL-FUR-ic"],
+  ["T", "-", "dah", "TOE"],
+  ["U", "..-", "di-di-dah", "u-ni-CORN"],
+  ["V", "...-", "di-di-di-dah", "vi-o-lin-IST"],
+  ["W", ".--", "di-dah-dah", "wa-TER-MELon"],
+  ["X", "-..-", "dah-di-di-dah", "X-RA-RA-X"],
+  ["Y", "-.--", "dah-di-dah-dah", "YANK-ee-DO-DLE"],
+  ["Z", "--..", "dah-dah-di-dit", "ZOO-LOG-i-cal"],
 ];
 
 const numbers = [
@@ -164,11 +186,11 @@ const prosigns = [
 ];
 
 const qCodes = [
-  ["QRL?", "Is this frequency in use?"],
-  ["QRZ?", "Who is calling me?"],
+  ["QRL", "Is this frequency in use?"],
+  ["QRZ", "Who is calling me?"],
   ["QRS", "Send more slowly."],
   ["QRT", "Stop sending / stop transmission."],
-  ["QRU?", "Have you anything for me?"],
+  ["QRU", "Have you anything for me?"],
   ["QRV", "I am ready."],
   ["QRX", "Wait / I will call again."],
   ["QSB", "Are my signals fading?"],
@@ -287,6 +309,9 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Clock className="h-6 w-6" />
+            </div>
             <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
               PHASE 01: 1837-1838
             </span>
@@ -296,6 +321,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Zap className="h-6 w-6" />
+            </div>
             <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
               PHASE 02: 1844
             </span>
@@ -305,6 +333,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Globe className="h-6 w-6" />
+            </div>
             <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
               PHASE 03: 1851
             </span>
@@ -450,6 +481,9 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Terminal className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Telegraph</h3>
             <p className={bodyClass}>
               In ancient times, it was first used by Samuel F. B Morse’s electric telegraph. Codes were recorded
@@ -457,6 +491,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Radio className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Radio</h3>
             <p className={bodyClass}>
               Same algorithm was used for radio transmission systems. In this case, morse coded audio was transmitted
@@ -464,6 +501,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Flame className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Smoke Signals</h3>
             <p className={bodyClass}>
               This method can be used to transmit code without using electronics. A wet cloth is placed over fire
@@ -471,6 +511,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Cpu className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Electronics Debugging</h3>
             <p className={bodyClass}>
               Morse code can be used in electronics debugging to transmit error codes and system statuses through
@@ -478,6 +521,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Activity className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Communication</h3>
             <p className={bodyClass}>
               It provides simple, easy communication system. You can just blink your eyes in dots and dashes
@@ -485,6 +531,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Globe className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Accessibility & Heritage</h3>
             <p className={bodyClass}>
               For those who can’t speak or write, morse code flashes or audios can be very helpful. Google
@@ -634,18 +683,27 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Layers className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Start Small</h3>
             <p className={bodyClass}>
               Practice as sound: Start with a small group of characters and listen repeatedly.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Activity className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Listen, Tap, Repeat</h3>
             <p className={bodyClass}>
               Start tapping on your desk to make your muscles memorize timing and sequence just like we master typing.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Volume2 className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Recognize the Rhythm</h3>
             <p className={bodyClass}>
               It doesn&apos;t need electricity or tech, just a rhythm, a light, or a sound.
@@ -666,24 +724,36 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Zap className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dot</h3>
             <p className={bodyClass}>
               Learn the short basic signal and how it combines with dashes.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Activity className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dash</h3>
             <p className={bodyClass}>
               Understand the long signal and its three-unit relationship to a dot.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <BookOpen className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Common Patterns</h3>
             <p className={bodyClass}>
               Begin with short, frequently encountered characters such as E, T, I, A, N, M, S, O.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Clock className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Timing and Rhythm</h3>
             <p className={bodyClass}>
               You will learn that Morse is more than a list of symbols: timing separates elements, characters, and words.
@@ -744,23 +814,19 @@ export default function HomeContent() {
                 <tr className="border-b border-slate-200 bg-green-700 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
                   <th className="py-3.5 px-4 sm:px-6">Letter</th>
                   <th className="py-3.5 px-4 sm:px-6">Morse Code</th>
-                  <th className="py-3.5 px-4 sm:px-6">Letter</th>
-                  <th className="py-3.5 px-4 sm:px-6">Morse Code</th>
+                  <th className="py-3.5 px-4 sm:px-6">Spoken Rhythm</th>
+                  <th className="py-3.5 px-4 sm:px-6">Memory Cue</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
-                {Array.from({ length: Math.ceil(alphabet.length / 2) }).map((_, i) => {
-                  const left = alphabet[i];
-                  const right = alphabet[i + 13];
-                  return (
-                    <tr key={i} className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
-                      <td className="py-3 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{left?.[0]}</td>
-                      <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-700 dark:text-green-400">{left?.[1]}</td>
-                      <td className="py-3 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{right?.[0]}</td>
-                      <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-700 dark:text-green-400">{right?.[1]}</td>
-                    </tr>
-                  );
-                })}
+                {alphabet.map(([letter, code, rhythm, cue]) => (
+                  <tr key={letter} className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
+                    <td className="py-3 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{letter}</td>
+                    <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-700 dark:text-green-400">{code}</td>
+                    <td className="py-3 px-4 sm:px-6 text-slate-700 dark:text-slate-300">{rhythm}</td>
+                    <td className="py-3 px-4 sm:px-6 text-slate-700 dark:text-slate-300">{cue}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -801,18 +867,27 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Zap className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">E: The Shortest Character</h3>
             <p className={bodyClass}>
               E is a short tap. It is represented by a single dot .
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <ShieldAlert className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">SOS: A Memorable Rhythm</h3>
             <p className={bodyClass}>
               SOS sounds like a heartbeat rhythm, which contributed to its international popularity.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Clock className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Why Rhythm Matters</h3>
             <p className={bodyClass}>
               Morse relies on consistent timing. If timing breaks, character recognition collapses.
@@ -835,54 +910,81 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Sparkles className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Jewellery</h3>
             <p className={bodyClass}>
               Today, jewellery items are designed with dots and dashes representing secret messages on their surface.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <FileText className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Tattoo</h3>
             <p className={bodyClass}>
               Tattoos are frequently created in Morse style using minimal dot and dash patterns.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <BookOpen className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Education</h3>
             <p className={bodyClass}>
               Students learn basic coding concepts, encode simple messages, and explore communications history.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Activity className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Assistive Communication</h3>
             <p className={bodyClass}>
               For non-verbal or motor-impaired individuals, Morse code flashes or audios serve as an alternative keyboard input.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Radio className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Radio</h3>
             <p className={bodyClass}>
               Ham Radio uses Morse code transmission (CW). Its narrow bandwidth cuts through heavy noise.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Compass className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Navigation</h3>
             <p className={bodyClass}>
               Aviation navigation aids like VORs continuously transmit their station identifiers in Morse code.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Layers className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Encoded Messages</h3>
             <p className={bodyClass}>
               Send encoded Morse messages to friends who know how to decode dot-and-dash patterns.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <ShieldAlert className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Military Signals & Rescue</h3>
             <p className={bodyClass}>
               Emergency signals punch through extreme static. Morse played a vital role in historical field operations.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <HelpCircle className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Games & Puzzles</h3>
             <p className={bodyClass}>
               Escape rooms and online puzzle games use Morse flashes or audio signals for clues.
@@ -905,18 +1007,27 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Award className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">As a Skill and Hobby</h3>
             <p className={bodyClass}>
               Morse remains a practical listening and timing skill for amateur radio enthusiasts.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Clock className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">As Cultural Heritage</h3>
             <p className={bodyClass}>
               The telegraph helped transform global communication, laying the foundation for modern networks.
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Radio className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">In Modern Communication</h3>
             <p className={bodyClass}>
               CW remains active in radio practice, accessibility experiments, and creative designs.
@@ -1059,23 +1170,18 @@ export default function HomeContent() {
         </p>
 
         <div className={cardClass}>
-          <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-inner">
-            <table className="w-full border-collapse text-left text-xs sm:text-sm">
-              <thead>
-                <tr className="border-b border-slate-200 bg-green-700 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
-                  <th className="py-3.5 px-4 sm:px-6">Code</th>
-                  <th className="py-3.5 px-4 sm:px-6">Meaning</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
-                {qCodes.map(([code, meaning]) => (
-                  <tr key={code} className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
-                    <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{code}</td>
-                    <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">{meaning}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {qCodes.map(([code, meaning]) => (
+              <div key={code} className="rounded-xl border border-slate-200 bg-green-50/30 p-4 hover:border-green-600/40 hover:bg-white dark:border-slate-800 dark:bg-slate-900/50 dark:hover:bg-slate-800 transition-all flex items-start gap-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 font-mono font-bold">
+                  <Radio className="h-5 w-5" />
+                </div>
+                <div>
+                  <span className="inline-block font-mono text-base font-bold text-green-700 dark:text-green-400">{code}</span>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400">{meaning}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1160,6 +1266,9 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <Globe className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
               <ExternalLink href="https://www.itu.int/rec/R-REC-M.1677-1-200910-I">
                 International Morse Code Standard
@@ -1170,6 +1279,9 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <ShieldAlert className="h-6 w-6" />
+            </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Titanic Disaster 1912</h3>
             <p className={bodyClass}>
               Radio operators used CQD and SOS signals as the ship sank on April 15, 1912, bringing rescue assistance.
@@ -1187,28 +1299,22 @@ export default function HomeContent() {
         </div>
         <h2 className={headingClass}>Morse Font</h2>
         <p className={leadTextClass}>
-          Visual Morse code lookup table for letters and numbers.
+          Morse code typography and digital fonts convert standard text characters directly into visual dot-and-dash glyphs. These specialized fonts allow designers and enthusiasts to render authentic telegraphic scripts for artistic projects, modern web displays, and typography encoding without manual translation.
         </p>
 
         <div className={cardClass}>
-          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-3">Alphabet Morse Reference</h3>
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 lg:grid-cols-6">
-            {alphabet.map(([letter, code]) => (
-              <div key={letter} className="rounded-lg border border-slate-200 bg-green-50/30 p-2 text-center dark:border-slate-800 dark:bg-slate-900/50">
-                <span className="font-bold text-slate-900 dark:text-white">{letter}</span>{" "}
-                <span className="font-mono text-xs font-bold text-green-700 dark:text-green-400">{code}</span>
-              </div>
-            ))}
+          <div className="flex items-center gap-2 mb-4">
+            <Type className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">Typography & Glyphs Overview</h3>
           </div>
-
-          <h3 className="mt-8 text-base font-bold text-slate-900 dark:text-white mb-3">Numbers</h3>
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5">
-            {numbers.map(([number, code]) => (
-              <div key={number} className="rounded-lg border border-slate-200 bg-green-50/30 p-2 text-center dark:border-slate-800 dark:bg-slate-900/50">
-                <span className="font-bold text-slate-900 dark:text-white">{number}</span>{" "}
-                <span className="font-mono text-xs font-bold text-green-700 dark:text-green-400">{code}</span>
-              </div>
-            ))}
+          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
+            Digital Morse fonts map keyboard inputs directly to symbol sets consisting of dots ($\cdot$) and dashes ($-$). This styling is widely utilized in graphic design, cryptography themes, and educational software to preserve historical aesthetics.
+          </p>
+          <div className="rounded-xl border border-green-600/20 bg-green-50/40 p-4 dark:border-slate-800 dark:bg-slate-900/60">
+            <p className="font-mono text-lg font-bold tracking-widest text-green-700 dark:text-green-400 text-center">
+              $\cdot \cdot \cdot --- \cdot \cdot \cdot$ / $\cdot \cdot \cdot \cdot$ $\cdot$ $\cdot - \cdot \cdot$ $\cdot - \cdot \cdot$ $---$
+            </p>
+            <p className="mt-2 text-center text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Example: S-O-S / H-E-L-L-O rendered in symbol typography</p>
           </div>
         </div>
       </section>
@@ -1225,18 +1331,30 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
+            <div className="mb-3 text-green-700 dark:text-green-400">
+              <HelpCircle className="h-5 w-5" />
+            </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">Nothing appears in the output</h3>
             <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Check that you selected the correct direction, Text to Morse or Morse to Text.</p>
           </div>
           <div className={cardClass}>
+            <div className="mb-3 text-green-700 dark:text-green-400">
+              <Sliders className="h-5 w-5" />
+            </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The Morse sounds too fast or slow</h3>
             <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Adjust the WPM or playback speed in settings.</p>
           </div>
           <div className={cardClass}>
+            <div className="mb-3 text-green-700 dark:text-green-400">
+              <Volume2 className="h-5 w-5" />
+            </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The audio is too quiet or has wrong pitch</h3>
             <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Adjust volume and frequency settings, then test again.</p>
           </div>
           <div className={cardClass}>
+            <div className="mb-3 text-green-700 dark:text-green-400">
+              <FileText className="h-5 w-5" />
+            </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The translation looks wrong</h3>
             <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Check the spaces between Morse characters.</p>
           </div>
