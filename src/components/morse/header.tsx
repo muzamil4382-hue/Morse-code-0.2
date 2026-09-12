@@ -35,10 +35,6 @@ const toolLinks: NavChild[] = [
     href: "/",
   },
   {
-    label: "Morse Code Decoder",
-    href: "/morse-code-decoder",
-  },
-  {
     label: "Morse Code Alphabet",
     href: "/morse-code-alphabet",
   },

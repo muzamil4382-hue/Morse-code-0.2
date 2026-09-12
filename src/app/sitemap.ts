@@ -5,40 +5,36 @@ import { BASE_URL } from "@/lib/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  /*
-   * Static Pages
-   */
   const staticPages: MetadataRoute.Sitemap = [
-    /*
-     * Homepage
-     */
     {
       url: BASE_URL,
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
-    },
-
-    /*
-     * Core Morse Code Tools
-     */
-    {
-      url: `${BASE_URL}/morse-code-decoder`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
+      images: [
+        `${BASE_URL}/images/home/modern-uses-of-morse-code.png`,
+        `${BASE_URL}/images/home/morse-code-timing-rules.png`,
+        `${BASE_URL}/images/home/morse-code-translator-guide.png`
+      ],
     },
     {
       url: `${BASE_URL}/morse-code-alphabet`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
+      images: [
+        `${BASE_URL}/images/alphabet/morse-code-alphabet-chart.png`,
+        `${BASE_URL}/images/alphabet/how-to-read-morse-code.png`
+      ],
     },
     {
       url: `${BASE_URL}/morse-code-numbers`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
+      images: [
+        `${BASE_URL}/images/numbers/morse-code-numbers-chart.png`
+      ],
     },
     {
       url: `${BASE_URL}/binary-code-translator`,
@@ -46,59 +42,71 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-
-    /*
-     * Learning Resources
-     */
     {
       url: `${BASE_URL}/learn-morse-code`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
+      images: [
+        `${BASE_URL}/images/infographic/learn-morse-code-roadmap.png`,
+        `${BASE_URL}/images/infographic/how-to-learn-morse-code.png`
+      ],
     },
     {
       url: `${BASE_URL}/what-is-morse-code`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${BASE_URL}/images/infographic/what-is-morse-code-infographic.png`
+      ],
     },
     {
       url: `${BASE_URL}/morse-code-timing`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${BASE_URL}/images/infographic/morse-code-timing-guide.png`,
+        `${BASE_URL}/images/infographic/morse-code-spacing-guide.png`
+      ],
     },
     {
       url: `${BASE_URL}/morse-code-sounds`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${BASE_URL}/images/infographic/morse-code-sounds-guide.png`
+      ],
     },
     {
       url: `${BASE_URL}/sos-morse-code`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${BASE_URL}/images/blog/sos-signal-morse-code.png`,
+        `${BASE_URL}/images/infographic/sos-in-morse-code-pattern.png`
+      ],
     },
-
-    /*
-     * Interactive Tools
-     */
     {
       url: `${BASE_URL}/morse-code-quiz`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${BASE_URL}/images/blog/morse-code-quiz.png`
+      ],
     },
-
-    /*
-     * Popular Word & Phrase Pages
-     */
     {
       url: `${BASE_URL}/hello-in-morse-code`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${BASE_URL}/images/blog/hello-in-morse-code.png`
+      ],
     },
     {
       url: `${BASE_URL}/hi-in-morse-code`,
@@ -117,6 +125,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
+      images: [
+        `${BASE_URL}/images/blog/i-love-you-in-morse-code.png`
+      ],
     },
     {
       url: `${BASE_URL}/yes-in-morse-code`,
@@ -130,20 +141,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-
-    /*
-     * Blog
-     */
     {
       url: `${BASE_URL}/blog`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
-
-    /*
-     * Trust & Company Pages
-     */
     {
       url: `${BASE_URL}/about`,
       lastModified,
@@ -162,10 +165,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.4,
     },
-
-    /*
-     * Legal Pages
-     */
     {
       url: `${BASE_URL}/privacy`,
       lastModified,
@@ -186,14 +185,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  /*
-   * Individual Blog Posts
-   */
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.7,
+    images: [`${BASE_URL}/images/blog/${post.slug}.png`],
   }));
 
   return [...staticPages, ...blogPages];

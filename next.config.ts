@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/morse-code-decoder",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/morse-code-letters",
         destination: "/morse-code-alphabet",
         permanent: true,
@@ -44,10 +49,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-  source: "/love-in-morse-code",
-  destination: "/i-love-you-in-morse-code",
-  permanent: true,
-},
+        source: "/love-in-morse-code",
+        destination: "/i-love-you-in-morse-code",
+        permanent: true,
+      },
     ];
   },
 };
