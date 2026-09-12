@@ -741,7 +741,7 @@ export default function MorseTranslatorTool() {
                         : "border-slate-200 bg-white text-slate-800 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"
                     }`}
                   >
-                    {hasContent ? activeOutput : <span className="text-slate-400">Your translation will appear here...</span>}
+                    {hasContent ? activeOutput : <span className="text-slate-800">Your translation will appear here...</span>}
                   </div>
                 </div>
               </div>

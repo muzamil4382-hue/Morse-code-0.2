@@ -373,7 +373,7 @@ export default function HomeContent() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">01</span>
+              <span className="text-4xl font-black text-green-800 dark:text-green-400/50">01</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <Compass className="h-5 w-5" />
               </div>
@@ -387,7 +387,7 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">02</span>
+              <span className="text-4xl font-black text-green-800 dark:text-green-400/50">02</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <FileText className="h-5 w-5" />
               </div>
@@ -400,7 +400,7 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">03</span>
+              <span className="text-4xl font-black text-green-800 dark:text-green-400/50">03</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <Volume2 className="h-5 w-5" />
               </div>
@@ -413,7 +413,7 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-700/70 dark:text-green-400/50">04</span>
+              <span className="text-4xl font-black text-green-800 dark:text-green-400/50">04</span>
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <CheckCircle2 className="h-5 w-5" />
               </div>
@@ -1405,7 +1405,7 @@ export default function HomeContent() {
           </p>
           <a
             href="#translator"
-            className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-green-600/20 transition-all hover:bg-green-700 hover:scale-105 active:scale-95"
+            className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-green-800 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-green-600/20 transition-all hover:bg-green-700 hover:scale-105 active:scale-95"
           >
             Return to translator ↑
           </a>
