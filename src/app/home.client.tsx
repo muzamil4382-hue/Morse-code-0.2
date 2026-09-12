@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useCallback, useRef, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 import {
   Volume2,
@@ -32,7 +31,6 @@ import {
   Type,
   Hash,
   Star,
-  Settings,
   Plane,
   Users,
   Accessibility,
@@ -101,9 +99,12 @@ export default function HomeClient() {
   const [text, setText] = useState("");
   const [morseInput, setMorseInput] = useState("");
 
-  const [mode, setMode] = useState<"text-to-morse" | "morse-to-text">("text-to-morse");
+  const [mode, setMode] = useState<
+    "text-to-morse" | "morse-to-text"
+  >("text-to-morse");
+
   const [playing, setPlaying] = useState(false);
-  const [copiedAction, setCopiedAction] = useState<"text" | "morse" | null>(null);
+  const [copied, setCopied] = useState(false);
   const [repeatEnabled, setRepeatEnabled] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
 
@@ -112,7 +113,10 @@ export default function HomeClient() {
   const [volume, setVolume] = useState(0.5);
 
   const [flashActive, setFlashActive] = useState(false);
-  const [flashChar, setFlashChar] = useState<"dot" | "dash" | "off">("off");
+
+  const [flashChar, setFlashChar] = useState<
+    "dot" | "dash" | "off"
+  >("off");
 
   const [charCount, setCharCount] = useState(0);
   const [wordCount, setWordCount] = useState(0);
@@ -155,16 +159,118 @@ export default function HomeClient() {
   }, [text, morseInput, mode]);
 
   useEffect(() => {
-    repeatRef.current = repeatEnabled;
-  }, [repeatEnabled]);
-
-  useEffect(() => {
     return () => {
+      flashRunRef.current = false;
       if (flashRef.current) {
         clearTimeout(flashRef.current);
       }
     };
   }, []);
+
+  useEffect(() => {
+    repeatRef.current = repeatEnabled;
+  }, [repeatEnabled]);
+
+  const handleFlash = useCallback(async () => {
+    if (flashActive) {
+      flashRunRef.current = false;
+      if (flashRef.current) clearTimeout(flashRef.current);
+      setFlashActive(false);
+      setFlashChar("off");
+      return;
+    }
+
+    const morseStr =
+      mode === "text-to-morse"
+        ? computedMorse
+        : textToMorse(text);
+
+    if (!morseStr) return;
+
+    flashRunRef.current = true;
+    setFlashActive(true);
+
+    const dotDur = 1.2 / speed;
+    const dashDur = dotDur * 3;
+    const symGap = dotDur;
+    const letGap = dotDur * 3;
+    const wordGap = dotDur * 7;
+
+    const sequence: {
+      char: "dot" | "dash" | "off";
+      duration: number;
+    }[] = [];
+
+    for (const ch of morseStr) {
+      if (ch === ".") {
+        sequence.push({ char: "dot", duration: dotDur });
+        sequence.push({ char: "off", duration: symGap });
+      } else if (ch === "-") {
+        sequence.push({ char: "dash", duration: dashDur });
+        sequence.push({ char: "off", duration: symGap });
+      } else if (ch === " ") {
+        sequence.push({ char: "off", duration: letGap - symGap });
+      } else if (ch === "/") {
+        sequence.push({ char: "off", duration: wordGap - symGap });
+      }
+    }
+
+    for (const item of sequence) {
+      if (!flashRunRef.current) break;
+      setFlashChar(item.char);
+
+      await new Promise<void>((resolve) => {
+        flashRef.current = setTimeout(resolve, item.duration * 1000);
+      });
+    }
+
+    flashRunRef.current = false;
+    setFlashChar("off");
+    setFlashActive(false);
+  }, [flashActive, mode, computedMorse, text, speed]);
+
+  const handlePlay = useCallback(async () => {
+    if (playing || !activeOutput) return;
+
+    const morseStr =
+      mode === "text-to-morse"
+        ? computedMorse
+        : textToMorse(text);
+
+    if (!morseStr) return;
+
+    setPlaying(true);
+    repeatRef.current = repeatEnabled;
+
+    if (!flashActive) {
+      void handleFlash();
+    }
+
+    try {
+      do {
+        await playMorseAudio(morseStr, {
+          speed,
+          frequency,
+          volume: soundEnabled ? volume : 0,
+        });
+      } while (repeatRef.current);
+    } finally {
+      setPlaying(false);
+    }
+  }, [
+    playing,
+    activeOutput,
+    mode,
+    computedMorse,
+    text,
+    speed,
+    frequency,
+    volume,
+    soundEnabled,
+    repeatEnabled,
+    flashActive,
+    handleFlash,
+  ]);
 
   const handleStop = useCallback(() => {
     repeatRef.current = false;
@@ -216,40 +322,17 @@ export default function HomeClient() {
     );
   }, [mode]);
 
-  const copyToClipboard = useCallback(async (value: string, type: "text" | "morse") => {
-    if (!value) return;
-    try {
-      await navigator.clipboard.writeText(value);
-      setCopiedAction(type);
-      window.setTimeout(() => setCopiedAction(null), 1800);
-    } catch {
-      const textarea = document.createElement("textarea");
-      textarea.value = value;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      textarea.remove();
-      setCopiedAction(type);
-      window.setTimeout(() => setCopiedAction(null), 1800);
-    }
-  }, []);
+  const handleCopy = useCallback(() => {
+    if (!activeOutput) return;
 
-  const handleClearAll = useCallback(() => {
-    handleStop();
-    setText("");
-    setMorseInput("");
-    setCopiedAction(null);
-  }, [handleStop]);
+    navigator.clipboard.writeText(activeOutput);
 
-  const handleCopyText = useCallback(() => {
-    const value = mode === "text-to-morse" ? text : computedText;
-    void copyToClipboard(value, "text");
-  }, [mode, text, computedText, copyToClipboard]);
+    setCopied(true);
 
-  const handleCopyMorse = useCallback(() => {
-    const value = mode === "text-to-morse" ? computedMorse : morseInput;
-    void copyToClipboard(value, "morse");
-  }, [mode, computedMorse, morseInput, copyToClipboard]);
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  }, [activeOutput]);
 
   const handleShare = useCallback(async () => {
     if (!activeOutput) return;
@@ -266,8 +349,11 @@ export default function HomeClient() {
     } else {
       navigator.clipboard.writeText(activeOutput);
 
-      setCopiedAction(mode === "text-to-morse" ? "morse" : "text");
-      setTimeout(() => setCopiedAction(null), 1800);
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
     }
   }, [activeOutput]);
 
@@ -482,139 +568,6 @@ export default function HomeClient() {
     volume,
   ]);
 
-  const handleFlash = useCallback(async () => {
-    if (flashActive) {
-      flashRunRef.current = false;
-      if (flashRef.current) clearTimeout(flashRef.current);
-      setFlashActive(false);
-      setFlashChar("off");
-      return;
-    }
-
-    const morseStr =
-      mode === "text-to-morse"
-        ? computedMorse
-        : textToMorse(text);
-
-    flashRunRef.current = true;
-    setFlashActive(true);
-
-    const dotDur = 1.2 / speed;
-    const dashDur = dotDur * 3;
-
-    const symGap = dotDur;
-    const letGap = dotDur * 3;
-    const wordGap = dotDur * 7;
-
-    const sequence: {
-      char: "dot" | "dash" | "off";
-      duration: number;
-    }[] = [];
-
-    for (const ch of morseStr) {
-      if (ch === ".") {
-        sequence.push({
-          char: "dot",
-          duration: dotDur,
-        });
-
-        sequence.push({
-          char: "off",
-          duration: symGap,
-        });
-      } else if (ch === "-") {
-        sequence.push({
-          char: "dash",
-          duration: dashDur,
-        });
-
-        sequence.push({
-          char: "off",
-          duration: symGap,
-        });
-      } else if (ch === " ") {
-        sequence.push({
-          char: "off",
-          duration:
-            letGap - symGap,
-        });
-      } else if (ch === "/") {
-        sequence.push({
-          char: "off",
-          duration:
-            wordGap - symGap,
-        });
-      }
-    }
-
-    for (const item of sequence) {
-      if (!flashRunRef.current) break;
-      setFlashChar(item.char);
-
-      await new Promise<void>((resolve) => {
-        flashRef.current = setTimeout(
-          resolve,
-          item.duration * 1000
-        );
-      });
-    }
-
-    flashRunRef.current = false;
-    setFlashChar("off");
-    setFlashActive(false);
-  }, [
-    flashActive,
-    mode,
-    computedMorse,
-    text,
-    speed,
-  ]);
-
-  const handlePlay = useCallback(async () => {
-    if (playing || !activeOutput) return;
-
-    const morseStr =
-      mode === "text-to-morse"
-        ? computedMorse
-        : textToMorse(text);
-
-    if (!morseStr) return;
-
-    setPlaying(true);
-    repeatRef.current = repeatEnabled;
-
-    // Start light blinking at the same time as audio.
-    if (!flashActive) {
-      void handleFlash();
-    }
-
-    try {
-      do {
-        await playMorseAudio(morseStr, {
-          speed,
-          frequency,
-          volume: soundEnabled ? volume : 0,
-        });
-      } while (repeatRef.current);
-    } finally {
-      setPlaying(false);
-    }
-  }, [
-    playing,
-    activeOutput,
-    mode,
-    computedMorse,
-    text,
-    speed,
-    frequency,
-    volume,
-    soundEnabled,
-    repeatEnabled,
-    flashActive,
-    handleFlash,
-  ]);
-
-
   const handleRandom = useCallback(() => {
     const messages = [
       "HELLO WORLD",
@@ -660,13 +613,11 @@ export default function HomeClient() {
           <div className="text-center max-w-4xl mx-auto">
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-2">
-              Morse Code Translator
+              Free Online Morse Code Translator
             </h1>
 
             <p className="text-lg sm:text-xl text-green-100 dark:text-green-200 max-w-3xl mx-auto leading-relaxed mb-3">
-              Convert text to Morse code or decode Morse code to text instantly.
-              This free online Morse Code Translator supports International Morse Code,
-              letters A–Z, numbers 0–9, and supported punctuation.
+              Looking to turn text into code? Our Free Morse Code translator enables you to turn alphabets, numbers and punctuations into Morse Code. You can use audio or tapping to convert morse into text and vice versa.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-green-200 dark:text-green-300">
@@ -695,164 +646,167 @@ export default function HomeClient() {
       </section>
 
 
+
       {/* ─── TRANSLATOR TOOL ─── */}
-      <section id="translator" className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 py-8 sm:py-10">
+      <section id="translator" className="bg-slate-50 dark:bg-slate-950 py-8 sm:py-10">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200/90 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-[0_20px_60px_-28px_rgba(15,23,42,0.35)]">
-            <div className="h-1 bg-gradient-to-r from-green-500 via-emerald-500 to-green-600" />
-            <div className="p-5 sm:p-7">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch mb-6">
-                <div className="flex w-full items-center rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 p-1.5 shadow-sm">
-                  <button
-                    onClick={() => setMode("text-to-morse")}
-                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
-                      mode === "text-to-morse"
-                        ? "bg-green-700 text-white shadow-md shadow-green-700/20"
-                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
-                    }`}
-                  >
-                    <span className="hidden sm:inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/15 text-xs font-black">T</span>
-                    Text <span className="opacity-70">→</span> Morse
-                  </button>
-
-                  <button
-                    onClick={handleSwap}
-                    className="mx-1.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 shadow-sm transition-all hover:border-green-300 hover:text-green-600 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-300"
-                    aria-label="Switch translation mode"
-                    title="Swap input and output"
-                  >
-                    <ArrowDownUp className="w-4 h-4" />
-                  </button>
-
-                  <button
-                    onClick={() => setMode("morse-to-text")}
-                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
-                      mode === "morse-to-text"
-                        ? "bg-green-700 text-white shadow-md shadow-green-700/20"
-                        : "text-slate-500 hover:bg-white hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white"
-                    }`}
-                  >
-                    Morse <span className="opacity-70">→</span> Text
-                    <span className="hidden sm:inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/15 text-[10px] font-black">·−</span>
-                  </button>
-                </div>
+          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl shadow-slate-200/60 dark:shadow-none border border-slate-200/80 dark:border-slate-800 p-4 sm:p-6">
+            {/* Mode switcher + random */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="flex-1 flex items-center gap-2 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <button
+                  onClick={() => setMode("text-to-morse")}
+                  className={`flex-1 h-12 rounded-xl text-sm sm:text-base font-semibold transition-all cursor-pointer ${
+                    mode === "text-to-morse"
+                      ? "bg-green-700 text-white shadow-sm"
+                      : "text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  <span className="inline-flex items-center justify-center gap-2">
+                    <span className={`w-6 h-6 rounded-md inline-flex items-center justify-center text-xs font-bold ${mode === "text-to-morse" ? "bg-white/15" : "bg-slate-200 dark:bg-slate-700"}`}>T</span>
+                    Text → Morse
+                  </span>
+                </button>
 
                 <button
-                  onClick={handleRandom}
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-600 shadow-sm transition-all hover:border-green-300 hover:text-green-700 hover:shadow-md dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
-                  title="Generate random message"
+                  onClick={handleSwap}
+                  className="shrink-0 w-10 h-10 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-200 hover:text-green-700 hover:border-green-400 transition-all cursor-pointer"
+                  aria-label="Switch translation mode"
+                  title="Switch translation mode"
                 >
-                  <Shuffle className="w-4 h-4" /> Random
+                  <ArrowDownUp className="w-4 h-4 mx-auto" />
+                </button>
+
+                <button
+                  onClick={() => setMode("morse-to-text")}
+                  className={`flex-1 h-12 rounded-xl text-sm sm:text-base font-semibold transition-all cursor-pointer ${
+                    mode === "morse-to-text"
+                      ? "bg-green-700 text-white shadow-sm"
+                      : "text-slate-500 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  Morse → Text
+                  <span className="ml-2 text-xs opacity-70">·-</span>
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
-                  <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">{mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}</label><button onClick={handleClear} className="p-2 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-500 transition-colors" aria-label="Clear input"><Trash2 className="w-4 h-4" /></button></div>
-                  <textarea value={mode === "text-to-morse" ? text : morseInput} onChange={(e) => mode === "text-to-morse" ? setText(e.target.value) : setMorseInput(e.target.value)} placeholder={mode === "text-to-morse" ? "Type your message here..." : "Enter dots and dashes..."} className="w-full h-[150px] resize-none rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 px-4 py-3.5 font-mono text-base text-slate-800 dark:text-slate-100 placeholder:text-slate-500 outline-none transition-all focus:border-green-500 focus:ring-4 focus:ring-green-500/10" />
-                </div>
+              <button
+                onClick={handleRandom}
+                className="shrink-0 h-14 px-4 sm:px-5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-green-400 hover:text-green-700 transition-all cursor-pointer"
+                title="Random Message"
+                aria-label="Generate random message"
+              >
+                <span className="inline-flex items-center gap-2 font-semibold text-sm">
+                  <Shuffle className="w-4 h-4" />
+                  <span className="hidden sm:inline">Random</span>
+                </span>
+              </button>
+            </div>
 
-                <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/40 p-4 sm:p-5">
-                  <div className="flex items-center justify-between mb-3"><label className="text-sm font-bold text-slate-700 dark:text-slate-200">Output</label><span className="inline-flex items-center gap-1.5 text-xs font-medium text-green-700 dark:text-green-400"><Zap className="w-3.5 h-3.5" /> Live</span></div>
-                  <div
-                    className={`w-full h-[150px] overflow-y-auto rounded-xl border px-4 py-3.5 font-mono text-base whitespace-pre-wrap break-words transition-colors duration-75 ${
-                      flashActive && flashChar !== "off"
-                        ? "border-green-400 bg-green-50 text-slate-900 shadow-[0_0_0_4px_rgba(34,197,94,0.10)] dark:bg-green-500/15 dark:text-green-50"
-                        : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100"
-                    }`}
+            {/* Input / output */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+                <label className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 block">
+                  {mode === "text-to-morse" ? "Enter Text" : "Enter Morse Code"}
+                </label>
+                <div className="relative">
+                  <textarea
+                    value={mode === "text-to-morse" ? text : morseInput}
+                    onChange={(e) => {
+                      if (mode === "text-to-morse") setText(e.target.value);
+                      else setMorseInput(e.target.value);
+                    }}
+                    placeholder={mode === "text-to-morse" ? "Type your text here..." : "Enter Morse code (use . and -)..."}
+                    className="w-full h-[148px] p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white placeholder-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 resize-none font-mono text-lg transition-all"
+                    dir="ltr"
+                    maxLength={5000}
+                  />
+                  <button
+                    onClick={handleClear}
+                    className="absolute top-3 right-3 p-1.5 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all cursor-pointer"
+                    aria-label="Clear input"
                   >
-                    {hasContent ? activeOutput : <span className="text-slate-500">Your translation will appear here...</span>}
-                  </div>
+                    <Trash2 className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
 
-              <div className="mt-5 rounded-2xl border border-slate-200 dark:border-slate-700 bg-gradient-to-r from-slate-50 to-white dark:from-slate-800/70 dark:to-slate-900 p-4 sm:p-5">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                  <div>
-  <label
-    htmlFor="morse-speed"
-    className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"
-  >
-    <span>Speed</span>
-    <span className="text-green-900">{speed} WPM</span>
-  </label>
-
-  <input
-    id="morse-speed"
-    type="range"
-    min="5"
-    max="35"
-    value={speed}
-    onChange={(e) => setSpeed(Number(e.target.value))}
-    className="w-full accent-green-600"
-  />
-</div>
-
-<div>
-  <label
-    htmlFor="morse-frequency"
-    className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"
-  >
-    <span>Frequency</span>
-    <span className="text-green-900">{frequency} Hz</span>
-  </label>
-
-  <input
-    id="morse-frequency"
-    type="range"
-    min="300"
-    max="1000"
-    step="50"
-    value={frequency}
-    onChange={(e) => setFrequency(Number(e.target.value))}
-    className="w-full accent-green-600"
-  />
-</div>
-
-<div>
-  <label
-    htmlFor="morse-volume"
-    className="flex items-center justify-between text-sm font-semibold text-slate-700 dark:text-slate-200 mb-2"
-  >
-    <span>Volume</span>
-    <span className="text-green-900">
-      {Math.round(volume * 100)}%
-    </span>
-  </label>
-
-  <input
-    id="morse-volume"
-    type="range"
-    min="0"
-    max="1"
-    step="0.1"
-    value={volume}
-    onChange={(e) => setVolume(Number(e.target.value))}
-    className="w-full accent-green-600"
-  />
-</div>
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">Output</label>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-green-600 dark:text-green-400">
+                    <Zap className="w-3.5 h-3.5" /> Live
+                  </span>
                 </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
-                <button onClick={handlePlay} disabled={!hasContent || playing} className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-green-700 disabled:opacity-40"><Volume2 className="w-4 h-4" />{playing ? "Playing..." : "Play"}</button>
-                <button onClick={handleStop} disabled={!playing} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800 dark:bg-slate-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-900 disabled:opacity-40"><Square className="w-4 h-4" />Stop</button>
-                <button onClick={() => setRepeatEnabled(!repeatEnabled)} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${repeatEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Repeat2 className="w-4 h-4" />Repeat</button>
-                <button onClick={() => setSoundEnabled(!soundEnabled)} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${soundEnabled ? "bg-green-100 text-green-700 ring-1 ring-green-300 dark:bg-green-900/30 dark:text-green-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Music className="w-4 h-4" />Sound</button>
-                <button onClick={handleFlash} disabled={!hasContent} className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold transition ${flashActive ? "bg-amber-500 text-white" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}><Lightbulb className="w-4 h-4" />Light</button>
-                <button onClick={handleVibrate} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200"><Vibrate className="w-4 h-4" />Vibrate</button>
-                <button onClick={handleCopyText} disabled={mode === "text-to-morse" ? !text : !computedText} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "text" ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}{copiedAction === "text" ? "Copied" : "Copy Text"}</button>
-                <button onClick={handleCopyMorse} disabled={mode === "text-to-morse" ? !computedMorse : !morseInput} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-slate-200 disabled:opacity-40">{copiedAction === "morse" ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4" />}{copiedAction === "morse" ? "Copied" : "Copy Morse"}</button>
-                <button onClick={handleDownloadWav} disabled={!hasContent} className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800 dark:bg-slate-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-slate-900 disabled:opacity-40"><Download className="w-4 h-4" />Save Audio</button>
-                <button
-                  onClick={handleClearAll}
-                  disabled={!text && !morseInput}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-200 transition hover:bg-red-50 hover:text-red-600 disabled:opacity-40"
+                <div
+                  className={`w-full h-[148px] p-4 rounded-xl border font-mono text-lg overflow-y-auto transition-all duration-75 ${
+                    flashActive && flashChar !== "off"
+                      ? flashChar === "dot"
+                        ? "border-yellow-400 bg-yellow-100 text-slate-900 shadow-[0_0_35px_rgba(253,224,71,0.75)]"
+                        : "border-green-400 bg-green-100 text-slate-900 shadow-[0_0_35px_rgba(74,222,128,0.65)]"
+                      : "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white"
+                  }`}
+                  dir="ltr"
                 >
-                  <Trash2 className="w-4 h-4" />
-                  Clear
-                </button>
+                  {hasContent ? <span>{activeOutput}</span> : <span className="text-slate-400">Output will appear here...</span>}
+                </div>
               </div>
+            </div>
+
+            {/* Settings */}
+            <div id="morse-controls" className="w-full p-4 sm:p-5 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700 mb-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block">
+                  Speed <span className="float-right text-green-700 dark:text-green-400 font-semibold">{speed} WPM</span>
+                </label>
+                <input type="range" min="5" max="35" value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="w-full accent-green-600" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block">
+                  Frequency <span className="float-right text-green-700 dark:text-green-400 font-semibold">{frequency} Hz</span>
+                </label>
+                <input type="range" min="300" max="1000" step="50" value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} className="w-full accent-green-600" />
+              </div>
+              <div>
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block">
+                  Volume <span className="float-right text-green-700 dark:text-green-400 font-semibold">{Math.round(volume * 100)}%</span>
+                </label>
+                <input type="range" min="0" max="1" step="0.1" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="w-full accent-green-600" />
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <button onClick={handlePlay} disabled={!hasContent || playing} className="h-12 inline-flex items-center justify-center gap-2 rounded-xl bg-green-700 text-white font-semibold disabled:opacity-40 hover:bg-green-800 transition-all cursor-pointer">
+                <Volume2 className="w-4 h-4" /> Play
+              </button>
+              <button onClick={handleStop} disabled={!playing} className="h-12 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-400 dark:bg-slate-700 text-white font-semibold disabled:opacity-50 transition-all cursor-pointer">
+                <Pause className="w-4 h-4" /> Pause
+              </button>
+              <button onClick={handleStop} disabled={!playing} className="h-12 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-400 dark:bg-slate-700 text-white font-semibold disabled:opacity-50 transition-all cursor-pointer">
+                <Square className="w-4 h-4" /> Stop
+              </button>
+              <button onClick={() => setRepeatEnabled(!repeatEnabled)} className={`h-12 inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all cursor-pointer ${repeatEnabled ? "bg-green-700 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700"}`}>
+                <Repeat2 className="w-4 h-4" /> Repeat
+              </button>
+              <button onClick={() => setSoundEnabled(!soundEnabled)} className={`h-12 inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all cursor-pointer ${soundEnabled ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-800" : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700"}`}>
+                <Music className="w-4 h-4" /> Sound
+              </button>
+              <button onClick={handleFlash} disabled={!hasContent} className={`h-12 inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all cursor-pointer ${flashActive ? "bg-amber-400 text-slate-900" : "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700"}`}>
+                <Lightbulb className="w-4 h-4" /> Light
+              </button>
+              <button onClick={handleVibrate} className="h-12 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-semibold transition-all cursor-pointer">
+                <Vibrate className="w-4 h-4" /> Vibrate
+              </button>
+              <button onClick={handleDownloadWav} disabled={!hasContent} className="h-12 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-800 text-white font-semibold disabled:opacity-40 hover:bg-slate-900 transition-all cursor-pointer">
+                <Download className="w-4 h-4" /> Save Audio
+              </button>
+              <button onClick={handleCopy} disabled={!hasContent} className="h-12 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-semibold disabled:opacity-40 transition-all cursor-pointer">
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />} {copied ? "Copied" : "Copy"}
+              </button>
+              <button onClick={handleClear} className="h-12 inline-flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-semibold transition-all cursor-pointer">
+                <Trash2 className="w-4 h-4" /> Clear
+              </button>
             </div>
           </div>
         </div>
