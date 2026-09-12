@@ -142,7 +142,7 @@ export default function MorseCodeQuizPage() {
             Morse Code Quiz
           </h1>
           <p className="mx-auto mt-4 max-w-4xl text-lg leading-8 text-green-50/80">
-            Learn Morse code progressively with level-based practice. Each level uses the same character pool, while question order and answer options are shuffled every time you start a new attempt.
+            Build faster Morse code character recognition with progressive, multiple-choice practice. Start with a small group of characters, hear each code pattern, and work toward recognizing the full A–Z alphabet without relying on memorized answer positions.
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-sm font-medium text-green-50/90">
             <span>🎯 8 Progressive Levels</span>
@@ -160,7 +160,7 @@ export default function MorseCodeQuizPage() {
               <div>
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Choose Your Level</h2>
                 <p className="mt-1 text-slate-600 dark:text-slate-300">
-                  Start with a small character set and progress toward the complete A–Z alphabet.
+                  Start with a small character set, build reliable recall, then progress toward the complete A–Z alphabet. For best results, combine quiz practice with audio and timing exercises.
                 </p>
               </div>
               <span className="rounded-full bg-green-50 px-3 py-1 text-sm font-semibold text-green-700 dark:bg-green-900/30 dark:text-green-400">
@@ -238,8 +238,8 @@ export default function MorseCodeQuizPage() {
             </div>
             <p className="mb-7 text-slate-600 dark:text-slate-300">
               {percentage >= 80
-                ? "Excellent. You are ready to reinforce this level or move forward."
-                : "Try the level again. The next attempt will use a newly shuffled question sequence and answer order."}
+                ? "Strong result. Reinforce the characters you missed, then move forward when recognition feels consistent rather than relying only on a single score."
+                : "Review the characters you missed and try again. Each attempt reshuffles the question sequence and answer choices, so focus on recognizing the Morse pattern itself."}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <button onClick={startQuiz} className="rounded-lg bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700 cursor-pointer">
@@ -318,6 +318,71 @@ export default function MorseCodeQuizPage() {
             </div>
           </div>
         ) : null}
+
+        <section className="mt-10 border-t border-slate-200 pt-8 dark:border-slate-800">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">How to Use This Morse Code Quiz Effectively</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            Use the quiz as a recognition exercise rather than a memorization game. Review the
+            <Link href="/morse-code-alphabet" className="mx-1 font-semibold text-green-700 hover:underline dark:text-green-400">
+              Morse code alphabet
+            </Link>
+            first, then use the audio button to connect each dot-and-dash pattern with its sound.
+            If timing is unfamiliar, study the
+            <Link href="/morse-code-timing" className="mx-1 font-semibold text-green-700 hover:underline dark:text-green-400">
+              Morse code timing guide
+            </Link>
+            before increasing your practice speed.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <Link href="/learn-morse-code" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 hover:border-green-400 hover:text-green-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-green-400">
+              <span className="font-semibold">Learn Morse Code</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-500 dark:text-slate-400">Follow a structured beginner practice plan.</span>
+            </Link>
+            <Link href="/morse-code-sounds" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 hover:border-green-400 hover:text-green-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-green-400">
+              <span className="font-semibold">Morse Code Sounds</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-500 dark:text-slate-400">Practice hearing dots, dashes, and spacing.</span>
+            </Link>
+            <Link href="/morse-code-timing" className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 hover:border-green-400 hover:text-green-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-green-400">
+              <span className="font-semibold">Morse Code Timing</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-500 dark:text-slate-400">Understand dot, dash, character, and word spacing.</span>
+            </Link>
+          </div>
+        </section>
+
+        <section className="mt-8 border-t border-slate-200 pt-8 dark:border-slate-800">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Morse Code Standards &amp; Further Practice</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+            This quiz focuses on International Morse Code character recognition. For the formal
+            international recommendation, see the
+            <a
+              href="https://www.itu.int/rec/R-REC-M.1677"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-1 font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              ITU-R Recommendation M.1677
+            </a>.
+            For amateur-radio-oriented learning material, the
+            <a
+              href="https://www.arrl.org/learning-morse-code"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-1 font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              ARRL Morse code learning resources
+            </a>
+            provide additional practice guidance. Learners who want a dedicated interactive
+            training environment can also explore
+            <a
+              href="https://lcwo.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-1 font-semibold text-green-700 hover:underline dark:text-green-400"
+            >
+              LCWO (Learn CW Online)
+            </a>.
+          </p>
+        </section>
 
         <section className="mt-10 border-t border-slate-200 pt-8 dark:border-slate-800">
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Practice Resources</h2>
