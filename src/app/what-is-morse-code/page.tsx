@@ -4,33 +4,41 @@ import Link from "next/link";
 import { generatePageMeta, generateArticleSchema, generateFAQSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = generatePageMeta(
-  "What is Morse Code? History, Uses & Modern Applications",
-  "In-depth exploration of Morse code covering its invention by Samuel Morse and Alfred Vail in 1837, the first telegraph message in 1844, standardization at the 1865 International Telegraph Conference, and six modern application fields including amateur radio CW operation, aviation NAVAID identifiers, maritime communication, and assistive technology.",
+  "What Is Morse Code? How It Works, History & Uses",
+  "Learn what Morse code is, how dots, dashes, and timing encode messages, how Samuel Morse and Alfred Vail developed the telegraph code, and where International Morse code is still used today in radio, navigation, signaling, and assistive communication.",
   "/what-is-morse-code",
   [
-    "what is morse code", "morse code history", "samuel morse", "telegraph invention", "morse code uses today"
+    "what is morse code", "how does morse code work", "morse code history", "samuel morse", "alfred vail", "morse code uses", "international morse code"
   ]
 );
 const articleSchema = generateArticleSchema({
-  title: "What is Morse Code? History, Uses & Modern Applications",
+  title: "What Is Morse Code? How It Works, History & Uses",
   description: "A comprehensive guide to Morse code covering its history, how it works, and its modern applications.",
   url: "/what-is-morse-code",
-  datePublished: "2026-8-05",
+  datePublished: "2026-08-05",
 });
 
 export default function WhatIsMorseCodePage() {
   const faqSchema = generateFAQSchema([
     {
+      question: "What is Morse code?",
+      answer: "Morse code is a communication system that represents letters, numbers, and some punctuation with patterns of short and long signals, called dots and dashes, separated by specific timing gaps.",
+    },
+    {
       question: "Who invented Morse code?",
-      answer: "Morse code was developed by Samuel F.B. Morse and his assistant Alfred Vail in the 1830s and 1840s. While Morse is credited with the invention, Vail made significant contributions to the code's design, including the efficient assignment of shorter codes to more common letters.",
+      answer: "Samuel F. B. Morse and Alfred Vail developed the telegraph system and the code used with it in the 1830s and 1840s. Vail made important contributions to the practical alphabetic code and telegraph equipment.",
     },
     {
       question: "Is Morse code still used today?",
-      answer: "Yes! Morse code is actively used by amateur radio operators worldwide, in aviation as NAVAID identifiers, in maritime communication as a backup, and by people with disabilities for assistive communication. The SOS distress signal remains universally recognized.",
+      answer: "Yes. Morse code remains in use in amateur radio and other signaling, educational, historical, and assistive communication contexts. International Morse code is also documented by ITU-R Recommendation M.1677-1.",
+    },
+    {
+      question: "How does Morse code work?",
+      answer: "Each character is represented by a pattern of dots and dashes. Timing also matters: a dot is one unit, a dash is three units, the gap within a character is one unit, the gap between characters is three units, and the gap between words is seven units.",
     },
     {
       question: "What was the first Morse code message?",
-      answer: "The first official Morse code message was 'What hath God wrought?' sent on May 24, 1844, by Samuel Morse from the Supreme Court chamber in Washington, D.C. to the B&O Railroad depot in Baltimore, Maryland.",
+      answer: "On May 24, 1844, the message 'What hath God wrought?' was transmitted from Washington, D.C. to Baltimore over the experimental telegraph line.",
     },
   ]);
 
@@ -59,10 +67,30 @@ export default function WhatIsMorseCodePage() {
             What is Morse Code?
           </h1>
           <p className="text-lg text-slate-600">
-            A comprehensive guide to the history, mechanics, and modern applications of one of the world&apos;s most
-            enduring communication systems. From Samuel Morse&apos;s telegraph to today&apos;s amateur radio bands.
+            Learn what Morse code is, how dots and dashes represent letters and numbers, why timing matters, how the
+            code developed alongside the electric telegraph, and where it is still useful today. This guide combines the
+            basic idea, history, timing rules, practical uses, and beginner-friendly resources in one place.
           </p>
         </div>
+
+        {/* Featured Blog Image */}
+        <section className="mb-10">
+          <figure className="mx-auto">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <Image
+                src="/images/blog/what-is-morse-code.webp"
+                alt="Morse code dots and dashes communication system illustration"
+                width={1200}
+                height={675}
+                className="h-auto w-full"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+              />
+            </div>
+            <figcaption className="mt-4 text-center text-sm leading-7 text-slate-600">
+              Morse code represents letters, numbers, and symbols with combinations of dots and dashes for communication across different signaling methods.
+            </figcaption>
+          </figure>
+        </section>
 
         {/* What Is */}
         <section className="mb-10">
@@ -75,8 +103,7 @@ export default function WhatIsMorseCodePage() {
               long-distance electrical communication for over a century and remains in active use today.
             </p>
             <p>
-  At its core, Morse code is a <strong>binary system</strong> — every character is represented using just
-  two types of signals: a short one (dot) and a long one (dash). The order and number of dots and dashes
+  At its core, Morse code uses two signal elements: a short one (dot) and a long one (dash). The order and number of dots and dashes
   determines which character is being transmitted. For example, a single dot represents the letter E, while a
   single dash represents the letter T. The letter A is dot-dash, the letter B is dash-dot-dot-dot, and so on
   for all 26{" "}
@@ -96,11 +123,10 @@ export default function WhatIsMorseCodePage() {
   , and various punctuation marks.
 </p>
             <p>
-              What makes Morse code remarkable is its <strong>efficiency</strong>. Samuel Morse and Alfred Vail
-              designed the code so that the most frequently used letters in English have the shortest codes. The letter
-              E, the most common letter in English at 12.7% frequency, gets just a single dot. T, the second most common
-              at 9.1%, gets just a single dash. This design dramatically speeds up transmission compared to a system
-              where every letter has the same length code.
+              One reason Morse code can be efficient is that common characters can be represented with short patterns. E is a
+              single dot and T is a single dash, while less frequent letters generally use longer patterns. This unequal
+              code length reduces the average amount of signaling needed for ordinary text compared with a system in
+              which every character has the same-length representation.
             </p>
             <p>
   If you want to see how Morse code works in practice, try our{" "}
@@ -169,6 +195,31 @@ export default function WhatIsMorseCodePage() {
           </p>
         </section>
 
+        {/* At a Glance */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Morse Code at a Glance</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
+              <h3 className="font-semibold text-slate-900 mb-2">Dots &amp; dashes</h3>
+              <p className="text-sm text-slate-600">
+                Characters are built from short and long signals arranged in specific patterns.
+              </p>
+            </div>
+            <div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
+              <h3 className="font-semibold text-slate-900 mb-2">Timing matters</h3>
+              <p className="text-sm text-slate-600">
+                The spaces within characters, between characters, and between words are part of the code.
+              </p>
+            </div>
+            <div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
+              <h3 className="font-semibold text-slate-900 mb-2">International standard</h3>
+              <p className="text-sm text-slate-600">
+                International Morse code is documented in ITU-R Recommendation M.1677-1.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* How It Works */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-slate-900 mb-4">How Morse Code Works</h2>
@@ -214,10 +265,9 @@ export default function WhatIsMorseCodePage() {
             </p>
             <p>
               Morse&apos;s assistant, <strong>Alfred Vail</strong>, played a crucial role in refining both the telegraph
-              hardware and the code itself. Vail is credited with the efficient letter-to-code assignment system that
-              gives shorter codes to more common letters — a system inspired by the movable-type printing press, where
-              more common letters have more type pieces. Vail&apos;s contribution was so significant that some historians
-              argue the code should be called &quot;Vail code.&quot;
+              hardware and the code itself. Vail made major contributions to the telegraph and to the alphabet used with it. Smithsonian archival material
+              documents his role in improving the equipment and replacing Morse&apos;s earlier numerical system with a
+              more practical alphabetic code. His work helped make messages faster and easier to decode.
             </p>
             <p>
               The first demonstration of the telegraph occurred on January 6, 1838, at Morristown, New Jersey. But the
@@ -246,6 +296,65 @@ export default function WhatIsMorseCodePage() {
           </div>
         </section>
 
+        {/* Expanded Historical Context */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">From Painter to Telegraph Pioneer</h2>
+          <div className="text-slate-700 leading-relaxed space-y-4">
+            <p>
+              Samuel Finley Breese Morse was trained as a painter before becoming closely associated with the electric
+              telegraph. During a sea voyage in 1832, a conversation about electromagnetism helped spark his interest in
+              transmitting information with electricity. He continued developing the idea while maintaining his career
+              in the arts.
+            </p>
+            <p>
+              Morse&apos;s work became much more practical through his partnership with <strong>Alfred Vail</strong>.
+              Vail contributed to the telegraph apparatus and helped refine the coding approach used to represent
+              individual characters. The collaboration was important in turning an experimental concept into a workable
+              communication system.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">The Telegraph Changed Long-Distance Communication</h2>
+          <div className="text-slate-700 leading-relaxed space-y-4">
+            <p>
+              The successful Washington-to-Baltimore demonstration showed that electrical messages could cross a long
+              distance far faster than physical mail. Telegraph networks then expanded alongside railroads and became
+              important to business, journalism, government, and personal communication.
+            </p>
+            <p>
+              Telegraphy also spread internationally. Undersea cable projects eventually connected continents, helping
+              create a global communications network. During the American Civil War, telegraph lines were used for
+              military communication, demonstrating how quickly information could be moved over long distances.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">American Morse vs. International Morse Code</h2>
+          <div className="text-slate-700 leading-relaxed space-y-4">
+            <p>
+              The original American Morse system and the later International Morse Code are related but not identical.
+              American Morse, sometimes called Railroad Morse, was used extensively in the United States and had some
+              different character and spacing conventions.
+            </p>
+            <p>
+              International Morse Code was standardized for international telegraph communication in the 19th century
+              and became the form most commonly referenced today. Its standardized timing and character patterns support
+              communication across different countries and applications. For the current technical reference, see
+              <a
+                href="https://www.itu.int/rec/R-REC-M.1677"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="ml-1 text-green-600 underline hover:text-green-700"
+              >
+                ITU-R Recommendation M.1677
+              </a>.
+            </p>
+          </div>
+        </section>
+
         {/* Timeline */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Timeline of Key Events</h2>
@@ -264,7 +373,7 @@ export default function WhatIsMorseCodePage() {
               { year: "1930s", event: "Ludwig Koch develops the Koch method for teaching Morse code, still used today." },
               { year: "1999", event: "Morse code requirements for amateur radio licenses are relaxed in many countries." },
               { year: "2003", event: "The International Maritime Organization ends Morse code requirements for ships." },
-              { year: "2024", event: "Morse code continues to thrive in amateur radio, aviation, and assistive technology communities." },
+              { year: "Today", event: "Morse code remains in use in areas such as amateur radio, signaling, education, and some assistive communication systems." },
             ].map((item) => (
               <div key={item.year} className="flex gap-4">
                 <div className="flex-shrink-0 w-20 text-right">
@@ -276,6 +385,25 @@ export default function WhatIsMorseCodePage() {
                 <p className="text-slate-700">{item.event}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Decline & Legacy */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">The Decline of Commercial Telegraphy and Morse Code&apos;s Legacy</h2>
+          <div className="text-slate-700 leading-relaxed space-y-4">
+            <p>
+              Telephone networks, teletype systems, and later digital communications gradually reduced the need for
+              commercial Morse telegraphy. Even though the original telegraph infrastructure is largely a historical
+              technology, the code itself survived because it is simple, adaptable, and can be transmitted through
+              sound, light, radio, or physical signals.
+            </p>
+            <p>
+              Morse code also has a lasting cultural and educational role. It appears in historical collections,
+              communications training, amateur radio, films, literature, and other forms of popular culture. Its simple
+              dot-and-dash structure makes it an enduring example of how information can be represented with a small
+              set of signal elements.
+            </p>
           </div>
         </section>
 
@@ -306,19 +434,19 @@ export default function WhatIsMorseCodePage() {
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">✈️ Aviation</h3>
-                <p className="text-sm text-slate-600">Navigation aids (NAVAIDs) like VOR and NDB stations are identified by two- or three-letter Morse code identifiers transmitted alongside the navigation signal. Pilots learn these identifiers during training.</p>
+                <p className="text-sm text-slate-600">Some radio navigation aids use Morse identifiers so operators can identify a station by its transmitted signal. The exact navigation systems and procedures depend on the equipment and aviation rules in use.</p>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">🚢 Maritime</h3>
-                <p className="text-sm text-slate-600">While no longer mandatory, Morse code remains a recognized backup for maritime communication. SOS is still universally understood as a distress signal, and many vessels maintain Morse code capability.</p>
+                <p className="text-sm text-slate-600">Modern maritime communication relies mainly on digital and voice systems, but Morse code remains historically important and is still familiar as a distress-signaling method. For real emergencies, use current approved maritime procedures and equipment.</p>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">♿ Assistive Technology</h3>
-                <p className="text-sm text-slate-600">People with severe physical disabilities, including those with locked-in syndrome, use Morse code input devices to communicate. Simple dot-dash patterns can control computers and speech-generating devices.</p>
+                <p className="text-sm text-slate-600">Morse code can be adapted as a simple input method for people who have limited movement or speech. Assistive systems can map dot-and-dash choices to letters, commands, or other computer inputs.</p>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">🎯 Emergency Signaling</h3>
-                <p className="text-sm text-slate-600">SOS can be signaled using flashlights, whistles, or any rhythmic medium. Learn the full history and signaling methods on our <Link href="/sos-morse-code" className="text-green-600 underline hover:text-green-700">SOS Morse code guide</Link>. Many smartphones have SOS features that can flash Morse code. It remains the most universally recognized distress signal.</p>
+                <p className="text-sm text-slate-600">SOS is widely recognized as a distress signal and can be represented in Morse code as three dots, three dashes, and three dots. Read our <Link href="/blog/sos-signal-morse-code-everything-you-need-to-know" className="text-green-600 underline hover:text-green-700">SOS signal and Morse code guide</Link> for its history and signaling methods. In a real emergency, follow local emergency guidance and use appropriate approved equipment.</p>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2">🎓 Education & Culture</h3>
@@ -332,14 +460,64 @@ export default function WhatIsMorseCodePage() {
           </div>
         </section>
 
+        {/* References */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">Morse Code References</h2>
+          <p className="text-slate-700 leading-relaxed mb-5">
+            For technical standards and historical background, these external resources provide useful context from
+            authoritative organizations. They open in a new tab so you can compare the source material with this guide.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a
+              href="https://www.itu.int/rec/R-REC-M.1677"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-green-300 transition-colors"
+            >
+              <h3 className="font-semibold text-slate-900 mb-2">ITU-R M.1677</h3>
+              <p className="text-sm text-slate-600">
+                International Morse code recommendation and technical reference.
+              </p>
+            </a>
+            <a
+              href="https://siarchives.si.edu/blog/forgotten-history-alfred-vail-and-samuel-morse"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-green-300 transition-colors"
+            >
+              <h3 className="font-semibold text-slate-900 mb-2">Smithsonian: Morse &amp; Vail</h3>
+              <p className="text-sm text-slate-600">
+                Historical background on Samuel Morse, Alfred Vail, and the early telegraph.
+              </p>
+            </a>
+            <a
+              href="https://www.arrl.org/code-characters"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="p-5 bg-slate-50 border border-slate-200 rounded-xl hover:border-green-300 transition-colors"
+            >
+              <h3 className="font-semibold text-slate-900 mb-2">ARRL Code Characters</h3>
+              <p className="text-sm text-slate-600">
+                A practical reference for International Morse code characters used in amateur radio.
+              </p>
+            </a>
+          </div>
+          <p className="mt-4 text-xs text-slate-500">
+            External references are provided for further reading and technical context. They are independent of Morse
+            Code Translator and may contain information, standards, or policies that change over time.
+          </p>
+        </section>
+
         {/* FAQ */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
           <div className="space-y-3">
             {[
-              { q: "Who invented Morse code?", a: "Morse code was developed by Samuel F.B. Morse and his assistant Alfred Vail in the 1830s and 1840s. While Morse is credited with the invention, Vail made significant contributions to the code's design." },
-              { q: "Is Morse code still used today?", a: "Yes! Morse code is actively used by amateur radio operators, in aviation as NAVAID identifiers, in maritime communication as a backup, and by people with disabilities for assistive communication." },
-              { q: "What was the first Morse code message?", a: "The first official message was 'What hath God wrought?' sent on May 24, 1844, from Washington, D.C. to Baltimore, Maryland." },
+              { q: "What is Morse code?", a: "Morse code is a communication system that represents letters, numbers, and some punctuation with patterns of short and long signals, called dots and dashes, separated by specific timing gaps." },
+              { q: "Who invented Morse code?", a: "Samuel F. B. Morse and Alfred Vail developed the telegraph system and the code used with it in the 1830s and 1840s. Vail made important contributions to the practical alphabetic code and telegraph equipment." },
+              { q: "Is Morse code still used today?", a: "Yes. Morse code remains in use in amateur radio and other signaling, educational, historical, and assistive communication contexts. International Morse code is also documented by ITU-R Recommendation M.1677-1." },
+              { q: "How does Morse code work?", a: "Each character is represented by a pattern of dots and dashes. Timing also matters: a dot is one unit, a dash is three units, the gap within a character is one unit, the gap between characters is three units, and the gap between words is seven units." },
+              { q: "What was the first Morse code message?", a: "On May 24, 1844, the message 'What hath God wrought?' was transmitted from Washington, D.C. to Baltimore over the experimental telegraph line." },
             ].map((faq, i) => (
               <details key={i} className="bg-white border border-slate-200 rounded-lg p-4 group">
                 <summary className="font-semibold text-slate-900 cursor-pointer list-none flex items-center justify-between">

@@ -9,46 +9,49 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = generatePageMeta(
-  "How to Learn Morse Code - Complete Beginner Guide",
-  "Step-by-step Morse code learning guide for beginners. Learn the alphabet, common letters, mnemonic techniques, listening practice, the Koch method, and daily routines to build Morse code skills.",
+  "How to Learn Morse Code: Beginner Guide, Koch Method & Practice",
+  "Learn Morse code step by step with sound-first practice, common-character training, mnemonics, the Koch and Farnsworth methods, copying exercises, timing, and a practical daily routine.",
   "/learn-morse-code",
   [
-    "learn morse code",
     "how to learn morse code",
-    "morse code tutorial",
+    "learn morse code",
     "morse code for beginners",
     "morse code learning guide",
+    "morse code practice",
+    "koch method morse code",
+    "farnsworth method morse code",
+    "morse code listening practice",
   ]
 );
 
 const howToSchema = generateHowToSchema([
   {
-    name: "Step 1: Learn the Alphabet",
-    text: "Start by memorizing the Morse code alphabet using the complete A-Z chart. Focus on the most common letters first.",
+    name: "Step 1: Learn the Morse Code Alphabet",
+    text: "Start with the International Morse Code alphabet and learn characters as sounds and rhythms rather than relying only on a visual chart.",
   },
   {
-    name: "Step 2: Master the Most Common Letters",
-    text: "Focus on E, T, A, I, N, O, S, and H — these cover 33% of English text.",
+    name: "Step 2: Learn a Small Set of Characters",
+    text: "Begin with a manageable group of simple characters and add new ones as recognition becomes reliable.",
   },
   {
-    name: "Step 3: Practice with Short Words",
-    text: "Build fluency by translating simple words like SOS, CAT, DOG, HELLO.",
+    name: "Step 3: Practice Short Words",
+    text: "Combine familiar characters into short words and simple messages so recognition becomes practical instead of purely memorized.",
   },
   {
-    name: "Step 4: Use Mnemonic Devices",
-    text: "Create memory aids to help you recall each letter's code pattern.",
+    name: "Step 4: Use Mnemonics Carefully",
+    text: "Use memorable associations as a temporary aid, while gradually shifting toward direct recognition of each character's sound pattern.",
   },
   {
-    name: "Step 5: Practice Listening Daily",
-    text: "Train your ear to recognize Morse code by listening at slow speeds and gradually increasing.",
+    name: "Step 5: Practice Listening",
+    text: "Listen to Morse code regularly and train yourself to recognize complete character rhythms without counting individual dots and dashes.",
   },
   {
-    name: "Step 6: Use the Koch Method",
-    text: "Add one new character at a time at full speed, achieving 90% accuracy before moving on.",
+    name: "Step 6: Choose a Structured Method",
+    text: "Use a structured approach such as Koch-style character introduction or Farnsworth timing to organize practice and manage spacing.",
   },
   {
     name: "Step 7: Test and Track Progress",
-    text: "Use quizzes and practice tests to identify weak areas and track improvement.",
+    text: "Use quizzes, copying exercises, and simple accuracy or speed goals to identify weak characters and measure improvement over time.",
   },
 ]);
 
@@ -57,25 +60,34 @@ export default function LearnMorseCodePage() {
     {
       question: "How long does it take to learn Morse code?",
       answer:
-        "With consistent daily practice of 15-30 minutes, most people can learn all 26 letters and 10 numbers in about 2-4 weeks. Reaching comfortable conversational speed (15-20 WPM) typically takes 2-3 months. The Koch method can accelerate this timeline significantly.",
+        "There is no single timeline. With regular practice, many beginners can learn the basic character set in weeks, while comfortable listening speed usually takes longer. Your results depend on practice frequency, method, starting speed, and the type of Morse you want to copy.",
     },
     {
       question: "What is the Koch method for learning Morse code?",
       answer:
-        "The Koch method teaches Morse code by starting with just two characters at full speed (typically 20 WPM). Once you can copy those two characters at 90% accuracy for one minute, you add a third. This process continues until all characters are learned. This method avoids building a 'lookup table' in your brain and instead develops instant character recognition.",
+        "The Koch method is a character-by-character training approach in which learners practice a small set of characters at a relatively high character speed and add new characters as recognition improves. The goal is to build direct character recognition rather than counting individual dots and dashes.",
+    },
+    {
+      question: "What is Farnsworth timing?",
+      answer:
+        "Farnsworth timing keeps the individual characters relatively fast while adding more space between characters or words. This gives beginners extra processing time while helping them become familiar with faster character rhythms.",
     },
     {
       question: "What speed should I start practicing Morse code?",
       answer:
-        "If using the Koch method, start at 15-20 WPM with a character speed of 15-20 WPM and a much slower effective speed (long spacing between characters). For traditional methods, start at 5 WPM and gradually increase. The key is consistency — 15 minutes daily is far more effective than 3 hours once a week.",
+        "Choose a speed that lets you practice consistently without turning every character into a counting exercise. If you use a Koch-style approach, you can keep character speed higher and use wider spacing. If you are using another method, start comfortably and increase speed gradually.",
+    },
+    {
+      question: "Should I learn Morse code as dots and dashes?",
+      answer:
+        "Dots and dashes are useful for reference, but listening practice should gradually move you toward recognizing the rhythm of complete characters. Sound-first practice helps reduce the habit of translating every dot and dash individually.",
     },
     {
       question: "Can I learn Morse code on my own?",
       answer:
-        "Absolutely! Morse code is one of the easiest skills to learn independently. All you need is a reference chart, an audio source (like our online translator), and consistent practice. Many people have reached 20+ WPM entirely through self-study.",
+        "Yes. A self-study routine can combine an alphabet reference, regular listening practice, copying exercises, a translator for checking work, and a quiz or progress log. External practice communities can also provide useful feedback and real-world copying practice.",
     },
   ]);
-
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Learn Morse Code", url: "/learn-morse-code" },
@@ -131,14 +143,25 @@ export default function LearnMorseCodePage() {
             Morse code from zero to proficiency using proven methods, mnemonic
             tricks, and daily practice routines.
           </p>
+
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            New to the subject? Start with our{" "}
+            <Link
+              href="/what-is-morse-code"
+              className="font-semibold text-green-700 hover:underline"
+            >
+              guide to what Morse code is
+            </Link>
+            {" "}to understand the system before beginning structured practice.
+          </p>
         </div>
 
-        {/* Learning Roadmap Infographic */}
+        {/* Featured Guide Image */}
         <figure className="mb-12">
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
             <Image
-              src="/images/infographic/learn-morse-code-roadmap.webp"
-              alt="How to learn Morse code step-by-step roadmap for beginners, from learning characters and patterns to listening practice, timing, decoding words, and building speed"
+              src="/images/blog/how-to-learn-morse-code.webp"
+              alt="How to learn Morse code with a beginner-friendly step-by-step practice guide"
               width={1200}
               height={675}
               priority
@@ -147,7 +170,7 @@ export default function LearnMorseCodePage() {
             />
           </div>
           <figcaption className="mt-3 text-center text-sm leading-6 text-slate-600">
-            A step-by-step Morse code learning roadmap, from recognizing basic characters to building listening speed and confidence.
+            A practical visual guide to learning Morse code step by step, from character recognition to listening practice and speed building.
           </figcaption>
         </figure>
 
@@ -184,9 +207,9 @@ export default function LearnMorseCodePage() {
                   <p>
                     Print out or bookmark the alphabet chart and keep it handy.
                     You'll refer to it constantly in the beginning.
-                    Understanding that Morse code is essentially a binary
-                    system — just dots and dashes arranged in different
-                    patterns — makes it less intimidating. There are only 26
+                    Morse code uses two basic signal elements — short and long — combined with timing and spacing. That makes the system
+                    compact, but successful learning depends on recognizing complete character patterns rather than treating
+                    every message as a sequence of isolated dots and dashes. There are only 26
                     letters, 10 numbers, and a handful of punctuation marks to
                     learn, and many of them follow recognizable patterns. Once
                     you understand the letters, you can also study our{" "}
@@ -208,12 +231,10 @@ export default function LearnMorseCodePage() {
               content: (
                 <>
                   <p>
-                    Not all letters are created equal in English. The eight
-                    most common letters — E, T, A, I, N, O, S, and H — account
-                    for approximately 33% of all English text. If you learn
-                    just these eight letters, you'll be able to recognize about
-                    one-third of any Morse code message. This is a powerful
-                    motivator because you see progress immediately.
+                    Not all characters need to be learned at once. A practical beginner strategy is to start with a small group of
+                    simple, familiar characters and add more as recognition becomes reliable. E, T, A, I, N, O, S, and H
+                    are often used as an introductory set, but exact character frequencies vary by language and text.
+                    The real goal is fast, confident recognition rather than memorizing frequency statistics.
                   </p>
 
                   <p>
@@ -263,10 +284,10 @@ export default function LearnMorseCodePage() {
                     already have Morse code and want to convert it back into
                     readable text, use our{" "}
                     <Link
-                      href="/morse-code-decoder"
+                      href="/"
                       className="text-green-700 font-medium hover:underline"
                     >
-                      Morse Code Decoder
+                      Morse Code Translator
                     </Link>
                     .
                   </p>
@@ -342,7 +363,7 @@ export default function LearnMorseCodePage() {
                     >
                       Morse Code Timing
                     </Link>{" "}
-                    reference. Set aside 15 minutes daily for listening
+                    reference. Set aside a short, repeatable block of time for listening
                     practice. Consistency is far more important than duration —
                     15 minutes every day will yield much better results than 3
                     hours once a week.
@@ -379,31 +400,23 @@ export default function LearnMorseCodePage() {
               content: (
                 <>
                   <p>
-                    The Koch method, developed by German psychologist Ludwig
-                    Koch in the 1930s, is widely regarded as the most effective
-                    approach to learning Morse code. Unlike traditional methods
-                    that start at slow speeds and gradually increase, the Koch
-                    method starts at your target speed from the very beginning.
+                    The Koch method is a widely used structured approach to Morse code training. It introduces a small number of
+                    characters and adds new ones as recognition improves. A key idea is to expose learners to the
+                    characteristic sound of a character early, instead of teaching very slow dots and dashes that must
+                    later be relearned at higher speeds.
                   </p>
 
                   <p>
-                    Here's how it works: You start with just two characters
-                    (typically K and M) at full speed (15-20 WPM). You listen
-                    to random sequences of these two characters and write down
-                    what you hear. When you can copy them at 90% accuracy for
-                    one full minute, you add a third character. The process
-                    repeats — add a new character only when you've mastered the
-                    current set at 90% accuracy.
+                    In practice, a Koch-style lesson begins with a small set of characters presented at a relatively high character
+                    speed. You copy what you hear, review the errors, and introduce additional characters as the current
+                    set becomes familiar. Exact starting speeds, character sets, and accuracy thresholds can be adjusted
+                    to suit the learner and the training program.
                   </p>
 
                   <p>
-                    The genius of this method is that you never build a
-                    "counting" habit (counting dots and dashes to figure out the
-                    letter). Instead, you develop instant, reflexive recognition
-                    of each character's sound pattern. This is how experienced
-                    operators actually read Morse code — they don't "decode" it
-                    letter by letter; they recognize each character's rhythm the
-                    way you recognize a spoken word. Use our{" "}
+                    The main learning benefit is the emphasis on direct character recognition. Instead of consciously counting every dot
+                    and dash, you gradually learn the rhythm of the complete character. With enough listening and copying
+                    practice, familiar characters can become recognizable as distinct sound patterns. Use our{" "}
                     <Link
                       href="/morse-code-quiz"
                       className="text-green-700 font-medium hover:underline"
@@ -426,15 +439,13 @@ export default function LearnMorseCodePage() {
                     maintaining motivation. Use our interactive Morse Code Quiz
                     to test yourself on individual characters, words, and even
                     full sentences. Track your scores over time to see your
-                    improvement. Most learners find that progress is slow at
-                    first, then accelerates dramatically around the 2-3 week
-                    mark as the characters start to become automatic.
+                    improvement. Progress often feels uneven: some characters become automatic quickly while others need repeated exposure. Keep an
+                    error log so you can spend more practice time on the characters you consistently confuse.
                   </p>
 
                   <p>
-                    Set specific, measurable goals: "I want to copy all 26
-                    letters at 90% accuracy by the end of month one" or "I want
-                    to reach 15 WPM by month three." Celebrate milestones along
+                    Set measurable goals that fit your starting point, such as recognizing a defined set of characters without a reference,
+                    copying a short passage with fewer errors, or increasing your comfortable listening speed over time. Celebrate milestones along
                     the way — your first perfect score on the letter quiz, your
                     first 100% word decode, your first conversation in Morse
                     code. Joining an online community of Morse code learners
@@ -537,8 +548,8 @@ export default function LearnMorseCodePage() {
               </h3>
 
               <p className="text-sm text-slate-600">
-                Learn about Morse code audio, frequency ranges, and timing
-                rules.
+                Practice Morse code audio and understand the timing, spacing, and listening skills used in
+                sound-based training.
               </p>
             </Link>
 
@@ -557,7 +568,7 @@ export default function LearnMorseCodePage() {
             </Link>
 
             <Link
-              href="/morse-code-decoder"
+              href="/"
               className="p-5 bg-white border border-slate-200 rounded-xl hover:border-green-400 hover:shadow-sm transition-all group"
             >
               <h3 className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors mb-1">
@@ -565,8 +576,7 @@ export default function LearnMorseCodePage() {
               </h3>
 
               <p className="text-sm text-slate-600">
-                Dedicated tool for converting Morse code back to readable text
-                with character analysis.
+                Use the translator to decode Morse code back into readable text and check unfamiliar character patterns.
               </p>
             </Link>
 
@@ -600,6 +610,94 @@ export default function LearnMorseCodePage() {
           </div>
         </section>
 
+        {/* Learning Roadmap Infographic */}
+        <figure className="mb-12">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <Image
+              src="/images/infographic/learn-morse-code-roadmap.webp"
+              alt="How to learn Morse code step-by-step roadmap for beginners, from learning characters and patterns to listening practice, timing, decoding words, and building speed"
+              width={1200}
+              height={675}
+              className="h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+          </div>
+          <figcaption className="mt-3 text-center text-sm leading-6 text-slate-600">
+            A step-by-step Morse code learning roadmap, from recognizing basic characters to building listening speed and confidence.
+          </figcaption>
+        </figure>
+
+        {/* Trusted External References */}
+        <section className="mb-12 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            Trusted Morse Code Learning References
+          </h2>
+
+          <p className="mb-5 leading-7 text-slate-700">
+            Use our guide for a practical learning path, then compare terminology and standards with established
+            organizations and training resources. These references are useful for deeper study of International Morse
+            Code, operating practice, and structured listening exercises.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a
+              href="https://www.itu.int/rec/R-REC-M.1677"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="rounded-xl border border-slate-200 bg-white p-5 hover:border-green-400 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-slate-900 mb-1">
+                ITU-R Recommendation M.1677
+              </h3>
+              <p className="text-sm text-slate-600">
+                The International Telecommunication Union reference for International Morse code.
+              </p>
+            </a>
+
+            <a
+              href="https://www.arrl.org/learning-morse-code"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="rounded-xl border border-slate-200 bg-white p-5 hover:border-green-400 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-slate-900 mb-1">
+                ARRL: Learning Morse Code
+              </h3>
+              <p className="text-sm text-slate-600">
+                Practical learning guidance and resources for people developing Morse code skills.
+              </p>
+            </a>
+
+            <a
+              href="https://lcwo.net/main/c"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="rounded-xl border border-slate-200 bg-white p-5 hover:border-green-400 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-slate-900 mb-1">
+                Learn CW Online
+              </h3>
+              <p className="text-sm text-slate-600">
+                Online exercises for character recognition, copying, and Morse code practice.
+              </p>
+            </a>
+
+            <a
+              href="https://cwops.org/cw-academy/"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="rounded-xl border border-slate-200 bg-white p-5 hover:border-green-400 hover:shadow-sm transition-all"
+            >
+              <h3 className="font-semibold text-slate-900 mb-1">
+                CWops CW Academy
+              </h3>
+              <p className="text-sm text-slate-600">
+                Structured Morse code training resources for learners who want guided practice.
+              </p>
+            </a>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">
@@ -610,19 +708,27 @@ export default function LearnMorseCodePage() {
             {[
               {
                 q: "How long does it take to learn Morse code?",
-                a: "With consistent daily practice of 15-30 minutes, most people can learn all 26 letters and 10 numbers in about 2-4 weeks. Reaching comfortable conversational speed (15-20 WPM) typically takes 2-3 months.",
+                a: "There is no single timeline. With regular practice, many beginners can learn the basic character set in weeks, while comfortable listening speed usually takes longer. Your results depend on practice frequency, method, starting speed, and the type of Morse you want to copy.",
               },
               {
                 q: "What is the Koch method?",
-                a: "The Koch method starts with two characters at full speed (20 WPM). Once you achieve 90% accuracy, you add a third character. This builds instant recognition rather than counting habits.",
+                a: "The Koch method introduces a small number of characters at a relatively high character speed and adds new characters as recognition improves. The goal is direct character recognition rather than counting individual dots and dashes.",
+              },
+              {
+                q: "What is Farnsworth timing?",
+                a: "Farnsworth timing keeps individual characters relatively fast while adding more space between characters or words, giving beginners extra processing time while they become familiar with faster character rhythms.",
               },
               {
                 q: "What speed should I start at?",
-                a: "Start at 5-10 WPM for traditional learning, or 15-20 WPM for the Koch method. The key is daily consistency — 15 minutes daily beats 3 hours once a week.",
+                a: "Choose a speed that lets you practice consistently without turning every character into a counting exercise. A structured method can use faster character timing with wider spacing, while other learners may prefer a gradual increase.",
+              },
+              {
+                q: "Should I learn Morse code as dots and dashes?",
+                a: "Dots and dashes are useful as a reference, but listening practice should gradually move you toward recognizing complete character rhythms. This helps reduce the habit of translating every element individually.",
               },
               {
                 q: "Can I learn Morse code on my own?",
-                a: "Absolutely! Morse code is one of the easiest skills to learn independently. All you need is a reference chart, audio practice (like our online translator), and consistent daily practice.",
+                a: "Yes. Combine an alphabet reference, regular listening practice, copying exercises, a translator for checking work, and quizzes or progress tracking. External learning communities can also provide useful feedback.",
               },
             ].map((faq, i) => (
               <details
