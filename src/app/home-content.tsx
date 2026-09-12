@@ -40,19 +40,19 @@ const headingClass =
   "text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-3xl lg:text-4xl text-center mb-4";
 
 const leadTextClass =
-  "text-center text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 mb-12 max-w-3xl mx-auto font-medium";
+  "text-center text-sm sm:text-base leading-relaxed text-slate-800 dark:text-slate-300 mb-12 max-w-3xl mx-auto font-medium";
 
 const bodyClass =
-  "mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400 font-normal";
+  "mt-2 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-400 font-normal";
 
 const cardClass =
-  "group relative overflow-hidden rounded-2xl border border-green-600/10 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/30 hover:bg-green-50/20 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 dark:hover:border-green-500/30";
+  "group relative overflow-hidden rounded-2xl border border-green-600/20 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/40 hover:bg-green-50/20 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 dark:hover:border-green-500/30";
 
 const gridCardClass =
-  "group relative overflow-hidden rounded-2xl border border-green-600/10 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/30 hover:bg-green-50/20 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 flex flex-col justify-between";
+  "group relative overflow-hidden rounded-2xl border border-green-600/20 bg-white p-6 shadow-sm backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-600/40 hover:bg-green-50/20 hover:shadow-xl hover:shadow-green-600/5 dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/80 flex flex-col justify-between";
 
 const linkClass =
-  "inline-flex items-center gap-1 font-semibold text-green-700 underline decoration-green-400/40 decoration-2 underline-offset-4 transition-colors hover:text-green-800 hover:decoration-green-600 dark:text-green-400 dark:hover:text-green-300";
+  "inline-flex items-center gap-1 font-semibold text-green-800 underline decoration-green-600/60 decoration-2 underline-offset-4 transition-colors hover:text-green-900 hover:decoration-green-700 dark:text-green-400 dark:hover:text-green-300";
 
 function ExternalLink({
   href,
@@ -69,7 +69,7 @@ function ExternalLink({
       className={linkClass}
     >
       {children}
-      <ExtIcon className="inline-block h-3 w-3 opacity-70" />
+      <ExtIcon className="inline-block h-3 w-3 opacity-90" />
     </a>
   );
 }
@@ -151,7 +151,7 @@ const alphabet = [
   ["V", "...-", "di-di-di-dah", "vi-o-lin-IST"],
   ["W", ".--", "di-dah-dah", "wa-TER-MELon"],
   ["X", "-..-", "dah-di-di-dah", "X-RA-RA-X"],
-  ["Y", "-.--", "dah-di-dah-dah", "YANK-ee-DO-DLE"],
+  ["Y", "-.--", "di-dah-dah-dah", "YANK-ee-DO-DLE"],
   ["Z", "--..", "dah-dah-di-dit", "ZOO-LOG-i-cal"],
 ];
 
@@ -221,8 +221,8 @@ export default function HomeContent() {
       {/* 1. What is Morse Code? */}
       <section id="translator" className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Radio className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Fundamentals
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Radio className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Fundamentals
           </span>
         </div>
         <h2 className={headingClass}>What is Morse Code?</h2>
@@ -234,7 +234,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dot</h3>
@@ -244,7 +244,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dashes</h3>
@@ -254,7 +254,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Pause/Space</h3>
@@ -265,7 +265,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Audio</h3>
@@ -277,16 +277,16 @@ export default function HomeContent() {
 
         <div className={`mt-8 ${cardClass}`}>
           <div className="flex items-center gap-2 mb-3">
-            <Sparkles className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <Sparkles className="h-5 w-5 text-green-700 dark:text-green-400" />
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Benefits</h3>
           </div>
-          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-300">
             Using <Link href="/what-is-morse-code" className={linkClass}>morse code</Link>, we can turn our text into codes and simple beats! Imagine listening to a random beat
             which gives you a secret message. Also, morse code is built easy for easy communication. For example,
             most common words in English like “E” are given small notations so that one can remember and type them
             easily in no time. E is represented by a single dot .
           </p>
-          <p className="mt-4 flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400 border-t border-slate-200 pt-4 dark:border-slate-800">
+          <p className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-400 border-t border-slate-200 pt-4 dark:border-slate-800">
             <span>For the standardized International Morse reference, see</span>
             <ExternalLink href="https://www.itu.int/rec/R-REC-M.1677-1-200910-I">
               ITU Recommendation M.1677
@@ -298,8 +298,8 @@ export default function HomeContent() {
       {/* 2. When and who invented morse code */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Clock className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> History Timeline
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Clock className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> History Timeline
           </span>
         </div>
         <h2 className={headingClass}>When and Who Invented Morse Code</h2>
@@ -309,10 +309,10 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
-            <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
+            <span className="inline-block rounded-md bg-green-700/15 border border-green-700/30 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-800 dark:bg-green-950 dark:text-green-400">
               PHASE 01: 1837-1838
             </span>
             <h3 className="mt-4 text-base font-bold text-slate-900 dark:text-white">Phase 01</h3>
@@ -321,10 +321,10 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
-            <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
+            <span className="inline-block rounded-md bg-green-700/15 border border-green-700/30 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-800 dark:bg-green-950 dark:text-green-400">
               PHASE 02: 1844
             </span>
             <h3 className="mt-4 text-base font-bold text-slate-900 dark:text-white">Phase 02</h3>
@@ -333,10 +333,10 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Globe className="h-6 w-6" />
             </div>
-            <span className="inline-block rounded-md bg-green-600/10 border border-green-600/20 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:text-green-400">
+            <span className="inline-block rounded-md bg-green-700/15 border border-green-700/30 px-2.5 py-1 text-[11px] font-black uppercase tracking-wider text-green-800 dark:bg-green-950 dark:text-green-400">
               PHASE 03: 1851
             </span>
             <h3 className="mt-4 text-base font-bold text-slate-900 dark:text-white">Phase 03</h3>
@@ -347,7 +347,7 @@ export default function HomeContent() {
         </div>
 
         <div className={`mt-6 ${cardClass}`}>
-          <p className="text-xs leading-relaxed text-slate-700 dark:text-slate-300">
+          <p className="text-xs leading-relaxed text-slate-800 dark:text-slate-300">
             The historical record also credits Alfred Vail with major work on the improved telegraph apparatus
             and the alphabetic code. The Smithsonian Institution Archives documents Vail&apos;s role in developing
             the alpha code used with the electromagnetic telegraph.{" "}
@@ -361,8 +361,8 @@ export default function HomeContent() {
       {/* 3. How to translate Morse code step by step */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Compass className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Guide
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Compass className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Guide
           </span>
         </div>
         <h2 className={headingClass}>How to Translate Morse Code Step by Step</h2>
@@ -373,8 +373,8 @@ export default function HomeContent() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">01</span>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">01</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <Compass className="h-5 w-5" />
               </div>
             </div>
@@ -387,8 +387,8 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">02</span>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">02</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <FileText className="h-5 w-5" />
               </div>
             </div>
@@ -400,8 +400,8 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">03</span>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">03</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <Volume2 className="h-5 w-5" />
               </div>
             </div>
@@ -413,8 +413,8 @@ export default function HomeContent() {
 
           <div className={cardClass}>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-4xl font-black text-green-600/20 dark:text-green-400/20">04</span>
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+              <span className="text-4xl font-black text-green-700/30 dark:text-green-400/20">04</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                 <CheckCircle2 className="h-5 w-5" />
               </div>
             </div>
@@ -429,8 +429,8 @@ export default function HomeContent() {
       {/* 4. Learn to code with Morse Code Translator */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <BookOpen className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Interactive Learning
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <BookOpen className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Interactive Learning
           </span>
         </div>
         <h2 className={headingClass}>Learn to Code with Morse Code Translator</h2>
@@ -442,7 +442,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <BookOpen className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Read the Pattern</h3>
@@ -452,7 +452,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Tap the Rhythm</h3>
@@ -463,7 +463,7 @@ export default function HomeContent() {
           </div>
 
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Practice Live</h3>
@@ -478,8 +478,8 @@ export default function HomeContent() {
       {/* 5. When to Use This Morse Code Translator */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Globe className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Practical Uses
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Globe className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Practical Uses
           </span>
         </div>
         <h2 className={headingClass}>When to Use This Morse Code Translator</h2>
@@ -489,7 +489,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Terminal className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Telegraph</h3>
@@ -499,7 +499,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Radio</h3>
@@ -509,7 +509,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Flame className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Smoke Signals</h3>
@@ -519,7 +519,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Cpu className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Electronics Debugging</h3>
@@ -529,7 +529,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Communication</h3>
@@ -539,7 +539,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Globe className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Accessibility & Heritage</h3>
@@ -554,8 +554,8 @@ export default function HomeContent() {
       {/* 6. Features of Our Morse Code Translator */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Sparkles className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Key Features
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Sparkles className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Key Features
           </span>
         </div>
         <h2 className={headingClass}>Features of Our Morse Code Translator</h2>
@@ -565,7 +565,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Real Time Counter</h3>
@@ -574,7 +574,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <FileText className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Text to Morse Code</h3>
@@ -583,7 +583,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Morse to Text</h3>
@@ -592,7 +592,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <CheckCircle2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Instant Copy</h3>
@@ -601,7 +601,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Lightbulb className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Inspire Me</h3>
@@ -610,7 +610,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Audio</h3>
@@ -619,7 +619,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Flash</h3>
@@ -628,7 +628,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Sliders className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Audio Customization</h3>
@@ -642,8 +642,8 @@ export default function HomeContent() {
       {/* 7. How to Read and Write Morse Code */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <BookOpen className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Mechanics
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <BookOpen className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Mechanics
           </span>
         </div>
         <h2 className={headingClass}>How to Read and Write Morse Code</h2>
@@ -653,7 +653,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Read Morse by Sound</h3>
@@ -664,7 +664,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Write Morse with Timing</h3>
@@ -680,8 +680,8 @@ export default function HomeContent() {
       {/* 8. Learn Morse Code with Sound */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Volume2 className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Audio Mastery
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Volume2 className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Audio Mastery
           </span>
         </div>
         <h2 className={headingClass}>Learn Morse Code with Sound</h2>
@@ -691,7 +691,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Layers className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Start Small</h3>
@@ -700,7 +700,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Listen, Tap, Repeat</h3>
@@ -709,7 +709,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Volume2 className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Recognize the Rhythm</h3>
@@ -723,8 +723,8 @@ export default function HomeContent() {
       {/* 9. What you'll learn about Morse code */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Award className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Overview
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Award className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Overview
           </span>
         </div>
         <h2 className={headingClass}>What You&apos;ll Learn About Morse Code</h2>
@@ -732,7 +732,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dot</h3>
@@ -741,7 +741,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Dash</h3>
@@ -750,7 +750,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <BookOpen className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Common Patterns</h3>
@@ -759,7 +759,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Timing and Rhythm</h3>
@@ -773,8 +773,8 @@ export default function HomeContent() {
       {/* 10. Examples to try */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Flame className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Practice
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Flame className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Practice
           </span>
         </div>
         <h2 className={headingClass}>Examples to Try</h2>
@@ -791,12 +791,12 @@ export default function HomeContent() {
           ].map(([label, code]) => (
             <div key={label} className={gridCardClass}>
               <div>
-                <span className="inline-block rounded-md bg-green-100 border border-green-300/40 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-green-700 dark:bg-green-950 dark:border-green-800 dark:text-green-400">
+                <span className="inline-block rounded-md bg-green-100 border border-green-400/50 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-green-800 dark:bg-green-950 dark:border-green-800 dark:text-green-400">
                   {label}
                 </span>
-                <p className="mt-4 font-mono text-2xl font-black tracking-widest text-green-700 dark:text-green-400">{code}</p>
+                <p className="mt-4 font-mono text-2xl font-black tracking-widest text-green-800 dark:text-green-400">{code}</p>
               </div>
-              <a href="#translator" className="mt-6 flex items-center gap-1.5 text-xs font-bold text-green-700 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300 transition-colors">
+              <a href="#translator" className="mt-6 flex items-center gap-1.5 text-xs font-bold text-green-800 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300 transition-colors">
                 Try in translator <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -807,8 +807,8 @@ export default function HomeContent() {
       {/* 11. Learn the Morse Code Alphabet, Numbers and Symbols */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Layers className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Reference Library
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Layers className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Reference Library
           </span>
         </div>
         <h2 className={headingClass}>Learn the <Link href="/morse-code-alphabet" className={linkClass}>Morse Code Alphabet</Link>, Numbers and Symbols</h2>
@@ -819,7 +819,7 @@ export default function HomeContent() {
           <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-inner">
             <table className="w-full border-collapse text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-slate-200 bg-green-700 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
+                <tr className="border-b border-slate-200 bg-green-800 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
                   <th className="py-3.5 px-4 sm:px-6">Letter</th>
                   <th className="py-3.5 px-4 sm:px-6">Morse Code</th>
                   <th className="py-3.5 px-4 sm:px-6">Spoken Rhythm</th>
@@ -830,9 +830,9 @@ export default function HomeContent() {
                 {alphabet.map(([letter, code, rhythm, cue]) => (
                   <tr key={letter} className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
                     <td className="py-3 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{letter}</td>
-                    <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-700 dark:text-green-400">{code}</td>
-                    <td className="py-3 px-4 sm:px-6 text-slate-700 dark:text-slate-300">{rhythm}</td>
-                    <td className="py-3 px-4 sm:px-6 text-slate-700 dark:text-slate-300">{cue}</td>
+                    <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-800 dark:text-green-400">{code}</td>
+                    <td className="py-3 px-4 sm:px-6 text-slate-800 dark:text-slate-300">{rhythm}</td>
+                    <td className="py-3 px-4 sm:px-6 text-slate-800 dark:text-slate-300">{cue}</td>
                   </tr>
                 ))}
               </tbody>
@@ -844,7 +844,7 @@ export default function HomeContent() {
             {numbers.map(([number, code]) => (
               <div key={number} className="rounded-xl border border-slate-200 bg-green-50/30 p-3.5 text-center hover:border-green-600/40 hover:bg-white dark:border-slate-800 dark:bg-slate-900/50 dark:hover:bg-slate-800 transition-all">
                 <span className="block text-sm font-bold text-slate-900 dark:text-white">{number}</span>
-                <span className="mt-1 block font-mono text-xs font-bold text-green-700 dark:text-green-400">{code}</span>
+                <span className="mt-1 block font-mono text-xs font-bold text-green-800 dark:text-green-400">{code}</span>
               </div>
             ))}
           </div>
@@ -854,7 +854,7 @@ export default function HomeContent() {
             {punctuation.map(([symbol, code]) => (
               <div key={symbol} className="rounded-xl border border-slate-200 bg-green-50/30 p-3.5 text-center hover:border-green-600/40 hover:bg-white dark:border-slate-800 dark:bg-slate-900/50 dark:hover:bg-slate-800 transition-all">
                 <span className="block text-sm font-bold text-slate-900 dark:text-white">{symbol}</span>
-                <span className="mt-1 block font-mono text-xs font-bold text-green-700 dark:text-green-400">{code}</span>
+                <span className="mt-1 block font-mono text-xs font-bold text-green-800 dark:text-green-400">{code}</span>
               </div>
             ))}
           </div>
@@ -864,8 +864,8 @@ export default function HomeContent() {
       {/* 12. Morse Code Sounds: The Rhythm of Communication */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Volume2 className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Acoustics
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Volume2 className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Acoustics
           </span>
         </div>
         <h2 className={headingClass}>Morse Code Sounds: The Rhythm of Communication</h2>
@@ -875,7 +875,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">E: The Shortest Character</h3>
@@ -884,7 +884,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">SOS: A Memorable Rhythm</h3>
@@ -893,7 +893,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Why Rhythm Matters</h3>
@@ -907,8 +907,8 @@ export default function HomeContent() {
       {/* 13. Modern Uses of Morse Code */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Globe className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Present Day
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Globe className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Present Day
           </span>
         </div>
         <h2 className={headingClass}>Modern Uses of Morse Code</h2>
@@ -918,7 +918,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Sparkles className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Jewellery</h3>
@@ -927,7 +927,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <FileText className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Tattoo</h3>
@@ -936,7 +936,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <BookOpen className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Education</h3>
@@ -945,7 +945,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Activity className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Assistive Communication</h3>
@@ -954,7 +954,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Radio</h3>
@@ -963,7 +963,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Compass className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Navigation</h3>
@@ -972,7 +972,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Layers className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Encoded Messages</h3>
@@ -981,7 +981,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Military Signals & Rescue</h3>
@@ -990,7 +990,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <HelpCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Games & Puzzles</h3>
@@ -1004,8 +1004,8 @@ export default function HomeContent() {
       {/* 14. Why Morse Code Still Matters Today */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Lightbulb className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Significance
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Lightbulb className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Significance
           </span>
         </div>
         <h2 className={headingClass}>Why Morse Code Still Matters Today</h2>
@@ -1015,7 +1015,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Award className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">As a Skill and Hobby</h3>
@@ -1024,7 +1024,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Clock className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">As Cultural Heritage</h3>
@@ -1033,7 +1033,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Radio className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">In Modern Communication</h3>
@@ -1047,8 +1047,8 @@ export default function HomeContent() {
       {/* 15. International v American */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Globe className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Comparison
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Globe className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Comparison
           </span>
         </div>
         <h2 className={headingClass}>International vs. American Morse Code</h2>
@@ -1058,7 +1058,7 @@ export default function HomeContent() {
           <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-inner">
             <table className="w-full border-collapse text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-slate-200 bg-green-700 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
+                <tr className="border-b border-slate-200 bg-green-800 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
                   <th className="py-3.5 px-4 sm:px-6">Feature</th>
                   <th className="py-3.5 px-4 sm:px-6">International Morse</th>
                   <th className="py-3.5 px-4 sm:px-6">American Morse</th>
@@ -1067,23 +1067,23 @@ export default function HomeContent() {
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
                 <tr className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
                   <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">Primary historical use</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">International telegraph and radio communication</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">Primarily American landline telegraph systems</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">International telegraph and radio communication</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">Primarily American landline telegraph systems</td>
                 </tr>
                 <tr className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
                   <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">Timing</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">Standardized timing based on dot units</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">Uses different historical spacing and character conventions</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">Standardized timing based on dot units</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">Uses different historical spacing and character conventions</td>
                 </tr>
                 <tr className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
                   <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">Use today</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">Widely recognized and used in modern CW practice</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">Primarily of historical and specialist interest</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">Widely recognized and used in modern CW practice</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">Primarily of historical and specialist interest</td>
                 </tr>
                 <tr className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
                   <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">Reference</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">ITU Recommendation M.1677</td>
-                  <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">Historical U.S. telegraph code</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">ITU Recommendation M.1677</td>
+                  <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">Historical U.S. telegraph code</td>
                 </tr>
               </tbody>
             </table>
@@ -1094,8 +1094,8 @@ export default function HomeContent() {
       {/* 16. Mirror alphabets list */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Layers className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Symmetry
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Layers className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Symmetry
           </span>
         </div>
         <h2 className={headingClass}>Mirror Alphabets List</h2>
@@ -1107,7 +1107,7 @@ export default function HomeContent() {
           <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-inner">
             <table className="w-full border-collapse text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-slate-200 bg-green-700 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
+                <tr className="border-b border-slate-200 bg-green-800 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
                   <th className="py-3.5 px-4 sm:px-6">Letter</th>
                   <th className="py-3.5 px-4 sm:px-6">Morse</th>
                   <th className="py-3.5 px-4 sm:px-6">Mirror</th>
@@ -1118,9 +1118,9 @@ export default function HomeContent() {
                 {mirrorPairs.map(([a, ac, b, bc]) => (
                   <tr key={a} className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
                     <td className="py-3 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{a}</td>
-                    <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-700 dark:text-green-400">{ac}</td>
+                    <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-800 dark:text-green-400">{ac}</td>
                     <td className="py-3 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{b}</td>
-                    <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-700 dark:text-green-400">{bc}</td>
+                    <td className="py-3 px-4 sm:px-6 font-mono font-bold text-green-800 dark:text-green-400">{bc}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1132,8 +1132,8 @@ export default function HomeContent() {
       {/* 17. Prosigns */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <ShieldAlert className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Protocols
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <ShieldAlert className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Protocols
           </span>
         </div>
         <h2 className={headingClass}>Prosigns</h2>
@@ -1145,7 +1145,7 @@ export default function HomeContent() {
           <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 shadow-inner">
             <table className="w-full border-collapse text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-slate-200 bg-green-700 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
+                <tr className="border-b border-slate-200 bg-green-800 text-white dark:border-slate-800 dark:bg-green-900 font-bold">
                   <th className="py-3.5 px-4 sm:px-6">Prosign</th>
                   <th className="py-3.5 px-4 sm:px-6">Morse</th>
                   <th className="py-3.5 px-4 sm:px-6">Meaning</th>
@@ -1155,8 +1155,8 @@ export default function HomeContent() {
                 {prosigns.map(([name, code, meaning]) => (
                   <tr key={name} className="transition-colors hover:bg-green-50/50 dark:hover:bg-slate-800/50">
                     <td className="py-3.5 px-4 sm:px-6 font-bold text-slate-900 dark:text-white">{name}</td>
-                    <td className="py-3.5 px-4 sm:px-6 font-mono font-bold text-green-700 dark:text-green-400">{code}</td>
-                    <td className="py-3.5 px-4 sm:px-6 text-slate-700 dark:text-slate-300">{meaning}</td>
+                    <td className="py-3.5 px-4 sm:px-6 font-mono font-bold text-green-800 dark:text-green-400">{code}</td>
+                    <td className="py-3.5 px-4 sm:px-6 text-slate-800 dark:text-slate-300">{meaning}</td>
                   </tr>
                 ))}
               </tbody>
@@ -1168,8 +1168,8 @@ export default function HomeContent() {
       {/* 18. Q-codes */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Radio className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Radio Signals
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Radio className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Radio Signals
           </span>
         </div>
         <h2 className={headingClass}>Q-Codes</h2>
@@ -1181,12 +1181,12 @@ export default function HomeContent() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {qCodes.map(([code, meaning]) => (
               <div key={code} className="rounded-xl border border-slate-200 bg-green-50/30 p-4 hover:border-green-600/40 hover:bg-white dark:border-slate-800 dark:bg-slate-900/50 dark:hover:bg-slate-800 transition-all flex items-start gap-4 group">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 font-mono font-bold group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 font-mono font-bold group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
                   <Radio className="h-5 w-5" />
                 </div>
                 <div>
-                  <span className="inline-block font-mono text-base font-bold text-green-700 dark:text-green-400">{code}</span>
-                  <p className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400">{meaning}</p>
+                  <span className="inline-block font-mono text-base font-bold text-green-800 dark:text-green-400">{code}</span>
+                  <p className="mt-1 text-xs sm:text-sm text-slate-700 dark:text-slate-400">{meaning}</p>
                 </div>
               </div>
             ))}
@@ -1197,8 +1197,8 @@ export default function HomeContent() {
       {/* 19. Common mistakes */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <AlertCircle className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Tips & Pitfalls
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <AlertCircle className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Tips & Pitfalls
           </span>
         </div>
         <h2 className={headingClass}>Common Mistakes</h2>
@@ -1208,7 +1208,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-3">
           <div className={cardClass}>
-            <div className="mb-3 text-amber-500 group-hover:scale-110 transition-transform">
+            <div className="mb-3 text-amber-600 dark:text-amber-500 group-hover:scale-110 transition-transform">
               <AlertCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Missing Signals</h3>
@@ -1217,7 +1217,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-amber-500 group-hover:scale-110 transition-transform">
+            <div className="mb-3 text-amber-600 dark:text-amber-500 group-hover:scale-110 transition-transform">
               <AlertCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Swapping Dots & Dashes</h3>
@@ -1226,7 +1226,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-amber-500 group-hover:scale-110 transition-transform">
+            <div className="mb-3 text-amber-600 dark:text-amber-500 group-hover:scale-110 transition-transform">
               <AlertCircle className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Incorrect Separation</h3>
@@ -1240,8 +1240,8 @@ export default function HomeContent() {
       {/* 20. Understanding Your Settings */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Settings className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Configuration
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Settings className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Configuration
           </span>
         </div>
         <h2 className={headingClass}>Understanding Your Settings</h2>
@@ -1250,7 +1250,7 @@ export default function HomeContent() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {settings.map(([name, description]) => (
             <div key={name} className={cardClass}>
-              <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+              <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
                 <Sliders className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">{name}</h3>
@@ -1263,8 +1263,8 @@ export default function HomeContent() {
       {/* 21. Discover more */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Globe className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Deep Dive
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Globe className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Deep Dive
           </span>
         </div>
         <h2 className={headingClass}>Discover More</h2>
@@ -1274,7 +1274,7 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <Globe className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
@@ -1287,7 +1287,7 @@ export default function HomeContent() {
             </p>
           </div>
           <div className={cardClass}>
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-400 group-hover:scale-110 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-all">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">Titanic Disaster 1912</h3>
@@ -1301,8 +1301,8 @@ export default function HomeContent() {
       {/* 22. Morse Font */}
       <section className={sectionAltClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <Cpu className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Visual Font
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <Cpu className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Visual Font
           </span>
         </div>
         <h2 className={headingClass}>Morse Font</h2>
@@ -1312,17 +1312,17 @@ export default function HomeContent() {
 
         <div className={cardClass}>
           <div className="flex items-center gap-2 mb-4">
-            <Type className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <Type className="h-5 w-5 text-green-800 dark:text-green-400" />
             <h3 className="text-base font-bold text-slate-900 dark:text-white">Typography & Glyphs Overview</h3>
           </div>
-          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
+          <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-300 mb-6">
             Digital Morse fonts map keyboard inputs directly to symbol sets consisting of dots ($\cdot$) and dashes ($-$). This styling is widely utilized in graphic design, cryptography themes, and educational software to preserve historical aesthetics.
           </p>
-          <div className="rounded-xl border border-green-600/20 bg-green-50/40 p-4 dark:border-slate-800 dark:bg-slate-900/60">
-            <p className="font-mono text-lg font-bold tracking-widest text-green-700 dark:text-green-400 text-center">
+          <div className="rounded-xl border border-green-700/30 bg-green-50/40 p-4 dark:border-slate-800 dark:bg-slate-900/60">
+            <p className="font-mono text-lg font-bold tracking-widest text-green-800 dark:text-green-400 text-center">
               $\cdot \cdot \cdot --- \cdot \cdot \cdot$ / $\cdot \cdot \cdot \cdot$ $\cdot$ $\cdot - \cdot \cdot$ $\cdot - \cdot \cdot$ $---$
             </p>
-            <p className="mt-2 text-center text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Example: S-O-S / H-E-L-L-O rendered in symbol typography</p>
+            <p className="mt-2 text-center text-xs font-bold text-slate-700 dark:text-slate-400 uppercase tracking-wider">Example: S-O-S / H-E-L-L-O rendered in symbol typography</p>
           </div>
         </div>
       </section>
@@ -1330,8 +1330,8 @@ export default function HomeContent() {
       {/* 23. Troubleshoot */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <HelpCircle className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Support
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <HelpCircle className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Support
           </span>
         </div>
         <h2 className={headingClass}>Troubleshoot</h2>
@@ -1339,32 +1339,32 @@ export default function HomeContent() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
               <HelpCircle className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">Nothing appears in the output</h3>
-            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Check that you selected the correct direction, Text to Morse or Morse to Text.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Check that you selected the correct direction, Text to Morse or Morse to Text.</p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
               <Sliders className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The Morse sounds too fast or slow</h3>
-            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Adjust the WPM or playback speed in settings.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Adjust the WPM or playback speed in settings.</p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
               <Volume2 className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The audio is too quiet or has wrong pitch</h3>
-            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Adjust volume and frequency settings, then test again.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Adjust volume and frequency settings, then test again.</p>
           </div>
           <div className={cardClass}>
-            <div className="mb-3 text-green-700 dark:text-green-400 group-hover:scale-110 transition-transform">
+            <div className="mb-3 text-green-800 dark:text-green-400 group-hover:scale-110 transition-transform">
               <FileText className="h-5 w-5" />
             </div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white">The translation looks wrong</h3>
-            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">Check the spaces between Morse characters.</p>
+            <p className="mt-1 text-xs font-medium text-slate-700 dark:text-slate-400">Check the spaces between Morse characters.</p>
           </div>
         </div>
       </section>
@@ -1373,15 +1373,15 @@ export default function HomeContent() {
       <section className={sectionAltClass}>
         <div className={cardClass}>
           <div className="flex items-center gap-2 mb-3">
-            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
+            <CheckCircle2 className="h-5 w-5 text-green-800 dark:text-green-400" />
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">Conclusion</h2>
           </div>
-          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          <p className="text-sm leading-relaxed text-slate-800 dark:text-slate-300">
             Morse code is a compact system built from dots, dashes and timing. It has a long connection with telegraphy,
             radio and communication history, while today it remains useful for learning, amateur radio, accessibility
             projects, puzzles and creative applications.
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          <p className="mt-3 text-sm leading-relaxed text-slate-800 dark:text-slate-300">
             The best way to learn it is to listen, practice short character groups, pay attention to timing and then
             gradually increase speed. You can use our{" "}
             <Link href="/learn-morse-code" className={linkClass}>Morse learning guide</Link>{" "}
@@ -1394,8 +1394,8 @@ export default function HomeContent() {
       <section className="relative overflow-hidden w-full bg-slate-950 px-6 py-20 text-center text-white shadow-2xl border-y border-slate-800">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(22,163,74,0.15),transparent_70%)]"></div>
         <div className="relative mx-auto max-w-4xl">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-4 py-1.5 text-xs font-semibold text-green-400 ring-1 ring-green-500/30 mb-6">
-            <Sparkles className="h-3.5 w-3.5 text-green-400" /> Start Translating Instantly
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-500/10 px-4 py-1.5 text-xs font-bold text-green-300 ring-1 ring-green-500/30 mb-6">
+            <Sparkles className="h-3.5 w-3.5 text-green-300" /> Start Translating Instantly
           </span>
           <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl md:text-5xl">
             Ready to Translate?
@@ -1415,8 +1415,8 @@ export default function HomeContent() {
       {/* 26. Morse Code Translator FAQ */}
       <section className={sectionLightClass}>
         <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <HelpCircle className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Got Questions?
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <HelpCircle className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Got Questions?
           </span>
         </div>
         <h2 className={headingClass}>Morse Code Translator FAQ</h2>
@@ -1435,8 +1435,8 @@ export default function HomeContent() {
       {/* 27. Related Blogs */}
       <section className={sectionAltClass}>
         <div className="flex justify-center buttons mb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-semibold text-green-700 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-600/20">
-            <BookOpen className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> Read More
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3.5 py-1 text-xs font-bold text-green-800 shadow-sm dark:bg-green-950 dark:text-green-400 ring-1 ring-green-700/30">
+            <BookOpen className="h-3.5 w-3.5 text-green-800 dark:text-green-400" /> Read More
           </span>
         </div>
         <h2 className={headingClass}>Related Blogs</h2>
@@ -1450,7 +1450,7 @@ export default function HomeContent() {
               className={cardClass}
             >
               <span className="block text-sm font-bold text-slate-900 dark:text-white">{label}</span>
-              <span className="mt-4 flex items-center gap-1 text-xs font-bold text-green-700 dark:text-green-400 group-hover:translate-x-1 transition-transform">
+              <span className="mt-4 flex items-center gap-1 text-xs font-bold text-green-800 dark:text-green-400 group-hover:translate-x-1 transition-transform">
                 Read more <ArrowRight className="h-3.5 w-3.5" />
               </span>
             </Link>
